@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لیست فایل‌های persiantechnet</title>
+    <title>پیش‌نمایش فایل‌ها - persiantechnet</title>
     <style>
         * {
             margin: 0;
@@ -20,11 +20,10 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* header */
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -38,11 +37,6 @@
             margin-bottom: 10px;
         }
 
-        .header p {
-            color: #8b949e;
-            font-size: 1rem;
-        }
-
         .badge {
             display: inline-block;
             background: #238636;
@@ -52,7 +46,6 @@
             margin-top: 15px;
         }
 
-        /* آمار */
         .stats {
             display: flex;
             gap: 20px;
@@ -80,7 +73,6 @@
             color: #8b949e;
         }
 
-        /* جستجو */
         .search-box {
             margin-bottom: 25px;
         }
@@ -93,71 +85,127 @@
             border-radius: 8px;
             color: #c9d1d9;
             font-size: 1rem;
-            transition: all 0.3s;
         }
 
         .search-box input:focus {
             outline: none;
             border-color: #58a6ff;
-            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
         }
 
-        /* لیست فایل‌ها */
-        .file-list {
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .file-card {
             background: #161b22;
-            border-radius: 12px;
             border: 1px solid #30363d;
-            overflow: hidden;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
         }
 
-        .list-header {
-            display: grid;
-            grid-template-columns: 40px 1fr 100px 120px;
-            padding: 12px 16px;
-            background: #0d1117;
-            border-bottom: 1px solid #30363d;
-            font-weight: bold;
-            color: #8b949e;
-            font-size: 0.8rem;
-        }
-
-        .file-item {
-            display: grid;
-            grid-template-columns: 40px 1fr 100px 120px;
-            padding: 12px 16px;
-            border-bottom: 1px solid #21262d;
-            transition: background 0.2s;
-            align-items: center;
-        }
-
-        .file-item:hover {
+        .file-card:hover {
+            transform: translateY(-3px);
+            border-color: #58a6ff;
             background: #1f242e;
         }
 
-        .file-item a {
+        .file-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            word-break: break-all;
             color: #58a6ff;
-            text-decoration: none;
+        }
+
+        .file-meta {
+            font-size: 0.75rem;
+            color: #8b949e;
             display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .preview-btn {
+            background: #238636;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .preview-btn:hover {
+            background: #2ea043;
+        }
+
+        /* مودال */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
         }
 
-        .file-item a:hover {
-            text-decoration: underline;
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: #0d1117;
+            border-radius: 16px;
+            overflow: auto;
+            position: relative;
         }
 
-        .icon {
-            font-size: 1.2rem;
+        .modal-header {
+            padding: 15px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
         }
 
-        .file-size {
-            color: #8b949e;
-            font-size: 0.85rem;
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0 10px;
         }
 
-        .file-date {
-            color: #8b949e;
-            font-size: 0.8rem;
+        .modal-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-body img, .modal-body video, .modal-body audio {
+            max-width: 100%;
+            max-height: 70vh;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
         }
 
         .loading, .error, .empty {
@@ -166,11 +214,6 @@
             color: #8b949e;
         }
 
-        .error {
-            color: #f85149;
-        }
-
-        /* فوتر */
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -181,25 +224,8 @@
         }
 
         @media (max-width: 768px) {
-            .list-header {
-                display: none;
-            }
-            
-            .file-item {
+            .file-grid {
                 grid-template-columns: 1fr;
-                gap: 5px;
-            }
-            
-            .file-size, .file-date {
-                padding-right: 35px;
-            }
-            
-            .stat-card {
-                padding: 8px 16px;
-            }
-            
-            .stat-number {
-                font-size: 1.2rem;
             }
         }
     </style>
@@ -208,57 +234,48 @@
     <div class="container">
         <div class="header">
             <h1>📁 persiantechnet</h1>
-            <p>مخزن فایل‌های عمومی</p>
-            <div class="badge">✨ لیست خودکار فایل‌ها با GitHub API</div>
+            <p>پیش‌نمایش تصاویر، ویدیو، صدا، PDF و فایل‌های متنی</p>
+            <div class="badge">🎯 کلیک روی هر فایل → پیش‌نمایش</div>
         </div>
 
         <div class="stats" id="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="fileCount">-</div>
-                <div class="stat-label">فایل</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="folderCount">-</div>
-                <div class="stat-label">پوشه</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalSize">-</div>
-                <div class="stat-label">حجم کل</div>
-            </div>
+            <div class="stat-card"><div class="stat-number" id="fileCount">-</div><div class="stat-label">فایل</div></div>
+            <div class="stat-card"><div class="stat-number" id="folderCount">-</div><div class="stat-label">پوشه</div></div>
+            <div class="stat-card"><div class="stat-number" id="totalSize">-</div><div class="stat-label">حجم کل</div></div>
         </div>
 
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="🔍 جستجو در فایل‌ها...">
         </div>
 
-        <div class="file-list">
-            <div class="list-header">
-                <span></span>
-                <span>نام فایل</span>
-                <span>حجم</span>
-                <span>آخرین بروزرسانی</span>
-            </div>
-            <div id="fileListContainer">
-                <div class="loading">⏳ در حال بارگذاری فایل‌ها...</div>
-            </div>
+        <div id="fileListContainer" class="file-grid">
+            <div class="loading">⏳ در حال بارگذاری...</div>
         </div>
 
         <div class="footer">
-            <span>📡 داده‌ها از GitHub API دریافت می‌شوند • </span>
-            <span>🔄 بروزرسانی خودکار هر بار بازدید</span>
+            <span>📡 دریافت از GitHub API • </span>
+            <span>🎨 کلیک کنید تا تصاویر، ویدیو، صدا و متن را ببینید</span>
+        </div>
+    </div>
+
+    <!-- مودال نمایش فایل -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modalFileName"></span>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="loading">در حال بارگذاری...</div>
+            </div>
         </div>
     </div>
 
     <script>
-        // 👇 تنظیمات مخزن شما - این مقادیر را به درستی وارد کنید
-        const REPO_OWNER = "persiantechnet";   // نام کاربری گیت‌هاب شما
-        const REPO_NAME = "persiantechnet.github.io";  // نام مخزن
-        
-        // متغیرهای سراسری
+        const REPO_OWNER = "persiantechnet";
+        const REPO_NAME = "persiantechnet.github.io";
         let allItems = [];
-        let currentFilter = "";
 
-        // تبدیل بایت به فرمت خوانا
         function formatFileSize(bytes) {
             if (bytes === 0) return "0 B";
             const k = 1024;
@@ -267,51 +284,43 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
         }
 
-        // فرمت تاریخ
-        function formatDate(dateString) {
-            if (!dateString) return "نامشخص";
-            try {
-                const date = new Date(dateString);
-                return new Intl.DateTimeFormat('fa-IR').format(date);
-            } catch {
-                return dateString;
-            }
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const icons = {
+                // تصاویر
+                jpg: '🖼️', jpeg: '🖼️', png: '🖼️', gif: '🎞️', svg: '🎨', webp: '🖼️',
+                // ویدیو
+                mp4: '🎬', mkv: '🎬', avi: '🎬', mov: '🎬', webm: '🎬',
+                // صدا
+                mp3: '🎵', wav: '🎵', ogg: '🎵', flac: '🎵', m4a: '🎵',
+                // متن
+                txt: '📝', json: '📋', xml: '📋', md: '📄', html: '🌐', css: '🎨', js: '⚡',
+                // سند
+                pdf: '📑', doc: '📃', docx: '📃', xls: '📊', xlsx: '📊', ppt: '📽️',
+                // آرشیو
+                zip: '🗜️', rar: '🗜️', tar: '🗜️', gz: '🗜️'
+            };
+            return icons[ext] || '📄';
         }
 
-        // دریافت محتویات مخزن از GitHub API
         async function fetchRepositoryContents() {
             const container = document.getElementById('fileListContainer');
-            container.innerHTML = '<div class="loading">⏳ در حال دریافت اطلاعات از GitHub API...</div>';
-            
+            container.innerHTML = '<div class="loading">⏳ در حال دریافت اطلاعات...</div>';
             try {
-                // استفاده از API گیت‌هاب برای دریافت محتویات
                 const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/`;
-                console.log("در حال دریافت از:", url);
-                
                 const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`خطای HTTP: ${response.status} - ${response.statusText}`);
-                }
-                
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
-                console.log("داده دریافت شد:", data);
                 
-                if (!Array.isArray(data)) {
-                    throw new Error("پاسخ API به فرمت مورد نظر نیست");
-                }
-                
-                // پردازش داده‌ها
                 allItems = data.map(item => ({
                     name: item.name,
                     type: item.type === 'dir' ? 'folder' : 'file',
                     size: item.size || 0,
-                    url: item.html_url,
                     download_url: item.download_url,
-                    date: formatDate(item.sha ? new Date().toISOString() : null) // برای تاریخ دقیق‌تر نیاز به درخواست جداگانه است
+                    html_url: item.html_url,
+                    path: item.path
                 }));
-                
-                // محاسبه آمار
+
                 const files = allItems.filter(i => i.type === 'file');
                 const folders = allItems.filter(i => i.type === 'folder');
                 const totalSize = files.reduce((sum, f) => sum + f.size, 0);
@@ -320,63 +329,110 @@
                 document.getElementById('folderCount').innerText = folders.length;
                 document.getElementById('totalSize').innerText = formatFileSize(totalSize);
                 
-                // نمایش فایل‌ها
                 renderFileList();
-                
             } catch (error) {
-                console.error("خطا:", error);
-                container.innerHTML = `<div class="error">❌ خطا در دریافت فایل‌ها: ${error.message}<br><br>
-                🔍 نکات بررسی:<br>
-                1. مطمئن شوید مخزن شما عمومی (public) است<br>
-                2. بررسی کنید نام مخزن و owner درست وارد شده باشد<br>
-                3. اگر مخزن خالی است، ابتدا چند فایل به آن اضافه کنید<br>
-                4. برای رفع خطا، می‌توانید از مرورگر خود مستقیماً این آدرس را تست کنید:<br>
-                <code style="background:#0d1117;padding:4px;display:inline-block;margin-top:8px;">https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/</code>
+                container.innerHTML = `<div class="error">❌ خطا: ${error.message}<br>مطمئن شوید مخزن public است.</div>`;
+            }
+        }
+
+        function renderFileList() {
+            const container = document.getElementById('fileListContainer');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = allItems.filter(i => i.name.toLowerCase().includes(searchTerm));
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty">📭 فایلی یافت نشد</div>';
+                return;
+            }
+
+            filtered.sort((a, b) => {
+                if (a.type !== b.type) return a.type === 'folder' ? -1 : 1;
+                return a.name.localeCompare(b.name);
+            });
+
+            container.innerHTML = filtered.map(item => {
+                if (item.type === 'folder') {
+                    return `<div class="file-card" style="opacity:0.8;">
+                        <div class="file-icon">📁</div>
+                        <div class="file-name">${escapeHtml(item.name)}</div>
+                        <div class="file-meta"><span>پوشه</span><span></span></div>
+                        <a href="${item.html_url}" target="_blank"><button class="preview-btn">🔗 مشاهده در گیت‌هاب</button></a>
+                    </div>`;
+                } else {
+                    const icon = getFileIcon(item.name);
+                    return `<div class="file-card" onclick="previewFile('${escapeHtml(item.name)}', '${escapeHtml(item.download_url)}')">
+                        <div class="file-icon">${icon}</div>
+                        <div class="file-name">${escapeHtml(item.name)}</div>
+                        <div class="file-meta"><span>${formatFileSize(item.size)}</span><span></span></div>
+                        <button class="preview-btn">👁️ پیش‌نمایش</button>
+                    </div>`;
+                }
+            }).join('');
+        }
+
+        function previewFile(name, url) {
+            const modal = document.getElementById('previewModal');
+            const modalBody = document.getElementById('modalBody');
+            const modalFileName = document.getElementById('modalFileName');
+            
+            modalFileName.innerText = name;
+            modal.style.display = 'flex';
+            
+            const ext = name.split('.').pop().toLowerCase();
+            
+            // تصاویر
+            if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'bmp'].includes(ext)) {
+                modalBody.innerHTML = `<img src="${url}" alt="${name}" onerror="this.src='https://via.placeholder.com/400?text=خطا+در+بارگذاری'">`;
+            }
+            // ویدیو
+            else if (['mp4', 'webm', 'ogg', 'mov'].includes(ext)) {
+                modalBody.innerHTML = `<video controls autoplay><source src="${url}" type="video/${ext}"></video>`;
+            }
+            // صدا
+            else if (['mp3', 'wav', 'ogg', 'm4a', 'flac'].includes(ext)) {
+                modalBody.innerHTML = `<audio controls autoplay><source src="${url}" type="audio/${ext}"></audio>`;
+            }
+            // PDF
+            else if (ext === 'pdf') {
+                modalBody.innerHTML = `<iframe src="${url}#toolbar=0" title="${name}"></iframe>`;
+            }
+            // فایل‌های متنی
+            else if (['txt', 'md', 'json', 'xml', 'html', 'css', 'js', 'py', 'c', 'cpp', 'java', 'sh'].includes(ext)) {
+                fetch(url)
+                    .then(res => res.text())
+                    .then(text => {
+                        modalBody.innerHTML = `<pre style="text-align:left; white-space:pre-wrap; word-wrap:break-word; background:#0d1117; padding:15px; border-radius:8px; max-height:70vh; overflow:auto;">${escapeHtml(text)}</pre>`;
+                    })
+                    .catch(() => {
+                        modalBody.innerHTML = `<div class="error">❌ خطا در بارگذاری فایل متنی</div>`;
+                    });
+            }
+            // سایر فایل‌ها
+            else {
+                modalBody.innerHTML = `<div>⚠️ پیش‌نمایش این نوع فایل پشتیبانی نمی‌شود.<br><br>
+                <a href="${url}" download><button class="preview-btn" style="width:auto;">📥 دانلود فایل</button></a>
+                <a href="${url}" target="_blank"><button class="preview-btn" style="width:auto; background:#1f6feb;">🔗 باز کردن در تب جدید</button></a>
                 </div>`;
             }
         }
 
-        // رندر لیست فایل‌ها با فیلتر جستجو
-        function renderFileList() {
-            const container = document.getElementById('fileListContainer');
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            let filtered = allItems;
-            if (searchTerm) {
-                filtered = allItems.filter(item => 
-                    item.name.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            if (filtered.length === 0) {
-                container.innerHTML = '<div class="empty">📭 هیچ فایلی با این جستجو یافت نشد</div>';
-                return;
-            }
-            
-            // مرتب‌سازی: پوشه‌ها اول، سپس فایل‌ها
-            filtered.sort((a, b) => {
-                if (a.type !== b.type) {
-                    return a.type === 'folder' ? -1 : 1;
-                }
-                return a.name.localeCompare(b.name);
-            });
-            
-            container.innerHTML = filtered.map(item => `
-                <div class="file-item">
-                    <span class="icon">${item.type === 'folder' ? '📁' : '📄'}</span>
-                    <a href="${item.url}" target="_blank">
-                        ${item.name}
-                    </a>
-                    <span class="file-size">${item.type === 'file' ? formatFileSize(item.size) : '—'}</span>
-                    <span class="file-date">${item.date || '—'}</span>
-                </div>
-            `).join('');
+        function closeModal() {
+            document.getElementById('previewModal').style.display = 'none';
+            document.getElementById('modalBody').innerHTML = '<div class="loading">در حال بارگذاری...</div>';
         }
 
-        // رویداد جستجو
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
         document.getElementById('searchInput').addEventListener('input', renderFileList);
+        window.onclick = function(event) { if (event.target === document.getElementById('previewModal')) closeModal(); };
         
-        // اجرای اصلی
         fetchRepositoryContents();
     </script>
 </body>
