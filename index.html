@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پیش‌نمایش فایل‌ها - persiantechnet</title>
+    <title>شبکه فنآوری پارسی | PersianTechNet</title>
+    <meta name="description" content="ارائه خدمات فنآوری اطلاعات، شبکه، سخت‌افزار، طراحی سایت، هاست و دامنه">
+    <meta name="keywords" content="فنآوری, شبکه, اینترنت, هاست, دامنه, طراحی سایت, رایانه, کوار, فارس">
+    <meta name="author" content="PersianTechNet">
     <style>
         * {
             margin: 0;
@@ -12,300 +15,469 @@
         }
 
         body {
-            font-family: 'Tahoma', 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-            color: #c9d1d9;
+            font-family: 'Tahoma', 'Segoe UI', 'Vazir', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0f1a 0%, #0d1117 100%);
+            color: #e6edf3;
+            line-height: 1.6;
         }
 
+        /* اسکرول بار سفارشی */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e2430; }
+        ::-webkit-scrollbar-thumb { background: #f0883e; border-radius: 4px; }
+
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* هدر */
+        .header {
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            border-bottom: 3px solid #f0883e;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #f0883e;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #e6edf3;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #f0883e;
+        }
+
+        /* بخش قهرمان (Hero) */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0a0f1a 0%, #111827 100%);
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #f0883e;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b0b8c5;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #30363d;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
-
-        .badge {
+        .hero-badge {
             display: inline-block;
-            background: #238636;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 15px;
+            background: #f0883e20;
+            border: 1px solid #f0883e;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin-top: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* عنوان بخش‌ها */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #f0883e;
+            border-radius: 3px;
+        }
+
+        /* کارت‌های خدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #f0883e;
+            box-shadow: 0 10px 30px rgba(240,136,62,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #f0883e;
+            margin-bottom: 15px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 8px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '🟠';
+            position: absolute;
+            right: 0;
+            font-size: 0.7rem;
+        }
+
+        /* بخش فایل‌ها (مخزن) */
+        .files-section {
+            background: #0a0f1a;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #30363d;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .files-header h2 {
+            color: #f0883e;
+        }
+
+        .search-box input {
+            padding: 10px 16px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            color: #e6edf3;
+            width: 250px;
         }
 
         .stats {
             display: flex;
             gap: 20px;
-            justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
-        .stat-card {
+        .stat-badge {
             background: #161b22;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 12px 24px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #58a6ff;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #8b949e;
-        }
-
-        .search-box {
-            margin-bottom: 25px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            color: #c9d1d9;
-            font-size: 1rem;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #58a6ff;
         }
 
         .file-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 5px;
         }
 
         .file-card {
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 12px;
-            padding: 16px;
-            transition: all 0.2s;
+            padding: 14px;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
         .file-card:hover {
-            transform: translateY(-3px);
-            border-color: #58a6ff;
+            border-color: #f0883e;
             background: #1f242e;
         }
 
-        .file-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .file-name {
-            font-weight: bold;
-            margin-bottom: 8px;
-            word-break: break-all;
-            color: #58a6ff;
-        }
-
-        .file-meta {
-            font-size: 0.75rem;
-            color: #8b949e;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
+        .file-icon { font-size: 1.8rem; margin-bottom: 8px; }
+        .file-name { font-weight: 500; word-break: break-all; font-size: 0.9rem; }
+        .file-meta { font-size: 0.7rem; color: #8b949e; margin-top: 8px; }
         .preview-btn {
-            background: #238636;
+            background: #f0883e;
             border: none;
-            color: white;
+            color: #0d1117;
             padding: 6px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             margin-top: 10px;
             width: 100%;
+            font-weight: bold;
         }
+        .preview-btn:hover { background: #f0a05e; }
 
-        .preview-btn:hover {
-            background: #2ea043;
-        }
-
-        /* مودال */
+        /* مودال پیش‌نمایش */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0,0,0,0.95);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
-
         .modal-content {
             max-width: 90%;
             max-height: 90%;
             background: #0d1117;
             border-radius: 16px;
             overflow: auto;
-            position: relative;
         }
-
         .modal-header {
             padding: 15px;
             background: #161b22;
-            border-bottom: 1px solid #30363d;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
+            border-bottom: 1px solid #f0883e;
         }
-
         .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
+            background: none; border: none;
+            color: white; font-size: 28px;
             cursor: pointer;
-            padding: 0 10px;
         }
+        .modal-body { padding: 20px; text-align: center; }
+        .modal-body img, .modal-body video { max-width: 100%; max-height: 70vh; }
+        .modal-body pre { text-align: left; background: #0a0f1a; padding: 15px; border-radius: 8px; overflow: auto; }
 
-        .modal-body {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .modal-body img, .modal-body video, .modal-body audio {
-            max-width: 100%;
-            max-height: 70vh;
-        }
-
-        .modal-body iframe {
-            width: 100%;
-            height: 80vh;
-            border: none;
-        }
-
-        .loading, .error, .empty {
-            text-align: center;
+        /* بخش تماس */
+        .contact-section {
+            background: linear-gradient(135deg, #0f1419 0%, #111827 100%);
+            border-radius: 24px;
             padding: 40px;
-            color: #8b949e;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid #30363d;
         }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 25px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #161b22;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid #30363d;
+        }
+        .contact-item span:first-child { font-size: 1.3rem; }
 
+        /* فوتر */
         .footer {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            padding: 30px;
             border-top: 1px solid #30363d;
+            margin-top: 40px;
             font-size: 0.8rem;
             color: #8b949e;
         }
 
         @media (max-width: 768px) {
-            .file-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero h1 { font-size: 1.6rem; }
+            .section-title { font-size: 1.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-item { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📁 persiantechnet</h1>
-            <p>پیش‌نمایش تصاویر، ویدیو، صدا، PDF و فایل‌های متنی</p>
-            <div class="badge">🎯 کلیک روی هر فایل → پیش‌نمایش</div>
-        </div>
-
-        <div class="stats" id="stats">
-            <div class="stat-card"><div class="stat-number" id="fileCount">-</div><div class="stat-label">فایل</div></div>
-            <div class="stat-card"><div class="stat-number" id="folderCount">-</div><div class="stat-label">پوشه</div></div>
-            <div class="stat-card"><div class="stat-number" id="totalSize">-</div><div class="stat-label">حجم کل</div></div>
-        </div>
-
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 جستجو در فایل‌ها...">
-        </div>
-
-        <div id="fileListContainer" class="file-grid">
-            <div class="loading">⏳ در حال بارگذاری...</div>
-        </div>
-
-        <div class="footer">
-            <span>📡 دریافت از GitHub API • </span>
-            <span>🎨 کلیک کنید تا تصاویر، ویدیو، صدا و متن را ببینید</span>
+    <div class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>🇮🇷 شبکه فنآوری پارسی</h1>
+                <p>PersianTechNet | ایستگاه خدمات فنآوری کسب‌وکار</p>
+            </div>
+            <div class="nav">
+                <a href="#">🏠 خانه</a>
+                <a href="#services">🛠 خدمات</a>
+                <a href="#files">📁 مخزن فایل‌ها</a>
+                <a href="#contact">📞 تماس با ما</a>
+            </div>
         </div>
     </div>
 
-    <!-- مودال نمایش فایل -->
+    <div class="container">
+        <div class="hero">
+            <h1>📡 <span>PersianTechNet</span></h1>
+            <p>یک ایستگاه خدمات فنآوری برای کسب‌وکار یا تجارتتان</p>
+            <div class="hero-badge">⚡ همراه شما در مسیر تحول دیجیتال</div>
+        </div>
+
+        <!-- خدمات -->
+        <h2 id="services" class="section-title">🟠 خدمات و محصولات</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🖥</div>
+                <h3>رایانه و تجهیزات</h3>
+                <ul class="service-list">
+                    <li>نصب و راه‌اندازی سیستم‌عامل</li>
+                    <li>نرم‌افزارها و برنامه‌های کاربردی</li>
+                    <li>ارتقاء سخت‌افزار و مشاوره خرید</li>
+                    <li>امنیت اطلاعات و پشتیبان‌گیری</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛜</div>
+                <h3>شبکه و اینترنت</h3>
+                <ul class="service-list">
+                    <li>اینترنت پرسرعت و پایدار</li>
+                    <li>هاست، دامنه و سرورهای ابری</li>
+                    <li>طراحی سایت‌های حرفه‌ای</li>
+                    <li>راه‌اندازی شبکه خانگی و تجاری</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>تجارت فنآوری</h3>
+                <ul class="service-list">
+                    <li>مشاوره و ایده‌پردازی دیجیتال</li>
+                    <li>سرمایه‌گذاری در پروژه‌های فناوری</li>
+                    <li>همکاری در طراحی و توسعه پروژه‌های نوآورانه</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- بخش فایل‌های مخزن -->
+        <div id="files" class="files-section">
+            <div class="files-header">
+                <h2>📂 مخزن فایل‌های سازمان</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 جستجو در فایل‌ها...">
+                </div>
+            </div>
+            <div class="stats" id="stats">
+                <div class="stat-badge">📄 فایل‌ها: <span id="fileCount">-</span></div>
+                <div class="stat-badge">📁 پوشه‌ها: <span id="folderCount">-</span></div>
+                <div class="stat-badge">💾 حجم کل: <span id="totalSize">-</span></div>
+            </div>
+            <div id="fileListContainer" class="file-grid">
+                <div class="stat-badge">⏳ در حال بارگذاری...</div>
+            </div>
+        </div>
+
+        <!-- بخش تماس -->
+        <div id="contact" class="contact-section">
+            <h2 class="section-title" style="margin-bottom: 20px;">📞 ارتباط با ما</h2>
+            <div class="contact-info">
+                <div class="contact-item"><span>📍</span> استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</div>
+                <div class="contact-item"><span>📧</span> info@persiantechnet.ir</div>
+                <div class="contact-item"><span>📱</span> ۰۹۱۷۰۰۰۰۰۰</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 شبکه فنآوری پارسی | PersianTechNet - تمامی حقوق محفوظ است</p>
+        <p style="margin-top: 8px;">🚀 قدرت گرفته از GitHub Pages</p>
+    </div>
+
+    <!-- مودال پیش‌نمایش -->
     <div id="previewModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span id="modalFileName"></span>
                 <button class="close-modal" onclick="closeModal()">&times;</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <div class="loading">در حال بارگذاری...</div>
-            </div>
+            <div class="modal-body" id="modalBody">بارگذاری...</div>
         </div>
     </div>
 
     <script>
+        // تنظیمات مخزن گیت‌هاب شما
         const REPO_OWNER = "persiantechnet";
         const REPO_NAME = "persiantechnet.github.io";
         let allItems = [];
 
         function formatFileSize(bytes) {
-            if (bytes === 0) return "0 B";
-            const k = 1024;
+            if (!bytes || bytes === 0) return "0 B";
             const sizes = ["B", "KB", "MB", "GB"];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
+            return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + " " + sizes[i];
         }
 
         function getFileIcon(filename) {
             const ext = filename.split('.').pop().toLowerCase();
-            const icons = {
-                // تصاویر
-                jpg: '🖼️', jpeg: '🖼️', png: '🖼️', gif: '🎞️', svg: '🎨', webp: '🖼️',
-                // ویدیو
-                mp4: '🎬', mkv: '🎬', avi: '🎬', mov: '🎬', webm: '🎬',
-                // صدا
-                mp3: '🎵', wav: '🎵', ogg: '🎵', flac: '🎵', m4a: '🎵',
-                // متن
-                txt: '📝', json: '📋', xml: '📋', md: '📄', html: '🌐', css: '🎨', js: '⚡',
-                // سند
-                pdf: '📑', doc: '📃', docx: '📃', xls: '📊', xlsx: '📊', ppt: '📽️',
-                // آرشیو
-                zip: '🗜️', rar: '🗜️', tar: '🗜️', gz: '🗜️'
-            };
-            return icons[ext] || '📄';
+            if (['jpg','jpeg','png','gif','svg','webp'].includes(ext)) return '🖼️';
+            if (['mp4','webm','mkv','mov'].includes(ext)) return '🎬';
+            if (['mp3','wav','ogg','flac'].includes(ext)) return '🎵';
+            if (['pdf'].includes(ext)) return '📑';
+            if (['txt','md','json','html','css','js','py','c','cpp'].includes(ext)) return '📝';
+            return '📄';
         }
 
-        async function fetchRepositoryContents() {
+        async function fetchFiles() {
             const container = document.getElementById('fileListContainer');
-            container.innerHTML = '<div class="loading">⏳ در حال دریافت اطلاعات...</div>';
+            container.innerHTML = '<div class="stat-badge">⏳ در حال دریافت از GitHub...</div>';
             try {
                 const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/`;
                 const response = await fetch(url);
@@ -317,45 +489,44 @@
                     type: item.type === 'dir' ? 'folder' : 'file',
                     size: item.size || 0,
                     download_url: item.download_url,
-                    html_url: item.html_url,
-                    path: item.path
+                    html_url: item.html_url
                 }));
 
                 const files = allItems.filter(i => i.type === 'file');
                 const folders = allItems.filter(i => i.type === 'folder');
-                const totalSize = files.reduce((sum, f) => sum + f.size, 0);
+                const totalSize = files.reduce((s, f) => s + f.size, 0);
                 
                 document.getElementById('fileCount').innerText = files.length;
                 document.getElementById('folderCount').innerText = folders.length;
                 document.getElementById('totalSize').innerText = formatFileSize(totalSize);
                 
-                renderFileList();
-            } catch (error) {
-                container.innerHTML = `<div class="error">❌ خطا: ${error.message}<br>مطمئن شوید مخزن public است.</div>`;
+                renderFiles();
+            } catch (err) {
+                container.innerHTML = `<div class="stat-badge">❌ خطا: ${err.message}<br>مخزن باید Public باشد</div>`;
             }
         }
 
-        function renderFileList() {
+        function renderFiles() {
             const container = document.getElementById('fileListContainer');
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filtered = allItems.filter(i => i.name.toLowerCase().includes(searchTerm));
             
             if (filtered.length === 0) {
-                container.innerHTML = '<div class="empty">📭 فایلی یافت نشد</div>';
+                container.innerHTML = '<div class="stat-badge">📭 فایلی یافت نشد</div>';
                 return;
             }
-
-            filtered.sort((a, b) => {
+            
+            filtered.sort((a,b) => {
                 if (a.type !== b.type) return a.type === 'folder' ? -1 : 1;
                 return a.name.localeCompare(b.name);
             });
-
+            
             container.innerHTML = filtered.map(item => {
                 if (item.type === 'folder') {
                     return `<div class="file-card" style="opacity:0.8;">
                         <div class="file-icon">📁</div>
                         <div class="file-name">${escapeHtml(item.name)}</div>
-                        <div class="file-meta"><span>پوشه</span><span></span></div>
+                        <div class="file-meta">پوشه</div>
                         <a href="${item.html_url}" target="_blank"><button class="preview-btn">🔗 مشاهده در گیت‌هاب</button></a>
                     </div>`;
                 } else {
@@ -363,7 +534,7 @@
                     return `<div class="file-card" onclick="previewFile('${escapeHtml(item.name)}', '${escapeHtml(item.download_url)}')">
                         <div class="file-icon">${icon}</div>
                         <div class="file-name">${escapeHtml(item.name)}</div>
-                        <div class="file-meta"><span>${formatFileSize(item.size)}</span><span></span></div>
+                        <div class="file-meta">${formatFileSize(item.size)}</div>
                         <button class="preview-btn">👁️ پیش‌نمایش</button>
                     </div>`;
                 }
@@ -373,67 +544,45 @@
         function previewFile(name, url) {
             const modal = document.getElementById('previewModal');
             const modalBody = document.getElementById('modalBody');
-            const modalFileName = document.getElementById('modalFileName');
-            
-            modalFileName.innerText = name;
+            document.getElementById('modalFileName').innerText = name;
             modal.style.display = 'flex';
             
             const ext = name.split('.').pop().toLowerCase();
-            
-            // تصاویر
-            if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'bmp'].includes(ext)) {
-                modalBody.innerHTML = `<img src="${url}" alt="${name}" onerror="this.src='https://via.placeholder.com/400?text=خطا+در+بارگذاری'">`;
-            }
-            // ویدیو
-            else if (['mp4', 'webm', 'ogg', 'mov'].includes(ext)) {
-                modalBody.innerHTML = `<video controls autoplay><source src="${url}" type="video/${ext}"></video>`;
-            }
-            // صدا
-            else if (['mp3', 'wav', 'ogg', 'm4a', 'flac'].includes(ext)) {
-                modalBody.innerHTML = `<audio controls autoplay><source src="${url}" type="audio/${ext}"></audio>`;
-            }
-            // PDF
-            else if (ext === 'pdf') {
-                modalBody.innerHTML = `<iframe src="${url}#toolbar=0" title="${name}"></iframe>`;
-            }
-            // فایل‌های متنی
-            else if (['txt', 'md', 'json', 'xml', 'html', 'css', 'js', 'py', 'c', 'cpp', 'java', 'sh'].includes(ext)) {
-                fetch(url)
-                    .then(res => res.text())
-                    .then(text => {
-                        modalBody.innerHTML = `<pre style="text-align:left; white-space:pre-wrap; word-wrap:break-word; background:#0d1117; padding:15px; border-radius:8px; max-height:70vh; overflow:auto;">${escapeHtml(text)}</pre>`;
-                    })
-                    .catch(() => {
-                        modalBody.innerHTML = `<div class="error">❌ خطا در بارگذاری فایل متنی</div>`;
-                    });
-            }
-            // سایر فایل‌ها
-            else {
-                modalBody.innerHTML = `<div>⚠️ پیش‌نمایش این نوع فایل پشتیبانی نمی‌شود.<br><br>
-                <a href="${url}" download><button class="preview-btn" style="width:auto;">📥 دانلود فایل</button></a>
-                <a href="${url}" target="_blank"><button class="preview-btn" style="width:auto; background:#1f6feb;">🔗 باز کردن در تب جدید</button></a>
-                </div>`;
+            if (['jpg','jpeg','png','gif','svg','webp'].includes(ext)) {
+                modalBody.innerHTML = `<img src="${url}" alt="${name}">`;
+            } else if (['mp4','webm'].includes(ext)) {
+                modalBody.innerHTML = `<video controls autoplay><source src="${url}"></video>`;
+            } else if (['mp3','wav','ogg'].includes(ext)) {
+                modalBody.innerHTML = `<audio controls autoplay><source src="${url}"></audio>`;
+            } else if (ext === 'pdf') {
+                modalBody.innerHTML = `<iframe src="${url}#toolbar=0" style="width:80vw; height:80vh;"></iframe>`;
+            } else if (['txt','md','json','html','css','js','py','c','cpp','java','sh'].includes(ext)) {
+                fetch(url).then(r=>r.text()).then(txt=>{
+                    modalBody.innerHTML = `<pre style="text-align:left; max-height:70vh; overflow:auto;">${escapeHtml(txt)}</pre>`;
+                }).catch(()=>modalBody.innerHTML='<div>❌ خطا در بارگذاری</div>');
+            } else {
+                modalBody.innerHTML = `<div>⚠️ پیش‌نمایش پشتیبانی نمی‌شود<br><a href="${url}" download><button class="preview-btn">📥 دانلود</button></a></div>`;
             }
         }
 
         function closeModal() {
             document.getElementById('previewModal').style.display = 'none';
-            document.getElementById('modalBody').innerHTML = '<div class="loading">در حال بارگذاری...</div>';
+            document.getElementById('modalBody').innerHTML = 'بارگذاری...';
         }
 
         function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
+            return str.replace(/[&<>]/g, function(m){
+                if(m==='&') return '&amp;';
+                if(m==='<') return '&lt;';
+                if(m==='>') return '&gt;';
                 return m;
             });
         }
 
-        document.getElementById('searchInput').addEventListener('input', renderFileList);
-        window.onclick = function(event) { if (event.target === document.getElementById('previewModal')) closeModal(); };
+        document.getElementById('searchInput').addEventListener('input', renderFiles);
+        window.onclick = e => { if(e.target === document.getElementById('previewModal')) closeModal(); };
         
-        fetchRepositoryContents();
+        fetchFiles();
     </script>
 </body>
 </html>
