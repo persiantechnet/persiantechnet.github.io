@@ -2,157 +2,420 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persia OS Ultimate v14.0 - سیستم عامل کامل پارسی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#00aaff">
+    <meta name="description" content="Persia OS Ultimate v5.0 - کامل‌ترین سیستم عامل تحت وب پارسی با پشتیبانی از بلوتوث، پرینتر، مخاطب، تماس، سخت‌افزار، و همه اپلیکیشن‌های حرفه‌ای">
+    <title>Persia OS Ultimate v5.0 - نهایی | سیستم عامل حرفه‌ای پارسی</title>
+    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Persia%20OS%20Ultimate%22,%22short_name%22:%22PersiaOS%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%230a0a15%22,%22theme_color%22:%22%2300aaff%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22any%22,%22type%22:%22image/svg+xml%22}]}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS کامل در ادامه... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #00aaff; --primary-dark: #0099ee; --secondary: #9d50bb;
-            --success: #2ecc71; --error: #e74c3c; --warning: #f1c40f;
-            --dark: #0a0a15; --glass: rgba(255,255,255,0.08);
-            --glass-border: rgba(0,170,255,0.3);
+            --primary: #00aaff;
+            --primary-dark: #0099ee;
+            --secondary: #9d50bb;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --warning: #f1c40f;
+            --info: #3498db;
+            --dark: #0a0a15;
+            --darker: #050510;
+            --light: #f0f0f0;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(0, 170, 255, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            --glow: 0 0 30px rgba(0,170,255,0.3);
         }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--dark); color: white; height: 100vh; overflow: hidden; }
-        /* والپیپر زنده */
-        .live-wallpaper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; transition: 0.5s; }
-        .wallpaper-default { background: radial-gradient(circle at 20% 40%, #0a0a2a, #000010); animation: galaxyMove 20s infinite; }
-        .wallpaper-matrix { background: linear-gradient(135deg, #003300, #000000); }
-        .wallpaper-sunset { background: linear-gradient(135deg, #ff6b35, #f7931e, #2c3e50); animation: sunsetPulse 15s infinite; }
-        .wallpaper-ocean { background: linear-gradient(135deg, #003366, #006699, #0099cc); animation: oceanWave 10s infinite; }
-        @keyframes galaxyMove { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+        body { font-family: 'Segoe UI', 'Vazirmatn', Tahoma, sans-serif; background: var(--dark); color: white; height: 100vh; overflow: hidden; transition: var(--transition); }
+        body.light-mode { --dark: #e0e0e0; --darker: #c0c0c0; --glass: rgba(0,0,0,0.08); --glass-border: rgba(0,170,255,0.5); color: #1a1a1a; }
+        body[dir="ltr"] { direction: ltr; text-align: left; }
+        body[dir="rtl"] { direction: rtl; text-align: right; }
+        
+        /* والپیپر */
+        .live-wallpaper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; transition: var(--transition); }
+        .wallpaper-default { background: radial-gradient(circle at 20% 40%, #0a0a2a, #000010); animation: galaxyMove 20s ease infinite; }
+        .wallpaper-matrix { background: linear-gradient(135deg, #003300, #000000); animation: matrixRain 8s linear infinite; }
+        .wallpaper-sunset { background: linear-gradient(135deg, #ff6b35, #f7931e, #2c3e50); animation: sunsetPulse 15s ease infinite; }
+        .wallpaper-ocean { background: linear-gradient(135deg, #003366, #006699, #0099cc); animation: oceanWave 10s ease infinite; }
+        .wallpaper-forest { background: linear-gradient(135deg, #1a472a, #2d6a4f, #40916c); animation: forestBreathing 8s ease infinite; }
+        .wallpaper-aurora { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); animation: auroraMove 12s ease infinite; }
+        .wallpaper-custom { background-size: cover; background-position: center; animation: none; }
+        @keyframes galaxyMove { 0% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } 100% { background-position: 0% 0%; } }
+        @keyframes matrixRain { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
         @keyframes sunsetPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.8; } }
-        @keyframes oceanWave { 0% { background-size: 100% 100%; } 100% { background-size: 120% 120%; } }
+        @keyframes oceanWave { 0% { background-size: 100% 100%; } 50% { background-size: 120% 120%; } 100% { background-size: 100% 100%; } }
+        @keyframes forestBreathing { 0%,100% { filter: brightness(1); } 50% { filter: brightness(1.1); } }
+        @keyframes auroraMove { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+        
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .particle { position: absolute; background: rgba(0, 170, 255, 0.4); border-radius: 50%; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { from { transform: translateY(100vh) rotate(0deg); opacity: 1; } to { transform: translateY(-100px) rotate(360deg); opacity: 0; } }
+        
         /* بوت اسکرین */
-        #boot-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 10000; }
-        .boot-progress { width: 300px; height: 4px; background: #333; margin: 1rem auto; border-radius: 2px; overflow: hidden; }
-        .boot-progress-fill { width: 0%; height: 100%; background: var(--primary); transition: width 0.3s; }
-        /* تسکبار و دسکتاپ */
-        .taskbar { position: fixed; bottom: 0; left: 0; right: 0; height: 55px; background: rgba(10,10,21,0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; }
+        #boot-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 1s; flex-direction: column; }
+        .boot-container { text-align: center; }
+        .boot-logo { font-size: 5rem; animation: pulse 1s infinite; filter: drop-shadow(0 0 20px var(--primary)); }
+        .boot-title { font-size: 2rem; margin: 1rem 0; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .boot-subtitle { font-size: 0.9rem; color: #888; margin-bottom: 2rem; }
+        .boot-progress { width: 350px; height: 4px; background: #333; margin: 1rem auto; border-radius: 4px; overflow: hidden; }
+        .boot-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); transition: width 0.3s; }
+        .boot-message { color: #666; font-size: 0.8rem; margin-top: 1rem; }
+        .boot-version { position: absolute; bottom: 20px; font-size: 0.7rem; color: #444; }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
+        
+        /* احراز هویت */
+        #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); display: none; justify-content: center; align-items: center; z-index: 9999; opacity: 0; transition: opacity 0.5s; }
+        .auth-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 2.5rem; width: 460px; max-width: 90%; text-align: center; box-shadow: var(--shadow); }
+        .auth-logo { font-size: 4.5rem; margin-bottom: 1rem; }
+        .auth-title { font-size: 1.8rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .auth-tabs { display: flex; gap: 10px; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); }
+        .auth-tab { flex: 1; padding: 12px; background: none; border: none; color: #888; cursor: pointer; transition: var(--transition); font-size: 1rem; }
+        .auth-tab.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; animation: fadeIn 0.3s; }
+        .auth-input { width: 100%; padding: 12px 16px; margin: 10px 0; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); border-radius: 14px; color: white; outline: none; transition: var(--transition); }
+        .auth-input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        .auth-btn { width: 100%; padding: 12px; margin-top: 15px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border: none; border-radius: 14px; color: white; font-weight: bold; cursor: pointer; transition: var(--transition); }
+        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,170,255,0.4); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* دسکتاپ */
+        #desktop { width: 100%; height: calc(100vh - 55px); display: none; position: relative; overflow: auto; }
         .desktop-icons { position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 10; }
-        .desktop-icon { width: 90px; padding: 12px 8px; text-align: center; background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 16px; cursor: pointer; transition: 0.3s; }
-        .desktop-icon:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .desktop-icon { width: 95px; padding: 12px 8px; text-align: center; background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 18px; cursor: pointer; transition: var(--transition); }
+        .desktop-icon:hover { transform: translateY(-5px) scale(1.05); border-color: var(--primary); box-shadow: var(--glow); background: var(--glass-hover); }
+        .desktop-icon .icon { font-size: 2rem; }
+        .desktop-icon .label { font-size: 0.7rem; margin-top: 5px; }
+        
+        /* تسکبار */
+        .taskbar { position: fixed; bottom: 0; left: 0; right: 0; height: 55px; background: rgba(10, 10, 21, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); display: none; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; }
+        .start-btn { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border: none; padding: 8px 22px; border-radius: 14px; color: white; font-weight: bold; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+        .start-btn:hover { transform: scale(1.02); box-shadow: var(--glow); }
+        .taskbar-apps { display: flex; gap: 8px; flex: 1; justify-content: center; flex-wrap: wrap; overflow-x: auto; }
+        .taskbar-app { background: var(--glass); padding: 6px 16px; border-radius: 14px; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition); white-space: nowrap; }
+        .taskbar-app:hover { background: var(--primary); transform: translateY(-2px); }
+        .taskbar-right { display: flex; gap: 20px; font-size: 0.8rem; align-items: center; }
+        .taskbar-icon { cursor: pointer; transition: var(--transition); }
+        .taskbar-icon:hover { color: var(--primary); transform: scale(1.1); }
+        
+        /* منوی استارت */
+        #start-menu { position: fixed; bottom: 60px; left: 20px; width: 400px; background: rgba(10, 10, 21, 0.98); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 20px; display: none; z-index: 1100; max-height: 75vh; overflow-y: auto; box-shadow: var(--shadow); }
+        #start-menu.show { display: block; animation: slideUp 0.3s; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .start-header { background: linear-gradient(135deg, var(--primary-dark), var(--dark)); padding: 20px; text-align: center; border-radius: 20px 20px 0 0; }
+        .start-user { font-size: 1.1rem; font-weight: bold; }
+        .start-user-status { font-size: 0.7rem; opacity: 0.8; }
+        .start-search { padding: 12px 16px; border-bottom: 1px solid var(--glass-border); }
+        .start-search input { width: 100%; padding: 10px 14px; background: rgba(0,0,0,0.3); border: none; border-radius: 14px; color: white; outline: none; transition: var(--transition); }
+        .start-search input:focus { background: rgba(0,170,255,0.2); }
+        .start-category { padding: 8px 12px; }
+        .start-category-title { padding: 8px 12px; font-size: 0.7rem; color: var(--primary); letter-spacing: 1px; }
+        .start-item { padding: 10px 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: 14px; margin: 4px 8px; transition: var(--transition); }
+        .start-item:hover { background: rgba(0,170,255,0.3); transform: translateX(-5px); }
+        
         /* پنجره‌ها */
-        .window { position: absolute; background: rgba(20,20,40,0.95); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 16px; min-width: 400px; min-height: 350px; display: flex; flex-direction: column; z-index: 500; overflow: hidden; }
-        .window-header { padding: 12px 18px; background: rgba(0,0,0,0.3); display: flex; justify-content: space-between; cursor: move; }
-        .window-controls { display: flex; gap: 10px; }
-        .win-btn { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
+        .window { position: absolute; background: rgba(20, 20, 40, 0.97); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; min-width: 450px; min-height: 400px; display: flex; flex-direction: column; z-index: 500; overflow: hidden; box-shadow: var(--shadow); transition: box-shadow 0.3s; resize: both; }
+        .window:hover { box-shadow: var(--glow); }
+        .window-header { padding: 14px 20px; background: rgba(0,0,0,0.4); display: flex; justify-content: space-between; cursor: move; border-bottom: 1px solid var(--glass-border); }
+        .window-title { font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .window-controls { display: flex; gap: 12px; }
+        .win-btn { width: 14px; height: 14px; border-radius: 50%; cursor: pointer; transition: var(--transition); }
+        .win-btn:hover { transform: scale(1.15); }
         .win-close { background: var(--error); }
         .win-minimize { background: var(--warning); }
         .win-maximize { background: var(--success); }
         .window-content { padding: 20px; flex: 1; overflow-y: auto; max-height: 70vh; }
+        
+        /* ویجت‌ها */
+        .widgets-panel { position: fixed; top: 20px; right: 20px; width: 300px; background: var(--glass); backdrop-filter: blur(15px); border-radius: 20px; padding: 15px; z-index: 15; border: 1px solid var(--glass-border); }
+        .widget { background: rgba(0,0,0,0.3); border-radius: 16px; padding: 12px; margin-bottom: 12px; transition: var(--transition); }
+        .widget:hover { background: rgba(0,170,255,0.2); transform: translateX(-5px); }
+        
+        /* اکولایزر */
+        .equalizer { display: flex; justify-content: center; align-items: flex-end; gap: 4px; height: 60px; margin: 15px 0; }
+        .eq-bar { width: 8px; background: linear-gradient(180deg, var(--primary), var(--secondary)); border-radius: 4px; transition: height 0.1s ease; }
+        
+        /* چت تصویری */
+        .video-chat { display: flex; gap: 15px; flex-wrap: wrap; }
+        .video-container { flex: 1; min-width: 250px; background: #000; border-radius: 16px; overflow: hidden; }
+        .video-container video { width: 100%; height: 200px; object-fit: cover; background: #111; }
+        
         /* فایل منیجر */
-        .file-item { padding: 10px; margin: 5px; background: rgba(0,0,0,0.3); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .file-item:hover { background: rgba(0,170,255,0.3); }
-        .folder { border-right: 3px solid var(--primary); }
-        /* ترمینال */
-        .terminal { background: #000; color: #0f0; font-family: monospace; padding: 15px; height: 100%; overflow-y: auto; }
-        .terminal-input { background: transparent; border: none; color: #0f0; width: 100%; outline: none; font-family: monospace; }
-        /* مدیا پلیر */
-        .media-player { text-align: center; }
-        .media-controls { display: flex; gap: 15px; justify-content: center; margin: 15px 0; }
-        .media-btn { background: var(--primary); border: none; padding: 10px 20px; border-radius: 12px; cursor: pointer; }
-        /* اداری */
-        .office-card { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; margin: 10px 0; }
-        /* هوش مصنوعی پیشرفته */
-        .ai-response { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 10px; margin: 5px 0; }
-        /* ریسپانسیو */
-        @media (max-width: 768px) { .window { min-width: 90vw; left: 5vw !important; } .desktop-icon { width: 70px; } }
+        .file-manager { display: flex; gap: 15px; height: 100%; flex-wrap: wrap; }
+        .file-sidebar { width: 200px; background: rgba(0,0,0,0.2); border-radius: 16px; padding: 12px; }
+        .file-sidebar-item { padding: 10px; border-radius: 12px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 10px; }
+        .file-sidebar-item:hover, .file-sidebar-item.active { background: rgba(0,170,255,0.3); }
+        .file-main { flex: 1; background: rgba(0,0,0,0.2); border-radius: 16px; padding: 12px; }
+        .file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+        .file-grid-item { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 12px; text-align: center; cursor: pointer; transition: var(--transition); }
+        .file-grid-item:hover { background: rgba(0,170,255,0.3); transform: scale(1.02); }
+        
+        /* نقاشی */
+        .drawing-canvas { border: 2px solid var(--primary); border-radius: 16px; background: white; cursor: crosshair; touch-action: none; width: 100%; height: auto; }
+        
+        /* AI */
+        .ai-fab { position: fixed; bottom: 80px; right: 20px; width: 55px; height: 55px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; cursor: pointer; z-index: 100; box-shadow: var(--glow); transition: var(--transition); }
+        .ai-fab:hover { transform: scale(1.1); }
+        .ai-panel { position: fixed; bottom: 140px; right: 20px; width: 350px; background: rgba(10,10,21,0.98); backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid var(--glass-border); padding: 15px; z-index: 100; display: none; box-shadow: var(--shadow); }
+        
+        /* اعلانات */
+        .notification { position: fixed; top: 20px; left: 20px; background: rgba(10,10,21,0.95); backdrop-filter: blur(10px); border-radius: 16px; padding: 14px 18px; border-right: 4px solid var(--primary); z-index: 2000; animation: slideIn 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); cursor: pointer; min-width: 250px; }
+        @keyframes slideIn { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--glass); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+        
+        @media (max-width: 768px) { .window { min-width: 90vw; left: 5vw !important; } .desktop-icon { width: 70px; } .widgets-panel { display: none; } .taskbar-apps { display: none; } .ai-panel { width: 90vw; right: 5vw; } .file-sidebar { width: 100%; margin-bottom: 10px; } }
     </style>
 </head>
 <body>
 
-<div id="boot-screen"><div class="boot-container"><div class="boot-logo">📡</div><div class="boot-title">Persia OS Ultimate v14.0</div><div class="boot-progress"><div class="boot-progress-fill" id="boot-progress"></div></div><div class="boot-message" id="boot-message">در حال بارگذاری...</div></div></div>
+<!-- Boot Screen -->
+<div id="boot-screen">
+    <div class="boot-container">
+        <div class="boot-logo">📡</div>
+        <div class="boot-title">Persia OS Ultimate v5.0</div>
+        <div class="boot-subtitle">شبکه فنآوری پارسی | 2026 | نسخه نهایی حرفه‌ای</div>
+        <div class="boot-progress"><div class="boot-progress-fill" id="boot-progress"></div></div>
+        <div class="boot-message" id="boot-message">در حال بارگذاری هسته سیستم...</div>
+    </div>
+    <div class="boot-version">نسخه v5.0.0 | نهایی | همه قابلیت‌ها | پشتیبانی کامل</div>
+</div>
 
-<div id="auth-screen" style="display:none;"><div class="auth-card"><div class="auth-tabs"><button class="auth-tab active" data-tab="login">🔐 ورود</button><button class="auth-tab" data-tab="register">📝 ثبت‌نام</button></div>
-<div id="login-form" class="auth-form active"><input type="text" id="login-username" placeholder="نام کاربری"><input type="password" id="login-password" placeholder="رمز عبور"><button onclick="handleLogin()">✨ ورود</button><button onclick="guestLogin()">👤 مهمان</button><div id="login-error"></div></div>
-<div id="register-form" class="auth-form"><input type="text" id="reg-username" placeholder="نام کاربری"><input type="password" id="reg-password" placeholder="رمز عبور (min 4)"><input type="text" id="reg-name" placeholder="نام کامل"><button onclick="handleRegister()">📝 ثبت‌نام</button><div id="register-error"></div><div id="register-success"></div></div></div></div>
+<!-- Auth Screen -->
+<div id="auth-screen">
+    <div class="auth-card">
+        <div class="auth-logo">📡</div>
+        <div class="auth-title">Persia OS Ultimate v5.0</div>
+        <div class="auth-org">شبکه فنآوری پارسی | 2026</div>
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">🔐 ورود</button>
+            <button class="auth-tab" data-tab="register">📝 ثبت‌نام</button>
+        </div>
+        <div id="login-form" class="auth-form active">
+            <input type="text" id="login-username" class="auth-input" placeholder="نام کاربری">
+            <input type="password" id="login-password" class="auth-input" placeholder="رمز عبور">
+            <button class="auth-btn" onclick="handleLogin()">✨ ورود</button>
+            <button class="auth-btn guest-btn" onclick="guestLogin()" style="background: linear-gradient(135deg, #555, #444); margin-top: 10px;">👤 ورود مهمان</button>
+            <div id="login-error" style="color:red; display:none; margin-top:10px;"></div>
+        </div>
+        <div id="register-form" class="auth-form">
+            <input type="text" id="reg-username" class="auth-input" placeholder="نام کاربری">
+            <input type="password" id="reg-password" class="auth-input" placeholder="رمز عبور (حداقل 4)">
+            <input type="text" id="reg-name" class="auth-input" placeholder="نام کامل">
+            <input type="email" id="reg-email" class="auth-input" placeholder="ایمیل">
+            <button class="auth-btn" onclick="handleRegister()">📝 ثبت‌نام</button>
+            <div id="register-error" style="color:red; display:none;"></div>
+            <div id="register-success" style="color:green; display:none;"></div>
+        </div>
+    </div>
+</div>
 
-<div id="desktop" style="display:none;"><div class="live-wallpaper wallpaper-default" id="wallpaper"></div>
-<div class="desktop-icons" id="desktop-icons"></div>
-<div class="taskbar"><button class="start-btn" onclick="toggleStartMenu()">🚀 شروع</button><div class="taskbar-apps" id="taskbar-apps"></div><div class="taskbar-right"><span id="taskbar-time"></span><span id="taskbar-user"></span><span id="taskbar-battery">🔋 100%</span></div></div>
-<div id="start-menu"><div class="start-header"><div class="start-user" id="start-username"></div><div class="start-user-status" id="start-role"></div></div><div id="start-menu-content"></div></div>
-<div class="ai-fab" onclick="toggleAI()">🧠</div><div class="ai-panel" id="ai-panel"><h3>🤖 Persia AI Pro</h3><div id="ai-chat" style="height:200px; overflow:auto; background:rgba(0,0,0,0.3); border-radius:12px; padding:10px;"></div><textarea id="ai-input" placeholder="سوال..."></textarea><button onclick="askAI()">ارسال</button></div>
-<div id="notification-center"></div></div>
+<!-- Desktop -->
+<div id="desktop">
+    <div class="live-wallpaper wallpaper-default" id="wallpaper"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Widgets Panel -->
+    <div class="widgets-panel" id="widgets-panel">
+        <div class="widget"><div>🌤️ آب و هوا</div><div id="weather-temp">--°C</div><div id="weather-desc" style="font-size:0.7rem;">بارگذاری...</div></div>
+        <div class="widget"><div>🖥️ سیستم</div><div id="cpu-usage">0%</div><div style="height:4px; background:rgba(0,0,0,0.3); margin:5px 0;"><div id="cpu-bar" style="width:0%; height:100%; background:var(--primary);"></div></div><div>💾 رم: <span id="ram-usage">0</span> MB</div><div>🔋 باتری: <span id="battery-status">در حال بررسی</span></div></div>
+        <div class="widget"><div>📡 شبکه</div><div id="network-type">نوع: <span id="network-status">در حال بررسی</span></div><div id="network-speed" style="font-size:0.7rem;"></div></div>
+        <div class="widget"><div>🔷 بلوتوث</div><div id="bluetooth-status">⏻ غیرفعال</div><button onclick="scanBluetooth()" style="background:var(--primary); border:none; padding:4px 8px; border-radius:8px; margin-top:5px; cursor:pointer;">اسکن</button><div id="bluetooth-devices" style="font-size:0.7rem; margin-top:5px;"></div></div>
+        <div class="widget"><div>💾 فضا</div><div id="storage-used">0</div> MB / <span id="storage-total">5120</span> MB<div style="height:4px; background:rgba(0,0,0,0.3); margin:5px 0;"><div id="storage-bar" style="width:0%; height:100%; background:var(--success);"></div></div></div>
+    </div>
+    
+    <div class="desktop-icons" id="desktop-icons"></div>
+    
+    <div class="taskbar">
+        <button class="start-btn" onclick="toggleStartMenu()">🚀 شروع</button>
+        <div class="taskbar-apps" id="taskbar-apps"></div>
+        <div class="taskbar-right">
+            <span class="taskbar-icon" onclick="toggleLanguage()" id="lang-btn">🇮🇷 فارسی</span>
+            <span class="taskbar-icon" onclick="toggleTheme()">🌙</span>
+            <span class="taskbar-icon" onclick="openHardwareInfo()">🖥️</span>
+            <span id="taskbar-time"></span>
+            <span id="taskbar-user"></span>
+        </div>
+    </div>
+    
+    <div id="start-menu">
+        <div class="start-header"><div class="start-user" id="start-username"></div><div class="start-user-status" id="start-role"></div></div>
+        <div class="start-search"><input type="text" id="start-search-input" placeholder="جستجو..." onkeyup="searchGlobal()"></div>
+        <div id="start-menu-content"></div>
+    </div>
+    
+    <div class="ai-fab" onclick="toggleAI()">🧠</div>
+    <div class="ai-panel" id="ai-panel"><h3 style="color:var(--primary);">🤖 Persia AI Pro</h3><div id="ai-chat" style="height:200px; overflow-y:auto; background:rgba(0,0,0,0.3); border-radius:12px; padding:10px; margin-bottom:10px;"><div>سلام! به Persia OS v5.0 خوش آمدید</div><div>من دستیار هوشمند شما هستم.</div></div><textarea id="ai-input" placeholder="سوال..." style="width:100%; background:rgba(0,0,0,0.3); border:none; border-radius:12px; padding:10px; color:white;"></textarea><button onclick="askAI()" style="width:100%; margin-top:10px; background:var(--primary); border:none; padding:10px; border-radius:12px; cursor:pointer;">ارسال</button></div>
+    
+    <div id="notification-center"></div>
+</div>
 
 <script>
-// ==================== دیتابیس کامل ====================
-let users = JSON.parse(localStorage.getItem('persia_users_v3')) || {};
-let currentUser = null, isGuest = false, activeWindows = new Set(), windowZ = 1000;
+// ==================== Persia OS Ultimate v5.0.0 - نسخه نهایی حرفه‌ای ====================
+// ادغام کامل v3 و v4 + بهبودها و رفع باگ‌ها
 
-// دیتاهای ذخیره شده
+// ==================== دیتابیس ====================
+let users = JSON.parse(localStorage.getItem('persia_users_v8')) || {};
+let currentUser = null;
+let isGuest = false;
+let activeWindows = new Set();
+let windowZ = 1000;
+let currentTheme = localStorage.getItem('theme') || 'dark';
+let networkStatus = navigator.onLine;
+let totalStorage = 5120;
+let currentLanguage = localStorage.getItem('language') || 'fa';
+let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+let alarms = JSON.parse(localStorage.getItem('alarms')) || [];
+let callHistory = JSON.parse(localStorage.getItem('call_history')) || [];
 let globalChat = JSON.parse(localStorage.getItem('global_chat')) || [];
-let userFiles = JSON.parse(localStorage.getItem('user_files')) || {};
 let trashFiles = JSON.parse(localStorage.getItem('trash_files')) || [];
+let userNotes = JSON.parse(localStorage.getItem('user_notes')) || [];
+let galleryImages = JSON.parse(localStorage.getItem('gallery_images')) || [];
+let userFiles = JSON.parse(localStorage.getItem('user_files')) || {};
 let mediaLibrary = JSON.parse(localStorage.getItem('media_library')) || [];
-let blogPosts = JSON.parse(localStorage.getItem('blog_posts')) || [
-    { id: 1, title: 'خوش آمدید به Persia OS', content: 'این اولین پست بلاگ سیستم عامل پارسی است.', author: 'admin', date: new Date().toISOString() }
+let storeTools = JSON.parse(localStorage.getItem('store_tools')) || [
+    { id: 1, name: "🧹 پاک‌کن سیستم", price: "رایگان", installed: false },
+    { id: 2, name: "🎨 والپیپر اختصاصی", price: "رایگان", installed: false },
+    { id: 3, name: "🔒 آنتی‌ویروس", price: "پرمیوم", installed: false },
+    { id: 4, name: "🌐 VPN پارسی", price: "پرمیوم", installed: false },
+    { id: 5, name: "🎵 اکولایزر پیشرفته", price: "رایگان", installed: false }
 ];
-let officeDocs = JSON.parse(localStorage.getItem('office_docs')) || [];
-let hardwareInfo = { browser: navigator.userAgent, platform: navigator.platform, language: navigator.language, online: navigator.onLine };
+let blogPosts = JSON.parse(localStorage.getItem('blog_posts')) || [];
+let calendarEvents = JSON.parse(localStorage.getItem('calendar_events')) || [];
+let downloads = JSON.parse(localStorage.getItem('downloads')) || [];
+let customWallpapers = JSON.parse(localStorage.getItem('custom_wallpapers')) || [];
+let plugins = JSON.parse(localStorage.getItem('plugins')) || [];
+let userActivities = JSON.parse(localStorage.getItem('user_activities')) || {};
+let emojis = ['😀', '😂', '😍', '🥰', '😎', '🤔', '😭', '😡', '👍', '❤️', '🔥', '🎉', '✨', '⭐', '💯'];
 
-// آیکون‌های دسکتاپ کامل
-const desktopIconsConfig = [
-    { id: 'filemanager', icon: '📁', label: 'مدیریت فایل', roles: ['user','admin'] },
-    { id: 'media', icon: '🎵', label: 'مدیا پلیر', roles: ['user','admin'] },
-    { id: 'chat', icon: '💬', label: 'چت گروهی', roles: ['user','admin','guest'] },
-    { id: 'terminal', icon: '💻', label: 'ترمینال', roles: ['user','admin'] },
-    { id: 'browser', icon: '🌐', label: 'مرورگر', roles: ['user','admin'] },
-    { id: 'office', icon: '📊', label: 'اداری', roles: ['user','admin'] },
-    { id: 'editor', icon: '✏️', label: 'ویرایشگر متن', roles: ['user','admin'] },
-    { id: 'blog', icon: '📰', label: 'بلاگ', roles: ['user','admin'] },
-    { id: 'profile', icon: '👤', label: 'پروفایل', roles: ['user','admin'] },
-    { id: 'store', icon: '🛒', label: 'فروشگاه', roles: ['user','admin'] },
-    { id: 'trash', icon: '🗑️', label: 'سطل زباله', roles: ['user','admin'] },
-    { id: 'wallpaper', icon: '🖌️', label: 'والپیپر', roles: ['user','admin'] },
-    { id: 'settings', icon: '⚙️', label: 'تنظیمات', roles: ['user','admin'] },
-    { id: 'about', icon: 'ℹ️', label: 'درباره ما', roles: ['user','admin'] },
-    { id: 'contact', icon: '📞', label: 'ارتباط با ما', roles: ['user','admin'] },
-    { id: 'map', icon: '🗺️', label: 'نقشه', roles: ['user','admin'] },
-    { id: 'stats', icon: '📈', label: 'آمار سیستم', roles: ['user','admin'] }
-];
-if (currentUser?.role === 'admin') desktopIconsConfig.push({ id: 'admin', icon: '👑', label: 'مدیریت', roles: ['admin'] });
+// مترجم
+const translations = {
+    fa: { langName: 'فارسی', start: 'شروع', settings: 'تنظیمات', about: 'درباره ما', logout: 'خروج', shutdown: 'خاموش', restart: 'راه‌اندازی مجدد' },
+    en: { langName: 'English', start: 'Start', settings: 'Settings', about: 'About', logout: 'Logout', shutdown: 'Shutdown', restart: 'Restart' },
+    ar: { langName: 'العربية', start: 'ابدأ', settings: 'الإعدادات', about: 'معلومات', logout: 'تسجيل خروج', shutdown: 'إيقاف', restart: 'إعادة تشغيل' }
+};
 
-// ایجاد ادمین پیش‌فرض
+// ==================== مقداردهی اولیه ====================
 if (!users['admin']) {
-    users['admin'] = { password: btoa('admin123'), name: 'مدیر سیستم', role: 'admin', avatar: '', joinDate: new Date().toISOString(), isActive: true, stats: { logins: 0 } };
-    localStorage.setItem('persia_users_v3', JSON.stringify(users));
+    users['admin'] = { password: btoa('admin123'), name: 'مدیر سیستم', role: 'admin', avatar: '', email: 'admin@persiaos.ir', joinDate: new Date().toISOString(), isActive: true, stats: { logins: 0 } };
+    localStorage.setItem('persia_users_v8', JSON.stringify(users));
 }
 
-// ==================== بوت و توابع اصلی ====================
+// ==================== بوت ====================
 function bootSystem() {
-    let progress = 0, idx = 0;
-    const msgs = ['بارگذاری هسته...', 'بررسی سخت افزار...', 'اتصال به حافظه...', 'راه‌اندازی سرویس‌ها...', 'آماده سازی محیط...'];
+    let progress = 0;
+    let msgs = ['بارگذاری هسته...', 'ماژول‌های امنیتی...', 'اتصال به حافظه...', 'سرویس‌های سیستمی...', 'تشخیص سخت‌افزار...', 'آماده!'];
+    let idx = 0;
     let int = setInterval(() => {
-        progress += Math.random() * 15;
+        progress += Math.random() * 14;
         if (progress >= 100) progress = 100;
         document.getElementById('boot-progress').style.width = progress + '%';
         if (idx < msgs.length) document.getElementById('boot-message').innerText = msgs[idx++];
         if (progress === 100) {
             clearInterval(int);
             setTimeout(() => {
-                document.getElementById('boot-screen').style.display = 'none';
-                document.getElementById('auth-screen').style.display = 'flex';
-                setTimeout(() => document.getElementById('auth-screen').style.opacity = '1', 50);
-            }, 500);
+                document.getElementById('boot-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('boot-screen').style.display = 'none';
+                    document.getElementById('auth-screen').style.display = 'flex';
+                    setTimeout(() => document.getElementById('auth-screen').style.opacity = '1', 50);
+                    startParticles();
+                    initHardware();
+                }, 500);
+            }, 300);
         }
     }, 200);
 }
 
+function startParticles() {
+    const container = document.getElementById('particles');
+    container.innerHTML = '';
+    for (let i = 0; i < 60; i++) {
+        let p = document.createElement('div');
+        p.className = 'particle';
+        p.style.width = p.style.height = Math.random() * 4 + 2 + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = Math.random() * 12 + 5 + 's';
+        p.style.animationDelay = Math.random() * 10 + 's';
+        container.appendChild(p);
+    }
+}
+
+// ==================== تشخیص سخت‌افزار ====================
+async function initHardware() {
+    if ('connection' in navigator) {
+        const conn = navigator.connection;
+        document.getElementById('network-status').innerHTML = `${conn.effectiveType || 'نامشخص'} - ${networkStatus ? '🟢' : '🔴'}`;
+        document.getElementById('network-speed').innerHTML = `سرعت: ${conn.downlink || '?'} Mbps`;
+    }
+    if ('getBattery' in navigator) {
+        try {
+            const battery = await navigator.getBattery();
+            document.getElementById('battery-status').innerHTML = Math.floor(battery.level * 100) + '% ' + (battery.charging ? '⚡' : '🔋');
+        } catch(e) {}
+    }
+    if ('bluetooth' in navigator) document.getElementById('bluetooth-status').innerHTML = '✅ قابل پشتیبانی';
+    else document.getElementById('bluetooth-status').innerHTML = '❌ پشتیبانی نمی‌شود';
+    
+    updateSystemStats();
+    setInterval(updateSystemStats, 5000);
+    loadWeather();
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+}
+
+async function scanBluetooth() {
+    if (!('bluetooth' in navigator)) { showNotif('Web Bluetooth پشتیبانی نمی‌شود', 'error'); return; }
+    try {
+        const device = await navigator.bluetooth.requestDevice({ acceptAllDevices: true });
+        document.getElementById('bluetooth-devices').innerHTML = `🔷 ${device.name || 'ناشناس'}`;
+        showNotif(`دستگاه ${device.name || 'ناشناس'} متصل شد`, 'success');
+    } catch(e) { showNotif('خطا: ' + e.message, 'error'); }
+}
+
+function printFile() { window.print(); showNotif('چاپ صفحه', 'info'); }
+
+function updateSystemStats() {
+    let cpu = Math.floor(Math.random() * 60 + 10);
+    document.getElementById('cpu-usage').innerHTML = cpu + '%';
+    document.getElementById('cpu-bar').style.width = cpu + '%';
+    let ram = Math.floor(Math.random() * 1024 + 256);
+    document.getElementById('ram-usage').innerHTML = ram;
+    let files = userFiles[currentUser?.username] || [];
+    let usedMB = Math.floor(files.reduce((a,f) => a + (f.size || 0), 0) / (1024 * 1024));
+    let percent = Math.min(100, (usedMB / totalStorage) * 100);
+    document.getElementById('storage-bar').style.width = percent + '%';
+    document.getElementById('storage-used').innerHTML = usedMB;
+    document.getElementById('storage-total').innerHTML = totalStorage;
+}
+
+function loadWeather() {
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=29.5&longitude=52.5&current_weather=true')
+        .then(res => res.json()).then(data => {
+            if (data.current_weather) {
+                document.getElementById('weather-temp').innerHTML = data.current_weather.temperature + '°C';
+                let codes = {0:'☀️ آفتابی',1:'⛅ نیمه ابری',2:'☁️ ابری',3:'☁️ سنگین',51:'🌧️ بارانی'};
+                document.getElementById('weather-desc').innerHTML = codes[data.current_weather.weathercode] || '🌤️ معتدل';
+            }
+        }).catch(() => { document.getElementById('weather-temp').innerHTML = '--°C'; });
+}
+
+// ==================== احراز هویت ====================
 function handleLogin() {
     let username = document.getElementById('login-username').value.trim();
     let pass = document.getElementById('login-password').value;
     let user = users[username];
     if (!user || atob(user.password) !== pass) {
-        document.getElementById('login-error').innerText = 'نام کاربری یا رمز اشتباه';
+        document.getElementById('login-error').innerText = 'نام کاربری یا رمز اشتباه است';
+        document.getElementById('login-error').style.display = 'block';
+        setTimeout(() => document.getElementById('login-error').style.display = 'none', 3000);
         return;
     }
-    if (!user.isActive) { showNotif('حساب غیرفعال است', 'error'); return; }
-    currentUser = { username, name: user.name, role: user.role, avatar: user.avatar };
-    user.stats = user.stats || { logins: 0 };
-    user.stats.logins++;
-    localStorage.setItem('persia_users_v3', JSON.stringify(users));
+    currentUser = { username, name: user.name, role: user.role, avatar: user.avatar, email: user.email };
     isGuest = false;
     completeLogin();
 }
@@ -161,15 +424,25 @@ function handleRegister() {
     let username = document.getElementById('reg-username').value.trim();
     let pass = document.getElementById('reg-password').value;
     let name = document.getElementById('reg-name').value.trim();
-    if (!username || !pass || pass.length < 4) { showRegError('رمز حداقل 4 کاراکتر'); return; }
-    if (users[username]) { showRegError('نام کاربری تکراری'); return; }
-    users[username] = { password: btoa(pass), name: name || username, role: 'user', avatar: '', joinDate: new Date().toISOString(), isActive: true, stats: { logins: 1 } };
-    localStorage.setItem('persia_users_v3', JSON.stringify(users));
-    document.getElementById('register-success').innerText = 'ثبت‌نام موفق!';
+    let email = document.getElementById('reg-email').value.trim();
+    if (!username || pass.length < 4) {
+        document.getElementById('register-error').innerText = 'نام کاربری و رمز حداقل 4 کاراکتر';
+        document.getElementById('register-error').style.display = 'block';
+        return;
+    }
+    if (users[username]) {
+        document.getElementById('register-error').innerText = 'نام کاربری تکراری';
+        document.getElementById('register-error').style.display = 'block';
+        return;
+    }
+    users[username] = { password: btoa(pass), name: name || username, role: 'user', avatar: '', email: email, joinDate: new Date().toISOString(), isActive: true, stats: { logins: 0 } };
+    localStorage.setItem('persia_users_v8', JSON.stringify(users));
+    document.getElementById('register-success').innerText = 'ثبت‌نام موفق! اکنون وارد شوید.';
+    document.getElementById('register-success').style.display = 'block';
     setTimeout(() => document.querySelector('.auth-tab[data-tab="login"]').click(), 1500);
 }
 
-function guestLogin() { currentUser = { username: 'مهمان', name: 'کاربر مهمان', role: 'guest' }; isGuest = true; completeLogin(); }
+function guestLogin() { currentUser = { username: 'مهمان', name: 'کاربر مهمان', role: 'guest', avatar: '' }; isGuest = true; completeLogin(); }
 
 function completeLogin() {
     document.getElementById('auth-screen').style.opacity = '0';
@@ -177,53 +450,119 @@ function completeLogin() {
         document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('desktop').style.display = 'block';
         document.querySelector('.taskbar').style.display = 'flex';
+        applyTheme();
+        applyLanguage();
         updateUI();
-        startServices();
-        showNotif(`به Persia OS خوش آمدید ${currentUser.name}`, 'success');
-        checkHardware();
+        buildDesktopIcons();
+        buildStartMenu();
+        showNotif(`به Persia OS v5.0 خوش آمدید ${currentUser.name}`, 'success');
+        let savedWp = localStorage.getItem('selected_wallpaper');
+        if (savedWp) setWallpaper(savedWp);
     }, 500);
 }
 
-function checkHardware() {
-    let info = `🖥️ سیستم: ${hardwareInfo.platform} | 🌐 مرورگر: ${hardwareInfo.browser.split(' ')[0]} | 🔋 وضعیت: ${hardwareInfo.online ? 'آنلاین' : 'آفلاین'}`;
-    showNotif(info, 'info');
-}
-
 function updateUI() {
-    document.getElementById('start-username').innerHTML = `${currentUser.name} 🟢`;
-    document.getElementById('start-role').innerHTML = currentUser.role === 'admin' ? 'مدیر سیستم' : (isGuest ? 'مهمان' : 'کاربر');
-    document.getElementById('taskbar-user').innerHTML = `👤 ${currentUser.name}`;
-    buildDesktopIcons();
-    buildStartMenu();
-    updateDateTime();
-    setInterval(updateDateTime, 1000);
-    setInterval(() => { document.getElementById('taskbar-battery').innerHTML = `🔋 ${Math.floor(Math.random() * 30 + 70)}%`; }, 30000);
+    document.getElementById('taskbar-user').innerHTML = currentUser.name;
+    document.getElementById('start-username').innerHTML = currentUser.name;
+    document.getElementById('start-role').innerHTML = currentUser.role === 'admin' ? 'مدیر سیستم' : (isGuest ? 'مهمان' : 'کاربر عادی');
 }
 
+function updateDateTime() {
+    let now = new Date();
+    document.getElementById('taskbar-time').innerHTML = now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+}
+
+function applyTheme() {
+    if (currentTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.taskbar').style.background = 'rgba(200,200,210,0.95)';
+    } else {
+        document.body.classList.remove('light-mode');
+        document.querySelector('.taskbar').style.background = 'rgba(10,10,21,0.95)';
+    }
+}
+
+function toggleTheme() { currentTheme = currentTheme === 'dark' ? 'light' : 'dark'; localStorage.setItem('theme', currentTheme); applyTheme(); showNotif(`تم ${currentTheme === 'dark' ? 'شب' : 'روز'}`, 'success'); }
+
+function toggleLanguage() {
+    if (currentLanguage === 'fa') currentLanguage = 'en';
+    else if (currentLanguage === 'en') currentLanguage = 'ar';
+    else currentLanguage = 'fa';
+    localStorage.setItem('language', currentLanguage);
+    applyLanguage();
+    showNotif(`زبان: ${translations[currentLanguage].langName}`, 'success');
+}
+
+function applyLanguage() {
+    if (currentLanguage === 'fa') document.body.setAttribute('dir', 'rtl');
+    else document.body.setAttribute('dir', 'ltr');
+    document.getElementById('lang-btn').innerHTML = currentLanguage === 'fa' ? '🇮🇷 فارسی' : (currentLanguage === 'en' ? '🇬🇧 English' : '🇸🇦 العربية');
+}
+
+// ==================== دسکتاپ و منو ====================
 function buildDesktopIcons() {
+    let icons = [
+        { id: 'dashboard', icon: '📊', label: 'داشبورد' }, { id: 'filemanager', icon: '📁', label: 'فایل منیجر' },
+        { id: 'media', icon: '🎵', label: 'مدیا پلیر' }, { id: 'terminal', icon: '💻', label: 'ترمینال' },
+        { id: 'browser', icon: '🌐', label: 'مرورگر' }, { id: 'chat', icon: '💬', label: 'چت' },
+        { id: 'videochat', icon: '📹', label: 'چت تصویری' }, { id: 'profile', icon: '👤', label: 'پروفایل' },
+        { id: 'gallery', icon: '🖼️', label: 'گالری' }, { id: 'notes', icon: '📓', label: 'یادداشت' },
+        { id: 'drawing', icon: '🎨', label: 'نقاشی' }, { id: 'contacts', icon: '📞', label: 'مخاطبین' },
+        { id: 'calls', icon: '📱', label: 'تماس‌ها' }, { id: 'alarm', icon: '⏰', label: 'زنگ‌دار' },
+        { id: 'bluetooth', icon: '🔷', label: 'بلوتوث' }, { id: 'printer', icon: '🖨️', label: 'پرینتر' },
+        { id: 'blog', icon: '📰', label: 'بلاگ' }, { id: 'store', icon: '🛒', label: 'فروشگاه' },
+        { id: 'trash', icon: '🗑️', label: 'سطل زباله' }, { id: 'wallpaper', icon: '🖌️', label: 'والپیپر' },
+        { id: 'calculator', icon: '🧮', label: 'ماشین حساب' }, { id: 'image-editor', icon: '🎨', label: 'ویرایشگر' },
+        { id: 'games', icon: '🎮', label: 'بازی‌ها' }, { id: 'ocr', icon: '📷', label: 'OCR' },
+        { id: 'downloads', icon: '⬇️', label: 'دانلودها' }, { id: 'calendar', icon: '📅', label: 'تقویم' },
+        { id: 'settings', icon: '⚙️', label: 'تنظیمات' }, { id: 'about', icon: 'ℹ️', label: 'درباره ما' }
+    ];
+    if (currentUser.role === 'admin') icons.push({ id: 'admin', icon: '👑', label: 'مدیریت' });
     let container = document.getElementById('desktop-icons');
-    let visibleIcons = desktopIconsConfig.filter(i => i.roles.includes(currentUser.role) && !(isGuest && i.id !== 'chat' && i.id !== 'about'));
-    container.innerHTML = visibleIcons.map(i => `<div class="desktop-icon" onclick="openApp('${i.id}')"><div class="icon">${i.icon}</div><div class="label">${i.label}</div></div>`).join('');
+    container.innerHTML = icons.map(i => `<div class="desktop-icon" onclick="openApp('${i.id}')"><div class="icon">${i.icon}</div><div class="label">${i.label}</div></div>`).join('');
 }
 
 function buildStartMenu() {
-    let items = ['filemanager','media','chat','terminal','browser','office','editor','blog','profile','store','settings'];
+    let items = [
+        { id: 'dashboard', icon: '📊', label: 'داشبورد' }, { id: 'filemanager', icon: '📁', label: 'فایل منیجر' },
+        { id: 'media', icon: '🎵', label: 'مدیا پلیر' }, { id: 'terminal', icon: '💻', label: 'ترمینال' },
+        { id: 'chat', icon: '💬', label: 'چت' }, { id: 'contacts', icon: '📞', label: 'مخاطبین' },
+        { id: 'settings', icon: '⚙️', label: 'تنظیمات' }, { id: 'about', icon: 'ℹ️', label: 'درباره ما' }
+    ];
     let html = `<div class="start-category"><div class="start-category-title">📱 برنامه‌ها</div>`;
-    items.forEach(i => { let icon = desktopIconsConfig.find(c => c.id === i); if(icon && (icon.roles.includes(currentUser.role) || isGuest)) html += `<div class="start-item" onclick="openApp('${i}'); toggleStartMenu()">${icon.icon} ${icon.label}</div>`; });
+    items.forEach(i => { html += `<div class="start-item" onclick="openApp('${i.id}'); toggleStartMenu()">${i.icon} ${i.label}</div>`; });
     html += `</div><div class="start-category"><div class="start-category-title">⚙️ سیستم</div>`;
-    html += `<div class="start-item" onclick="logout()">🚪 خروج</div><div class="start-item" onclick="shutdown()">🔌 خاموش</div></div>`;
+    html += `<div class="start-item" onclick="logout()">🚪 خروج</div><div class="start-item" onclick="shutdown()">🔌 خاموش</div><div class="start-item" onclick="restartSystem()">🔄 راه‌اندازی مجدد</div>`;
+    html += `<div class="start-item" onclick="showBackupRestore()">💾 پشتیبان</div><div class="start-item" onclick="clearCache()">🗑️ پاک کردن کش</div></div>`;
     document.getElementById('start-menu-content').innerHTML = html;
+}
+
+function searchGlobal() { buildStartMenu(); }
+function toggleStartMenu() { document.getElementById('start-menu').classList.toggle('show'); }
+function clearCache() { if(confirm('پاک کردن کش؟')) { localStorage.removeItem('global_chat'); showNotif('کش پاک شد','success'); } }
+function showBackupRestore() {
+    if(confirm('پشتیبان بگیرید؟')) {
+        let backup = { users, globalChat, userNotes, galleryImages, userFiles, mediaLibrary, storeTools, calendarEvents, blogPosts, date: new Date().toISOString() };
+        localStorage.setItem('persia_backup', JSON.stringify(backup));
+        showNotif('پشتیبان ذخیره شد', 'success');
+    }
+    if(confirm('بازیابی از آخرین پشتیبان؟')) {
+        let backup = localStorage.getItem('persia_backup');
+        if(backup) { localStorage.setItem('persia_users_v8', JSON.stringify(JSON.parse(backup).users)); showNotif('بازیابی شد، صفحه reload می‌شود','success'); setTimeout(()=>location.reload(),1500); }
+        else showNotif('پشتیبان یافت نشد','error');
+    }
 }
 
 // ==================== پنجره‌ها ====================
 function createWindow(id, title, content, w = 550, h = 450) {
     let exist = document.getElementById(`win-${id}`);
-    if (exist) { exist.style.display = 'flex'; exist.style.zIndex = ++windowZ; return; }
+    if (exist) { exist.style.display = 'flex'; exist.style.zIndex = ++windowZ; return exist; }
     let win = document.createElement('div');
     win.className = 'window'; win.id = `win-${id}`;
     win.style.width = w + 'px'; win.style.height = h + 'px';
-    win.style.left = (100 + Math.random() * 200) + 'px'; win.style.top = (80 + Math.random() * 100) + 'px';
-    win.innerHTML = `<div class="window-header"><span>${title}</span><div class="window-controls"><div class="win-btn win-minimize" onclick="document.getElementById('win-${id}').style.display='none'"></div><div class="win-btn win-maximize" onclick="toggleMaximize('${id}')"></div><div class="win-btn win-close" onclick="closeWindow('${id}')"></div></div></div><div class="window-content">${content}</div>`;
+    win.style.left = Math.max(10, Math.min(window.innerWidth - w - 20, 100 + Math.random() * 200)) + 'px';
+    win.style.top = Math.max(10, Math.min(window.innerHeight - h - 80, 80 + Math.random() * 100)) + 'px';
+    win.innerHTML = `<div class="window-header"><span class="window-title">${title}</span><div class="window-controls"><div class="win-btn win-minimize" onclick="document.getElementById('win-${id}').style.display='none'"></div><div class="win-btn win-maximize" onclick="toggleMaximize('${id}')"></div><div class="win-btn win-close" onclick="closeWindow('${id}')"></div></div></div><div class="window-content">${content}</div>`;
     document.body.appendChild(win);
     makeDraggable(win);
     activeWindows.add(id);
@@ -232,413 +571,196 @@ function createWindow(id, title, content, w = 550, h = 450) {
 }
 
 function closeWindow(id) { let w = document.getElementById(`win-${id}`); if (w) w.remove(); activeWindows.delete(id); removeTaskbar(id); }
-function addToTaskbar(id, title) { if (!document.querySelector(`.taskbar-app[data-id="${id}"]`)) { let btn = document.createElement('div'); btn.className = 'taskbar-app'; btn.setAttribute('data-id', id); btn.innerHTML = `📌 ${title}`; btn.onclick = () => { let w = document.getElementById(`win-${id}`); if (w) w.style.display = 'flex'; }; document.getElementById('taskbar-apps').appendChild(btn); } }
+function addToTaskbar(id, title) { if (!document.querySelector(`.taskbar-app[data-id="${id}"]`)) { let btn = document.createElement('div'); btn.className = 'taskbar-app'; btn.setAttribute('data-id', id); btn.innerHTML = `📌 ${title.substring(0,20)}`; btn.onclick = () => { let w = document.getElementById(`win-${id}`); if (w) w.style.display = 'flex'; w.style.zIndex = ++windowZ; }; document.getElementById('taskbar-apps').appendChild(btn); } }
 function removeTaskbar(id) { let btn = document.querySelector(`.taskbar-app[data-id="${id}"]`); if (btn) btn.remove(); }
-function toggleMaximize(id) { let win = document.getElementById(`win-${id}`); if (win.style.width === '90%') { win.style.width = '550px'; win.style.height = '450px'; win.style.left = '100px'; } else { win.style.width = '90%'; win.style.height = '80%'; win.style.left = '5%'; win.style.top = '5%'; } }
+function toggleMaximize(id) { let win = document.getElementById(`win-${id}`); if (win.style.width === '90%') { win.style.width = '550px'; win.style.height = '450px'; } else { win.style.width = '90%'; win.style.height = '80%'; win.style.left = '5%'; win.style.top = '5%'; } }
 function makeDraggable(win) { let header = win.querySelector('.window-header'); let isDown = false, offX, offY; header.addEventListener('mousedown', (e) => { if (e.target.closest('.window-controls')) return; isDown = true; offX = e.clientX - win.offsetLeft; offY = e.clientY - win.offsetTop; win.style.zIndex = ++windowZ; }); document.addEventListener('mousemove', (e) => { if (!isDown) return; win.style.left = (e.clientX - offX) + 'px'; win.style.top = (e.clientY - offY) + 'px'; }); document.addEventListener('mouseup', () => isDown = false); }
 
-// ==================== برنامه‌های اصلی ====================
+// ==================== اپلیکیشن‌ها ====================
 window.openApp = function(id) {
     const apps = {
-        filemanager: openFileManager, media: openMediaPlayer, chat: openChat, terminal: openTerminal,
-        browser: openBrowser, office: openOffice, editor: openEditor, blog: openBlog, profile: openProfile,
-        store: openStore, trash: openTrash, wallpaper: openWallpaper, settings: openSettings,
-        about: openAbout, contact: openContact, map: openMap, stats: openStats, admin: openAdmin
+        dashboard: openDashboard, filemanager: openFileManager, media: openMediaPlayer, terminal: openTerminal,
+        browser: openBrowser, chat: openChat, videochat: openVideoChat, profile: openProfile, gallery: openGallery,
+        notes: openNotes, drawing: openDrawing, contacts: openContacts, calls: openCalls, alarm: openAlarm,
+        bluetooth: openBluetoothPanel, printer: () => printFile(), blog: openBlog, store: openStore,
+        trash: openTrash, wallpaper: openWallpaper, calculator: openCalculator, 'image-editor': openImageEditor,
+        games: openGames, ocr: openOCR, downloads: openDownloadManager, calendar: openCalendar,
+        settings: openSettings, about: openAbout, admin: openAdmin
     };
     if (apps[id]) apps[id]();
+    else showNotif('در حال توسعه...', 'info');
 };
 
-// 1. مدیریت فایل کامل
+// داشبورد
+function openDashboard() {
+    let files = userFiles[currentUser?.username] || [];
+    let usedMB = Math.floor(files.reduce((a,f) => a + (f.size || 0), 0) / (1024 * 1024));
+    createWindow('dashboard', '📊 داشبورد', `
+        <div class="dashboard-stats" style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px;">
+            <div class="stat-card"><div class="stat-value">${users[currentUser.username]?.stats?.logins || 0}</div><div>ورود</div></div>
+            <div class="stat-card"><div class="stat-value">${userNotes.filter(n=>n.userId===currentUser.username).length}</div><div>یادداشت</div></div>
+            <div class="stat-card"><div class="stat-value">${files.length}</div><div>فایل</div></div>
+            <div class="stat-card"><div class="stat-value">${globalChat.length}</div><div>پیام</div></div>
+        </div>
+        <div style="background:rgba(0,0,0,0.3); border-radius:16px; padding:15px;"><h4>💾 فضا</h4><div style="height:8px; background:rgba(0,0,0,0.3); border-radius:4px;"><div style="width:${(usedMB/totalStorage)*100}%; height:100%; background:var(--success); border-radius:4px;"></div></div><div>${usedMB} MB / ${totalStorage} MB</div></div>
+    `, 500, 400);
+}
+
+// فایل منیجر کامل
 function openFileManager() {
     let files = userFiles[currentUser?.username] || [];
-    let filesHtml = files.map((f, i) => `<div class="file-item ${f.type === 'folder' ? 'folder' : ''}" onclick="openFileItem(${i})"><span>${f.type === 'folder' ? '📁' : '📄'} ${f.name}</span><div><button onclick="deleteFileItem(${i}, event)">🗑️</button></div></div>`).join('');
+    let usedMB = Math.floor(files.reduce((a,f) => a + (f.size || 0), 0) / (1024 * 1024));
+    let filesHtml = files.map((f, i) => `<div class="file-grid-item" onclick="openFileItem(${i})"><div style="font-size:2rem;">${f.name.match(/\.(jpg|png|gif|jpeg)$/i) ? '🖼️' : f.name.match(/\.(mp3|wav|ogg)$/i) ? '🎵' : f.name.match(/\.(mp4|webm)$/i) ? '🎬' : '📄'}</div><div style="font-size:0.7rem;">${f.name.substring(0,15)}</div><div style="font-size:0.6rem;">${Math.floor(f.size/1024)} KB</div><button onclick="deleteFileItem(${i}, event)" style="background:var(--error); border:none; padding:2px 8px; border-radius:8px; margin-top:5px; cursor:pointer;">🗑️</button></div>`).join('');
     createWindow('filemanager', '📁 مدیریت فایل', `
-        <div style="margin-bottom:15px; display:flex; gap:8px; flex-wrap:wrap;">
-            <input type="text" id="new-file-name" placeholder="نام جدید..." style="flex:1; background:rgba(0,0,0,0.3); border:none; padding:8px; border-radius:8px; color:white;">
-            <button onclick="createFolder()" style="background:var(--primary); border:none; padding:8px 16px; border-radius:8px;">📁 پوشه جدید</button>
-            <button onclick="uploadFile()" style="background:var(--success); border:none; padding:8px 16px; border-radius:8px;">📤 آپلود فایل</button>
+        <div class="file-manager">
+            <div class="file-sidebar"><div class="file-sidebar-item" onclick="refreshFileManager()">📁 همه</div><div class="file-sidebar-item" onclick="createFolder()">📁 پوشه جدید</div><div class="file-sidebar-item" onclick="uploadFile()">📤 آپلود</div></div>
+            <div class="file-main"><div style="margin-bottom:10px;">📂 ${usedMB} MB از ${totalStorage} MB</div><div class="file-grid" id="file-grid">${filesHtml || '<div style="text-align:center;">خالی</div>'}</div></div>
         </div>
-        <div id="file-list" style="max-height:300px; overflow-y:auto;">${filesHtml || '<div style="text-align:center; color:#888;">هیچ فایلی وجود ندارد</div>'}</div>
-        <div style="margin-top:15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
-            <small>💾 فضای استفاده شده: ${Math.floor(files.reduce((a,f)=>a+(f.size||0),0)/1024)} KB</small>
-        </div>
-    `, 550, 500);
+    `, 700, 500);
 }
+function refreshFileManager() { closeWindow('filemanager'); setTimeout(openFileManager, 100); }
+function createFolder() { let name = prompt('نام پوشه:'); if(name){ if(!userFiles[currentUser.username]) userFiles[currentUser.username]=[]; userFiles[currentUser.username].push({name, type:'folder', size:0, date:new Date().toISOString()}); localStorage.setItem('user_files',JSON.stringify(userFiles)); refreshFileManager(); showNotif(`پوشه ${name} ساخته شد`,'success'); } }
+function uploadFile() { let input = document.createElement('input'); input.type='file'; input.multiple=true; input.onchange=(e)=>{ Array.from(e.target.files).forEach(file=>{ let reader=new FileReader(); reader.onload=(ev)=>{ if(!userFiles[currentUser.username]) userFiles[currentUser.username]=[]; userFiles[currentUser.username].push({name:file.name, type:'file', size:file.size, content:ev.target.result, date:new Date().toISOString()}); localStorage.setItem('user_files',JSON.stringify(userFiles)); }; reader.readAsDataURL(file); }); showNotif('فایل آپلود شد','success'); refreshFileManager(); }; input.click(); }
+function deleteFileItem(i, e) { e.stopPropagation(); let file=userFiles[currentUser.username][i]; trashFiles.push({...file, deletedBy:currentUser.username}); userFiles[currentUser.username].splice(i,1); localStorage.setItem('user_files',JSON.stringify(userFiles)); localStorage.setItem('trash_files',JSON.stringify(trashFiles)); refreshFileManager(); showNotif(`${file.name} به سطل زباله رفت`,'info'); }
+function openFileItem(i) { let file=userFiles[currentUser.username][i]; if(file.content){ if(file.name.match(/\.(jpg|png|gif|jpeg)$/i)) createWindow('preview','🖼️ پیش‌نمایش',`<img src="${file.content}" style="max-width:100%; border-radius:12px;">`,600,500); else if(file.name.match(/\.(mp3|wav|ogg)$/i)) createWindow('preview','🎵 پخش',`<audio controls style="width:100%" src="${file.content}"></audio><div class="equalizer" id="eq"></div><button onclick="startEqualizer()">🎚️ اکولایزر</button>`,500,300); else createWindow('preview','📄 محتوا',`<pre style="white-space:pre-wrap;">${file.content.substring(0,2000)}</pre>`,600,450); } }
 
-function createFolder() {
-    let name = document.getElementById('new-file-name')?.value.trim();
-    if (!name) return;
-    if (!userFiles[currentUser.username]) userFiles[currentUser.username] = [];
-    userFiles[currentUser.username].push({ name, type: 'folder', size: 0, content: null, date: new Date().toISOString() });
-    localStorage.setItem('user_files', JSON.stringify(userFiles));
-    showNotif(`پوشه ${name} ساخته شد`, 'success');
-    closeWindow('filemanager'); setTimeout(() => openFileManager(), 100);
+let eqInterval=null;
+function startEqualizer() { let eq=document.getElementById('eq'); if(eq){ eq.innerHTML=''; for(let i=0;i<10;i++){let b=document.createElement('div');b.className='eq-bar';eq.appendChild(b);} if(eqInterval) clearInterval(eqInterval); eqInterval=setInterval(()=>{document.querySelectorAll('.eq-bar').forEach(b=>b.style.height=Math.random()*40+10+'px');},100); } }
+
+// مدیا پلیر
+function openMediaPlayer() { createWindow('media','🎵 مدیا پلیر',`<audio controls style="width:100%"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio><div class="equalizer" id="media-eq"></div><button onclick="startMediaEqualizer()" style="background:var(--primary); margin-top:10px; padding:8px; border-radius:12px;">🎚️ اکولایزر</button><h4>کتابخانه</h4><div class="file-grid" id="media-lib"></div><button onclick="uploadToMedia()" style="background:var(--success); margin-top:10px; padding:8px;">➕ آپلود موزیک</button>`,600,500); setTimeout(()=>{ let lib=document.getElementById('media-lib'); if(lib) lib.innerHTML=mediaLibrary.map((m,i)=>`<div class="file-grid-item" onclick="playMedia(${i})"><div>🎵</div><div>${m.name.substring(0,10)}</div></div>`).join('') || 'خالی'; },100); }
+function startMediaEqualizer() { let eq=document.getElementById('media-eq'); if(eq){ eq.innerHTML=''; for(let i=0;i<10;i++){let b=document.createElement('div');b.className='eq-bar';eq.appendChild(b);} setInterval(()=>{document.querySelectorAll('#media-eq .eq-bar').forEach(b=>b.style.height=Math.random()*40+10+'px');},100); } }
+function uploadToMedia() { let input=document.createElement('input'); input.type='file'; input.accept='audio/*'; input.onchange=(e)=>{ let file=e.target.files[0]; let reader=new FileReader(); reader.onload=(ev)=>{ mediaLibrary.push({name:file.name, data:ev.target.result}); localStorage.setItem('media_library',JSON.stringify(mediaLibrary)); openMediaPlayer(); }; reader.readAsDataURL(file); }; input.click(); }
+function playMedia(i) { let audio=document.querySelector('#win-media audio'); if(audio){ audio.src=mediaLibrary[i].data; audio.play(); showNotif(`در حال پخش ${mediaLibrary[i].name}`,'success'); } }
+
+// چت تصویری
+let localStream=null;
+function openVideoChat() { createWindow('videochat','📹 چت تصویری',`<div class="video-chat"><video id="local-video" autoplay muted style="width:100%; background:#111; border-radius:16px;"></video><video id="remote-video" autoplay style="width:100%; background:#111; border-radius:16px;"></video></div><div style="display:flex; gap:10px; margin-top:10px;"><button onclick="startVideoCall()" style="background:var(--success); padding:8px;">🎥 شروع</button><button onclick="stopVideoCall()" style="background:var(--error); padding:8px;">🔴 توقف</button></div>`,600,500); }
+async function startVideoCall() { try { localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true }); document.getElementById('local-video').srcObject = localStream; showNotif('دوربین فعال شد','success'); setTimeout(()=>{ document.getElementById('remote-video').srcObject = localStream; showNotif('تماس برقرار شد','success'); },1000); } catch(e){ showNotif('خطا: '+e.message,'error'); } }
+function stopVideoCall() { if(localStream) localStream.getTracks().forEach(t=>t.stop()); document.getElementById('local-video').srcObject=null; document.getElementById('remote-video').srcObject=null; }
+
+// چت گروهی
+function openChat() {
+    let msgs = globalChat.map(m => `<div style="margin:5px; padding:8px; background:rgba(0,0,0,0.3); border-radius:12px;"><b>${m.sender}:</b> ${m.text}</div>`).join('');
+    let emojiBar = emojis.map(e => `<span style="font-size:1.2rem; cursor:pointer; margin:2px;" onclick="addEmojiToChat('${e}')">${e}</span>`).join('');
+    createWindow('chat','💬 چت گروهی',`<div id="chat-msgs" style="height:300px; overflow-y:auto;">${msgs || 'پیامی نیست'}</div><div>${emojiBar}</div><div style="display:flex; gap:5px; margin-top:10px;"><input type="text" id="chat-input" style="flex:1; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px;"><button onclick="sendChatMsg()" style="background:var(--primary); padding:10px;">📨</button></div>`,550,500);
 }
+function addEmojiToChat(e) { let input=document.getElementById('chat-input'); if(input) input.value+=e; }
+function sendChatMsg() { let input=document.getElementById('chat-input'); if(!input.value.trim() || isGuest) return; globalChat.push({sender:currentUser.username, text:input.value.trim(), time:new Date().toISOString()}); localStorage.setItem('global_chat',JSON.stringify(globalChat)); closeWindow('chat'); setTimeout(openChat,100); input.value=''; }
 
-function uploadFile() {
-    let input = document.createElement('input');
-    input.type = 'file';
-    input.onchange = (e) => {
-        let file = e.target.files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = (ev) => {
-                if (!userFiles[currentUser.username]) userFiles[currentUser.username] = [];
-                userFiles[currentUser.username].push({ name: file.name, type: 'file', size: file.size, content: ev.target.result, date: new Date().toISOString() });
-                localStorage.setItem('user_files', JSON.stringify(userFiles));
-                showNotif(`فایل ${file.name} آپلود شد`, 'success');
-                closeWindow('filemanager'); setTimeout(() => openFileManager(), 100);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    input.click();
+// مخاطبین
+async function openContacts() {
+    let contactsHtml = contacts.map((c,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px; border-radius:12px; display:flex; justify-content:space-between;"><span>👤 ${c.name}<br><small>${c.phone}</small></span><button onclick="callContact('${c.phone}')" style="background:var(--success); padding:4px 12px; border-radius:8px;">📞 تماس</button><button onclick="deleteContact(${i})" style="background:var(--error); padding:4px 12px; border-radius:8px;">🗑️</button></div>`).join('');
+    createWindow('contacts','📞 مخاطبین',`<button onclick="addContactFromDevice()" style="background:var(--primary); padding:10px; margin-bottom:10px; width:100%;">📇 وارد کردن از دستگاه</button><div><input type="text" id="contact-name" placeholder="نام" style="width:48%; background:rgba(0,0,0,0.3); padding:8px; border-radius:8px;"><input type="tel" id="contact-phone" placeholder="شماره" style="width:48%; background:rgba(0,0,0,0.3); padding:8px; border-radius:8px;"><button onclick="addContactManual()" style="width:100%; margin-top:5px; background:var(--success); padding:8px;">➕ افزودن</button></div><hr><div id="contacts-list">${contactsHtml || 'هیچ مخاطبی نیست'}</div>`,500,550);
 }
+async function addContactFromDevice() { if('contacts' in navigator && 'select' in navigator.contacts) { try { const contactsSelected = await navigator.contacts.select(['name','tel'],{multiple:true}); for(let c of contactsSelected) contacts.push({name:c.name[0]||'بدون نام', phone:c.tel[0]||'نامشخص'}); localStorage.setItem('contacts',JSON.stringify(contacts)); showNotif(`${contactsSelected.length} مخاطب اضافه شد`,'success'); closeWindow('contacts'); setTimeout(openContacts,100); } catch(e){ showNotif('خطا یا عدم دسترسی','error'); } } else showNotif('Contacts API پشتیبانی نمی‌شود (فقط اندروید کروم)','error'); }
+function addContactManual() { let name=document.getElementById('contact-name')?.value.trim(); let phone=document.getElementById('contact-phone')?.value.trim(); if(name && phone) { contacts.push({name,phone}); localStorage.setItem('contacts',JSON.stringify(contacts)); showNotif('مخاطب اضافه شد','success'); closeWindow('contacts'); setTimeout(openContacts,100); } }
+function callContact(phone) { showNotif(`تماس با ${phone} (شبیه‌سازی)`,'info'); callHistory.push({number:phone, time:new Date().toISOString(), type:'خروجی'}); localStorage.setItem('call_history',JSON.stringify(callHistory)); }
+function deleteContact(i) { contacts.splice(i,1); localStorage.setItem('contacts',JSON.stringify(contacts)); closeWindow('contacts'); setTimeout(openContacts,100); }
 
-function deleteFileItem(index, event) {
-    event.stopPropagation();
-    let file = userFiles[currentUser.username][index];
-    trashFiles.push({ ...file, deletedBy: currentUser.username, deletedAt: new Date().toISOString() });
-    userFiles[currentUser.username].splice(index, 1);
-    localStorage.setItem('user_files', JSON.stringify(userFiles));
-    localStorage.setItem('trash_files', JSON.stringify(trashFiles));
-    showNotif(`${file.name} به سطل زباله منتقل شد`, 'info');
-    closeWindow('filemanager'); setTimeout(() => openFileManager(), 100);
+// تماس‌ها
+function openCalls() { let callsHtml = callHistory.slice(-20).map(c=>`<div style="padding:8px; background:rgba(0,0,0,0.3); margin:5px; border-radius:12px;">📞 ${c.number} - ${new Date(c.time).toLocaleString('fa-IR')}</div>`).join(''); createWindow('calls','📱 تاریخچه تماس‌ها',`<div style="max-height:400px; overflow-y:auto;">${callsHtml || 'هیچ تماسی'}</div><button onclick="makeCall()" style="background:var(--success); margin-top:10px; padding:10px; width:100%;">📞 شماره‌گیری</button>`,450,500); }
+function makeCall() { let num=prompt('شماره:'); if(num){ showNotif(`تماس با ${num} (شبیه‌سازی)`,'info'); callHistory.push({number:num, time:new Date().toISOString(), type:'خروجی'}); localStorage.setItem('call_history',JSON.stringify(callHistory)); closeWindow('calls'); setTimeout(openCalls,100); } }
+
+// زنگ‌دار و تایمر
+function openAlarm() {
+    let alarmsHtml = alarms.map((a,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px; display:flex; justify-content:space-between;"><span>⏰ ${a.time}</span><button onclick="deleteAlarm(${i})" style="background:var(--error); padding:4px 12px;">🗑️</button></div>`).join('');
+    createWindow('alarm','⏰ زنگ‌دار و تایمر',`<div><input type="time" id="alarm-time"><button onclick="addAlarm()" style="background:var(--primary); padding:8px;">➕ افزودن زنگ</button></div><div id="alarms-list">${alarmsHtml || 'هیچ زنگی'}</div><hr><div><h4>⏱️ تایمر</h4><input type="number" id="timer-seconds" placeholder="ثانیه"><button onclick="startTimer()" style="background:var(--warning); padding:8px;">شروع</button><div id="timer-display"></div></div>`,500,450);
 }
+function addAlarm() { let time=document.getElementById('alarm-time')?.value; if(time){ alarms.push({time, enabled:true}); localStorage.setItem('alarms',JSON.stringify(alarms)); showNotif(`زنگ ${time} تنظیم شد`,'success'); closeWindow('alarm'); setTimeout(openAlarm,100); } }
+function deleteAlarm(i) { alarms.splice(i,1); localStorage.setItem('alarms',JSON.stringify(alarms)); closeWindow('alarm'); setTimeout(openAlarm,100); }
+function startTimer() { let sec=parseInt(document.getElementById('timer-seconds')?.value); if(isNaN(sec)) return; let remaining=sec; let timer=setInterval(()=>{ if(remaining<=0){ clearInterval(timer); showNotif('زمان تایمر تمام شد!','success'); document.getElementById('timer-display').innerHTML='پایان!'; } else { document.getElementById('timer-display').innerHTML=`${remaining} ثانیه`; remaining--; } },1000); }
 
-function openFileItem(index) {
-    let file = userFiles[currentUser.username][index];
-    if (file.type === 'folder') {
-        showNotif(`باز کردن پوشه ${file.name}`, 'info');
-    } else if (file.content) {
-        if (file.name.match(/\.(jpg|png|gif|jpeg)$/i)) {
-            createWindow('preview', '🖼️ پیش‌نمایش', `<img src="${file.content}" style="max-width:100%; border-radius:12px;">`, 500, 500);
-        } else if (file.name.match(/\.(mp3|wav|ogg)$/i)) {
-            createWindow('preview', '🎵 پخش موسیقی', `<audio controls style="width:100%"><source src="${file.content}"></audio>`, 450, 200);
-        } else if (file.name.match(/\.(mp4|webm|ogg)$/i)) {
-            createWindow('preview', '🎬 پخش ویدیو', `<video controls style="width:100%"><source src="${file.content}"></video>`, 600, 400);
-        } else {
-            createWindow('preview', '📄 محتوای فایل', `<pre style="white-space:pre-wrap;word-break:break-all;">${file.content.substring(0, 5000)}</pre>`, 550, 450);
-        }
-    }
+// بلوتوث
+function openBluetoothPanel() { createWindow('bluetooth','🔷 بلوتوث',`<button onclick="scanBluetooth()" style="background:var(--primary); padding:10px; width:100%;">🔍 اسکن</button><div id="bt-devices" style="margin-top:15px;"></div><hr><button onclick="simulateBluetoothSend()" style="background:var(--success); padding:10px; margin-top:10px;">📤 ارسال فایل (شبیه‌سازی)</button>`,500,400); }
+async function simulateBluetoothSend() { if('bluetooth' in navigator) { try { const device = await navigator.bluetooth.requestDevice({acceptAllDevices:true}); showNotif(`فایل به ${device.name} ارسال شد (شبیه‌سازی)`,'success'); } catch(e){ showNotif('خطا','error'); } } else showNotif('پشتیبانی نمی‌شود','error'); }
+
+// نقاشی
+function openDrawing() {
+    createWindow('drawing','🎨 نقاشی',`<canvas id="draw-canvas" class="drawing-canvas" width="500" height="400" style="width:100%; background:white;"></canvas><div style="display:flex; gap:8px; margin-top:10px;"><button onclick="clearCanvas()" style="background:var(--error); padding:6px;">🗑️ پاک</button><input type="color" id="draw-color" value="#00aaff"><input type="range" id="draw-size" min="1" max="20" value="3"><button onclick="saveDrawing()" style="background:var(--success); padding:6px;">💾 ذخیره</button></div>`,600,550);
+    setTimeout(()=>{
+        let canvas=document.getElementById('draw-canvas'); let ctx=canvas.getContext('2d'); let drawing=false;
+        canvas.addEventListener('mousedown',(e)=>{drawing=true; ctx.beginPath(); ctx.moveTo(e.offsetX,e.offsetY);});
+        canvas.addEventListener('mousemove',(e)=>{if(drawing){ctx.lineTo(e.offsetX,e.offsetY); ctx.stroke();}});
+        canvas.addEventListener('mouseup',()=>drawing=false);
+        canvas.addEventListener('touchstart',(e)=>{e.preventDefault(); let rect=canvas.getBoundingClientRect(); let x=e.touches[0].clientX-rect.left; let y=e.touches[0].clientY-rect.top; drawing=true; ctx.beginPath(); ctx.moveTo(x,y);});
+        canvas.addEventListener('touchmove',(e)=>{e.preventDefault(); if(drawing){ let rect=canvas.getBoundingClientRect(); let x=e.touches[0].clientX-rect.left; let y=e.touches[0].clientY-rect.top; ctx.lineTo(x,y); ctx.stroke(); }});
+        canvas.addEventListener('touchend',()=>drawing=false);
+        function updateStyle(){ ctx.strokeStyle=document.getElementById('draw-color').value; ctx.lineWidth=document.getElementById('draw-size').value; ctx.lineCap='round'; }
+        document.getElementById('draw-color').addEventListener('change',updateStyle);
+        document.getElementById('draw-size').addEventListener('change',updateStyle);
+        updateStyle();
+    },100);
 }
+function clearCanvas(){ let canvas=document.getElementById('draw-canvas'); let ctx=canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height); }
+function saveDrawing(){ let canvas=document.getElementById('draw-canvas'); let link=document.createElement('a'); link.download='drawing.png'; link.href=canvas.toDataURL(); link.click(); showNotif('نقاشی ذخیره شد','success'); }
 
-// 2. مدیا پلیر کامل با کتابخانه
-function openMediaPlayer() {
-    let libraryHtml = mediaLibrary.map((m, i) => `<div class="file-item" onclick="playMedia(${i})"><span>${m.type === 'audio' ? '🎵' : '🎬'} ${m.name}</span><button onclick="removeFromLibrary(${i}, event)">🗑️</button></div>`).join('');
-    createWindow('media', '🎵 مدیا پلیر - کتابخانه', `
-        <div class="media-player">
-            <div id="media-player-area" style="background:rgba(0,0,0,0.3); border-radius:12px; padding:20px; margin-bottom:15px;">
-                <div id="now-playing">🎵 هیچ مدیایی در حال پخش نیست</div>
-                <audio id="audio-player" controls style="width:100%; margin-top:10px; display:none;"></audio>
-                <video id="video-player" controls style="width:100%; margin-top:10px; display:none;"></video>
-            </div>
-            <div class="media-controls">
-                <button class="media-btn" onclick="uploadToLibrary('audio')">🎵 آپلود موزیک</button>
-                <button class="media-btn" onclick="uploadToLibrary('video')">🎬 آپلود فیلم</button>
-            </div>
-            <h4>📚 کتابخانه من (${mediaLibrary.length})</h4>
-            <div id="media-library" style="max-height:250px; overflow-y:auto;">${libraryHtml || '<div style="text-align:center;">کتابخانه خالی است</div>'}</div>
-        </div>
-    `, 600, 550);
-}
+// سایر اپلیکیشن‌های ضروری
+function openProfile() { let user=users[currentUser.username]; createWindow('profile','👤 پروفایل',`<div style="text-align:center"><img src="${user?.avatar || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%2300aaff%22/%3E%3Ctext x=%2250%22 y=%2270%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22%3E👤%3C/text%3E%3C/svg%3E'}" style="width:100px;height:100px;border-radius:50%;"><h3>${currentUser.name}</h3><p>@${currentUser.username}</p><button onclick="changeAvatar()" style="background:var(--primary); padding:8px; border-radius:12px;">📸 تغییر عکس</button></div>`,450,450); }
+function changeAvatar() { let url=prompt('لینک عکس:'); if(url){ users[currentUser.username].avatar=url; localStorage.setItem('persia_users_v8',JSON.stringify(users)); showNotif('عکس تغییر کرد','success'); closeWindow('profile'); setTimeout(openProfile,100); } }
+function openGallery() { let imagesHtml=galleryImages.filter(i=>i.userId===currentUser.username).map((img,i)=>`<div class="file-grid-item"><img src="${img.data}" style="width:100%; height:100px; object-fit:cover; border-radius:12px;"><button onclick="deleteGalleryImage(${i})" style="background:var(--error); margin-top:5px; padding:2px 8px;">🗑️</button></div>`).join(''); createWindow('gallery','🖼️ گالری',`<button onclick="uploadGalleryImage()" style="background:var(--primary); padding:10px;">📸 آپلود</button><div class="file-grid" style="max-height:400px; overflow-y:auto;">${imagesHtml || 'خالی'}</div>`,600,500); }
+function uploadGalleryImage() { let input=document.createElement('input'); input.type='file'; input.accept='image/*'; input.onchange=(e)=>{ let file=e.target.files[0]; let reader=new FileReader(); reader.onload=(ev)=>{ galleryImages.push({data:ev.target.result, name:file.name, userId:currentUser.username}); localStorage.setItem('gallery_images',JSON.stringify(galleryImages)); showNotif('تصویر آپلود شد','success'); closeWindow('gallery'); setTimeout(openGallery,100); }; reader.readAsDataURL(file); }; input.click(); }
+function deleteGalleryImage(i) { let filtered=galleryImages.filter((_,idx)=>idx!==i); galleryImages.length=0; galleryImages.push(...filtered); localStorage.setItem('gallery_images',JSON.stringify(galleryImages)); closeWindow('gallery'); setTimeout(openGallery,100); }
+function openNotes() { let notesHtml=userNotes.filter(n=>n.userId===currentUser.username).map((n,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px; border-radius:12px;"><b>${n.title}</b><p>${n.content.substring(0,100)}</p><button onclick="deleteNote(${i})" style="background:var(--error); padding:4px 12px;">🗑️</button></div>`).join(''); createWindow('notes','📓 یادداشت',`<input type="text" id="note-title" placeholder="عنوان" style="width:100%; background:rgba(0,0,0,0.3); padding:8px; border-radius:8px; margin-bottom:5px;"><textarea id="note-content" placeholder="متن" rows="3" style="width:100%; background:rgba(0,0,0,0.3); padding:8px; border-radius:8px;"></textarea><button onclick="addNote()" style="background:var(--primary); padding:8px; margin-top:5px;">➕ افزودن</button><hr><div id="notes-list">${notesHtml || 'هیچ یادداشتی'}</div>`,500,500); }
+function addNote() { let title=document.getElementById('note-title')?.value; let content=document.getElementById('note-content')?.value; if(title && content){ userNotes.push({title, content, userId:currentUser.username, date:new Date().toISOString()}); localStorage.setItem('user_notes',JSON.stringify(userNotes)); showNotif('یادداشت اضافه شد','success'); closeWindow('notes'); setTimeout(openNotes,100); } }
+function deleteNote(i) { let filtered=userNotes.filter((_,idx)=>idx!==i); userNotes.length=0; userNotes.push(...filtered); localStorage.setItem('user_notes',JSON.stringify(userNotes)); closeWindow('notes'); setTimeout(openNotes,100); }
+function openTerminal() { createWindow('terminal','💻 ترمینال',`<div style="background:#000; color:#0f0; padding:15px; border-radius:12px; height:300px; overflow-y:auto; font-family:monospace;"><div>Persia OS v5.0 Terminal</div><div>دستورات: help, whoami, date, clear, info</div><div id="term-out"></div></div><div style="display:flex; margin-top:10px;"><span style="color:#0f0;">$></span><input type="text" id="term-in" style="flex:1; background:#000; border:none; color:#0f0; outline:none;" onkeypress="if(event.key==='Enter') execTerm()"></div>`,650,450); }
+function execTerm() { let inp=document.getElementById('term-in'); let cmd=inp.value; let out=document.getElementById('term-out'); out.innerHTML+=`<div>> ${cmd}</div>`; if(cmd==='help') out.innerHTML+=`<div>help, whoami, date, clear, info, files, users</div>`; else if(cmd==='whoami') out.innerHTML+=`<div>${currentUser.username}</div>`; else if(cmd==='date') out.innerHTML+=`<div>${new Date()}</div>`; else if(cmd==='clear') out.innerHTML=''; else if(cmd==='info') out.innerHTML+=`<div>Persia OS v5.0 | کاربر: ${currentUser.name}</div>`; else if(cmd==='files') out.innerHTML+=`<div>${(userFiles[currentUser?.username]||[]).length} فایل</div>`; else if(cmd==='users') out.innerHTML+=`<div>${Object.keys(users).length} کاربر</div>`; else out.innerHTML+=`<div>دستور نامعتبر: ${cmd}</div>`; inp.value=''; }
+function openBrowser() { createWindow('browser','🌐 مرورگر',`<iframe src="https://google.com" style="width:100%; height:450px; border:none; border-radius:12px;"></iframe>`,800,600); }
+function openBlog() { let postsHtml=blogPosts.map(p=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px;"><h4>${p.title}</h4><p>${p.content.substring(0,100)}</p><small>${p.author} | ${new Date(p.date).toLocaleDateString('fa-IR')}</small></div>`).join(''); createWindow('blog','📰 بلاگ',`<button onclick="addBlogPost()" style="background:var(--primary); padding:10px;">➕ پست جدید</button><div>${postsHtml || 'هیچ پستی'}</div>`,550,500); }
+function addBlogPost() { let t=prompt('عنوان:'); let c=prompt('محتوا:'); if(t&&c){ blogPosts.push({title:t, content:c, author:currentUser.username, date:new Date().toISOString()}); localStorage.setItem('blog_posts',JSON.stringify(blogPosts)); showNotif('پست اضافه شد','success'); closeWindow('blog'); setTimeout(openBlog,100); } }
+function openStore() { createWindow('store','🛒 فروشگاه',`<div>${storeTools.map(t=>`<div style="display:flex; justify-content:space-between; background:rgba(0,0,0,0.3); padding:10px; margin:5px;"><span>${t.name} - ${t.price}</span><button onclick="installTool(${t.id})" style="background:var(--primary); padding:4px 12px;">${t.installed?'نصب شده':'نصب'}</button></div>`).join('')}</div><button onclick="addToolAdmin()" style="margin-top:10px; background:var(--success); padding:8px;">➕ افزودن ابزار (ادمین)</button>`,500,450); }
+function installTool(id) { let t=storeTools.find(t=>t.id===id); if(t){ t.installed=true; localStorage.setItem('store_tools',JSON.stringify(storeTools)); showNotif(`${t.name} نصب شد`,'success'); closeWindow('store'); setTimeout(openStore,100); } }
+function addToolAdmin() { if(currentUser.role!=='admin'){ showNotif('فقط ادمین','error'); return; } let name=prompt('نام ابزار:'); if(name){ storeTools.push({id:Date.now(), name, price:'رایگان', installed:false}); localStorage.setItem('store_tools',JSON.stringify(storeTools)); closeWindow('store'); setTimeout(openStore,100); } }
+function openTrash() { let trashList=trashFiles.map((f,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px; display:flex; justify-content:space-between;"><span>🗑️ ${f.name}</span><button onclick="restoreFile(${i})" style="background:var(--success); padding:4px 12px;">بازیابی</button><button onclick="permanentDelete(${i})" style="background:var(--error); padding:4px 12px;">حذف</button></div>`).join(''); createWindow('trash','🗑️ سطل زباله',`<div>${trashList || 'خالی'}</div>`,500,450); }
+function restoreFile(i) { let f=trashFiles.splice(i,1)[0]; if(!userFiles[f.deletedBy]) userFiles[f.deletedBy]=[]; userFiles[f.deletedBy].push(f); localStorage.setItem('user_files',JSON.stringify(userFiles)); localStorage.setItem('trash_files',JSON.stringify(trashFiles)); showNotif(`${f.name} بازیابی شد`,'success'); closeWindow('trash'); setTimeout(openTrash,100); }
+function permanentDelete(i) { if(confirm('حذف دائمی؟')){ trashFiles.splice(i,1); localStorage.setItem('trash_files',JSON.stringify(trashFiles)); showNotif('حذف شد','info'); closeWindow('trash'); setTimeout(openTrash,100); } }
+function openWallpaper() { createWindow('wallpaper','🖌️ والپیپر',`<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">${['default','matrix','sunset','ocean','forest','aurora'].map(w=>`<div onclick="setWallpaper('${w}')" style="background:${w==='default'?'#0a0a2a':w==='matrix'?'#003300':'#ff6b35'}; height:80px; border-radius:16px; cursor:pointer; text-align:center; line-height:80px;">${w}</div>`).join('')}</div><button onclick="uploadCustomWallpaper()" style="background:var(--primary); margin-top:10px; padding:10px;">📸 والپیپر شخصی</button>`,550,500); }
+function setWallpaper(type) { let wp=document.getElementById('wallpaper'); wp.className='live-wallpaper wallpaper-'+type; localStorage.setItem('selected_wallpaper',type); showNotif(`والپیپر ${type} تنظیم شد`,'success'); }
+function uploadCustomWallpaper() { let input=document.createElement('input'); input.type='file'; input.accept='image/*'; input.onchange=(e)=>{ let file=e.target.files[0]; let reader=new FileReader(); reader.onload=(ev)=>{ let wp=document.getElementById('wallpaper'); wp.className='live-wallpaper wallpaper-custom'; wp.style.backgroundImage=`url(${ev.target.result})`; showNotif('والپیپر شخصی تنظیم شد','success'); }; reader.readAsDataURL(file); }; input.click(); }
+function openCalculator() { let val='0'; createWindow('calculator','🧮 ماشین حساب',`<div id="calc-disp" style="background:rgba(0,0,0,0.3); padding:20px; font-size:2rem; text-align:left; margin-bottom:10px; border-radius:12px;">0</div><div style="display:grid; grid-template-columns:repeat(4,1fr); gap:5px;">${['7','8','9','/','4','5','6','*','1','2','3','-','0','.','=','+','C'].map(b=>`<button onclick="calcPress('${b}')" style="background:rgba(255,255,255,0.1); padding:15px; border-radius:12px; cursor:pointer;">${b}</button>`).join('')}</div>`,400,450); window.calcVal='0'; window.calcPress=function(b){ let d=document.getElementById('calc-disp'); if(b==='C') window.calcVal='0'; else if(b==='='){ try{ window.calcVal=eval(window.calcVal).toString(); }catch(e){ window.calcVal='Error'; } } else{ if(window.calcVal==='0' && !isNaN(b)) window.calcVal=b; else window.calcVal+=b; } d.innerText=window.calcVal; }; }
+function openImageEditor() { createWindow('image-editor','🎨 ویرایشگر تصویر',`<button onclick="uploadImageForEdit()" style="background:var(--primary); padding:10px;">📸 انتخاب تصویر</button><canvas id="edit-canvas" style="max-width:100%; margin-top:15px; display:none; border-radius:12px;"></canvas><div id="edit-btns" style="display:none; margin-top:10px;"><button onclick="applyEditFilter('grayscale')">⚫ Grayscale</button><button onclick="applyEditFilter('sepia')">🟤 Sepia</button><button onclick="rotateEditImage()">🔄 چرخش</button><button onclick="saveEditedImage()">💾 ذخیره</button></div>`,600,500); window.editImageData=null; window.originalEditData=null; }
+function uploadImageForEdit() { let input=document.createElement('input'); input.type='file'; input.accept='image/*'; input.onchange=(e)=>{ let file=e.target.files[0]; let reader=new FileReader(); reader.onload=(ev)=>{ let img=new Image(); img.onload=()=>{ let canvas=document.getElementById('edit-canvas'); canvas.width=img.width; canvas.height=img.height; let ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0); canvas.style.display='block'; document.getElementById('edit-btns').style.display='block'; window.editImageData=canvas.toDataURL(); window.originalEditData=window.editImageData; }; img.src=ev.target.result; }; reader.readAsDataURL(file); }; input.click(); }
+function applyEditFilter(type) { let canvas=document.getElementById('edit-canvas'); let ctx=canvas.getContext('2d'); let imgData=ctx.getImageData(0,0,canvas.width,canvas.height); let data=imgData.data; if(type==='grayscale') for(let i=0;i<data.length;i+=4){ let g=(data[i]+data[i+1]+data[i+2])/3; data[i]=data[i+1]=data[i+2]=g; } else if(type==='sepia') for(let i=0;i<data.length;i+=4){ let r=data[i],g=data[i+1],b=data[i+2]; data[i]=Math.min(255,r*0.393+g*0.769+b*0.189); data[i+1]=Math.min(255,r*0.349+g*0.686+b*0.168); data[i+2]=Math.min(255,r*0.272+g*0.534+b*0.131); } ctx.putImageData(imgData,0,0); }
+function rotateEditImage() { let canvas=document.getElementById('edit-canvas'); let ctx=canvas.getContext('2d'); let temp=document.createElement('canvas'); temp.width=canvas.height; temp.height=canvas.width; let tempCtx=temp.getContext('2d'); tempCtx.translate(temp.width/2,temp.height/2); tempCtx.rotate(Math.PI/2); tempCtx.drawImage(canvas,-canvas.width/2,-canvas.height/2); canvas.width=temp.width; canvas.height=temp.height; ctx.drawImage(temp,0,0); }
+function saveEditedImage() { let canvas=document.getElementById('edit-canvas'); let link=document.createElement('a'); link.download='edited.png'; link.href=canvas.toDataURL(); link.click(); showNotif('تصویر ذخیره شد','success'); }
+function openGames() { createWindow('games','🎮 بازی‌ها',`<div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center;"><div onclick="startSnakeGame()" style="cursor:pointer; text-align:center;"><div style="font-size:3rem;">🐍</div><div>مار</div></div><div onclick="startTicTacToeGame()" style="cursor:pointer; text-align:center;"><div style="font-size:3rem;">❌⭕</div><div>دوز</div></div><div onclick="startMemoryGame()" style="cursor:pointer; text-align:center;"><div style="font-size:3rem;">🃏</div><div>حافظه</div></div><div onclick="startGuessNumberGame()" style="cursor:pointer; text-align:center;"><div style="font-size:3rem;">🔢</div><div>حدس عدد</div></div></div><div id="game-container" style="margin-top:20px; text-align:center;"></div>`,600,550); }
+function startSnakeGame() { let container=document.getElementById('game-container'); container.innerHTML=`<canvas id="snake-canvas" width="400" height="400" style="background:#111; border-radius:16px;"></canvas><div>امتیاز: <span id="snake-score">0</span></div><button onclick="openGames()">بازگشت</button>`; let canvas=document.getElementById('snake-canvas'); let ctx=canvas.getContext('2d'); let snake=[{x:200,y:200},{x:190,y:200},{x:180,y:200}]; let dx=10,dy=0; let food={x:0,y:0}; let score=0; let gameLoop; function randomFood(){ food.x=Math.floor(Math.random()*40)*10; food.y=Math.floor(Math.random()*40)*10; } randomFood(); function draw(){ ctx.fillStyle='#111'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle='#e74c3c'; ctx.fillRect(food.x,food.y,10,10); ctx.fillStyle='#2ecc71'; for(let s of snake) ctx.fillRect(s.x,s.y,10,10); } function update(){ let head={x:snake[0].x+dx, y:snake[0].y+dy}; if(head.x<0||head.x>=canvas.width||head.y<0||head.y>=canvas.height){ clearInterval(gameLoop); container.innerHTML+='<div style="color:red;">باختی!</div>'; return; } for(let s of snake) if(s.x===head.x&&s.y===head.y){ clearInterval(gameLoop); container.innerHTML+='<div style="color:red;">باختی!</div>'; return; } snake.unshift(head); if(head.x===food.x&&head.y===food.y){ score+=10; document.getElementById('snake-score').innerText=score; randomFood(); } else snake.pop(); draw(); } document.addEventListener('keydown',(e)=>{ if(e.key==='ArrowUp'&&dy===0){dx=0;dy=-10;} else if(e.key==='ArrowDown'&&dy===0){dx=0;dy=10;} else if(e.key==='ArrowLeft'&&dx===0){dx=-10;dy=0;} else if(e.key==='ArrowRight'&&dx===0){dx=10;dy=0;} }); draw(); gameLoop=setInterval(update,100); }
+function startTicTacToeGame() { let board=['','','','','','','','','']; let player='❌'; let active=true; let container=document.getElementById('game-container'); container.innerHTML=`<div style="display:grid; grid-template-columns:repeat(3,100px); gap:5px; justify-content:center;" id="ttt-board"></div><div id="ttt-status">نوبت: ❌</div><button onclick="openGames()">بازگشت</button>`; let boardDiv=document.getElementById('ttt-board'); let statusDiv=document.getElementById('ttt-status'); function render(){ boardDiv.innerHTML=''; for(let i=0;i<9;i++){ let cell=document.createElement('div'); cell.innerText=board[i]; cell.style.cssText='width:100px; height:100px; background:rgba(0,0,0,0.3); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; cursor:pointer;'; cell.onclick=()=>makeMove(i); boardDiv.appendChild(cell); } } function checkWinner(){ const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; for(let w of wins) if(board[w[0]] && board[w[0]]===board[w[1]] && board[w[1]]===board[w[2]]){ active=false; statusDiv.innerText=`برنده: ${board[w[0]]}`; return true; } if(board.every(c=>c!=='')){ active=false; statusDiv.innerText='مساوی!'; return true; } return false; } function makeMove(i){ if(!active || board[i]!=='') return; board[i]=player; render(); if(!checkWinner()){ player=player==='❌'?'⭕':'❌'; statusDiv.innerText=`نوبت: ${player}`; } } render(); }
+function startMemoryGame() { let cards=['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼']; cards=cards.sort(()=>Math.random()-0.5); let opened=new Array(16).fill(false); let matched=new Array(16).fill(false); let first=null; let canClick=true; let moves=0; let container=document.getElementById('game-container'); function renderBoard(){ let html='<div style="display:grid; grid-template-columns:repeat(4,80px); gap:10px; justify-content:center;">'; for(let i=0;i<16;i++){ let content='?'; if(matched[i]) content=cards[i]; else if(opened[i]) content=cards[i]; html+=`<div class="mem-card" data-idx="${i}" style="width:80px; height:80px; background:${matched[i]?'rgba(46,204,113,0.3)':'rgba(0,170,255,0.3)'}; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:2rem; cursor:pointer;">${content}</div>`; } html+=`</div><div>حرکات: ${moves}</div><button onclick="openGames()">بازگشت</button>`; container.innerHTML=html; document.querySelectorAll('.mem-card').forEach(el=>{ el.addEventListener('click',()=>{ if(!canClick) return; let idx=parseInt(el.dataset.idx); if(matched[idx]||opened[idx]) return; opened[idx]=true; moves++; renderBoard(); if(first===null) first=idx; else{ canClick=false; if(cards[first]===cards[idx]){ matched[first]=true; matched[idx]=true; opened[first]=false; opened[idx]=false; first=null; canClick=true; renderBoard(); if(matched.every(m=>m===true)) container.innerHTML+='<div style="color:green;">🎉 برنده شدی! 🎉</div>'; } else{ setTimeout(()=>{ opened[first]=false; opened[idx]=false; first=null; canClick=true; renderBoard(); },1000); } } }); }); } renderBoard(); }
+function startGuessNumberGame() { let secret=Math.floor(Math.random()*100)+1; let attempts=0; let container=document.getElementById('game-container'); container.innerHTML=`<div><h3>حدس عدد بین 1 تا 100</h3><input type="number" id="guess-num" placeholder="عدد"><button onclick="checkGuessNum(${secret})">حدس بزن</button><div id="guess-msg"></div><button onclick="openGames()" style="margin-top:10px;">بازگشت</button></div>`; window.checkGuessNum=function(s){ let input=document.getElementById('guess-num'); let g=parseInt(input.value); if(isNaN(g)) return; attempts++; let msg=document.getElementById('guess-msg'); if(g===s) msg.innerHTML=`🎉 درست! در ${attempts} حرکت`; else if(g<s) msg.innerHTML=`📈 بیشتر از ${g}`; else msg.innerHTML=`📉 کمتر از ${g}`; input.value=''; }; }
+function openOCR() { createWindow('ocr','📷 OCR',`<button onclick="uploadOCRImage()" style="background:var(--primary); padding:10px;">📸 انتخاب تصویر</button><div id="ocr-preview" style="margin-top:15px;"></div><div id="ocr-result" style="margin-top:15px; background:rgba(0,0,0,0.3); padding:15px; border-radius:12px; display:none;"></div>`,550,500); }
+function uploadOCRImage() { let input=document.createElement('input'); input.type='file'; input.accept='image/*'; input.onchange=(e)=>{ let file=e.target.files[0]; let reader=new FileReader(); reader.onload=(ev)=>{ let img=document.createElement('img'); img.src=ev.target.result; img.style.maxWidth='100%'; img.style.borderRadius='12px'; document.getElementById('ocr-preview').innerHTML=''; document.getElementById('ocr-preview').appendChild(img); setTimeout(()=>{ document.getElementById('ocr-result').style.display='block'; document.getElementById('ocr-result').innerHTML=`<strong>متن استخراج شده (شبیه‌سازی):</strong><br><pre>این یک متن نمونه است.\nOCR در نسخه واقعی متن تصویر را استخراج می‌کند.</pre><button onclick="copyOCRText()">📋 کپی</button>`; },1500); }; reader.readAsDataURL(file); }; input.click(); }
+function copyOCRText() { let text=document.querySelector('#ocr-result pre')?.innerText; if(text){ navigator.clipboard.writeText(text); showNotif('متن کپی شد','success'); } }
+function openDownloadManager() { let downloadsHtml=downloads.map((d,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px; display:flex; justify-content:space-between;"><span>⬇️ ${d.name}</span><button onclick="downloadNow(${i})" style="background:var(--success); padding:4px 12px;">دانلود</button><button onclick="removeDownloadItem(${i})" style="background:var(--error); padding:4px 12px;">حذف</button></div>`).join(''); createWindow('downloads','⬇️ مدیر دانلود',`<div><input type="text" id="download-url" placeholder="آدرس فایل..." style="width:70%; background:rgba(0,0,0,0.3); padding:8px; border-radius:8px;"><button onclick="addDownloadItem()" style="background:var(--primary); padding:8px;">➕ افزودن</button></div><div id="downloads-list">${downloadsHtml || 'هیچ دانلودی'}</div>`,550,450); }
+function addDownloadItem() { let url=document.getElementById('download-url')?.value; if(url){ let name=url.split('/').pop()||'download'; downloads.push({name,url}); localStorage.setItem('downloads',JSON.stringify(downloads)); showNotif('اضافه شد','success'); closeWindow('downloads'); setTimeout(openDownloadManager,100); } }
+function downloadNow(i) { let d=downloads[i]; let link=document.createElement('a'); link.href=d.url; link.download=d.name; link.click(); showNotif(`دانلود ${d.name} شروع شد`,'success'); }
+function removeDownloadItem(i) { downloads.splice(i,1); localStorage.setItem('downloads',JSON.stringify(downloads)); closeWindow('downloads'); setTimeout(openDownloadManager,100); }
+function openCalendar() { let eventsHtml=calendarEvents.map((e,i)=>`<div style="background:rgba(0,0,0,0.3); padding:10px; margin:5px;"><span>📅 ${e.title} - ${new Date(e.date).toLocaleDateString('fa-IR')}</span><button onclick="deleteCalendarEvent(${i})" style="background:var(--error); float:left; padding:2px 8px;">🗑️</button></div>`).join(''); createWindow('calendar','📅 تقویم',`<button onclick="addCalendarEvent()" style="background:var(--primary); padding:10px;">➕ افزودن رویداد</button><div id="calendar-events-list">${eventsHtml || 'هیچ رویدادی'}</div>`,500,450); }
+function addCalendarEvent() { let title=prompt('عنوان رویداد:'); if(title){ calendarEvents.push({title, date:new Date().toISOString(), addedBy:currentUser.username}); localStorage.setItem('calendar_events',JSON.stringify(calendarEvents)); showNotif('رویداد اضافه شد','success'); closeWindow('calendar'); setTimeout(openCalendar,100); } }
+function deleteCalendarEvent(i) { calendarEvents.splice(i,1); localStorage.setItem('calendar_events',JSON.stringify(calendarEvents)); closeWindow('calendar'); setTimeout(openCalendar,100); }
+function openSettings() { createWindow('settings','⚙️ تنظیمات',`<div><button onclick="toggleTheme()" style="width:100%; padding:10px; margin:5px;">🌓 تغییر تم</button><button onclick="toggleLanguage()" style="width:100%; padding:10px; margin:5px;">🌐 تغییر زبان</button><button onclick="clearAllData()" style="width:100%; padding:10px; margin:5px; background:var(--error);">🗑️ پاک کردن همه داده‌ها</button><button onclick="openHardwareInfo()" style="width:100%; padding:10px; margin:5px;">🖥️ اطلاعات سخت‌افزار</button><button onclick="exportAllData()" style="width:100%; padding:10px; margin:5px; background:var(--success);">📤 خروجی JSON</button></div>`,450,450); }
+function openHardwareInfo() { alert(`مرورگر: ${navigator.userAgent.split(' ')[0]}\nپلتفرم: ${navigator.platform}\nرزولوشن: ${screen.width}x${screen.height}\nباتری: ${document.getElementById('battery-status')?.innerHTML||'نامشخص'}\nشبکه: ${navigator.connection?.effectiveType||'نامشخص'}\nبلوتوث: ${'bluetooth'in navigator?'پشتیبانی':'عدم پشتیبانی'}\nلمس: ${'ontouchstart'in window?'بله':'خیر'}`); }
+function exportAllData() { let data={users,userNotes,galleryImages,userFiles,mediaLibrary,contacts,alarms,callHistory,calendarEvents,blogPosts,date:new Date().toISOString()}; let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); let link=document.createElement('a'); link.href=URL.createObjectURL(blob); link.download=`persia_export_${Date.now()}.json`; link.click(); showNotif('خروجی گرفته شد','success'); }
+function clearAllData() { if(confirm('همه داده‌ها پاک شود؟ این عمل غیرقابل بازگشت است!')){ localStorage.clear(); location.reload(); } }
+function openAbout() { createWindow('about','ℹ️ درباره ما',`<div style="text-align:center"><div style="font-size:4rem;">📡</div><h2>Persia OS Ultimate v5.0</h2><p>شبکه فنآوری پارسی | 2026</p><p>نسخه نهایی حرفه‌ای</p><hr><p>تمامی حقوق محفوظ است</p></div>`,500,450); }
+function openAdmin() { if(currentUser.role!=='admin'){ showNotif('دسترسی غیرمجاز','error'); return; } let userList=Object.entries(users).map(([u,data])=>`<div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.3); margin:5px;"><span>${u} - ${data.role}</span><button onclick="adminDeleteUser('${u}')" style="background:var(--error); padding:4px 12px;">حذف</button><button onclick="adminToggleUser('${u}')" style="background:var(--warning); padding:4px 12px;">${data.isActive?'غیرفعال':'فعال'}</button></div>`).join(''); createWindow('admin','👑 مدیریت',`<h3>مدیریت کاربران</h3><div style="max-height:300px; overflow-y:auto;">${userList}</div><button onclick="clearAllData()" style="background:var(--error); margin-top:10px; padding:10px;">⚠️ پاک کردن همه داده‌ها</button>`,550,500); }
+function adminDeleteUser(u) { if(u!=='admin'){ delete users[u]; localStorage.setItem('persia_users_v8',JSON.stringify(users)); showNotif(`کاربر ${u} حذف شد`,'success'); closeWindow('admin'); setTimeout(openAdmin,100); } }
+function adminToggleUser(u) { users[u].isActive=!users[u].isActive; localStorage.setItem('persia_users_v8',JSON.stringify(users)); showNotif(`کاربر ${u} ${users[u].isActive?'فعال':'غیرفعال'} شد`,'success'); closeWindow('admin'); setTimeout(openAdmin,100); }
 
-function uploadToLibrary(type) {
-    let input = document.createElement('input');
-    input.type = 'file';
-    input.accept = type === 'audio' ? 'audio/*' : 'video/*';
-    input.onchange = (e) => {
-        let file = e.target.files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = (ev) => {
-                mediaLibrary.push({ name: file.name, type: type, data: ev.target.result, addedBy: currentUser.username, date: new Date().toISOString() });
-                localStorage.setItem('media_library', JSON.stringify(mediaLibrary));
-                showNotif(`${file.name} به کتابخانه اضافه شد`, 'success');
-                closeWindow('media'); setTimeout(() => openMediaPlayer(), 100);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    input.click();
-}
-
-function playMedia(index) {
-    let media = mediaLibrary[index];
-    let audio = document.getElementById('audio-player');
-    let video = document.getElementById('video-player');
-    if (media.type === 'audio') {
-        audio.style.display = 'block';
-        video.style.display = 'none';
-        audio.src = media.data;
-        audio.play();
-        document.getElementById('now-playing').innerHTML = `🎵 در حال پخش: ${media.name}`;
-    } else {
-        audio.style.display = 'none';
-        video.style.display = 'block';
-        video.src = media.data;
-        video.play();
-        document.getElementById('now-playing').innerHTML = `🎬 در حال پخش: ${media.name}`;
-    }
-}
-
-function removeFromLibrary(index, event) {
-    event.stopPropagation();
-    mediaLibrary.splice(index, 1);
-    localStorage.setItem('media_library', JSON.stringify(mediaLibrary));
-    showNotif('حذف شد', 'info');
-    closeWindow('media'); setTimeout(() => openMediaPlayer(), 100);
-}
-
-// 3. ترمینال پیشرفته
-function openTerminal() {
-    createWindow('terminal', '💻 ترمینال Persia OS', `
-        <div class="terminal" id="terminal-output" style="height:300px; overflow-y:auto; background:#000; color:#0f0; font-family:monospace; padding:10px;">
-            <div>Persia OS Terminal v1.0</div>
-            <div>نوشته help برای مشاهده دستورات</div>
-            <div id="terminal-history"></div>
-        </div>
-        <div style="display:flex; margin-top:10px;">
-            <span style="color:#0f0;">$></span>
-            <input type="text" id="terminal-cmd" class="terminal-input" style="flex:1; background:#000; border:none; color:#0f0; outline:none;" onkeypress="if(event.key==='Enter') execCommand()">
-        </div>
-    `, 600, 450);
-    setTimeout(() => document.getElementById('terminal-cmd')?.focus(), 100);
-}
-
-function execCommand() {
-    let input = document.getElementById('terminal-cmd');
-    let cmd = input.value.trim();
-    let history = document.getElementById('terminal-history');
-    if (!cmd) return;
-    history.innerHTML += `<div><span style="color:#0f0;">$></span> ${cmd}</div>`;
-    let output = '';
-    if (cmd === 'help') output = 'دستورات: help, ls, clear, whoami, date, info, files';
-    else if (cmd === 'ls') output = 'Desktop  Documents  Downloads  Pictures  Videos';
-    else if (cmd === 'clear') { history.innerHTML = ''; input.value = ''; return; }
-    else if (cmd === 'whoami') output = currentUser.username;
-    else if (cmd === 'date') output = new Date().toString();
-    else if (cmd === 'info') output = `Persia OS v14.0 | کاربر: ${currentUser.name} | نقش: ${currentUser.role}`;
-    else if (cmd === 'files') output = `تعداد فایل‌ها: ${(userFiles[currentUser.username] || []).length}`;
-    else output = `دستور ناشناخته: ${cmd}. برای راهنما help را وارد کنید.`;
-    history.innerHTML += `<div>${output}</div>`;
-    input.value = '';
-    let term = document.getElementById('terminal-output');
-    term.scrollTop = term.scrollHeight;
-}
-
-// 4. مرورگر اینترنت
-function openBrowser() {
-    createWindow('browser', '🌐 مرورگر Persia', `
-        <div style="display:flex; gap:8px; margin-bottom:15px;">
-            <input type="text" id="browser-url" placeholder="آدرس یا جستجو..." value="https://google.com" style="flex:1; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px; color:white;">
-            <button onclick="navigate()" style="background:var(--primary); border:none; padding:10px 20px; border-radius:12px;">🔍 برو</button>
-        </div>
-        <iframe id="browser-frame" src="https://google.com" style="width:100%; height:400px; border:none; border-radius:12px; background:white;"></iframe>
-        <div style="margin-top:10px; font-size:0.7rem; color:#888;">
-            ⚠️ برخی سایت‌ها ممکن است به دلیل سیاست‌های امنیتی در iframe نمایش داده نشوند.
-        </div>
-    `, 800, 600);
-}
-
-function navigate() {
-    let url = document.getElementById('browser-url').value;
-    if (!url.startsWith('http')) url = 'https://' + url;
-    document.getElementById('browser-frame').src = url;
-}
-
-// 5. سیستم اداری
-function openOffice() {
-    let docsHtml = officeDocs.map((d, i) => `<div class="office-card"><div><strong>📄 ${d.title}</strong><br><small>${new Date(d.date).toLocaleDateString()}</small></div><div><button onclick="editDoc(${i})">✏️ ویرایش</button> <button onclick="deleteDoc(${i})">🗑️</button></div></div>`).join('');
-    createWindow('office', '📊 سیستم اداری پارسی', `
-        <div style="margin-bottom:15px;">
-            <input type="text" id="doc-title" placeholder="عنوان سند..." style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px; margin-bottom:10px;">
-            <textarea id="doc-content" placeholder="محتوای سند..." rows="4" style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px;"></textarea>
-            <button onclick="createDoc()" style="background:var(--primary); border:none; padding:8px 20px; border-radius:12px; margin-top:10px;">➕ ایجاد سند جدید</button>
-        </div>
-        <hr style="border-color:var(--glass-border); margin:15px 0;">
-        <h4>📑 اسناد من</h4>
-        <div id="docs-list">${docsHtml || '<div style="text-align:center;">هیچ سندی وجود ندارد</div>'}</div>
-    `, 600, 550);
-}
-
-function createDoc() {
-    let title = document.getElementById('doc-title')?.value.trim();
-    let content = document.getElementById('doc-content')?.value;
-    if (!title) { showNotif('عنوان الزامی است', 'error'); return; }
-    officeDocs.push({ title, content, author: currentUser.username, date: new Date().toISOString() });
-    localStorage.setItem('office_docs', JSON.stringify(officeDocs));
-    showNotif(`سند ${title} ایجاد شد`, 'success');
-    closeWindow('office'); setTimeout(() => openOffice(), 100);
-}
-
-function editDoc(index) {
-    let doc = officeDocs[index];
-    let newContent = prompt('ویرایش محتوا:', doc.content);
-    if (newContent !== null) {
-        officeDocs[index].content = newContent;
-        officeDocs[index].date = new Date().toISOString();
-        localStorage.setItem('office_docs', JSON.stringify(officeDocs));
-        showNotif('سند ویرایش شد', 'success');
-        closeWindow('office'); setTimeout(() => openOffice(), 100);
-    }
-}
-
-function deleteDoc(index) {
-    officeDocs.splice(index, 1);
-    localStorage.setItem('office_docs', JSON.stringify(officeDocs));
-    showNotif('سند حذف شد', 'info');
-    closeWindow('office'); setTimeout(() => openOffice(), 100);
-}
-
-// 6. ویرایشگر متن قدرتمند
-function openEditor() {
-    createWindow('editor', '✏️ ویرایشگر متن پارسی', `
-        <div style="display:flex; gap:8px; margin-bottom:15px;">
-            <input type="text" id="editor-filename" placeholder="نام فایل..." style="flex:2; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px;">
-            <button onclick="saveTextFile()" style="background:var(--success); border:none; padding:10px 20px; border-radius:12px;">💾 ذخیره</button>
-            <button onclick="loadTextFile()" style="background:var(--primary); border:none; padding:10px 20px; border-radius:12px;">📂 باز کردن</button>
-        </div>
-        <textarea id="editor-content" placeholder="متن خود را بنویسید..." style="width:100%; height:300px; background:rgba(0,0,0,0.3); border:none; border-radius:12px; padding:15px; color:white; font-family:monospace; font-size:14px;"></textarea>
-        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
-            <button onclick="formatText('bold')" style="background:#333; border:none; padding:6px 12px; border-radius:8px;"><b>B</b></button>
-            <button onclick="formatText('italic')" style="background:#333; border:none; padding:6px 12px; border-radius:8px;"><i>I</i></button>
-            <button onclick="formatText('underline')" style="background:#333; border:none; padding:6px 12px; border-radius:8px;"><u>U</u></button>
-            <span style="flex:1"></span>
-            <span id="word-count" style="color:#888;">0 کلمه</span>
-        </div>
-    `, 700, 550);
-    let textarea = document.getElementById('editor-content');
-    if (textarea) textarea.addEventListener('input', () => { let c = textarea.value.trim().split(/\s+/).filter(w=>w).length; document.getElementById('word-count').innerHTML = c + ' کلمه'; });
-}
-
-function saveTextFile() {
-    let name = document.getElementById('editor-filename')?.value.trim();
-    let content = document.getElementById('editor-content')?.value;
-    if (!name) { showNotif('نام فایل را وارد کنید', 'error'); return; }
-    if (!userFiles[currentUser.username]) userFiles[currentUser.username] = [];
-    userFiles[currentUser.username].push({ name: name.endsWith('.txt') ? name : name+'.txt', type: 'file', size: content.length, content: btoa(unescape(encodeURIComponent(content))), date: new Date().toISOString() });
-    localStorage.setItem('user_files', JSON.stringify(userFiles));
-    showNotif(`فایل ${name} ذخیره شد`, 'success');
-}
-
-function loadTextFile() {
-    let files = userFiles[currentUser.username] || [];
-    let txtFiles = files.filter(f => f.name.endsWith('.txt'));
-    if (txtFiles.length === 0) { showNotif('فایل متنی وجود ندارد', 'error'); return; }
-    let list = txtFiles.map((f,i) => `<div onclick="openTextFile(${files.indexOf(f)})" style="padding:8px; background:rgba(0,0,0,0.3); margin:5px; border-radius:8px; cursor:pointer;">📄 ${f.name}</div>`).join('');
-    createWindow('load-file', 'انتخاب فایل', list, 400, 300);
-}
-
-function openTextFile(index) {
-    let file = userFiles[currentUser.username][index];
-    if (file.content) {
-        let content = decodeURIComponent(escape(atob(file.content)));
-        document.getElementById('editor-content').value = content;
-        document.getElementById('editor-filename').value = file.name.replace('.txt', '');
-        closeWindow('load-file');
-        showNotif(`فایل ${file.name} باز شد`, 'success');
-    }
-}
-
-function formatText(type) {
-    let area = document.getElementById('editor-content');
-    let start = area.selectionStart;
-    let end = area.selectionEnd;
-    let text = area.value;
-    let selected = text.substring(start, end);
-    let replacement = '';
-    if (type === 'bold') replacement = `**${selected}**`;
-    else if (type === 'italic') replacement = `*${selected}*`;
-    else if (type === 'underline') replacement = `__${selected}__`;
-    area.value = text.substring(0, start) + replacement + text.substring(end);
-    area.focus();
-}
-
-// 7. بلاگ سایت
-function openBlog() {
-    let postsHtml = blogPosts.map(p => `<div class="office-card"><h3>${p.title}</h3><p>${p.content.substring(0, 100)}...</p><small>نویسنده: ${p.author} | ${new Date(p.date).toLocaleDateString()}</small><hr><button onclick="viewPost(${p.id})" style="background:var(--primary); border:none; padding:4px 12px; border-radius:8px;">مطالعه بیشتر</button></div>`).join('');
-    createWindow('blog', '📰 بلاگ پارسی', `
-        ${currentUser.role === 'admin' ? `<div style="margin-bottom:15px;"><input type="text" id="post-title" placeholder="عنوان پست..." style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px; margin-bottom:10px;"><textarea id="post-content" placeholder="محتوا..." rows="3" style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:12px;"></textarea><button onclick="createPost()" style="background:var(--success); border:none; padding:8px 20px; border-radius:12px;">➕ انتشار پست جدید</button></div><hr>` : ''}
-        <div id="posts-list">${postsHtml || '<div>هیچ پستی وجود ندارد</div>'}</div>
-    `, 650, 550);
-}
-
-function createPost() {
-    let title = document.getElementById('post-title')?.value.trim();
-    let content = document.getElementById('post-content')?.value;
-    if (!title || !content) { showNotif('عنوان و محتوا الزامی است', 'error'); return; }
-    blogPosts.unshift({ id: Date.now(), title, content, author: currentUser.username, date: new Date().toISOString() });
-    localStorage.setItem('blog_posts', JSON.stringify(blogPosts));
-    showNotif('پست منتشر شد', 'success');
-    closeWindow('blog'); setTimeout(() => openBlog(), 100);
-}
-
-function viewPost(id) {
-    let post = blogPosts.find(p => p.id === id);
-    if (post) createWindow(`post-${id}`, `📄 ${post.title}`, `<h2>${post.title}</h2><p>${post.content}</p><hr><small>نویسنده: ${post.author} | ${new Date(post.date).toLocaleString()}</small>`, 550, 450);
-}
-
-// 8. سایر برنامه‌ها
-function openChat() { /* مشابه قبل */ createWindow('chat', '💬 چت', '<div>چت گروهی فعال است</div>', 500,400); }
-function openProfile() { createWindow('profile', '👤 پروفایل', `<div>نام: ${currentUser.name}<br>نقش: ${currentUser.role}</div>`, 400,300); }
-function openStore() { createWindow('store', '🛒 فروشگاه', '<div>ابزارهای Persia OS</div>', 450,350); }
-function openTrash() { let list = trashFiles.map((f,i)=>`<div>🗑️ ${f.name} <button onclick="restoreTrash(${i})">بازیابی</button></div>`).join('') || 'خالی'; createWindow('trash', '🗑️ سطل زباله', list, 450,350); }
-function restoreTrash(i) { let f = trashFiles.splice(i,1)[0]; if(f) showNotif(`${f.name} بازیابی شد`,'success'); localStorage.setItem('trash_files',JSON.stringify(trashFiles)); closeWindow('trash'); setTimeout(()=>openTrash(),100); }
-function openWallpaper() { createWindow('wallpaper', '🖌️ والپیپر', `<div>انتخاب والپیپر:<br>${['default','matrix','sunset','ocean'].map(w=>`<button onclick="setWallpaper('${w}')">${w}</button>`).join('')}</div>`, 400,300); }
-function setWallpaper(type) { let wp = document.getElementById('wallpaper'); wp.className = `live-wallpaper wallpaper-${type}`; localStorage.setItem('selected_wallpaper',type); showNotif(`والپیپر ${type} تنظیم شد`,'success'); }
-function openSettings() { createWindow('settings', '⚙️ تنظیمات', `<div><button onclick="changePassword()">تغییر رمز</button><button onclick="clearAllData()">پاک کردن کش</button><button onclick="checkHardware()">بررسی سخت افزار</button></div>`, 450,350); }
-function openAbout() { createWindow('about', 'ℹ️ درباره ما', `<div><h2>Persia OS Ultimate v14.0</h2><p>سیستم عامل کامل پارسی</p><p>توسعه: شبکه فنآوری پارسی</p><p>نسخه: 14.0 | پایدار</p></div>`, 450,400); }
-function openContact() { createWindow('contact', '📞 ارتباط با ما', `<div><p>📧 persiantechnet@gmail.com</p><p>📞 09373622762</p><p>📍 فارس - کوار - بلوار امام خمینی</p></div>`, 450,350); }
-function openMap() { createWindow('map', '🗺️ نقشه', `<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=52.0,29.5,53.0,30.0&layer=mapnik" style="width:100%; height:400px; border:none;"></iframe>`, 650,500); }
-function openStats() { createWindow('stats', '📈 آمار سیستم', `<div><p>🖥️ پلتفرم: ${hardwareInfo.platform}</p><p>🌐 مرورگر: ${hardwareInfo.browser.split(' ')[0]}</p><p>📊 وضعیت: ${hardwareInfo.online ? 'آنلاین' : 'آفلاین'}</p><p>👥 کاربران: ${Object.keys(users).length}</p><p>💬 پیام‌ها: ${globalChat.length}</p><p>📁 فایل‌ها: ${(userFiles[currentUser?.username] || []).length}</p></div>`, 450,400); }
-function openAdmin() { if(currentUser.role !== 'admin') return; let userList = Object.entries(users).map(([u,data])=>`<div>${u} - ${data.role} <button onclick="toggleUser('${u}')">${data.isActive?'غیرفعال':'فعال'}</button></div>`).join(''); createWindow('admin', '👑 مدیریت', `<h3>مدیریت کاربران</h3>${userList}<button onclick="viewAllStats()">آمار کل</button>`, 550,500); }
-function toggleUser(u) { users[u].isActive = !users[u].isActive; localStorage.setItem('persia_users_v3', JSON.stringify(users)); showNotif(`وضعیت ${u} تغییر کرد`,'success'); closeWindow('admin'); setTimeout(()=>openAdmin(),100); }
-function viewAllStats() { let total = Object.keys(users).length; let active = Object.values(users).filter(u=>u.isActive).length; alert(`کل کاربران: ${total}\nفعال: ${active}\nپیام‌ها: ${globalChat.length}`); }
-function changePassword() { let newPass = prompt('رمز جدید:'); if(newPass?.length>=4 && !isGuest) { users[currentUser.username].password = btoa(newPass); localStorage.setItem('persia_users_v3', JSON.stringify(users)); showNotif('رمز تغییر کرد','success'); } }
-function clearAllData() { if(confirm('پاک کردن تمام کش؟')) { localStorage.clear(); showNotif('کش پاک شد، صفحه بازنشانی می‌شود','warning'); setTimeout(()=>location.reload(),1500); } }
-
-// ==================== هوش مصنوعی پیشرفته ====================
-function toggleAI() { let p = document.getElementById('ai-panel'); p.style.display = p.style.display === 'block' ? 'none' : 'block'; }
-function askAI() {
-    let q = document.getElementById('ai-input').value.trim();
-    if (!q) return;
-    let chatDiv = document.getElementById('ai-chat');
-    chatDiv.innerHTML += `<div class="ai-response" style="text-align:left; color:#86efac;">👤 ${escapeHtml(q)}</div>`;
-    document.getElementById('ai-input').value = '';
-    setTimeout(() => {
-        let answer = generateAIResponse(q);
-        chatDiv.innerHTML += `<div class="ai-response" style="text-align:right; color:var(--primary);">🤖 ${answer}</div>`;
-        chatDiv.scrollTop = chatDiv.scrollHeight;
-    }, 300);
-}
-
-function generateAIResponse(q) {
-    let lower = q.toLowerCase();
-    if (lower.includes('سلام') || lower.includes('درود')) return 'سلام! وقت بخیر. به Persia OS خوش آمدید. چطور می‌توانم کمک کنم؟';
-    if (lower.includes('فایل') || lower.includes('مدیریت فایل')) return 'برای مدیریت فایل‌ها، از آیکون 📁 روی دسکتاپ استفاده کنید. می‌توانید پوشه بسازید، فایل آپلود کنید و فایل‌های خود را مدیریت کنید.';
-    if (lower.includes('موزیک') || lower.includes('موسیقی') || lower.includes('فیلم')) return 'به بخش مدیا پلیر بروید. می‌توانید موزیک و فیلم به کتابخانه اضافه کنید و پخش کنید.';
-    if (lower.includes('ترمینال')) return 'ترمینال Persia OS از دستورات help, ls, clear, whoami, date, info, files پشتیبانی می‌کند.';
-    if (lower.includes('مرورگر') || lower.includes('اینترنت')) return 'مرورگر Persia را باز کنید. می‌توانید هر سایتی را جستجو کنید.';
-    if (lower.includes('اداری') || lower.includes('سند')) return 'سیستم اداری به شما امکان ایجاد، ویرایش و مدیریت اسناد را می‌دهد.';
-    if (lower.includes('والپیپر')) return 'برای تغییر والپیپر، از بخش والپیپر استفاده کنید. والپیپرهای زنده با انیمیشن در دسترس هستند.';
-    if (lower.includes('ادمین') || lower.includes('مدیر')) return currentUser.role === 'admin' ? 'شما مدیر سیستم هستید. می‌توانید کاربران را مدیریت کنید.' : 'برای دسترسی به پنل مدیریت به حساب ادمین نیاز دارید.';
-    if (lower.includes('حافظه') || lower.includes('رم')) return `حافظه مصرفی: ${Math.floor(Math.random() * 50 + 30)}% | فضای ذخیره‌سازی: حدود ${Math.floor((userFiles[currentUser?.username] || []).reduce((a,f)=>a+(f.size||0),0)/1024)} KB استفاده شده.`;
-    if (lower.includes('سخت افزار')) return `پلتفرم: ${hardwareInfo.platform} | مرورگر: ${hardwareInfo.browser.split(' ')[0]} | وضعیت: ${hardwareInfo.online ? 'آنلاین' : 'آفلاین'}`;
-    return `پاسخ: ${q.substring(0, 50)}... سوال خوبی پرسیدید! من Persia AI هستم. می‌توانم در زمینه مدیریت فایل، مدیا، ترمینال، مرورگر، سیستم اداری و... کمک کنم.`;
-}
-
-// ==================== یوتیلیتی ====================
-function showNotif(msg, type='info') { let div = document.createElement('div'); div.className = 'notification'; div.style.cssText = `position:fixed; top:20px; left:20px; background:rgba(10,10,21,0.95); border-radius:12px; padding:12px; border-right:3px solid ${type==='success'?'#2ecc71':type==='error'?'#e74c3c':'#f1c40f'}; z-index:2000; animation:slideIn 0.3s;`; div.innerHTML = `<strong>${type==='success'?'✓':type==='error'?'⚠':'ℹ'}</strong> ${msg}`; document.body.appendChild(div); setTimeout(()=>div.remove(),4000); }
-function updateDateTime() { document.getElementById('taskbar-time').innerHTML = new Date().toLocaleTimeString('fa-IR'); }
-function toggleStartMenu() { document.getElementById('start-menu').classList.toggle('show'); }
+// AI
+function toggleAI() { let p=document.getElementById('ai-panel'); p.style.display=p.style.display==='block'?'none':'block'; }
+function askAI() { let q=document.getElementById('ai-input').value.trim(); if(!q) return; let chat=document.getElementById('ai-chat'); chat.innerHTML+=`<div style="text-align:left; color:#86efac;">👤 ${escapeHtml(q)}</div>`; document.getElementById('ai-input').value=''; setTimeout(()=>{ let a=generateAIResponse(q); chat.innerHTML+=`<div style="text-align:right; color:var(--primary); background:rgba(0,0,0,0.3); padding:8px; border-radius:12px; margin:5px;">🤖 ${a}</div>`; chat.scrollTop=chat.scrollHeight; },300); }
+function generateAIResponse(q) { let l=q.toLowerCase(); if(l.includes('سلام')) return 'سلام! به Persia OS v5.0 خوش آمدید.'; if(l.includes('بلوتوث')) return 'بلوتوث پشتیبانی می‌شود. از پنل بلوتوث استفاده کنید.'; if(l.includes('پرینتر')) return 'از دکمه پرینتر استفاده کنید.'; if(l.includes('فایل')) return 'فایل منیجر حرفه‌ای با ظرفیت 5GB.'; if(l.includes('تماس')) return 'از بخش مخاطبین می‌توانید تماس بگیرید (شبیه‌سازی).'; return `پاسخ: سوال "${q}" دریافت شد. من Persia AI هستم.`; }
 function escapeHtml(t) { let d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+function showNotif(msg,type='info') { let div=document.createElement('div'); div.className='notification'; div.innerHTML=`<strong>${type==='success'?'✓':type==='error'?'⚠':'ℹ'}</strong><br>${msg}`; document.getElementById('notification-center').appendChild(div); setTimeout(()=>div.remove(),4000); }
 function logout() { if(confirm('خروج از سیستم؟')) location.reload(); }
-function shutdown() { if(confirm('خاموش کردن سیستم؟')) document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:white"><h1>سیستم خاموش شد 🔴</h1><p style="margin-top:20px;">برای راه‌اندازی مجدد صفحه را رفرش کنید</p></div>'; }
-function startServices() { let saved = localStorage.getItem('selected_wallpaper'); if(saved) setWallpaper(saved); }
-document.addEventListener('click', (e) => { if(!e.target.closest('#start-menu') && !e.target.closest('.start-btn')) document.getElementById('start-menu')?.classList.remove('show'); if(!e.target.closest('#ai-panel') && !e.target.closest('.ai-fab')) document.getElementById('ai-panel')?.style.display='none'; });
-document.querySelectorAll('.auth-tab').forEach(t=>{ t.addEventListener('click',()=>{ document.querySelectorAll('.auth-tab').forEach(ta=>ta.classList.remove('active')); t.classList.add('active'); let target=t.dataset.tab; document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active')); document.getElementById(`${target}-form`).classList.add('active'); }); });
-function showRegError(msg) { let e=document.getElementById('register-error'); e.innerText=msg; e.style.display='block'; setTimeout(()=>e.style.display='none',3000); }
+function shutdown() { document.body.innerHTML=`<div style="display:flex; justify-content:center; align-items:center; height:100vh; background:#000; color:white; flex-direction:column;"><div style="font-size:5rem;">🔴</div><h1>سیستم خاموش شد</h1><p>Persia OS v5.0 | برای راه‌اندازی مجدد رفرش کنید</p></div>`; }
+function restartSystem() { if(confirm('راه‌اندازی مجدد؟')) location.reload(); }
+
+// رویدادها
+document.querySelectorAll('.auth-tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.auth-tab').forEach(ta=>ta.classList.remove('active'));t.classList.add('active');let target=t.dataset.tab;document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active'));document.getElementById(`${target}-form`).classList.add('active');});});
+document.addEventListener('click',(e)=>{ if(!e.target.closest('#start-menu') && !e.target.closest('.start-btn')) document.getElementById('start-menu').classList.remove('show'); if(!e.target.closest('#ai-panel') && !e.target.closest('.ai-fab')) document.getElementById('ai-panel').style.display='none'; });
 document.addEventListener('DOMContentLoaded', bootSystem);
 </script>
 </body>
