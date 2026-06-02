@@ -3,16 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
-    <title>Persia OS Quantum Ultimate | PersianTechNet - سازمان شبکه فنآوری پارسی</title>
-    <meta name="description" content="سیستم عامل هوشمند پارسی | ارائه خدمات فناوری اطلاعات، شبکه، سخت‌افزار، طراحی سایت، هاست، دامنه و مشاوره دیجیتال">
-    <meta name="keywords" content="فناوری اطلاعات, شبکه, اینترنت, هاست, دامنه, طراحی سایت, Persia OS, سیستم عامل, PersianTechNet">
-    <meta name="author" content="مهندس سعید صفا | شبکه فنآوری پارسی">
+    <title>Persia OS Ultimate - سیستم عامل هوشمند پارسی</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===================================== */
-        /* === DESIGN SYSTEM & VARIABLES === */
-        /* ===================================== */
         :root {
             --primary: #00aaff;
             --primary-dark: #0099ee;
@@ -30,37 +24,23 @@
             --glass-hover: rgba(255, 255, 255, 0.15);
             --glass-border: rgba(0, 170, 255, 0.4);
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
             --glow: 0 0 30px rgba(0, 170, 255, 0.4);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
         }
-
-        /* Theme Variants */
-        .theme-matrix { --primary: #00ff41; --primary-dark: #00cc33; --accent: #39ff14; --glass-border: rgba(0, 255, 65, 0.5); }
-        .theme-persian { --primary: #c81d11; --primary-dark: #a0180f; --accent: #ffd700; --glass-border: rgba(200, 29, 17, 0.5); }
-        .theme-sunset { --primary: #ff6b6b; --primary-dark: #ff4757; --accent: #ffd93d; --glass-border: rgba(255, 107, 107, 0.5); }
-        .theme-neon { --primary: #ff00ff; --primary-dark: #cc00cc; --accent: #00ffff; --glass-border: rgba(255, 0, 255, 0.5); }
-
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
         body {
             font-family: 'Segoe UI', 'Vazirmatn', Tahoma, sans-serif;
             background: var(--dark);
             color: var(--light);
             height: 100vh;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
-
-        /* ===================================== */
-        /* === BOOT SCREEN === */
-        /* ===================================== */
+        /* Boot Screen */
         #boot-screen {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--dark), var(--darker));
             display: flex;
@@ -75,13 +55,9 @@
         .boot-progress { width: 350px; height: 4px; background: var(--glass); border-radius: 2px; overflow: hidden; margin: 1rem auto; border: 1px solid var(--glass-border); }
         .boot-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.3s; }
         .boot-message { color: var(--gray); font-size: 0.85rem; margin-top: 1rem; }
-
-        /* ===================================== */
-        /* === LOGIN SCREEN === */
-        /* ===================================== */
-        #login-screen {
-            position: fixed;
-            top: 0; left: 0;
+        /* Auth Screen */
+        #auth-screen {
+            position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--dark), #1e1b4b);
             display: none;
@@ -90,47 +66,48 @@
             z-index: 9999;
             opacity: 0;
             transition: opacity 0.8s ease;
+            overflow-y: auto;
         }
-        .login-card {
+        .auth-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
-            padding: 2.5rem;
-            width: 400px;
+            padding: 2rem;
+            width: 450px;
             max-width: 90%;
-            text-align: center;
-            animation: fadeInUp 0.5s ease;
+            margin: 20px;
         }
-        .login-logo { font-size: 4rem; margin-bottom: 1rem; color: var(--primary); }
-        .login-title { font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary); }
-        .login-subtitle { color: var(--gray); margin-bottom: 2rem; }
-        .login-input {
+        .auth-tabs { display: flex; gap: 10px; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); }
+        .auth-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; background: none; border: none; color: var(--gray); font-size: 1rem; transition: all 0.3s; }
+        .auth-tab.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .auth-input {
             width: 100%; padding: 12px; margin: 10px 0;
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-md);
             color: white;
             font-size: 1rem;
-            transition: all 0.3s;
         }
-        .login-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
-        .login-btn {
+        .auth-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        .auth-btn {
             width: 100%; padding: 12px; margin-top: 20px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none; border-radius: var(--radius-md);
             color: white; font-weight: bold; cursor: pointer;
             transition: all 0.3s;
         }
-        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,170,255,0.4); }
-        .login-error { color: var(--error); margin-top: 10px; font-size: 0.85rem; display: none; }
-
-        /* ===================================== */
-        /* === DESKTOP & TASKBAR === */
-        /* ===================================== */
+        .guest-btn {
+            background: linear-gradient(135deg, var(--gray), #4a5568);
+            margin-top: 10px;
+        }
+        .auth-error { color: var(--error); margin-top: 10px; font-size: 0.85rem; display: none; }
+        .auth-success { color: var(--success); margin-top: 10px; font-size: 0.85rem; display: none; }
+        /* Desktop */
         #desktop {
-            width: 100%;
-            height: calc(100vh - 60px);
+            width: 100%; height: calc(100vh - 60px);
             background: radial-gradient(circle at 20% 80%, rgba(0,170,255,0.1), transparent 50%),
                         radial-gradient(circle at 80% 20%, rgba(157,80,187,0.1), transparent 50%),
                         var(--dark);
@@ -163,7 +140,7 @@
         }
         .desktop-icon .icon { font-size: 2rem; margin-bottom: 5px; }
         .desktop-icon .label { font-size: 0.75rem; }
-
+        .desktop-icon.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
         .taskbar {
             position: fixed; bottom: 0; left: 0; right: 0;
             height: 60px;
@@ -181,21 +158,17 @@
             border: none; padding: 8px 20px;
             border-radius: var(--radius-md);
             color: white; font-weight: bold;
-            cursor: pointer; transition: all 0.3s;
+            cursor: pointer;
         }
-        .start-btn:hover { transform: scale(1.02); box-shadow: var(--glow); }
         .taskbar-apps { display: flex; gap: 8px; flex: 1; justify-content: center; }
         .taskbar-app {
             background: var(--glass); padding: 6px 14px;
             border-radius: var(--radius-md); font-size: 0.75rem;
-            cursor: pointer; transition: all 0.2s;
+            cursor: pointer;
             display: flex; align-items: center; gap: 6px;
         }
         .taskbar-app.active { background: rgba(0,170,255,0.3); border-bottom: 2px solid var(--primary); }
-        .taskbar-app:hover { background: var(--glass-hover); }
         .taskbar-right { display: flex; gap: 15px; align-items: center; font-size: 0.8rem; }
-
-        /* Start Menu */
         #start-menu {
             position: fixed; bottom: 65px; left: 20px;
             width: 350px; max-height: 70vh;
@@ -206,26 +179,20 @@
             display: none; z-index: 1100;
             overflow-y: auto;
         }
-        #start-menu.show { display: block; animation: slideUp 0.3s ease; }
-        .start-header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--dark));
-            padding: 20px; text-align: center;
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        }
+        #start-menu.show { display: block; animation: fadeInUp 0.3s ease; }
+        .start-header { background: linear-gradient(135deg, var(--primary-dark), var(--dark)); padding: 20px; text-align: center; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
         .start-user { font-size: 1.2rem; font-weight: bold; }
         .start-user-status { font-size: 0.7rem; color: var(--success); }
         .start-category { padding: 10px; }
-        .start-category-title { padding: 8px 12px; font-size: 0.7rem; color: var(--primary); letter-spacing: 1px; }
+        .start-category-title { padding: 8px 12px; font-size: 0.7rem; color: var(--primary); }
         .start-item {
             padding: 10px 12px; border-radius: var(--radius-md);
             cursor: pointer; display: flex; align-items: center; gap: 12px;
             transition: all 0.2s; color: white;
         }
         .start-item:hover { background: rgba(0,170,255,0.3); transform: translateX(-5px); }
-
-        /* ===================================== */
-        /* === WINDOW SYSTEM === */
-        /* ===================================== */
+        .start-item.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+        /* Window System */
         .window {
             position: absolute;
             background: var(--glass);
@@ -236,7 +203,6 @@
             min-width: 400px; min-height: 350px;
             display: flex; flex-direction: column;
             z-index: 500; overflow: hidden;
-            transition: opacity 0.2s;
         }
         .window-header {
             padding: 12px 18px;
@@ -245,15 +211,13 @@
             align-items: center; cursor: move;
             border-bottom: 1px solid var(--glass-border);
         }
-        .window-title { font-weight: bold; color: white; }
+        .window-title { font-weight: bold; }
         .window-controls { display: flex; gap: 10px; }
-        .win-btn { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all 0.2s; }
+        .win-btn { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
         .win-close { background: var(--error); }
         .win-minimize { background: var(--warning); }
         .win-maximize { background: var(--success); }
-        .win-btn:hover { transform: scale(1.2); }
-        .window-content { padding: 20px; flex: 1; overflow-y: auto; color: white; }
-
+        .window-content { padding: 20px; flex: 1; overflow-y: auto; }
         /* Widgets */
         .system-widget {
             position: fixed; bottom: 70px; right: 20px;
@@ -273,9 +237,8 @@
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 900;
             box-shadow: var(--shadow), var(--glow);
-            transition: all 0.3s; animation: float 3s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
-        .ai-fab:hover { transform: scale(1.1); }
         .ai-panel {
             position: fixed; bottom: 135px; left: 20px;
             width: 350px;
@@ -285,7 +248,6 @@
             border-radius: var(--radius-lg);
             padding: 15px;
             display: none; z-index: 901;
-            animation: fadeInUp 0.2s ease;
         }
         .notification-center {
             position: fixed; top: 20px; left: 20px;
@@ -299,20 +261,15 @@
             border-right: 3px solid var(--primary);
             animation: slideIn 0.3s;
         }
-
-        /* Animations */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideIn { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--glass); border-radius: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
-
         @media (max-width: 768px) {
             .window { min-width: 90vw; min-height: 60vh; left: 5vw !important; }
             .desktop-icon { width: 75px; }
-            .taskbar-apps { max-width: 40%; }
         }
     </style>
 </head>
@@ -322,39 +279,45 @@
 <div id="boot-screen">
     <div class="boot-container">
         <div class="boot-logo">📡</div>
-        <div class="boot-title">Persia OS Quantum Ultimate v11.0</div>
+        <div class="boot-title">Persia OS Quantum Ultimate v12.0</div>
         <div class="boot-progress"><div class="boot-progress-fill" id="boot-progress"></div></div>
         <div class="boot-message" id="boot-message">در حال بارگذاری هسته سیستم...</div>
     </div>
 </div>
 
-<!-- Login Screen -->
-<div id="login-screen">
-    <div class="login-card">
-        <div class="login-logo">🦁</div>
-        <div class="login-title">Persia OS</div>
-        <div class="login-subtitle">سیستم عامل هوشمند پارسی | شبکه فنآوری پارسی</div>
-        <input type="text" id="login-username" class="login-input" placeholder="نام کاربری" value="PersianTechNet">
-        <input type="password" id="login-password" class="login-input" placeholder="رمز عبور" value="123@diba">
-        <button class="login-btn" onclick="login()">✨ ورود به سیستم</button>
-        <div id="login-error" class="login-error"></div>
+<!-- Auth Screen (Login & Register) -->
+<div id="auth-screen">
+    <div class="auth-card">
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">🔐 ورود</button>
+            <button class="auth-tab" data-tab="register">📝 ثبت‌نام</button>
+        </div>
+        
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form active">
+            <input type="text" id="login-username" class="auth-input" placeholder="نام کاربری">
+            <input type="password" id="login-password" class="auth-input" placeholder="رمز عبور">
+            <button class="auth-btn" onclick="handleLogin()">✨ ورود</button>
+            <button class="auth-btn guest-btn" onclick="guestLogin()">👤 ورود به عنوان مهمان</button>
+            <div id="login-error" class="auth-error"></div>
+        </div>
+        
+        <!-- Register Form -->
+        <div id="register-form" class="auth-form">
+            <input type="text" id="reg-username" class="auth-input" placeholder="نام کاربری">
+            <input type="password" id="reg-password" class="auth-input" placeholder="رمز عبور (حداقل 4 کاراکتر)">
+            <input type="email" id="reg-email" class="auth-input" placeholder="ایمیل (اختیاری)">
+            <button class="auth-btn" onclick="handleRegister()">📝 ثبت‌نام</button>
+            <div id="register-error" class="auth-error"></div>
+            <div id="register-success" class="auth-success"></div>
+        </div>
     </div>
 </div>
 
-<!-- Desktop (ادغام شده با بخش‌های سازمانی) -->
+<!-- Desktop -->
 <div id="desktop">
-    <div class="desktop-icons">
-        <div class="desktop-icon" onclick="openApp('filemanager')"><div class="icon">📁</div><div class="label">مدیر فایل</div></div>
-        <div class="desktop-icon" onclick="openApp('chat')"><div class="icon">💬</div><div class="label">چت هوشمند</div></div>
-        <div class="desktop-icon" onclick="openApp('settings')"><div class="icon">⚙️</div><div class="label">تنظیمات</div></div>
-        <div class="desktop-icon" onclick="openApp('terminal')"><div class="icon">💻</div><div class="label">ترمینال</div></div>
-        <div class="desktop-icon" onclick="openApp('store')"><div class="icon">🛒</div><div class="label">فروشگاه</div></div>
-        <div class="desktop-icon" onclick="openApp('about')"><div class="icon">ℹ️</div><div class="label">درباره</div></div>
-        <div class="desktop-icon" onclick="openApp('media')"><div class="icon">🎵</div><div class="label">پخش رسانه</div></div>
-        <div class="desktop-icon" onclick="openApp('gallery')"><div class="icon">🖼️</div><div class="label">گالری</div></div>
-        <div class="desktop-icon" onclick="openApp('calculator')"><div class="icon">🧮</div><div class="label">ماشین حساب</div></div>
-        <div class="desktop-icon" onclick="openApp('notes')"><div class="icon">📓</div><div class="label">یادداشت‌ها</div></div>
-        <div class="desktop-icon" onclick="openApp('organization')"><div class="icon">🏢</div><div class="label">سازمان</div></div>
+    <div class="desktop-icons" id="desktop-icons">
+        <!-- آیکون‌ها توسط JS بر اساس نقش کاربر ساخته می‌شوند -->
     </div>
 
     <div class="taskbar">
@@ -369,36 +332,21 @@
     <div id="start-menu">
         <div class="start-header">
             <div class="start-user" id="start-username">کاربر</div>
-            <div class="start-user-status">🟢 آنلاین | شبکه فنآوری پارسی</div>
+            <div class="start-user-status" id="start-user-role">🟢 آنلاین</div>
         </div>
-        <div class="start-category">
-            <div class="start-category-title">📱 برنامه‌ها</div>
-            <div class="start-item" onclick="openApp('filemanager'); toggleStartMenu()">📁 مدیر فایل</div>
-            <div class="start-item" onclick="openApp('chat'); toggleStartMenu()">💬 چت هوشمند</div>
-            <div class="start-item" onclick="openApp('settings'); toggleStartMenu()">⚙️ تنظیمات</div>
-            <div class="start-item" onclick="openApp('terminal'); toggleStartMenu()">💻 ترمینال</div>
-            <div class="start-item" onclick="openApp('store'); toggleStartMenu()">🛒 فروشگاه</div>
-            <div class="start-item" onclick="openApp('about'); toggleStartMenu()">ℹ️ درباره Persia OS</div>
-            <div class="start-item" onclick="openApp('organization'); toggleStartMenu()">🏢 درباره سازمان</div>
-        </div>
-        <div class="start-category">
-            <div class="start-category-title">⚙️ سیستم</div>
-            <div class="start-item" onclick="shutdownSystem()">🔌 خاموش کردن</div>
-            <div class="start-item" onclick="lockScreen()">🔒 قفل صفحه</div>
-        </div>
+        <div id="start-menu-content"></div>
     </div>
 
     <div class="system-widget" id="system-widget">
         <div>🖥️ CPU: <span id="cpu-usage">0</span>%</div>
         <div>💾 RAM: <span id="ram-usage">0</span>%</div>
-        <div>🌡️ TEMP: <span id="temp">45</span>°C</div>
     </div>
 
     <div class="ai-fab" onclick="toggleAIPanel()">🧠</div>
     <div class="ai-panel" id="ai-panel">
-        <h3 style="color: var(--primary); margin-bottom: 10px;">🤖 Persia AI Assistant</h3>
+        <h3 style="color: var(--primary); margin-bottom: 10px;">🤖 Persia AI</h3>
         <div id="ai-conversation" style="height: 200px; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 10px; margin-bottom: 10px;">
-            <div style="color: var(--success);">سلام! من Persia AI هستم. به شبکه فنآوری پارسی خوش آمدید. چطور میتونم کمک کنم؟</div>
+            <div style="color: var(--success);">سلام! به Persia OS خوش آمدید. چطور میتونم کمک کنم؟</div>
         </div>
         <textarea id="ai-input" placeholder="سوال خود را بپرسید..." style="width: 100%; background: rgba(0,0,0,0.3); border: none; border-radius: var(--radius-md); padding: 10px; color: white; resize: none;"></textarea>
         <button onclick="askAI()" style="width: 100%; margin-top: 10px; padding: 10px; background: var(--primary); border: none; border-radius: var(--radius-md); color: white; cursor: pointer;">ارسال</button>
@@ -409,35 +357,38 @@
 
 <script>
 // ============================================
-// Persia OS Quantum Ultimate v11.0 + PersianTechNet Organization Page
-// ادغام کامل سیستم عامل و صفحه سازمانی
+// Persia OS Ultimate v12.0 - Complete Auth System
 // ============================================
 
 // ========== 1. مدیریت کاربران ==========
 let currentUser = null;
-let isLocked = false;
+let isGuest = false;
+
+// ساختار کاربران
 let users = JSON.parse(localStorage.getItem('persia_users')) || {};
 
-if (Object.keys(users).length === 0) {
-    users['PersianTechNet'] = { password: btoa('123@diba'), email: 'persiantechnet@gmail.com', role: 'admin', avatar: 'PT', createdAt: new Date().toISOString() };
-    users['guest'] = { password: btoa('guest'), email: 'guest@persiaos.ir', role: 'user', avatar: '👤', createdAt: new Date().toISOString() };
+// ایجاد کاربر ادمین پیش‌فرض (اگر وجود نداشته باشد)
+if (!users['admin']) {
+    users['admin'] = {
+        password: btoa('admin123'),
+        email: 'admin@persiaos.ir',
+        role: 'admin',
+        avatar: '👑',
+        createdAt: new Date().toISOString(),
+        isActive: true
+    };
     localStorage.setItem('persia_users', JSON.stringify(users));
 }
 
-function showNotification(message, type = 'success') {
-    const container = document.getElementById('notification-center');
-    const notif = document.createElement('div');
-    notif.className = 'notification';
-    notif.style.borderRightColor = type === 'success' ? '#2ecc71' : type === 'error' ? '#e74c3c' : '#f1c40f';
-    notif.innerHTML = `<div style="font-weight: bold; margin-bottom: 5px;">${type === 'success' ? '✓ موفقیت' : type === 'error' ? '⚠ خطا' : 'ℹ اطلاعات'}</div><div style="font-size: 0.85rem;">${message}</div>`;
-    container.appendChild(notif);
-    setTimeout(() => { notif.style.opacity = '0'; setTimeout(() => notif.remove(), 300); }, 4000);
-}
+// ========== 2. ذخیره‌سازی داده‌های برنامه ==========
+let chatMessages = JSON.parse(localStorage.getItem('persia_chat')) || [];
+let galleryImages = JSON.parse(localStorage.getItem('persia_gallery')) || [];
+let notes = JSON.parse(localStorage.getItem('persia_notes')) || [{ title: 'خوش آمدید', content: 'به Persia OS خوش آمدید!', date: new Date().toISOString(), userId: 'system' }];
 
-// ========== 2. بوت سیستم ==========
+// ========== 3. بوت سیستم ==========
 function bootSystem() {
     let progress = 0;
-    const messages = ['بارگذاری هسته سیستم...', 'راه‌اندازی ماژول‌های امنیتی...', 'اتصال به حافظه مجازی...', 'بارگذاری درایورها...', 'راه‌اندازی سرویس‌های شبکه...', 'آماده‌سازی محیط کاربری...', 'سیستم آماده است!'];
+    const messages = ['بارگذاری هسته سیستم...', 'راه‌اندازی ماژول‌های امنیتی...', 'اتصال به حافظه مجازی...', 'راه‌اندازی سرویس‌های شبکه...', 'آماده‌سازی محیط کاربری...', 'سیستم آماده است!'];
     let msgIndex = 0;
     const interval = setInterval(() => {
         progress += Math.random() * 15;
@@ -450,16 +401,16 @@ function bootSystem() {
                 document.getElementById('boot-screen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('boot-screen').style.display = 'none';
-                    document.getElementById('login-screen').style.display = 'flex';
-                    setTimeout(() => document.getElementById('login-screen').style.opacity = '1', 50);
+                    document.getElementById('auth-screen').style.display = 'flex';
+                    setTimeout(() => document.getElementById('auth-screen').style.opacity = '1', 50);
                 }, 500);
             }, 300);
         }
     }, 200);
 }
 
-// ========== 3. لاگین ==========
-function login() {
+// ========== 4. توابع احراز هویت ==========
+function handleLogin() {
     const username = document.getElementById('login-username').value.trim();
     const password = document.getElementById('login-password').value;
     const errorEl = document.getElementById('login-error');
@@ -478,56 +429,212 @@ function login() {
         return;
     }
     
-    currentUser = { username, email: user.email, role: user.role, avatar: user.avatar };
-    document.getElementById('start-username').innerHTML = `${username} <span style="color:#2ecc71;">●</span>`;
-    document.getElementById('taskbar-user').innerHTML = `👤 ${username}`;
-    document.getElementById('login-screen').style.opacity = '0';
+    if (!user.isActive) {
+        errorEl.textContent = 'حساب کاربری شما غیرفعال است. با مدیر تماس بگیرید.';
+        errorEl.style.display = 'block';
+        return;
+    }
     
+    currentUser = { username, email: user.email, role: user.role, avatar: user.avatar };
+    isGuest = false;
+    completeLogin();
+}
+
+function handleRegister() {
+    const username = document.getElementById('reg-username').value.trim();
+    const password = document.getElementById('reg-password').value;
+    const email = document.getElementById('reg-email').value.trim();
+    const errorEl = document.getElementById('register-error');
+    const successEl = document.getElementById('register-success');
+    
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+    
+    if (!username || !password) {
+        errorEl.textContent = 'نام کاربری و رمز عبور الزامی هستند';
+        errorEl.style.display = 'block';
+        return;
+    }
+    
+    if (password.length < 4) {
+        errorEl.textContent = 'رمز عبور باید حداقل 4 کاراکتر باشد';
+        errorEl.style.display = 'block';
+        return;
+    }
+    
+    if (users[username]) {
+        errorEl.textContent = 'این نام کاربری قبلاً ثبت شده است';
+        errorEl.style.display = 'block';
+        return;
+    }
+    
+    users[username] = {
+        password: btoa(password),
+        email: email || '',
+        role: 'user',
+        avatar: '👤',
+        createdAt: new Date().toISOString(),
+        isActive: true
+    };
+    localStorage.setItem('persia_users', JSON.stringify(users));
+    
+    successEl.textContent = 'ثبت‌نام با موفقیت انجام شد! اکنون می‌توانید وارد شوید.';
+    successEl.style.display = 'block';
+    
+    // پاک کردن فرم
+    document.getElementById('reg-username').value = '';
+    document.getElementById('reg-password').value = '';
+    document.getElementById('reg-email').value = '';
+    
+    // تغییر به تب لاگین
+    document.querySelector('.auth-tab[data-tab="login"]').click();
+}
+
+function guestLogin() {
+    currentUser = { username: 'مهمان', email: '', role: 'guest', avatar: '👤' };
+    isGuest = true;
+    completeLogin();
+}
+
+function completeLogin() {
+    document.getElementById('auth-screen').style.opacity = '0';
     setTimeout(() => {
-        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('desktop').style.display = 'block';
         document.querySelector('.taskbar').style.display = 'flex';
         document.getElementById('system-widget').style.display = 'block';
-        showNotification(`به Persia OS خوش آمدید ${username}! | شبکه فنآوری پارسی`, 'success');
+        
+        updateUIForUser();
         startSystemServices();
+        showNotification(`به Persia OS خوش آمدید ${currentUser.username}!`, 'success');
+        
+        // نمایش پیام ویژه برای مهمان
+        if (isGuest) {
+            setTimeout(() => {
+                showNotification('⚠️ شما به عنوان مهمان وارد شده‌اید. برای استفاده کامل از قابلیت‌ها، ثبت‌نام کنید.', 'warning');
+            }, 1000);
+        }
     }, 500);
 }
 
-function lockScreen() {
-    isLocked = true;
-    document.getElementById('desktop').style.display = 'none';
-    document.querySelector('.taskbar').style.display = 'none';
-    document.getElementById('system-widget').style.display = 'none';
-    document.getElementById('login-screen').style.display = 'flex';
-    document.getElementById('login-screen').style.opacity = '1';
-    showNotification('صفحه قفل شد', 'info');
+function updateUIForUser() {
+    document.getElementById('start-username').innerHTML = `${currentUser.username} <span style="color:#2ecc71;">●</span>`;
+    document.getElementById('start-user-role').innerHTML = isGuest ? '👤 حالت مهمان (محدود)' : `👑 نقش: ${currentUser.role === 'admin' ? 'مدیر سیستم' : 'کاربر عادی'}`;
+    document.getElementById('taskbar-user').innerHTML = `👤 ${currentUser.username}`;
+    
+    // ساخت آیکون‌های دسکتاپ بر اساس نقش
+    buildDesktopIcons();
+    buildStartMenu();
 }
 
-// ========== 4. زمان و تاریخ ==========
+function buildDesktopIcons() {
+    const container = document.getElementById('desktop-icons');
+    const allIcons = [
+        { id: 'chat', icon: '💬', label: 'چت گروهی', roles: ['user', 'admin'] },
+        { id: 'media', icon: '🎵', label: 'پخش موسیقی', roles: ['user', 'admin'] },
+        { id: 'notes', icon: '📓', label: 'یادداشت‌ها', roles: ['user', 'admin'] },
+        { id: 'gallery', icon: '🖼️', label: 'گالری', roles: ['user', 'admin'] },
+        { id: 'calculator', icon: '🧮', label: 'ماشین حساب', roles: ['user', 'admin'] },
+        { id: 'filemanager', icon: '📁', label: 'مدیر فایل', roles: ['user', 'admin'] },
+        { id: 'settings', icon: '⚙️', label: 'تنظیمات', roles: ['user', 'admin'] },
+        { id: 'about', icon: 'ℹ️', label: 'درباره OS', roles: ['user', 'admin'] },
+        { id: 'user-manager', icon: '👥', label: 'مدیریت کاربران', roles: ['admin'] },
+        { id: 'org', icon: '🏢', label: 'سازمان', roles: ['user', 'admin'] }
+    ];
+    
+    let html = '';
+    for (const icon of allIcons) {
+        if (icon.roles.includes(currentUser.role) && !isGuest) {
+            html += `<div class="desktop-icon" onclick="openApp('${icon.id}')"><div class="icon">${icon.icon}</div><div class="label">${icon.label}</div></div>`;
+        } else if (isGuest && icon.id !== 'org' && icon.id !== 'about') {
+            // مهمان فقط می‌تواند دکمه سازمان و درباره را ببیند
+            if (icon.id === 'org' || icon.id === 'about') {
+                html += `<div class="desktop-icon" onclick="openApp('${icon.id}')"><div class="icon">${icon.icon}</div><div class="label">${icon.label}</div></div>`;
+            }
+        }
+    }
+    container.innerHTML = html;
+    
+    // اضافه کردن دکمه خروج برای مهمان
+    if (isGuest) {
+        container.innerHTML += `<div class="desktop-icon" onclick="promptRegister()"><div class="icon">🔓</div><div class="label">ثبت‌نام</div></div>`;
+    }
+}
+
+function buildStartMenu() {
+    const container = document.getElementById('start-menu-content');
+    const menuItems = [
+        { id: 'chat', icon: '💬', label: 'چت گروهی', roles: ['user', 'admin'] },
+        { id: 'media', icon: '🎵', label: 'پخش موسیقی', roles: ['user', 'admin'] },
+        { id: 'notes', icon: '📓', label: 'یادداشت‌ها', roles: ['user', 'admin'] },
+        { id: 'gallery', icon: '🖼️', label: 'گالری', roles: ['user', 'admin'] },
+        { id: 'calculator', icon: '🧮', label: 'ماشین حساب', roles: ['user', 'admin'] },
+        { id: 'filemanager', icon: '📁', label: 'مدیر فایل', roles: ['user', 'admin'] },
+        { id: 'settings', icon: '⚙️', label: 'تنظیمات', roles: ['user', 'admin'] },
+        { id: 'user-manager', icon: '👥', label: 'مدیریت کاربران', roles: ['admin'] }
+    ];
+    
+    let html = `<div class="start-category"><div class="start-category-title">📱 برنامه‌ها</div>`;
+    for (const item of menuItems) {
+        if (item.roles.includes(currentUser.role) && !isGuest) {
+            html += `<div class="start-item" onclick="openApp('${item.id}'); toggleStartMenu()">${item.icon} ${item.label}</div>`;
+        }
+    }
+    html += `</div><div class="start-category"><div class="start-category-title">⚙️ سیستم</div>`;
+    if (!isGuest) {
+        html += `<div class="start-item" onclick="logout()">🚪 خروج از حساب</div>`;
+    } else {
+        html += `<div class="start-item" onclick="promptRegister()">📝 ثبت‌نام / ورود</div>`;
+    }
+    html += `<div class="start-item" onclick="shutdownSystem()">🔌 خاموش کردن</div></div>`;
+    container.innerHTML = html;
+}
+
+function promptRegister() {
+    showNotification('لطفاً برای استفاده کامل از قابلیت‌ها ثبت‌نام کنید', 'warning');
+    setTimeout(() => {
+        logout();
+    }, 1500);
+}
+
+function logout() {
+    if (confirm('آیا می‌خواهید از سیستم خارج شوید؟')) {
+        showNotification('خروج از سیستم...', 'info');
+        setTimeout(() => {
+            location.reload();
+        }, 500);
+    }
+}
+
+// ========== 5. توابع کمکی ==========
+function showNotification(message, type = 'success') {
+    const container = document.getElementById('notification-center');
+    const notif = document.createElement('div');
+    notif.className = 'notification';
+    notif.style.borderRightColor = type === 'success' ? '#2ecc71' : type === 'error' ? '#e74c3c' : '#f1c40f';
+    notif.innerHTML = `<div style="font-weight: bold; margin-bottom: 5px;">${type === 'success' ? '✓ موفقیت' : type === 'error' ? '⚠ خطا' : 'ℹ اطلاعات'}</div><div style="font-size: 0.85rem;">${message}</div>`;
+    container.appendChild(notif);
+    setTimeout(() => { notif.style.opacity = '0'; setTimeout(() => notif.remove(), 300); }, 4000);
+}
+
 function updateDateTime() {
     const now = new Date();
-    const time = now.toLocaleTimeString('fa-IR');
-    document.getElementById('taskbar-time').innerHTML = `${time} <span style="font-size:0.7rem;">${now.toLocaleDateString('fa-IR')}</span>`;
+    document.getElementById('taskbar-time').innerHTML = now.toLocaleTimeString('fa-IR');
 }
 setInterval(updateDateTime, 1000);
 updateDateTime();
 
-// ========== 5. مانیتورینگ سیستم ==========
 function updateSystemStats() {
-    const cpu = Math.floor(15 + Math.random() * 40);
-    const ram = Math.floor(25 + Math.random() * 40);
-    document.getElementById('cpu-usage').innerText = cpu;
-    document.getElementById('ram-usage').innerText = ram;
-    document.getElementById('temp').innerText = 40 + Math.floor(Math.random() * 20);
+    document.getElementById('cpu-usage').innerText = Math.floor(15 + Math.random() * 40);
+    document.getElementById('ram-usage').innerText = Math.floor(25 + Math.random() * 40);
 }
 setInterval(updateSystemStats, 2000);
 
 function startSystemServices() {
     updateSystemStats();
     setInterval(() => {
-        if (!isLocked && Math.random() > 0.85) {
-            const msgs = ['به روز رسانی امنیتی در دسترس است', 'حافظه رم در وضعیت مطلوب', 'پشتیبان‌گیری خودکار انجام شد', 'شبکه فنآوری پارسی همواره همراه شماست'];
-            showNotification(msgs[Math.floor(Math.random() * msgs.length)], 'info');
+        if (Math.random() > 0.85 && !isGuest) {
+            showNotification('سیستم در وضعیت مطلوب قرار دارد', 'info');
         }
     }, 30000);
 }
@@ -535,21 +642,18 @@ function startSystemServices() {
 // ========== 6. مدیریت پنجره ==========
 let activeWindows = new Set();
 let windowZ = 1000;
-let windowsState = JSON.parse(localStorage.getItem('persia_windows')) || {};
+let windowsState = {};
 
-function addToTaskbar(appId, title, icon) {
+function addToTaskbar(appId, title) {
     const container = document.getElementById('taskbar-apps');
     if (document.querySelector(`.taskbar-app[data-id="${appId}"]`)) return;
     const btn = document.createElement('div');
     btn.className = 'taskbar-app';
     btn.setAttribute('data-id', appId);
-    btn.innerHTML = `${icon} ${title}`;
+    btn.innerHTML = `📌 ${title}`;
     btn.onclick = () => {
         const win = document.getElementById(`win-${appId}`);
-        if (win) {
-            win.style.display = 'flex';
-            win.style.zIndex = ++windowZ;
-        }
+        if (win) { win.style.display = 'flex'; win.style.zIndex = ++windowZ; }
     };
     container.appendChild(btn);
 }
@@ -564,7 +668,6 @@ function closeWindow(appId) {
     if (win) win.remove();
     activeWindows.delete(appId);
     removeFromTaskbar(appId);
-    saveWindowsState();
 }
 
 function minimizeWindow(appId) {
@@ -582,15 +685,12 @@ function maximizeWindow(appId) {
         win.style.top = windowsState[appId]?.top || '100px';
     } else {
         windowsState[appId] = { width: win.style.width, height: win.style.height, left: win.style.left, top: win.style.top };
-        win.style.width = '90%';
-        win.style.height = '85%';
-        win.style.left = '5%';
-        win.style.top = '5%';
+        win.style.width = '90%'; win.style.height = '85%'; win.style.left = '5%'; win.style.top = '5%';
     }
     win.style.zIndex = ++windowZ;
 }
 
-function makeDraggable(win, appId) {
+function makeDraggable(win) {
     const header = win.querySelector('.window-header');
     let isDown = false, offsetX, offsetY;
     header.addEventListener('mousedown', (e) => {
@@ -609,20 +709,22 @@ function makeDraggable(win, appId) {
 }
 
 function createWindow(appId, title, content, width = 550, height = 450) {
-    const existing = document.getElementById(`win-${appId}`);
-    if (existing) {
-        existing.style.display = 'flex';
-        existing.style.zIndex = ++windowZ;
-        return existing;
+    if (isGuest && appId !== 'org' && appId !== 'about') {
+        showNotification('برای استفاده از این بخش لطفاً ثبت‌نام کنید', 'warning');
+        promptRegister();
+        return null;
     }
+    
+    const existing = document.getElementById(`win-${appId}`);
+    if (existing) { existing.style.display = 'flex'; existing.style.zIndex = ++windowZ; return existing; }
     
     const win = document.createElement('div');
     win.className = 'window';
     win.id = `win-${appId}`;
     win.style.width = width + 'px';
     win.style.height = height + 'px';
-    win.style.left = windowsState[appId]?.left || (100 + Math.random() * 200) + 'px';
-    win.style.top = windowsState[appId]?.top || (80 + Math.random() * 100) + 'px';
+    win.style.left = (100 + Math.random() * 200) + 'px';
+    win.style.top = (80 + Math.random() * 100) + 'px';
     win.innerHTML = `
         <div class="window-header">
             <span class="window-title">${title}</span>
@@ -632,59 +734,18 @@ function createWindow(appId, title, content, width = 550, height = 450) {
                 <div class="win-btn win-close" onclick="closeWindow('${appId}')"></div>
             </div>
         </div>
-        <div class="window-content">
-            ${content}
-        </div>
+        <div class="window-content">${content}</div>
     `;
     document.body.appendChild(win);
-    makeDraggable(win, appId);
+    makeDraggable(win);
     activeWindows.add(appId);
-    addToTaskbar(appId, title, '📌');
-    saveWindowsState();
+    addToTaskbar(appId, title);
     return win;
 }
 
-function saveWindowsState() { localStorage.setItem('persia_windows', JSON.stringify(windowsState)); }
+// ========== 7. برنامه‌ها ==========
 
-// ========== 7. منوی استارت ==========
-function toggleStartMenu() {
-    const menu = document.getElementById('start-menu');
-    menu.classList.toggle('show');
-}
-
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('#start-menu') && !e.target.closest('.start-btn')) {
-        document.getElementById('start-menu').classList.remove('show');
-    }
-    if (!e.target.closest('#ai-panel') && !e.target.closest('.ai-fab')) {
-        document.getElementById('ai-panel').style.display = 'none';
-    }
-});
-
-// ========== 8. برنامه‌ها (همانند نسخه Persia OS) ==========
-
-function openFileManager() {
-    createWindow('filemanager', '📁 مدیر فایل', `
-        <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:15px; margin-bottom:15px;">
-            <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">
-                <span>نام</span><span>اندازه</span>
-            </div>
-            <div style="padding:10px;"><span>📁 مستندات</span><span style="float:left;">2.4 MB</span></div>
-            <div style="padding:10px;"><span>📁 تصاویر</span><span style="float:left;">15.7 MB</span></div>
-            <div style="padding:10px;"><span>📁 دانلودها</span><span style="float:left;">89.2 MB</span></div>
-            <div style="padding:10px;"><span>📄 readme.txt</span><span style="float:left;">1.2 KB</span></div>
-        </div>
-        <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:15px;">
-            <p style="margin-bottom:10px;">💾 فضای ذخیره‌سازی</p>
-            <div style="background:#334155; height:6px; border-radius:3px; overflow:hidden;">
-                <div style="width:42%; height:100%; background:linear-gradient(90deg, var(--primary), var(--secondary)); border-radius:3px;"></div>
-            </div>
-            <p style="margin-top:10px; font-size:0.8rem; color:#94a3b8;">42% استفاده شده | 128GB / 256GB</p>
-        </div>
-    `, 500, 450);
-}
-
-let chatMessages = JSON.parse(localStorage.getItem('persia_chat')) || [];
+// چت گروهی
 function openChat() {
     let msgsHtml = chatMessages.map(msg => `
         <div style="margin-bottom:12px; text-align:${msg.sender === currentUser?.username ? 'left' : 'right'};">
@@ -696,7 +757,7 @@ function openChat() {
         </div>
     `).join('');
     
-    createWindow('chat', '💬 چت هوشمند', `
+    createWindow('chat', '💬 چت گروهی', `
         <div id="chat-messages-area" style="height:300px; overflow-y:auto; background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:15px; margin-bottom:15px;">
             ${msgsHtml || '<div style="text-align:center; color:#64748b;">هیچ پیامی وجود ندارد</div>'}
         </div>
@@ -704,218 +765,27 @@ function openChat() {
             <input type="text" id="chat-input" placeholder="پیام خود را بنویسید..." style="flex:1; background:rgba(0,0,0,0.3); border:none; padding:12px; border-radius:var(--radius-md); color:white;">
             <button onclick="sendChatMessage()" style="background:var(--primary); border:none; padding:12px 20px; border-radius:var(--radius-md); cursor:pointer;">📨 ارسال</button>
         </div>
-    `, 500, 480);
+    `, 550, 480);
 }
 
 function sendChatMessage() {
     const input = document.getElementById('chat-input');
     const msg = input.value.trim();
-    if (!msg || !currentUser) return;
+    if (!msg || !currentUser || isGuest) {
+        if (isGuest) showNotification('مهمان نمی‌تواند پیام ارسال کند', 'warning');
+        return;
+    }
     chatMessages.push({ sender: currentUser.username, content: msg, time: new Date().toISOString() });
     localStorage.setItem('persia_chat', JSON.stringify(chatMessages));
     input.value = '';
     showNotification('پیام ارسال شد', 'success');
-    openChat();
     closeWindow('chat');
     setTimeout(() => openChat(), 100);
 }
 
-function openSettings() {
-    createWindow('settings', '⚙️ تنظیمات سیستم', `
-        <div class="setting-row" style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-            <span>🎨 تم سیستم</span>
-            <div style="display:flex; gap:10px;">
-                <button onclick="changeTheme('default')" style="background:#00aaff; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer;"></button>
-                <button onclick="changeTheme('matrix')" style="background:#00ff41; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer;"></button>
-                <button onclick="changeTheme('persian')" style="background:#c81d11; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer;"></button>
-            </div>
-        </div>
-        <div class="setting-row" style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-            <span>🔒 تغییر رمز عبور</span>
-            <button onclick="changePassword()" style="background:var(--warning); border:none; padding:6px 16px; border-radius:20px; cursor:pointer;">تغییر</button>
-        </div>
-        <div class="setting-row" style="display:flex; justify-content:space-between; padding:12px 0;">
-            <span>ℹ️ اطلاعات سیستم</span>
-            <span style="color:#94a3b8;">Persia OS v11.0 Ultimate</span>
-        </div>
-        <div style="margin-top:20px; background:rgba(0,0,0,0.2); padding:15px; border-radius:var(--radius-md);">
-            <p><strong>توسعه‌دهنده:</strong> مهندس سعید صفا</p>
-            <p><strong>سازمان:</strong> شبکه فنآوری پارسی | PersianTechNet</p>
-            <p><strong>تماس:</strong> 09373622762</p>
-            <p><strong>ایمیل:</strong> persiantechnet@gmail.com</p>
-        </div>
-    `, 500, 500);
-}
-
-function changeTheme(theme) {
-    document.body.classList.remove('theme-matrix', 'theme-persian', 'theme-sunset', 'theme-neon');
-    if (theme === 'matrix') document.body.classList.add('theme-matrix');
-    else if (theme === 'persian') document.body.classList.add('theme-persian');
-    showNotification(`تم ${theme} فعال شد`, 'success');
-}
-
-function changePassword() {
-    const newPass = prompt('رمز عبور جدید را وارد کنید:');
-    if (newPass && newPass.length >= 3 && currentUser) {
-        users[currentUser.username].password = btoa(newPass);
-        localStorage.setItem('persia_users', JSON.stringify(users));
-        showNotification('رمز عبور با موفقیت تغییر کرد', 'success');
-    } else {
-        showNotification('رمز عبور باید حداقل 3 کاراکتر باشد', 'error');
-    }
-}
-
-function openTerminal() {
-    createWindow('terminal', '💻 ترمینال', `
-        <div style="background:#0a0f1c; border-radius:var(--radius-md); padding:15px; font-family:monospace; height:350px; display:flex; flex-direction:column;">
-            <div id="term-output" style="flex:1; overflow-y:auto; margin-bottom:10px;">
-                <p>> Persia OS Terminal v11.0 | PersianTechNet</p>
-                <p>> type 'help' for commands</p>
-            </div>
-            <div style="display:flex; gap:8px; border-top:1px solid #334155; padding-top:10px;">
-                <span style="color:var(--primary);">${currentUser?.username}@persia:~$</span>
-                <input type="text" id="term-input" style="flex:1; background:transparent; border:none; color:#86efac; outline:none;">
-            </div>
-        </div>
-    `, 600, 450);
-    
-    setTimeout(() => {
-        const inp = document.getElementById('term-input');
-        if (inp) {
-            inp.onkeypress = (e) => {
-                if (e.key === 'Enter') {
-                    const val = inp.value;
-                    const out = document.getElementById('term-output');
-                    out.innerHTML += `<p style="color:#86efac;">> ${escapeHtml(val)}</p>`;
-                    let result = executeCommand(val);
-                    if (result) out.innerHTML += `<p style="color:#cbd5e1;">${result}</p>`;
-                    inp.value = '';
-                    out.scrollTop = out.scrollHeight;
-                }
-            };
-        }
-    }, 100);
-}
-
-function executeCommand(cmd) {
-    const c = cmd.toLowerCase();
-    if (c === 'help') return 'دستورات: help, clear, date, whoami, ls, apps, sysinfo, theme, reboot, shutdown, organization';
-    if (c === 'clear') { document.getElementById('term-output').innerHTML = '<p>> Persia OS Terminal v11.0 | PersianTechNet</p>'; return null; }
-    if (c === 'date') return new Date().toString();
-    if (c === 'whoami') return currentUser?.username || 'guest';
-    if (c === 'ls') return 'Documents  Downloads  Pictures  Music  Videos  Desktop';
-    if (c === 'apps') return 'مدیرفایل، چت، تنظیمات، ترمینال، فروشگاه، درباره، پخش رسانه، گالری، ماشین حساب، یادداشت‌ها، سازمان';
-    if (c === 'sysinfo') return `OS: Persia OS v11.0 | User: ${currentUser?.username} | CPU: ${document.getElementById('cpu-usage')?.innerText || '--'}% | RAM: ${document.getElementById('ram-usage')?.innerText || '--'}%`;
-    if (c === 'organization' || c === 'org') return 'شبکه فنآوری پارسی | PersianTechNet | استان فارس - کوار - بلوار امام خمینی | تلفن: 09373622762 | ایمیل: persiantechnet@gmail.com';
-    if (c === 'theme') return 'تم فعلی: Persia Quantum';
-    if (c === 'reboot') { showNotification('سیستم در حال راه‌اندازی مجدد...', 'warning'); setTimeout(() => location.reload(), 2000); return 'در حال راه‌اندازی مجدد...'; }
-    if (c === 'shutdown') { shutdownSystem(); return 'در حال خاموش شدن...'; }
-    return `دستور '${cmd}' یافت نشد.`;
-}
-
-let installedApps = JSON.parse(localStorage.getItem('persia_installed')) || ['filemanager', 'chat', 'settings', 'terminal'];
-function openStore() {
-    const apps = [
-        { id: 'calculator', name: '🧮 ماشین حساب', desc: 'ماشین حساب حرفه‌ای', size: '1.2MB' },
-        { id: 'notes', name: '📓 یادداشت‌ها', desc: 'مدیریت یادداشت‌ها', size: '0.8MB' },
-        { id: 'media', name: '🎵 پخش رسانه', desc: 'پخش موسیقی و ویدیو', size: '3.2MB' },
-        { id: 'gallery', name: '🖼️ گالری', desc: 'مدیریت تصاویر', size: '2.1MB' }
-    ];
-    let html = '<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px;">';
-    apps.forEach(app => {
-        const isInstalled = installedApps.includes(app.id);
-        html += `
-            <div style="background:rgba(255,255,255,0.05); border-radius:var(--radius-md); padding:15px; text-align:center;">
-                <div style="font-size:2rem;">${app.name.split(' ')[0]}</div>
-                <div style="font-weight:bold; margin:8px 0;">${app.name}</div>
-                <div style="font-size:0.7rem; color:#94a3b8;">${app.desc}</div>
-                <div style="font-size:0.6rem; margin:5px 0;">${app.size}</div>
-                <button onclick="installApp('${app.id}')" style="margin-top:10px; background:${isInstalled ? '#334155' : 'var(--success)'}; border:none; padding:6px 16px; border-radius:20px; color:white; cursor:pointer;" ${isInstalled ? 'disabled' : ''}>
-                    ${isInstalled ? 'نصب شده' : 'نصب'}
-                </button>
-            </div>
-        `;
-    });
-    html += '</div>';
-    createWindow('store', '🛒 فروشگاه Persia', html, 600, 500);
-}
-
-function installApp(appId) {
-    if (!installedApps.includes(appId)) {
-        installedApps.push(appId);
-        localStorage.setItem('persia_installed', JSON.stringify(installedApps));
-        showNotification(`برنامه ${appId} با موفقیت نصب شد!`, 'success');
-    }
-}
-
-function openAbout() {
-    createWindow('about', 'ℹ️ درباره Persia OS', `
-        <div style="text-align:center;">
-            <div style="font-size:4rem; margin-bottom:15px;">📡</div>
-            <h2 style="color:var(--primary);">Persia OS Ultimate</h2>
-            <p style="color:#94a3b8; margin-bottom:20px;">نسخه 11.0 | پایدار</p>
-            <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:20px; text-align:right;">
-                <p><strong>🔹 هسته:</strong> Persia Kernel v11.0</p>
-                <p><strong>🔹 معماری:</strong> 64-bit WebOS</p>
-                <p><strong>🔹 توسعه‌دهنده:</strong> مهندس سعید صفا</p>
-                <p><strong>🔹 سازمان:</strong> شبکه فن‌آوری پارسی | PersianTechNet</p>
-                <p><strong>🔹 تماس:</strong> 09373622762</p>
-                <p><strong>🔹 ایمیل:</strong> persiantechnet@gmail.com</p>
-            </div>
-            <p style="margin-top:20px; font-size:0.8rem; color:#64748b;">© 2025 Persia OS - تمام حقوق محفوظ است</p>
-        </div>
-    `, 500, 520);
-}
-
-// ========== برنامه سازمانی (ادغام صفحه اصلی کسب‌وکار) ==========
-function openOrganizationPage() {
-    createWindow('organization', '🏢 شبکه فنآوری پارسی | PersianTechNet', `
-        <style>
-            .org-section { margin-bottom: 25px; }
-            .org-section h3 { color: var(--primary); margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
-            .org-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-            .org-card { background: rgba(0,0,0,0.2); border-radius: var(--radius-md); padding: 15px; text-align: center; }
-            .org-card .icon { font-size: 2rem; margin-bottom: 10px; }
-            .org-product { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-            .contact-info { background: rgba(0,0,0,0.2); border-radius: var(--radius-md); padding: 15px; margin-top: 15px; }
-        </style>
-        <div class="org-section">
-            <h3>🟠 خدمات تخصصی</h3>
-            <div class="org-services">
-                <div class="org-card"><div class="icon">🖥</div><div>رایانه و تجهیزات</div><small>نصب سیستم‌عامل، نرم‌افزار، ارتقاء سخت‌افزار</small></div>
-                <div class="org-card"><div class="icon">🛜</div><div>شبکه و اینترنت</div><small>اینترنت پرسرعت، هاست، دامنه، طراحی سایت</small></div>
-                <div class="org-card"><div class="icon">📊</div><div>تجارت فناوری</div><small>مشاوره دیجیتال، سرمایه‌گذاری پروژه‌ها</small></div>
-            </div>
-        </div>
-        <div class="org-section">
-            <h3>🛒 محصولات ویژه</h3>
-            <div class="org-product"><span>💻 لپ‌تاپ حرفه‌ای Dell</span><span style="color:var(--primary);">32,500,000 تومان</span></div>
-            <div class="org-product"><span>🖨️ سرور HP ProLiant</span><span style="color:var(--primary);">89,000,000 تومان</span></div>
-            <div class="org-product"><span>📡 مودم 5G</span><span style="color:var(--primary);">4,200,000 تومان</span></div>
-        </div>
-        <div class="org-section">
-            <h3>📍 ارتباط با ما</h3>
-            <div class="contact-info">
-                <p>📞 09373622762 | 07136300000</p>
-                <p>✉️ persiantechnet@gmail.com</p>
-                <p>🏢 استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</p>
-                <p>🕘 شنبه تا چهارشنبه ۹-۱۷</p>
-            </div>
-        </div>
-        <div class="org-section">
-            <h3>📈 آمار سازمان</h3>
-            <div style="display:flex; gap:15px; justify-content:center;">
-                <div style="text-align:center;"><div style="font-size:1.5rem; color:var(--primary);">1500+</div><small>پروژه موفق</small></div>
-                <div style="text-align:center;"><div style="font-size:1.5rem; color:var(--primary);">98%</div><small>رضایت مشتری</small></div>
-                <div style="text-align:center;"><div style="font-size:1.5rem; color:var(--primary);">14+</div><small>سال تجربه</small></div>
-            </div>
-        </div>
-    `, 550, 550);
-}
-
-// پخش رسانه
+// پخش موسیقی
 function openMediaPlayer() {
-    createWindow('media', '🎵 پخش رسانه', `
+    createWindow('media', '🎵 پخش موسیقی', `
         <div style="text-align:center;">
             <div style="font-size:4rem; margin-bottom:20px;">🎵</div>
             <div id="now-playing" style="margin-bottom:15px;">هیچ آهنگی در حال پخش نیست</div>
@@ -926,13 +796,13 @@ function openMediaPlayer() {
             </div>
         </div>
     `, 500, 450);
+    
     window.playSampleMusic = function() {
         const audio = document.getElementById('audio-player');
         if (audio) {
             audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
             audio.play();
             document.getElementById('now-playing').innerHTML = '🎶 در حال پخش: نمونه آهنگ';
-            showNotification('پخش موزیک شروع شد', 'success');
         }
     };
     window.uploadMusic = function() {
@@ -943,27 +813,68 @@ function openMediaPlayer() {
             const file = e.target.files[0];
             if (file) {
                 const audio = document.getElementById('audio-player');
-                const url = URL.createObjectURL(file);
-                audio.src = url;
+                audio.src = URL.createObjectURL(file);
                 audio.play();
                 document.getElementById('now-playing').innerHTML = `🎶 در حال پخش: ${file.name}`;
-                showNotification(`پخش ${file.name} شروع شد`, 'success');
             }
         };
         input.click();
     };
 }
 
+// یادداشت‌ها
+function openNotes() {
+    let notesHtml = notes.filter(n => n.userId === currentUser.username || n.userId === 'system').map((note, i) => `
+        <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:12px; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between;">
+                <span style="font-weight:bold;">📓 ${escapeHtml(note.title)}</span>
+                <span style="font-size:0.7rem;">${new Date(note.date).toLocaleDateString()}</span>
+            </div>
+            <p style="font-size:0.85rem; margin-top:5px;">${escapeHtml(note.content)}</p>
+            ${note.userId === currentUser.username ? `<button onclick="deleteNote(${i})" style="margin-top:5px; background:var(--error); border:none; padding:4px 12px; border-radius:20px; cursor:pointer;">حذف</button>` : ''}
+        </div>
+    `).join('');
+    
+    createWindow('notes', '📓 یادداشت‌ها', `
+        <div style="margin-bottom:15px;">
+            <input type="text" id="note-title" placeholder="عنوان" style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:var(--radius-md); margin-bottom:10px; color:white;">
+            <textarea id="note-content" placeholder="متن یادداشت..." rows="3" style="width:100%; background:rgba(0,0,0,0.3); border:none; padding:10px; border-radius:var(--radius-md); color:white;"></textarea>
+            <button onclick="addNote()" style="background:var(--primary); border:none; padding:8px 20px; border-radius:var(--radius-md); cursor:pointer; margin-top:10px;">➕ افزودن یادداشت</button>
+        </div>
+        <div id="notes-list">${notesHtml || '<div style="text-align:center; color:#64748b;">هیچ یادداشتی وجود ندارد</div>'}</div>
+    `, 500, 500);
+}
+
+function addNote() {
+    const title = document.getElementById('note-title').value.trim();
+    const content = document.getElementById('note-content').value.trim();
+    if (title && content) {
+        notes.unshift({ title, content, date: new Date().toISOString(), userId: currentUser.username });
+        localStorage.setItem('persia_notes', JSON.stringify(notes));
+        showNotification('یادداشت اضافه شد', 'success');
+        closeWindow('notes');
+        setTimeout(() => openNotes(), 100);
+    }
+}
+
+function deleteNote(index) {
+    notes.splice(index, 1);
+    localStorage.setItem('persia_notes', JSON.stringify(notes));
+    showNotification('یادداشت حذف شد', 'info');
+    closeWindow('notes');
+    setTimeout(() => openNotes(), 100);
+}
+
 // گالری
-let galleryImages = JSON.parse(localStorage.getItem('persia_gallery')) || [];
 function openGallery() {
-    let imagesHtml = galleryImages.map(img => `
+    let imagesHtml = galleryImages.filter(img => img.userId === currentUser.username).map(img => `
         <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:10px; text-align:center;">
             <img src="${img.data}" style="width:100%; height:100px; object-fit:cover; border-radius:var(--radius-md);">
             <div style="font-size:0.7rem; margin-top:5px;">${img.name}</div>
             <button onclick="deleteImage('${img.id}')" style="margin-top:5px; background:var(--error); border:none; border-radius:var(--radius-sm); padding:4px 8px; cursor:pointer;">حذف</button>
         </div>
     `).join('');
+    
     createWindow('gallery', '🖼️ گالری تصاویر', `
         <div style="margin-bottom:15px;">
             <button onclick="uploadImage()" style="background:var(--primary); border:none; padding:10px 20px; border-radius:var(--radius-md); cursor:pointer;">📸 آپلود تصویر</button>
@@ -983,10 +894,9 @@ function uploadImage() {
         if (file) {
             const reader = new FileReader();
             reader.onload = (ev) => {
-                galleryImages.push({ id: Date.now(), name: file.name, data: ev.target.result });
+                galleryImages.push({ id: Date.now(), name: file.name, data: ev.target.result, userId: currentUser.username });
                 localStorage.setItem('persia_gallery', JSON.stringify(galleryImages));
                 showNotification(`تصویر ${file.name} آپلود شد`, 'success');
-                openGallery();
                 closeWindow('gallery');
                 setTimeout(() => openGallery(), 100);
             };
@@ -1000,22 +910,18 @@ function deleteImage(id) {
     galleryImages = galleryImages.filter(img => img.id != id);
     localStorage.setItem('persia_gallery', JSON.stringify(galleryImages));
     showNotification('تصویر حذف شد', 'info');
-    openGallery();
     closeWindow('gallery');
     setTimeout(() => openGallery(), 100);
 }
 
 // ماشین حساب
 let calcValue = '0';
-let calcMemory = 0;
 function openCalculator() {
     createWindow('calculator', '🧮 ماشین حساب', `
         <div style="text-align:center;">
             <div id="calc-display" style="background:rgba(0,0,0,0.3); padding:20px; border-radius:var(--radius-md); font-size:2rem; font-family:monospace; text-align:left; margin-bottom:20px;">0</div>
             <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
-                ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','=','+','MC','MR','M+','M-'].map(btn => `
-                    <button onclick="calcPress('${btn}')" style="background:rgba(255,255,255,0.1); border:none; padding:15px; border-radius:var(--radius-sm); font-size:1rem; cursor:pointer;">${btn}</button>
-                `).join('')}
+                ${['7','8','9','/','4','5','6','*','1','2','3','-','0','C','=','+'].map(btn => `<button onclick="calcPress('${btn}')" style="background:rgba(255,255,255,0.1); border:none; padding:15px; border-radius:var(--radius-sm); font-size:1rem; cursor:pointer;">${btn}</button>`).join('')}
             </div>
         </div>
     `, 400, 500);
@@ -1026,65 +932,169 @@ function calcPress(btn) {
     if (!display) return;
     if (btn === 'C') calcValue = '0';
     else if (btn === '=') {
-        try { calcValue = eval(calcValue.replace('×', '*').replace('÷', '/')).toString(); }
-        catch(e) { calcValue = 'Error'; }
-    } else if (btn === 'MC') calcMemory = 0;
-    else if (btn === 'MR') calcValue = calcMemory.toString();
-    else if (btn === 'M+') calcMemory += parseFloat(calcValue) || 0;
-    else if (btn === 'M-') calcMemory -= parseFloat(calcValue) || 0;
-    else {
+        try { calcValue = eval(calcValue).toString(); } catch(e) { calcValue = 'Error'; }
+    } else {
         if (calcValue === '0' && !isNaN(btn)) calcValue = btn;
         else calcValue += btn;
     }
     display.innerText = calcValue;
 }
 
-// یادداشت‌ها
-let notes = JSON.parse(localStorage.getItem('persia_notes')) || [{ title: 'خوش آمدید', content: 'به Persia OS و شبکه فنآوری پارسی خوش آمدید!', date: new Date().toISOString() }];
-function openNotes() {
-    let notesHtml = notes.map((note, i) => `
-        <div class="note-item" style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:12px; margin-bottom:8px; cursor:pointer;" onclick="editNote(${i})">
-            <div style="display:flex; justify-content:space-between;">
-                <span style="font-weight:bold;">📓 ${escapeHtml(note.title)}</span>
-                <span style="font-size:0.7rem; color:#94a3b8;">${new Date(note.date).toLocaleDateString()}</span>
-            </div>
-            <p style="font-size:0.85rem; color:#cbd5e1; margin-top:5px;">${escapeHtml(note.content.substring(0, 50))}...</p>
+// مدیر فایل
+function openFileManager() {
+    createWindow('filemanager', '📁 مدیر فایل', `
+        <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:15px;">
+            <div style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">📁 مستندات (2.4 MB)</div>
+            <div style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">📁 تصاویر (15.7 MB)</div>
+            <div style="padding:10px;">📁 دانلودها (89.2 MB)</div>
         </div>
-    `).join('');
-    createWindow('notes', '📓 یادداشت‌ها', `
-        <div style="margin-bottom:15px;">
-            <button onclick="addNewNote()" style="background:var(--primary); border:none; padding:10px 20px; border-radius:var(--radius-md); cursor:pointer;">➕ یادداشت جدید</button>
-        </div>
-        <div id="notes-list">
-            ${notesHtml || '<div style="text-align:center; color:#64748b;">هیچ یادداشتی وجود ندارد</div>'}
+        <div style="margin-top:15px; background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:15px;">
+            <p>💾 فضای ذخیره‌سازی</p>
+            <div style="background:#334155; height:6px; border-radius:3px;"><div style="width:42%; height:100%; background:linear-gradient(90deg, var(--primary), var(--secondary)); border-radius:3px;"></div></div>
+            <p style="margin-top:10px; font-size:0.8rem;">42% استفاده شده | 128GB / 256GB</p>
         </div>
     `, 500, 450);
 }
 
-function addNewNote() {
-    const title = prompt('عنوان یادداشت:');
-    const content = prompt('متن یادداشت:');
-    if (title && content) {
-        notes.unshift({ title, content, date: new Date().toISOString() });
-        localStorage.setItem('persia_notes', JSON.stringify(notes));
-        showNotification('یادداشت اضافه شد', 'success');
-        openNotes();
-        closeWindow('notes');
-        setTimeout(() => openNotes(), 100);
+// تنظیمات
+function openSettings() {
+    createWindow('settings', '⚙️ تنظیمات', `
+        <div style="padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span>🎨 تم سیستم</span>
+            <div style="margin-top:10px; display:flex; gap:10px;">
+                <button onclick="changeTheme('default')" style="background:#00aaff; border:none; width:30px; height:30px; border-radius:50%;"></button>
+                <button onclick="changeTheme('matrix')" style="background:#00ff41; border:none; width:30px; height:30px; border-radius:50%;"></button>
+                <button onclick="changeTheme('persian')" style="background:#c81d11; border:none; width:30px; height:30px; border-radius:50%;"></button>
+            </div>
+        </div>
+        <div style="padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span>🔒 تغییر رمز عبور</span>
+            <button onclick="changePassword()" style="background:var(--warning); border:none; padding:6px 16px; border-radius:20px; margin-top:10px; cursor:pointer;">تغییر</button>
+        </div>
+        <div style="margin-top:20px; background:rgba(0,0,0,0.2); padding:15px; border-radius:var(--radius-md);">
+            <p><strong>کاربر:</strong> ${currentUser.username}</p>
+            <p><strong>نقش:</strong> ${currentUser.role === 'admin' ? 'مدیر سیستم' : 'کاربر عادی'}</p>
+        </div>
+    `, 500, 450);
+}
+
+function changeTheme(theme) {
+    document.body.classList.remove('theme-matrix', 'theme-persian');
+    if (theme === 'matrix') document.body.classList.add('theme-matrix');
+    else if (theme === 'persian') document.body.classList.add('theme-persian');
+    showNotification(`تم ${theme} فعال شد`, 'success');
+}
+
+function changePassword() {
+    const newPass = prompt('رمز عبور جدید وارد کنید (حداقل 4 کاراکتر):');
+    if (newPass && newPass.length >= 4 && currentUser && !isGuest) {
+        users[currentUser.username].password = btoa(newPass);
+        localStorage.setItem('persia_users', JSON.stringify(users));
+        showNotification('رمز عبور تغییر کرد', 'success');
+    } else if (isGuest) {
+        showNotification('مهمان نمی‌تواند رمز تغییر دهد', 'warning');
+    } else {
+        showNotification('رمز عبور باید حداقل 4 کاراکتر باشد', 'error');
     }
 }
 
-function editNote(index) {
-    const newContent = prompt('ویرایش یادداشت:', notes[index].content);
-    if (newContent !== null) {
-        notes[index].content = newContent;
-        notes[index].date = new Date().toISOString();
-        localStorage.setItem('persia_notes', JSON.stringify(notes));
-        showNotification('یادداشت به‌روزرسانی شد', 'success');
-        openNotes();
-        closeWindow('notes');
-        setTimeout(() => openNotes(), 100);
+// درباره
+function openAbout() {
+    createWindow('about', 'ℹ️ درباره Persia OS', `
+        <div style="text-align:center;">
+            <div style="font-size:4rem; margin-bottom:15px;">📡</div>
+            <h2 style="color:var(--primary);">Persia OS Ultimate</h2>
+            <p style="color:#94a3b8;">نسخه 12.0 | پایدار</p>
+            <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:20px; text-align:right; margin-top:15px;">
+                <p><strong>🔹 توسعه‌دهنده:</strong> شبکه فنآوری پارسی</p>
+                <p><strong>🔹 وبسایت:</strong> persiantechnet.github.io</p>
+                <p><strong>🔹 تماس:</strong> 09373622762</p>
+            </div>
+        </div>
+    `, 500, 450);
+}
+
+// سازمان
+function openOrg() {
+    createWindow('org', '🏢 شبکه فنآوری پارسی', `
+        <div style="text-align:center;">
+            <div style="font-size:3rem; margin-bottom:15px;">🏢</div>
+            <h2 style="color:var(--primary);">شبکه فنآوری پارسی</h2>
+            <p>PersianTechNet | ارائه خدمات فناوری اطلاعات</p>
+            <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:20px; margin-top:15px; text-align:right;">
+                <p><strong>خدمات:</strong> رایانه، شبکه، اینترنت، هاست، دامنه، طراحی سایت</p>
+                <p><strong>آدرس:</strong> فارس - کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</p>
+                <p><strong>تماس:</strong> 09373622762</p>
+                <p><strong>ایمیل:</strong> persiantechnet@gmail.com</p>
+            </div>
+        </div>
+    `, 500, 500);
+}
+
+// ========== 8. مدیریت کاربران (فقط ادمین) ==========
+function openUserManager() {
+    if (currentUser.role !== 'admin') {
+        showNotification('دسترسی غیرمجاز! فقط مدیر می‌تواند کاربران را مدیریت کند', 'error');
+        return;
     }
+    
+    let usersHtml = '';
+    for (const [username, user] of Object.entries(users)) {
+        usersHtml += `
+            <div style="background:rgba(0,0,0,0.2); border-radius:var(--radius-md); padding:12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                <div>
+                    <strong>${username}</strong><br>
+                    <small>نقش: ${user.role === 'admin' ? 'مدیر' : 'کاربر'} | وضعیت: ${user.isActive ? 'فعال' : 'غیرفعال'}</small>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button onclick="toggleUserStatus('${username}')" style="background:${user.isActive ? 'var(--warning)' : 'var(--success)'}; border:none; padding:6px 12px; border-radius:20px; cursor:pointer;">${user.isActive ? 'غیرفعال' : 'فعال'}</button>
+                    ${username !== 'admin' ? `<button onclick="deleteUser('${username}')" style="background:var(--error); border:none; padding:6px 12px; border-radius:20px; cursor:pointer;">حذف</button>` : ''}
+                    ${username !== currentUser.username ? `<button onclick="changeUserRole('${username}')" style="background:var(--primary); border:none; padding:6px 12px; border-radius:20px; cursor:pointer;">تغییر نقش</button>` : ''}
+                </div>
+            </div>
+        `;
+    }
+    
+    createWindow('user-manager', '👥 مدیریت کاربران', `
+        <div style="margin-bottom:15px;">
+            <h3>کاربران سیستم</h3>
+        </div>
+        <div id="users-list">
+            ${usersHtml}
+        </div>
+        <div style="margin-top:15px; background:rgba(0,0,0,0.2); padding:12px; border-radius:var(--radius-md);">
+            <p><strong>تعداد کل کاربران:</strong> ${Object.keys(users).length}</p>
+        </div>
+    `, 600, 500);
+}
+
+function toggleUserStatus(username) {
+    if (users[username]) {
+        users[username].isActive = !users[username].isActive;
+        localStorage.setItem('persia_users', JSON.stringify(users));
+        showNotification(`وضعیت کاربر ${username} تغییر کرد`, 'success');
+        closeWindow('user-manager');
+        setTimeout(() => openUserManager(), 100);
+    }
+}
+
+function deleteUser(username) {
+    if (confirm(`آیا کاربر ${username} حذف شود؟`)) {
+        delete users[username];
+        localStorage.setItem('persia_users', JSON.stringify(users));
+        showNotification(`کاربر ${username} حذف شد`, 'success');
+        closeWindow('user-manager');
+        setTimeout(() => openUserManager(), 100);
+    }
+}
+
+function changeUserRole(username) {
+    const newRole = users[username].role === 'admin' ? 'user' : 'admin';
+    users[username].role = newRole;
+    localStorage.setItem('persia_users', JSON.stringify(users));
+    showNotification(`نقش کاربر ${username} به ${newRole === 'admin' ? 'مدیر' : 'کاربر'} تغییر کرد`, 'success');
+    closeWindow('user-manager');
+    setTimeout(() => openUserManager(), 100);
 }
 
 // ========== 9. دستیار AI ==========
@@ -1109,19 +1119,14 @@ function askAI() {
 
 function generateAIResponse(question) {
     const q = question.toLowerCase();
-    if (q.includes('سلام')) return 'سلام! وقت بخیر. به شبکه فنآوری پارسی خوش آمدید.';
-    if (q.includes('سازمان') || q.includes('شرکت')) return 'شبکه فنآوری پارسی (PersianTechNet) ارائه‌دهنده خدمات فناوری اطلاعات، شبکه، سخت‌افزار، طراحی سایت، هاست و دامنه. آدرس: کوار، بلوار امام خمینی، خیابان شهید محسن شفیعی. تلفن: 09373622762';
-    if (q.includes('خدمات')) return 'خدمات ما شامل: رایانه و تجهیزات، شبکه و اینترنت پرسرعت، هاست و دامنه، طراحی سایت، مشاوره دیجیتال و سرمایه‌گذاری فناوری است.';
-    if (q.includes('تماس') || q.includes('شماره')) return 'شماره تماس: 09373622762 | ایمیل: persiantechnet@gmail.com';
-    if (q.includes('قیمت') || q.includes('هزینه')) return 'برای اطلاع از قیمت دقیق محصولات و خدمات، لطفاً با شماره 09373622762 تماس بگیرید.';
-    if (q.includes('نصب')) return 'برای نصب برنامه‌ها به فروشگاه Persia مراجعه کنید.';
-    if (q.includes('تنظیمات')) return 'تنظیمات سیستم شامل تغییر تم، رمز عبور و اطلاعات سیستم است.';
-    if (q.includes('ترمینال')) return 'ترمینال را باز کنید و help را تایپ کنید تا دستورات را ببینید.';
-    if (q.includes('کاربر')) return `شما با نام کاربری ${currentUser?.username} وارد شده‌اید.`;
-    if (q.includes('زمان') || q.includes('ساعت')) return `زمان فعلی: ${new Date().toLocaleTimeString('fa-IR')}`;
-    if (q.includes('تاریخ')) return `تاریخ امروز: ${new Date().toLocaleDateString('fa-IR')}`;
-    if (q.includes('هوش') || q.includes('ai')) return 'من Persia AI هستم، دستیار هوشمند شبکه فنآوری پارسی.';
-    return 'سوال خوبی پرسیدی! برای اطلاعات بیشتر می‌توانید به بخش "سازمان" مراجعه کنید یا با پشتیبانی تماس بگیرید.';
+    if (q.includes('سلام')) return 'سلام! وقت بخیر. به Persia OS خوش آمدید.';
+    if (isGuest) return 'شما به عنوان مهمان وارد شده‌اید. لطفاً ثبت‌نام کنید تا از همه قابلیت‌ها استفاده کنید.';
+    if (q.includes('چت')) return 'می‌توانید در بخش چت گروهی با سایر کاربران گفتگو کنید.';
+    if (q.includes('موزیک') || q.includes('موسیقی')) return 'برای پخش موسیقی، روی آیکون 🎵 در دسکتاپ کلیک کنید.';
+    if (q.includes('یادداشت')) return 'در بخش یادداشت‌ها می‌توانید یادداشت‌های خود را ذخیره کنید.';
+    if (q.includes('گالری')) return 'در بخش گالری می‌توانید تصاویر خود را آپلود و مشاهده کنید.';
+    if (q.includes('ادمین') || q.includes('مدیر')) return 'مدیر سیستم می‌تواند کاربران را مدیریت کند.';
+    return 'سوال خوبی پرسیدی! از من هر سوالی داری بپرس.';
 }
 
 function escapeHtml(text) {
@@ -1130,63 +1135,75 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// ========== 10. خاموش کردن ==========
+// ========== 10. منوی استارت ==========
+function toggleStartMenu() {
+    const menu = document.getElementById('start-menu');
+    menu.classList.toggle('show');
+}
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#start-menu') && !e.target.closest('.start-btn')) {
+        document.getElementById('start-menu').classList.remove('show');
+    }
+    if (!e.target.closest('#ai-panel') && !e.target.closest('.ai-fab')) {
+        document.getElementById('ai-panel').style.display = 'none';
+    }
+});
+
+// ========== 11. خاموش کردن ==========
 function shutdownSystem() {
     if (confirm('آیا سیستم خاموش شود؟')) {
         showNotification('سیستم در حال خاموش شدن...', 'warning');
         setTimeout(() => {
-            localStorage.setItem('persia_last_session', new Date().toISOString());
             document.body.innerHTML = `
                 <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:linear-gradient(135deg, #0e0e1a, #1e1b4b); color:white; text-align:center;">
                     <div style="font-size:5rem; margin-bottom:30px; animation:float 3s infinite;">📡</div>
-                    <h1 style="font-size:2rem; margin-bottom:20px;">Persia OS | PersianTechNet</h1>
-                    <p style="margin-bottom:30px; opacity:0.8;">سیستم با موفقیت خاموش شد</p>
-                    <p style="font-size:0.9rem; color:#64748b;">برای راه‌اندازی مجدد، صفحه را رفرش کنید (F5)</p>
-                    <div style="margin-top:50px; font-size:0.8rem; color:#4a5568;">
-                        <div>شبکه فنآوری پارسی | PersianTechNet</div>
-                        <div>تماس: 09373622762</div>
-                        <div>ایمیل: persiantechnet@gmail.com</div>
-                        <div style="margin-top:10px;">© 2025 Persia OS - تمام حقوق محفوظ است</div>
-                    </div>
+                    <h1 style="font-size:2rem; margin-bottom:20px;">Persia OS</h1>
+                    <p>سیستم با موفقیت خاموش شد</p>
+                    <p style="margin-top:50px; font-size:0.8rem;">برای راه‌اندازی مجدد، صفحه را رفرش کنید</p>
                 </div>
             `;
         }, 1500);
     }
 }
 
-// ========== 11. توابع اصلی ==========
+// ========== 12. توابع اصلی ==========
 window.openApp = function(appId) {
     const apps = {
-        filemanager: openFileManager,
         chat: openChat,
-        settings: openSettings,
-        terminal: openTerminal,
-        store: openStore,
-        about: openAbout,
         media: openMediaPlayer,
+        notes: openNotes,
         gallery: openGallery,
         calculator: openCalculator,
-        notes: openNotes,
-        organization: openOrganizationPage
+        filemanager: openFileManager,
+        settings: openSettings,
+        about: openAbout,
+        org: openOrg,
+        'user-manager': openUserManager
     };
     if (apps[appId]) {
         apps[appId]();
-        showNotification(`برنامه ${appId} باز شد`, 'success');
     }
 };
 
-// ========== 12. راه‌اندازی اولیه ==========
-document.addEventListener('DOMContentLoaded', () => {
-    loadWindowsState();
-    bootSystem();
-    window.addEventListener('beforeunload', () => {
-        if (document.getElementById('desktop')?.style.display === 'block') {
-            saveWindowsState();
-        }
+// ========== 13. راه‌اندازی تب‌ها ==========
+document.querySelectorAll('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+        document.getElementById(`${target}-form`).classList.add('active');
+        document.getElementById('register-error').style.display = 'none';
+        document.getElementById('register-success').style.display = 'none';
+        document.getElementById('login-error').style.display = 'none';
     });
 });
 
-function loadWindowsState() { windowsState = JSON.parse(localStorage.getItem('persia_windows')) || {}; }
+// ========== 14. شروع ==========
+document.addEventListener('DOMContentLoaded', () => {
+    bootSystem();
+});
 </script>
 </body>
 </html>
