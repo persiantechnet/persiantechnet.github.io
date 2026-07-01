@@ -31,9 +31,10 @@
     <!-- ====== LEAFETL.JS ====== -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
+    <!-- ====== STYLES ====== -->
     <style>
         /* ============================================================
-                   DESIGN SYSTEM ULTIMATE - PERSIANTECHNET
+                   ROOT VARIABLES - DESIGN SYSTEM
                    ============================================================ */
         :root {
             /* Primary Colors */
@@ -702,7 +703,6 @@
             color: var(--text-muted);
         }
 
-        /* Hero Visual */
         .hero-visual {
             position: relative;
             display: flex;
@@ -1087,7 +1087,7 @@
         }
 
         /* ============================================================
-                   FEATURES - NEW
+                   FEATURES
                    ============================================================ */
         .features {
             background: var(--bg-deep);
@@ -1177,6 +1177,68 @@
             font-size: 0.7rem;
             color: var(--primary);
             font-weight: 600;
+        }
+
+        /* ============================================================
+                   GALLERY
+                   ============================================================ */
+        .gallery {
+            background: var(--bg-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-base);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(0, 170, 255, 0.04);
+            border-radius: var(--radius-full);
+            font-size: 0.6rem;
+            color: var(--primary);
+            margin-top: 0.5rem;
         }
 
         /* ============================================================
@@ -1381,6 +1443,346 @@
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+        }
+
+        /* ============================================================
+                   AUTH SYSTEM
+                   ============================================================ */
+        .auth-section {
+            background: var(--bg-primary);
+            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .auth-form {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .auth-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-muted);
+        }
+
+        .auth-switch a {
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .remember-me input {
+            width: auto;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .forgot-password:hover {
+            color: var(--primary);
+        }
+
+        /* ============================================================
+                   DASHBOARD
+                   ============================================================ */
+        .dashboard {
+            background: var(--bg-primary);
+            padding: 2rem 0;
+            min-height: 100vh;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        .dashboard-sidebar {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .user-profile {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .user-profile h3 {
+            font-size: 1.1rem;
+        }
+
+        .user-profile span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .dashboard-nav {
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .dashboard-nav a:hover {
+            background: rgba(0, 170, 255, 0.04);
+            color: var(--primary);
+        }
+
+        .dashboard-nav a.active {
+            background: rgba(0, 170, 255, 0.06);
+            color: var(--primary);
+        }
+
+        .dashboard-nav a i {
+            width: 20px;
+        }
+
+        .dashboard-content {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .dashboard-section {
+            margin-top: 2rem;
+        }
+
+        .dashboard-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quick-action {
+            flex: 1;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .quick-action:hover {
+            border-color: var(--primary);
+            background: rgba(0, 170, 255, 0.02);
+        }
+
+        .quick-action i {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================================
+                   ORDER SYSTEM
+                   ============================================================ */
+        .order-section {
+            background: var(--bg-primary);
+            padding: 3rem 0;
+        }
+
+        .order-form-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .order-form-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* ============================================================
+                   TICKET SYSTEM
+                   ============================================================ */
+        .ticket-section {
+            background: var(--bg-primary);
+            padding: 3rem 0;
+        }
+
+        .ticket-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .ticket-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+            transition: all var(--transition-fast);
+        }
+
+        .ticket-item:hover {
+            border-color: var(--border-glow);
+        }
+
+        .ticket-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ticket-id {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .ticket-status {
+            padding: 0.2rem 0.8rem;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .ticket-status.status-open {
+            background: rgba(0, 170, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .ticket-status.status-closed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .ticket-status.status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+        }
+
+        .ticket-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .ticket-form {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
         }
 
         /* ============================================================
@@ -1593,7 +1995,7 @@
         }
 
         /* ============================================================
-                   FOOTER - FINAL VERSION
+                   FOOTER
                    ============================================================ */
         .footer {
             background: var(--bg-deep);
@@ -1809,10 +2211,9 @@
                    RESPONSIVE DESIGN
                    ============================================================ */
         @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .features-grid {
+            .services-grid,
+            .features-grid,
+            .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .support-grid {
@@ -1830,6 +2231,9 @@
             }
             .hologram .center-icon {
                 font-size: 5rem;
+            }
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1885,10 +2289,9 @@
                 left: 0%;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .features-grid {
+            .services-grid,
+            .features-grid,
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
             .support-grid {
@@ -1931,6 +2334,20 @@
             .tech-grid {
                 grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+            .quick-actions {
+                flex-direction: column;
+            }
+            .ticket-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1961,6 +2378,12 @@
             }
             .hologram .center-icon {
                 font-size: 3rem;
+            }
+            .auth-form {
+                padding: 1.5rem;
+            }
+            .dashboard-content {
+                padding: 1rem;
             }
         }
     </style>
@@ -1997,11 +2420,12 @@
             <nav class="nav" role="navigation" aria-label="منوی اصلی">
                 <a href="#services" class="active">خدمات</a>
                 <a href="#features">ویژگی‌ها</a>
+                <a href="#gallery">نمونه‌کارها</a>
                 <a href="#about">درباره ما</a>
                 <a href="#support">پشتیبانی</a>
                 <a href="#contact">تماس</a>
-                <a href="#contact" class="nav-cta">
-                    <i class="fas fa-headset"></i> ارتباط سریع
+                <a href="#auth" class="nav-cta" id="authNavBtn">
+                    <i class="fas fa-user"></i> ورود / ثبت‌نام
                 </a>
                 <div class="nav-controls">
                     <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
@@ -2019,10 +2443,11 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="#services">خدمات</a>
         <a href="#features">ویژگی‌ها</a>
+        <a href="#gallery">نمونه‌کارها</a>
         <a href="#about">درباره ما</a>
         <a href="#support">پشتیبانی</a>
         <a href="#contact">تماس</a>
-        <a href="#contact" class="nav-cta">ارتباط سریع</a>
+        <a href="#auth" class="nav-cta">ورود / ثبت‌نام</a>
     </div>
 
     <!-- ============================================================
@@ -2135,8 +2560,8 @@
                         <span><i class="fas fa-check-circle"></i> نرم‌افزار</span>
                         <span><i class="fas fa-check-circle"></i> سخت‌افزار</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
+                    <a href="#order" class="service-link">
+                        ثبت سفارش <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
 
@@ -2153,8 +2578,8 @@
                         <span><i class="fas fa-check-circle"></i> هاست و دامنه</span>
                         <span><i class="fas fa-check-circle"></i> اپلیکیشن وب</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
+                    <a href="#order" class="service-link">
+                        ثبت سفارش <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
 
@@ -2171,8 +2596,8 @@
                         <span><i class="fas fa-check-circle"></i> سرمایه‌گذاری</span>
                         <span><i class="fas fa-check-circle"></i> همکاری</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
+                    <a href="#order" class="service-link">
+                        ثبت سفارش <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
@@ -2301,6 +2726,56 @@
     </section>
 
     <!-- ============================================================
+    GALLERY
+    ============================================================ -->
+    <section class="section-padding gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-images title-icon"></i>
+                گالری <span class="highlight">نمونه‌کارها</span>
+            </h2>
+            <p class="section-subtitle">
+                برخی از پروژه‌های موفق پرشین‌تک‌نت
+            </p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #00aaff, #0066cc);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>سیستم مدیریت محتوا</h4>
+                        <p>طراحی و پیاده‌سازی CMS اختصاصی برای سازمان</p>
+                        <span class="gallery-tag">کامپیوتر</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>شبکه سازمانی</h4>
+                        <p>راه‌اندازی شبکه ۵۰ دستگاه با امنیت بالا</p>
+                        <span class="gallery-tag">شبکه</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>مشاوره استارتاپ</h4>
+                        <p>مشاوره و راه‌اندازی کسب و کار فناورانه</p>
+                        <span class="gallery-tag">مشاوره</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
     ABOUT
     ============================================================ -->
     <section class="section-padding about" id="about">
@@ -2404,6 +2879,202 @@
                         <i class="fas fa-envelope"></i> persiantechnet@gmail.com
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    AUTH - LOGIN / REGISTER
+    ============================================================ -->
+    <section class="auth-section" id="auth">
+        <div class="auth-container">
+            <!-- Register Form -->
+            <div class="auth-form register-form" id="registerForm">
+                <h2>ثبت‌نام <span class="highlight">جدید</span></h2>
+                <form id="registerFormSubmit">
+                    <div class="form-group">
+                        <label for="regName">نام و نام خانوادگی</label>
+                        <input type="text" id="regName" placeholder="نام کامل" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">ایمیل</label>
+                        <input type="email" id="regEmail" placeholder="example@email.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">شماره تماس</label>
+                        <input type="tel" id="regPhone" placeholder="۰۹۱۲۱۲۳۴۵۶۷" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">رمز عبور</label>
+                        <input type="password" id="regPassword" placeholder="حداقل ۶ کاراکتر" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirm">تکرار رمز عبور</label>
+                        <input type="password" id="regConfirm" placeholder="تکرار رمز عبور" required />
+                    </div>
+                    <button type="submit" class="btn-primary auth-btn">ثبت‌نام</button>
+                    <p class="auth-switch">قبلاً ثبت‌نام کرده‌اید؟ <a href="#" id="switchToLogin">ورود</a></p>
+                </form>
+            </div>
+
+            <!-- Login Form -->
+            <div class="auth-form login-form" id="loginForm" style="display:none;">
+                <h2>ورود به <span class="highlight">حساب کاربری</span></h2>
+                <form id="loginFormSubmit">
+                    <div class="form-group">
+                        <label for="loginEmail">ایمیل</label>
+                        <input type="email" id="loginEmail" placeholder="example@email.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">رمز عبور</label>
+                        <input type="password" id="loginPassword" placeholder="رمز عبور" required />
+                    </div>
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="rememberMe" />
+                        <label for="rememberMe">مرا به خاطر بسپار</label>
+                    </div>
+                    <button type="submit" class="btn-primary auth-btn">ورود</button>
+                    <p class="auth-switch">حساب کاربری ندارید؟ <a href="#" id="switchToRegister">ثبت‌نام</a></p>
+                    <a href="#" class="forgot-password">رمز عبور را فراموش کرده‌اید؟</a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    DASHBOARD
+    ============================================================ -->
+    <section class="dashboard" id="dashboard" style="display:none;">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 id="userName">کاربر گرامی</h3>
+                        <span id="userEmail">email@example.com</span>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="#dashboard" class="active"><i class="fas fa-home"></i> پیشخوان</a>
+                        <a href="#orders"><i class="fas fa-shopping-bag"></i> سفارش‌ها</a>
+                        <a href="#services"><i class="fas fa-cogs"></i> خدمات من</a>
+                        <a href="#tickets"><i class="fas fa-ticket-alt"></i> تیکت‌ها</a>
+                        <a href="#profile"><i class="fas fa-user-edit"></i> ویرایش پروفایل</a>
+                        <a href="#settings"><i class="fas fa-cog"></i> تنظیمات</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</a>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="dashboard-content">
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="stat-number" id="orderCount">۰</span>
+                            <span class="stat-label">سفارش‌ها</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span class="stat-number" id="ticketCount">۰</span>
+                            <span class="stat-label">تیکت‌ها</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <span class="stat-number" id="pendingCount">۰</span>
+                            <span class="stat-label">در انتظار</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders -->
+                    <div class="dashboard-section">
+                        <h3>سفارش‌های اخیر</h3>
+                        <div class="order-list" id="orderList">
+                            <p class="empty-state">هیچ سفارشی ثبت نشده است</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dashboard-section">
+                        <h3>سفارش جدید</h3>
+                        <div class="quick-actions">
+                            <button class="quick-action" data-service="computer">
+                                <i class="fas fa-laptop"></i> کامپیوتر
+                            </button>
+                            <button class="quick-action" data-service="network">
+                                <i class="fas fa-network-wired"></i> شبکه
+                            </button>
+                            <button class="quick-action" data-service="business">
+                                <i class="fas fa-chart-line"></i> مشاوره
+                            </button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ORDER SECTION
+    ============================================================ -->
+    <section class="order-section" id="order" style="display:none;">
+        <div class="container">
+            <div class="order-form-container">
+                <h2>ثبت سفارش <span class="highlight">جدید</span></h2>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="orderService">نوع خدمت</label>
+                        <select id="orderService" required>
+                            <option value="">انتخاب کنید...</option>
+                            <option value="computer">کامپیوتر و تجهیزات</option>
+                            <option value="network">شبکه و اینترنت</option>
+                            <option value="business">کسب و کار فناوری</option>
+                            <option value="hosting">هاست و دامنه</option>
+                            <option value="app">طراحی اپلیکیشن</option>
+                            <option value="consulting">مشاوره</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="orderTitle">عنوان پروژه</label>
+                        <input type="text" id="orderTitle" placeholder="عنوان پروژه خود را وارد کنید" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="orderDescription">توضیحات پروژه</label>
+                        <textarea id="orderDescription" rows="6" placeholder="توضیحات کامل پروژه خود را وارد کنید..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="orderBudget">بودجه پیشنهادی (تومان)</label>
+                            <input type="number" id="orderBudget" placeholder="مثلاً: ۵۰۰۰۰۰۰" />
+                        </div>
+                        <div class="form-group">
+                            <label for="orderDeadline">زمان تحویل</label>
+                            <select id="orderDeadline">
+                                <option value="1">۱ هفته</option>
+                                <option value="2">۲ هفته</option>
+                                <option value="3">۳ هفته</option>
+                                <option value="4">۱ ماه</option>
+                                <option value="8">۲ ماه</option>
+                                <option value="12">۳ ماه</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="orderAttachments">پیوست‌ها</label>
+                        <input type="file" id="orderAttachments" multiple />
+                        <small>فایل‌های تصویر، PDF و مستندات را آپلود کنید</small>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">ثبت سفارش</button>
+                    <button type="button" class="btn-secondary" id="closeOrderForm" style="margin-top: 0.5rem; width: 100%;">
+                        انصراف
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -2525,6 +3196,61 @@
     </section>
 
     <!-- ============================================================
+    TICKET SECTION
+    ============================================================ -->
+    <section class="ticket-section" id="tickets" style="display:none;">
+        <div class="container">
+            <div class="ticket-container">
+                <div class="ticket-header">
+                    <h2>تیکت‌های <span class="highlight">پشتیبانی</span></h2>
+                    <button class="btn-primary" id="newTicketBtn"><i class="fas fa-plus"></i> تیکت جدید</button>
+                </div>
+                
+                <div class="ticket-list" id="ticketList">
+                    <p class="empty-state">هیچ تیکتی ثبت نشده است</p>
+                </div>
+                
+                <div class="ticket-form" id="ticketForm" style="display:none;">
+                    <h3>تیکت جدید</h3>
+                    <form id="newTicketForm">
+                        <div class="form-group">
+                            <label for="ticketSubject">موضوع</label>
+                            <input type="text" id="ticketSubject" placeholder="موضوع تیکت" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="ticketCategory">دسته‌بندی</label>
+                            <select id="ticketCategory" required>
+                                <option value="">انتخاب کنید...</option>
+                                <option value="technical">مشکل فنی</option>
+                                <option value="billing">صورتحساب</option>
+                                <option value="service">خدمات</option>
+                                <option value="other">سایر</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticketPriority">اولویت</label>
+                            <select id="ticketPriority">
+                                <option value="low">کم</option>
+                                <option value="medium" selected>متوسط</option>
+                                <option value="high">بالا</option>
+                                <option value="critical">بحرانی</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticketMessage">پیام</label>
+                            <textarea id="ticketMessage" rows="6" placeholder="مشکل خود را توضیح دهید..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">ارسال تیکت</button>
+                        <button type="button" class="btn-secondary" id="cancelTicket" style="margin-top: 0.5rem; width: 100%;">
+                            انصراف
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
     FOOTER
     ============================================================ -->
     <footer class="footer" role="contentinfo">
@@ -2579,8 +3305,8 @@
                     <a href="#about"><i class="fas fa-chevron-left"></i> درباره ما</a>
                     <a href="#support"><i class="fas fa-chevron-left"></i> پشتیبانی</a>
                     <a href="#contact"><i class="fas fa-chevron-left"></i> تماس با ما</a>
-                    <a href="#"><i class="fas fa-chevron-left"></i> وبلاگ</a>
-                    <a href="#"><i class="fas fa-chevron-left"></i> سوالات متداول</a>
+                    <a href="#gallery"><i class="fas fa-chevron-left"></i> نمونه‌کارها</a>
+                    <a href="#auth"><i class="fas fa-chevron-left"></i> ورود / ثبت‌نام</a>
                 </div>
 
                 <div class="footer-col">
@@ -2776,7 +3502,6 @@
             const container = document.getElementById('map');
             if (!container) return;
 
-            // موقعیت واقعی: کوار، استان فارس
             const lat = 29.2052;
             const lng = 52.6906;
 
@@ -2789,17 +3514,349 @@
             L.marker([lat, lng])
                 .addTo(map)
                 .bindPopup(`
-                        <div style="text-align: center; direction: rtl;">
-                            <strong style="color: #00aaff;">پرشین‌تک‌نت</strong><br>
-                            PersianTechNet 🇮🇷<br>
-                            <hr style="margin: 5px 0;">
-                            استان فارس - شهرستان کوار<br>
-                            بلوار امام خمینی - خیابان شهید محسن شفیعی<br>
-                            <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲<br>
-                            <i class="fas fa-mobile-alt"></i> ۰۹۳۷۳۶۲۲۷۶۲
-                        </div>
-                    `)
+                            <div style="text-align: center; direction: rtl;">
+                                <strong style="color: #00aaff;">پرشین‌تک‌نت</strong><br>
+                                PersianTechNet 🇮🇷<br>
+                                <hr style="margin: 5px 0;">
+                                استان فارس - شهرستان کوار<br>
+                                بلوار امام خمینی - خیابان شهید محسن شفیعی<br>
+                                <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲<br>
+                                <i class="fas fa-mobile-alt"></i> ۰۹۳۷۳۶۲۲۷۶۲
+                            </div>
+                        `)
                 .openPopup();
+        })();
+
+        // ============================================================
+        // AUTH SYSTEM
+        // ============================================================
+        (function authSystem() {
+            // Switch between login and register
+            const switchToLogin = document.getElementById('switchToLogin');
+            const switchToRegister = document.getElementById('switchToRegister');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'block';
+                    registerForm.style.display = 'none';
+                });
+            }
+
+            if (switchToRegister) {
+                switchToRegister.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                });
+            }
+
+            // Register
+            const regForm = document.getElementById('registerFormSubmit');
+            if (regForm) {
+                regForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('regName').value.trim();
+                    const email = document.getElementById('regEmail').value.trim();
+                    const phone = document.getElementById('regPhone').value.trim();
+                    const password = document.getElementById('regPassword').value;
+                    const confirm = document.getElementById('regConfirm').value;
+
+                    if (password !== confirm) {
+                        showToast('رمز عبور و تکرار آن مطابقت ندارند', 'error');
+                        return;
+                    }
+
+                    if (password.length < 6) {
+                        showToast('رمز عبور باید حداقل ۶ کاراکتر باشد', 'error');
+                        return;
+                    }
+
+                    const users = JSON.parse(localStorage.getItem('users') || '[]');
+                    if (users.find(u => u.email === email)) {
+                        showToast('این ایمیل قبلاً ثبت شده است', 'error');
+                        return;
+                    }
+
+                    users.push({ name, email, phone, password, date: new Date().toISOString() });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    localStorage.setItem('currentUser', JSON.stringify({ name, email, phone }));
+
+                    showToast('ثبت‌نام با موفقیت انجام شد! ✅', 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                });
+            }
+
+            // Login
+            const logForm = document.getElementById('loginFormSubmit');
+            if (logForm) {
+                logForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const password = document.getElementById('loginPassword').value;
+
+                    const users = JSON.parse(localStorage.getItem('users') || '[]');
+                    const user = users.find(u => u.email === email && u.password === password);
+
+                    if (user) {
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            name: user.name,
+                            email: user.email,
+                            phone: user.phone
+                        }));
+                        showToast('ورود با موفقیت انجام شد! ✅', 'success');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        showToast('ایمیل یا رمز عبور اشتباه است', 'error');
+                    }
+                });
+            }
+
+            // Logout
+            document.getElementById('logoutBtn')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('currentUser');
+                location.reload();
+            });
+
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            const authSection = document.getElementById('auth');
+            const dashboard = document.getElementById('dashboard');
+
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+
+                if (authSection) authSection.style.display = 'none';
+                if (dashboard) dashboard.style.display = 'block';
+
+                const authNavBtn = document.getElementById('authNavBtn');
+                if (authNavBtn) {
+                    authNavBtn.innerHTML = `<i class="fas fa-user"></i> ${currentUser.name}`;
+                    authNavBtn.href = '#dashboard';
+                }
+
+                // Hide ticket section if not logged in
+                document.getElementById('tickets').style.display = 'block';
+            } else {
+                if (dashboard) dashboard.style.display = 'none';
+                if (authSection) authSection.style.display = 'flex';
+                document.getElementById('tickets').style.display = 'none';
+            }
+        })();
+
+        // ============================================================
+        // ORDER SYSTEM
+        // ============================================================
+        (function orderSystem() {
+            const orderForm = document.getElementById('orderForm');
+            if (orderForm) {
+                orderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+                    if (!currentUser) {
+                        showToast('لطفاً ابتدا وارد حساب کاربری خود شوید', 'warning');
+                        return;
+                    }
+
+                    const order = {
+                        service: document.getElementById('orderService').value,
+                        title: document.getElementById('orderTitle').value.trim(),
+                        description: document.getElementById('orderDescription').value.trim(),
+                        budget: document.getElementById('orderBudget').value || 'نامشخص',
+                        deadline: document.getElementById('orderDeadline').value,
+                        user: currentUser,
+                        date: new Date().toISOString(),
+                        status: 'pending'
+                    };
+
+                    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                    orders.push(order);
+                    localStorage.setItem('orders', JSON.stringify(orders));
+
+                    showToast('سفارش شما با موفقیت ثبت شد! ✅', 'success');
+                    orderForm.reset();
+                    document.getElementById('order').style.display = 'none';
+                    loadOrders();
+                });
+            }
+
+            window.loadOrders = function() {
+                const orderList = document.getElementById('orderList');
+                if (!orderList) return;
+
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+                if (orders.length === 0 || !currentUser) {
+                    orderList.innerHTML = '<p class="empty-state">هیچ سفارشی ثبت نشده است</p>';
+                    return;
+                }
+
+                const userOrders = orders.filter(o => o.user?.email === currentUser.email);
+                if (userOrders.length === 0) {
+                    orderList.innerHTML = '<p class="empty-state">هیچ سفارشی ثبت نشده است</p>';
+                    return;
+                }
+
+                const statusMap = { 'pending': 'در انتظار', 'approved': 'تأیید شده', 'completed': 'تکمیل شده' };
+                const statusClass = { 'pending': 'status-open', 'approved': 'status-pending', 'completed': 'status-closed' };
+
+                orderList.innerHTML = userOrders.slice(-5).reverse().map((order, index) => `
+                            <div class="ticket-item">
+                                <div class="ticket-info">
+                                    <span class="ticket-id">#${index + 1}</span>
+                                    <span class="ticket-title">${order.title}</span>
+                                    <span class="ticket-status ${statusClass[order.status] || 'status-open'}">
+                                        ${statusMap[order.status] || 'در انتظار'}
+                                    </span>
+                                </div>
+                                <div class="ticket-meta">
+                                    <span>${new Date(order.date).toLocaleDateString('fa-IR')}</span>
+                                    <span>💰 ${order.budget}</span>
+                                </div>
+                            </div>
+                        `).join('');
+
+                // Update stats
+                document.getElementById('orderCount').textContent = userOrders.length;
+                document.getElementById('pendingCount').textContent = userOrders.filter(o => o.status === 'pending').length;
+            };
+
+            // Quick actions
+            document.querySelectorAll('.quick-action').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                    if (!currentUser) {
+                        showToast('لطفاً ابتدا وارد حساب کاربری خود شوید', 'warning');
+                        return;
+                    }
+                    const service = this.dataset.service;
+                    const serviceMap = {
+                        'computer': 'کامپیوتر و تجهیزات',
+                        'network': 'شبکه و اینترنت',
+                        'business': 'کسب و کار فناوری'
+                    };
+                    document.getElementById('orderService').value = service;
+                    document.getElementById('order').style.display = 'block';
+                    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+                    showToast(`در حال ثبت سفارش ${serviceMap[service]}...`, 'info');
+                });
+            });
+
+            // Close order form
+            document.getElementById('closeOrderForm')?.addEventListener('click', function() {
+                document.getElementById('order').style.display = 'none';
+            });
+
+            loadOrders();
+        })();
+
+        // ============================================================
+        // TICKET SYSTEM
+        // ============================================================
+        (function ticketSystem() {
+            const newTicketBtn = document.getElementById('newTicketBtn');
+            const ticketForm = document.getElementById('ticketForm');
+            const cancelTicket = document.getElementById('cancelTicket');
+
+            if (newTicketBtn) {
+                newTicketBtn.addEventListener('click', () => {
+                    ticketForm.style.display = 'block';
+                    newTicketBtn.style.display = 'none';
+                });
+            }
+
+            if (cancelTicket) {
+                cancelTicket.addEventListener('click', () => {
+                    ticketForm.style.display = 'none';
+                    newTicketBtn.style.display = 'block';
+                });
+            }
+
+            const newTicketForm = document.getElementById('newTicketForm');
+            if (newTicketForm) {
+                newTicketForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+                    if (!currentUser) {
+                        showToast('لطفاً ابتدا وارد حساب کاربری خود شوید', 'warning');
+                        return;
+                    }
+
+                    const ticket = {
+                        subject: document.getElementById('ticketSubject').value.trim(),
+                        category: document.getElementById('ticketCategory').value,
+                        priority: document.getElementById('ticketPriority').value,
+                        message: document.getElementById('ticketMessage').value.trim(),
+                        user: currentUser,
+                        date: new Date().toISOString(),
+                        status: 'open'
+                    };
+
+                    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+                    tickets.push(ticket);
+                    localStorage.setItem('tickets', JSON.stringify(tickets));
+
+                    showToast('تیکت شما با موفقیت ثبت شد! ✅', 'success');
+                    newTicketForm.reset();
+                    ticketForm.style.display = 'none';
+                    newTicketBtn.style.display = 'block';
+                    loadTickets();
+                });
+            }
+
+            function loadTickets() {
+                const ticketList = document.getElementById('ticketList');
+                if (!ticketList) return;
+
+                const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+                if (tickets.length === 0 || !currentUser) {
+                    ticketList.innerHTML = '<p class="empty-state">هیچ تیکتی ثبت نشده است</p>';
+                    return;
+                }
+
+                const userTickets = tickets.filter(t => t.user?.email === currentUser.email);
+                if (userTickets.length === 0) {
+                    ticketList.innerHTML = '<p class="empty-state">هیچ تیکتی ثبت نشده است</p>';
+                    return;
+                }
+
+                const statusMap = { 'open': 'باز', 'closed': 'بسته شده', 'pending': 'در انتظار' };
+                const statusClass = { 'open': 'status-open', 'closed': 'status-closed', 'pending': 'status-pending' };
+                const priorityIcon = { 'low': '🟢', 'medium': '🟡', 'high': '🔴', 'critical': '🚨' };
+
+                ticketList.innerHTML = userTickets.map((ticket, index) => `
+                            <div class="ticket-item">
+                                <div class="ticket-info">
+                                    <span class="ticket-id">#${index + 1}</span>
+                                    <span class="ticket-title">${ticket.subject}</span>
+                                    <span class="ticket-status ${statusClass[ticket.status] || 'status-open'}">
+                                        ${statusMap[ticket.status] || 'باز'}
+                                    </span>
+                                </div>
+                                <div class="ticket-meta">
+                                    <span>${new Date(ticket.date).toLocaleDateString('fa-IR')}</span>
+                                    <span>${priorityIcon[ticket.priority] || '🟡'} ${ticket.priority}</span>
+                                </div>
+                            </div>
+                        `).join('');
+
+                document.getElementById('ticketCount').textContent = userTickets.length;
+            }
+
+            loadTickets();
         })();
 
         // ============================================================
