@@ -2,30 +2,41 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <meta name="theme-color" content="#0a0e1a" />
-    <meta name="description" content="سازمان شبکه فناوری پارسی - مرکز تخصصی فناوری اطلاعات از رایانه تا سیستم‌عامل، سرور، اینترنت، کدنویسی، طراحی سایت و هوش مصنوعی" />
-    <meta name="keywords" content="فناوری اطلاعات, سیستم عامل, سرور, شبکه, اینترنت, کدنویسی, طراحی سایت, هوش مصنوعی, برنامه نویسی" />
-    <meta name="author" content="Persia Tech Network" />
-    <meta property="og:title" content="سازمان شبکه فناوری پارسی | از رایانه تا هوش مصنوعی" />
-    <meta property="og:description" content="پیشرو در فناوری اطلاعات با رویکرد ساده‌سازی و هوشمندسازی" />
-    <meta property="og:type" content="website" />
+    <meta name="description" content="پرشین‌تک‌نت | PersianTechNet - ایستگاه کامل خدمات فناوری اطلاعات از کامپیوتر و سیستم‌عامل تا شبکه، اینترنت، هاست، دامنه، طراحی اپلیکیشن و مشاوره کسب و کار" />
+    <meta name="keywords" content="پرشین‌تک‌نت, PersianTechNet, فناوری اطلاعات, کامپیوتر, سیستم عامل, شبکه, اینترنت, هاست, دامنه, طراحی اپلیکیشن, مشاوره کسب و کار, کوار, فارس" />
+    <meta name="author" content="PersianTechNet" />
     <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
     
-    <title>سازمان شبکه فناوری پارسی | از رایانه تا هوش مصنوعی</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="پرشین‌تک‌نت | PersianTechNet - ایستگاه خدمات فناوری" />
+    <meta property="og:description" content="یک ایستگاه کامل خدمات فناوری برای کسب و کار یا تجارت شما" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://persiantechnet.github.io" />
+    <meta property="og:locale" content="fa_IR" />
     
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="پرشین‌تک‌نت | PersianTechNet" />
+    <meta name="twitter:description" content="ایستگاه کامل خدمات فناوری برای کسب و کار شما" />
+    
+    <title>پرشین‌تک‌نت | PersianTechNet 🇮🇷 - ایستگاه خدمات فناوری</title>
+
     <!-- ====== FONTS & ICONS ====== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
     <!-- ====== LEAFETL.JS ====== -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
+
     <style>
         /* ============================================================
-                   DESIGN SYSTEM ULTIMATE
+                   DESIGN SYSTEM ULTIMATE - PERSIANTECHNET
                    ============================================================ */
         :root {
+            /* Primary Colors */
             --primary: #00aaff;
             --primary-dark: #0077cc;
             --primary-light: #66ccff;
@@ -35,37 +46,44 @@
             --success: #10b981;
             --danger: #ef4444;
             
+            /* Background Colors */
             --bg-deep: #0a0e1a;
             --bg-primary: #0f172a;
             --bg-secondary: #1a2236;
             --bg-card: #1e293b;
             --bg-glass: rgba(255, 255, 255, 0.03);
             
+            /* Text Colors */
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
             --text-dark: #475569;
             
+            /* Border Colors */
             --border-color: rgba(0, 170, 255, 0.08);
             --border-glow: rgba(0, 170, 255, 0.15);
             
+            /* Shadows */
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
             --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
             --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.6);
             --shadow-glow: 0 0 60px rgba(0, 170, 255, 0.05);
             
+            /* Radius */
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
             --radius-xl: 32px;
             --radius-full: 9999px;
             
+            /* Transitions */
             --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             
+            /* Typography */
             --font-primary: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
             --max-width: 1360px;
             --header-height: 72px;
@@ -138,7 +156,7 @@
         }
 
         /* ============================================================
-                   ANIMATED BACKGROUND - MOLECULES
+                   ANIMATED BACKGROUND
                    ============================================================ */
         #molecules {
             position: fixed;
@@ -235,7 +253,7 @@
         }
 
         /* ============================================================
-                   UTILITY
+                   UTILITY CLASSES
                    ============================================================ */
         .section-padding {
             padding: 5rem 0;
@@ -272,11 +290,6 @@
             margin: 0 auto 3rem;
         }
 
-        .section-subtitle i {
-            color: var(--primary);
-            margin: 0 4px;
-        }
-
         .badge-glow {
             display: inline-flex;
             align-items: center;
@@ -297,7 +310,7 @@
         }
 
         /* ============================================================
-                   HEADER - NEON GLASS
+                   HEADER
                    ============================================================ */
         .header {
             position: fixed;
@@ -517,7 +530,7 @@
         }
 
         /* ============================================================
-                   HERO - ULTIMATE
+                   HERO SECTION
                    ============================================================ */
         .hero {
             padding: calc(var(--header-height) + 40px) 0 60px;
@@ -556,7 +569,7 @@
             font-size: 0.6rem;
         }
 
-        .hero-content h2 {
+        .hero-content h1 {
             font-size: 3.8rem;
             font-weight: 900;
             line-height: 1.1;
@@ -689,7 +702,7 @@
             color: var(--text-muted);
         }
 
-        /* Hero Visual - Holographic */
+        /* Hero Visual */
         .hero-visual {
             position: relative;
             display: flex;
@@ -817,12 +830,17 @@
         }
 
         /* ============================================================
-                   SERVICES - ULTIMATE
+                   SERVICES
                    ============================================================ */
         .services {
             background: var(--bg-primary);
             position: relative;
             z-index: 1;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .services-grid {
@@ -1003,6 +1021,28 @@
             font-weight: 600;
         }
 
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .about-stat .number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .about-stat span:last-child {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
         .about-features {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1021,10 +1061,6 @@
         .about-features li i {
             color: var(--primary);
             font-size: 1rem;
-        }
-
-        .about-image {
-            position: relative;
         }
 
         .about-image .img-placeholder {
@@ -1051,53 +1087,96 @@
         }
 
         /* ============================================================
-                   STATS GLOW
+                   FEATURES - NEW
                    ============================================================ */
-        .stats-glow {
-            background: var(--primary-gradient);
-            padding: 4rem 0;
+        .features {
+            background: var(--bg-deep);
             position: relative;
             z-index: 1;
         }
 
-        .stats-glow::before {
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.1;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .stats-grid .stat-item .number {
-            font-size: 3.2rem;
-            font-weight: 900;
-            display: block;
-            letter-spacing: 2px;
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(0, 170, 255, 0.04);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--primary);
+            transition: all var(--transition-base);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary-gradient);
             color: #fff;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+            transform: scale(1.1) rotate(10deg);
         }
 
-        .stats-grid .stat-item .label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .stats-grid .stat-item i {
-            font-size: 2.5rem;
-            opacity: 0.1;
-            display: block;
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #fff;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            background: rgba(0, 170, 255, 0.04);
+            border: 1px solid rgba(0, 170, 255, 0.06);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         /* ============================================================
@@ -1305,7 +1384,7 @@
         }
 
         /* ============================================================
-                   CHATBOT - AI
+                   CHATBOT
                    ============================================================ */
         .chatbot-toggle {
             position: fixed;
@@ -1514,7 +1593,7 @@
         }
 
         /* ============================================================
-                   FOOTER
+                   FOOTER - FINAL VERSION
                    ============================================================ */
         .footer {
             background: var(--bg-deep);
@@ -1535,12 +1614,18 @@
             color: var(--text-primary);
             font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .footer-brand h3 i {
             color: var(--primary);
             margin-left: 8px;
+        }
+
+        .footer-brand h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         .footer-brand p {
@@ -1550,29 +1635,30 @@
             line-height: 1.7;
         }
 
-        .footer-col h4 {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+        .footer-contact {
+            margin: 1rem 0;
         }
 
-        .footer-col a {
-            display: block;
-            font-size: 0.85rem;
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 0.3rem;
-            transition: all var(--transition-fast);
         }
 
-        .footer-col a:hover {
+        .footer-contact-item i {
             color: var(--primary);
+            width: 20px;
+            font-size: 0.8rem;
         }
 
         .footer-social {
             display: flex;
             gap: 0.8rem;
             margin-top: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .footer-social a {
@@ -1596,13 +1682,57 @@
             transform: translateY(-3px);
         }
 
+        .footer-col h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-col a i {
+            font-size: 0.5rem;
+            margin-left: 4px;
+            opacity: 0.5;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
         .footer-bottom {
             border-top: 1px solid var(--border-color);
             padding-top: 1.5rem;
             text-align: center;
             font-size: 0.8rem;
             color: var(--text-muted);
-            opacity: 0.5;
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-bottom .footer-bottom-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom .footer-bottom-links a {
+            color: var(--primary);
+            transition: all var(--transition-fast);
+        }
+
+        .footer-bottom .footer-bottom-links a:hover {
+            text-decoration: underline;
         }
 
         /* ============================================================
@@ -1676,10 +1806,13 @@
         }
 
         /* ============================================================
-                   RESPONSIVE
+                   RESPONSIVE DESIGN
                    ============================================================ */
         @media (max-width: 1024px) {
             .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .support-grid {
@@ -1688,7 +1821,7 @@
             .hero-grid {
                 gap: 2rem;
             }
-            .hero-content h2 {
+            .hero-content h1 {
                 font-size: 2.8rem;
             }
             .hologram {
@@ -1755,6 +1888,9 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
             .support-grid {
                 grid-template-columns: 1fr;
             }
@@ -1768,10 +1904,6 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
@@ -1779,7 +1911,7 @@
             .section-title {
                 font-size: 2rem;
             }
-            .hero-content h2 {
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
@@ -1791,8 +1923,10 @@
             .about-features {
                 grid-template-columns: 1fr;
             }
-            .stats-grid .stat-item .number {
-                font-size: 2.2rem;
+            .about-stats {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
             .tech-grid {
                 grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -1807,7 +1941,7 @@
                 padding: calc(var(--header-height) + 20px) 0 40px;
                 min-height: auto;
             }
-            .hero-content h2 {
+            .hero-content h1 {
                 font-size: 1.6rem;
             }
             .hero-buttons .btn-primary,
@@ -1821,10 +1955,6 @@
             .footer-brand p {
                 max-width: 100%;
             }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
             .hologram {
                 width: 200px;
                 height: 200px;
@@ -1835,6 +1965,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- ============================================================
     MOLECULES BACKGROUND
@@ -1853,19 +1984,19 @@
     ============================================================ -->
     <header class="header" id="header" role="banner">
         <div class="container">
-            <a href="#" class="logo" aria-label="صفحه اصلی">
+            <a href="#" class="logo" aria-label="صفحه اصلی پرشین‌تک‌نت">
                 <div class="logo-icon">
                     <i class="fas fa-satellite-dish"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>شبکه فناوری پارسی</h1>
-                    <span><i class="fas fa-code"></i> از رایانه تا هوش مصنوعی</span>
+                    <h1>پرشین‌تک‌نت</h1>
+                    <span><i class="fas fa-code"></i> PersianTechNet 🇮🇷</span>
                 </div>
             </a>
 
             <nav class="nav" role="navigation" aria-label="منوی اصلی">
                 <a href="#services" class="active">خدمات</a>
-                <a href="#tech">فناوری‌ها</a>
+                <a href="#features">ویژگی‌ها</a>
                 <a href="#about">درباره ما</a>
                 <a href="#support">پشتیبانی</a>
                 <a href="#contact">تماس</a>
@@ -1887,7 +2018,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#services">خدمات</a>
-        <a href="#tech">فناوری‌ها</a>
+        <a href="#features">ویژگی‌ها</a>
         <a href="#about">درباره ما</a>
         <a href="#support">پشتیبانی</a>
         <a href="#contact">تماس</a>
@@ -1895,36 +2026,34 @@
     </div>
 
     <!-- ============================================================
-    HERO
+    HERO SECTION
     ============================================================ -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <i class="fas fa-rocket"></i> پیشرو در فناوری اطلاعات
+                        <i class="fas fa-rocket"></i> ایستگاه خدمات فناوری
                     </div>
-                    <h2>
-                        از <span class="highlight">رایانه</span> تا
-                        <span class="highlight">هوش مصنوعی</span>
-                    </h2>
+                    <h1>
+                        <span class="highlight">پرشین‌تک‌نت</span>
+                    </h1>
                     <div class="hero-slogan">
                         <i class="fas fa-quote-right"></i>
-                        ساده‌ترین روش ممکن برای ارتباط با فناوری
+                        یک ایستگاه خدمات فناوری برای کسب و کار شما
                     </div>
                     <p>
-                        سازمان شبکه فناوری پارسی، مرکز تخصصی ارائه خدمات <strong>فناوری اطلاعات</strong>
-                        از <strong>سیستم‌عامل</strong> و <strong>سرور</strong> تا <strong>شبکه</strong>،
-                        <strong>کدنویسی</strong>، <strong>طراحی سایت</strong> و <strong>هوش مصنوعی</strong>
+                        <strong>پرشین‌تک‌نت (PersianTechNet)</strong> یک ایستگاه کامل خدمات فناوری اطلاعات
+                        از <strong>کامپیوتر و سیستم‌عامل</strong> تا <strong>شبکه و اینترنت</strong>
+                        و <strong>مشاوره کسب و کار فناوری</strong>
                         با رویکرد ساده‌سازی و هوشمندسازی.
                     </p>
                     <div class="hero-tags">
-                        <span class="tag"><i class="fas fa-microchip"></i> سیستم‌عامل</span>
-                        <span class="tag"><i class="fas fa-server"></i> سرور</span>
-                        <span class="tag"><i class="fas fa-wifi"></i> شبکه</span>
-                        <span class="tag"><i class="fas fa-code"></i> کدنویسی</span>
-                        <span class="tag"><i class="fas fa-paint-brush"></i> طراحی سایت</span>
-                        <span class="tag"><i class="fas fa-brain"></i> هوش مصنوعی</span>
+                        <span class="tag"><i class="fas fa-laptop"></i> کامپیوتر</span>
+                        <span class="tag"><i class="fas fa-network-wired"></i> شبکه</span>
+                        <span class="tag"><i class="fas fa-cloud"></i> هاست و دامنه</span>
+                        <span class="tag"><i class="fas fa-code"></i> طراحی اپلیکیشن</span>
+                        <span class="tag"><i class="fas fa-chart-line"></i> مشاوره</span>
                     </div>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">
@@ -1936,16 +2065,16 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="number" data-count="350">۰</span>
+                            <span class="number" data-count="10">۰</span>
+                            <span class="label">سال تجربه</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number" data-count="50">۰</span>
                             <span class="label">پروژه موفق</span>
                         </div>
                         <div class="stat">
-                            <span class="number" data-count="99">۰</span>
-                            <span class="label">درصد رضایت</span>
-                        </div>
-                        <div class="stat">
-                            <span class="number" data-count="18">۰</span>
-                            <span class="label">سال تجربه</span>
+                            <span class="number" data-count="98">۰</span>
+                            <span class="label">رضایت مشتری</span>
                         </div>
                     </div>
                 </div>
@@ -1955,18 +2084,18 @@
                         <div class="hologram-ring r1"></div>
                         <div class="hologram-ring r2"></div>
                         <div class="hologram-ring r3"></div>
-                        <i class="fas fa-microchip center-icon"></i>
+                        <i class="fas fa-satellite-dish center-icon"></i>
                         <div class="floating-tech">
                             <i class="fas fa-laptop-code"></i> سیستم‌عامل
                         </div>
                         <div class="floating-tech">
-                            <i class="fas fa-server"></i> سرور
+                            <i class="fas fa-server"></i> هاست
                         </div>
                         <div class="floating-tech">
                             <i class="fas fa-network-wired"></i> شبکه
                         </div>
                         <div class="floating-tech">
-                            <i class="fas fa-brain"></i> هوش مصنوعی
+                            <i class="fas fa-chart-line"></i> مشاوره
                         </div>
                     </div>
                 </div>
@@ -1979,115 +2108,71 @@
     ============================================================ -->
     <section class="section-padding services" id="services">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-cogs title-icon"></i>
-                خدمات <span class="highlight">تخصصی</span>
-            </h2>
-            <p class="section-subtitle">
-                از <i class="fas fa-microchip"></i> سخت‌افزار تا <i class="fas fa-brain"></i> هوش مصنوعی،
-                همه‌چیز را با ساده‌ترین روش ممکن ارائه می‌دهیم
-            </p>
+            <div class="services-header">
+                <span class="badge-glow">
+                    <i class="fas fa-robot"></i> خدمات و محصولات
+                </span>
+                <h2 class="section-title">
+                    <i class="fas fa-cogs title-icon"></i>
+                    خدمات <span class="highlight">تخصصی</span> ما
+                </h2>
+                <p class="section-subtitle">
+                    یک ایستگاه کامل خدمات فناوری برای کسب و کار شما
+                </p>
+            </div>
 
             <div class="services-grid">
+                <!-- 1. کامپیوتر و تجهیزات -->
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-laptop"></i></div>
-                    <h3>رایانه و سیستم‌عامل</h3>
+                    <h3>🖥 کامپیوتر و تجهیزات</h3>
                     <p>
-                        توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی، مجازی‌سازی،
-                        پشتیبانی از پلتفرم‌های مختلف و راه‌حل‌های امنیتی پیشرفته
+                        نصب و راه‌اندازی سیستم‌عامل، نرم‌افزار و اپلیکیشن،
+                        ارتقاء سخت‌افزار، مشاوره خرید و امنیت اطلاعات
                     </p>
                     <div class="service-tags">
-                        <span>لینوکس</span>
-                        <span>ویندوز</span>
-                        <span>مجازی‌سازی</span>
+                        <span><i class="fas fa-check-circle"></i> سیستم‌عامل</span>
+                        <span><i class="fas fa-check-circle"></i> نرم‌افزار</span>
+                        <span><i class="fas fa-check-circle"></i> سخت‌افزار</span>
                     </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
+                    <a href="#contact" class="service-link">
+                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
 
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-server"></i></div>
-                    <h3>سرور و زیرساخت</h3>
-                    <p>
-                        طراحی و پیاده‌سازی سرورهای فیزیکی و ابری، Load Balancing،
-                        پشتیبان‌گیری، بازیابی و مدیریت کلاس‌های ابری
-                    </p>
-                    <div class="service-tags">
-                        <span>Cloud</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
-                    </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-
+                <!-- 2. شبکه و اینترنت -->
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-network-wired"></i></div>
-                    <h3>شبکه و اینترنت</h3>
+                    <h3>📶 شبکه و اینترنت</h3>
                     <p>
-                        طراحی شبکه‌های پیشرفته، امنیت سایبری، زیرساخت‌های اینترنت،
-                        پهنای باند اختصاصی و ارتباطات امن
+                        اینترنت پرسرعت و پایدار، هاست، دامنه و سرورهای ابری،
+                        طراحی و توسعه اپلیکیشن وب، راه‌اندازی شبکه خانگی و تجاری
                     </p>
                     <div class="service-tags">
-                        <span>SDN</span>
-                        <span>Firewall</span>
-                        <span>VPN</span>
+                        <span><i class="fas fa-check-circle"></i> اینترنت</span>
+                        <span><i class="fas fa-check-circle"></i> هاست و دامنه</span>
+                        <span><i class="fas fa-check-circle"></i> اپلیکیشن وب</span>
                     </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
+                    <a href="#contact" class="service-link">
+                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
 
+                <!-- 3. کسب و کار فناوری -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-code"></i></div>
-                    <h3>کدنویسی و برنامه‌نویسی</h3>
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>📈 کسب و کار فناوری</h3>
                     <p>
-                        توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن، اپلیکیشن موبایل،
-                        سیستم‌های مدیریت محتوا و API‌های پیشرفته
+                        مشاوره و ایده‌پردازی کسب و کار، سرمایه‌گذاری و تجارت فناوری،
+                        همکاری در توسعه پروژه‌های نوآورانه
                     </p>
                     <div class="service-tags">
-                        <span>Python</span>
-                        <span>JavaScript</span>
-                        <span>Go</span>
+                        <span><i class="fas fa-check-circle"></i> مشاوره</span>
+                        <span><i class="fas fa-check-circle"></i> سرمایه‌گذاری</span>
+                        <span><i class="fas fa-check-circle"></i> همکاری</span>
                     </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
-                    <h3>طراحی سایت و UI/UX</h3>
-                    <p>
-                        طراحی وب‌سایت‌های حرفه‌ای، فروشگاه‌های آنلاین،
-                        اپلیکیشن‌های تحت وب، تجربه کاربری فوق‌العاده و رابط‌های هوشمند
-                    </p>
-                    <div class="service-tags">
-                        <span>React</span>
-                        <span>Vue</span>
-                        <span>Figma</span>
-                    </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-brain"></i></div>
-                    <h3>هوش مصنوعی و یادگیری ماشین</h3>
-                    <p>
-                        پیاده‌سازی مدل‌های یادگیری عمیق، پردازش زبان طبیعی،
-                        بینایی ماشین، سیستم‌های توصیه‌گر و اتوماسیون هوشمند
-                    </p>
-                    <div class="service-tags">
-                        <span>TensorFlow</span>
-                        <span>PyTorch</span>
-                        <span>NLP</span>
-                    </div>
-                    <a href="#" class="service-link">
-                        بیشتر بدانید <i class="fas fa-arrow-left"></i>
+                    <a href="#contact" class="service-link">
+                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
                     </a>
                 </div>
             </div>
@@ -2145,30 +2230,71 @@
     </section>
 
     <!-- ============================================================
-    STATS
+    FEATURES
     ============================================================ -->
-    <section class="stats-glow" id="stats">
+    <section class="section-padding features" id="features">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <i class="fas fa-project-diagram"></i>
-                    <span class="number" data-count="350">۰</span>
-                    <span class="label">پروژه انجام شده</span>
+            <h2 class="section-title">
+                <i class="fas fa-star title-icon"></i>
+                چرا <span class="highlight">ما</span> را انتخاب کنید؟
+            </h2>
+            <p class="section-subtitle">
+                مزایا و قابلیت‌های منحصربه‌فرد پرشین‌تک‌نت
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>تضمین کیفیت</h3>
+                    <p>بهترین کیفیت خدمات با بالاترین استانداردهای بین‌المللی</p>
+                    <span class="feature-badge">گواهی کیفیت</span>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <span class="number" data-count="180">۰</span>
-                    <span class="label">مشتریان فعال</span>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>امنیت پیشرفته</h3>
+                    <p>استفاده از جدیدترین روش‌های امنیت سایبری و حفاظت از داده</p>
+                    <span class="feature-badge">SSL &amp; Encryption</span>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-trophy"></i>
-                    <span class="number" data-count="99">۰</span>
-                    <span class="label">درصد رضایت</span>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>پشتیبانی ۲۴/۷</h3>
+                    <p>تیم پشتیبانی متخصص، آماده پاسخگویی در تمام ساعات شبانه‌روز</p>
+                    <span class="feature-badge">ضمانت پاسخگویی</span>
                 </div>
-                <div class="stat-item">
-                    <i class="fas fa-award"></i>
-                    <span class="number" data-count="18">۰</span>
-                    <span class="label">سال تجربه</span>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>تیم متخصص</h3>
+                    <p>کارشناسان مجرب در حوزه‌های مختلف فناوری اطلاعات</p>
+                    <span class="feature-badge">تیم حرفه‌ای</span>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>فناوری‌های روز</h3>
+                    <p>استفاده از جدیدترین ابزارها و پلتفرم‌های جهانی</p>
+                    <span class="feature-badge">به‌روزرسانی مداوم</span>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>رضایت مشتری</h3>
+                    <p>پروژه‌های موفق و نرخ رضایت بالای مشتریان</p>
+                    <span class="feature-badge">رضایت بالا</span>
                 </div>
             </div>
         </div>
@@ -2181,26 +2307,49 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="section-title" style="text-align:right; font-size:2.2rem;">
-                        <i class="fas fa-info-circle title-icon"></i>
-                        درباره <span class="highlight">ما</span>
+                    <span class="badge-glow">
+                        <i class="fas fa-info-circle"></i> درباره ما
+                    </span>
+                    <h2 class="section-title" style="text-align:right; font-size:2.2rem; margin-top: 0.5rem;">
+                        <span class="highlight">پرشین‌تک‌نت</span>
                     </h2>
+                    <h3 style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem;">
+                        📡 یک ایستگاه خدمات فناوری برای کسب و کار یا تجارت شما
+                    </h3>
                     <p>
-                        سازمان شبکه فناوری پارسی با <span class="highlight">بیش از ۱۸ سال</span> تجربه
-                        در حوزه فناوری اطلاعات، همواره به دنبال <span class="highlight">ساده‌سازی</span>
-                        ارتباط کاربران با دنیای دیجیتال بوده است.
+                        سازمان <span class="highlight">شبکه فناوری پارسی</span> با نام تجاری
+                        <span class="highlight">پرشین‌تک‌نت</span> (PersianTechNet)
+                        به عنوان یک ایستگاه کامل خدمات فناوری اطلاعات،
+                        آماده ارائه خدمات به کسب و کارها و تجارت‌های شماست.
                     </p>
                     <p>
-                        ما از <span class="highlight">سیستم‌عامل</span> تا <span class="highlight">هوش مصنوعی</span>،
-                        از <span class="highlight">شبکه</span> تا <span class="highlight">کدنویسی</span>،
-                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا و با رویکرد <span class="highlight">کاربرمحوری</span>
-                        طراحی و پیاده‌سازی می‌کنیم.
+                        ما با تکیه بر <span class="highlight">تخصص و تجربه</span> در حوزه‌های
+                        کامپیوتر، شبکه، اینترنت و فناوری اطلاعات،
+                        همراه شما در مسیر <span class="highlight">پیشرفت دیجیتال</span> هستیم.
                     </p>
+
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="number">۱۰+</span>
+                            <span>سال تجربه</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="number">۵۰+</span>
+                            <span>پروژه موفق</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="number">۹۸%</span>
+                            <span>رضایت مشتری</span>
+                        </div>
+                    </div>
+
                     <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> تیم متخصص و کارآزموده</li>
-                        <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته</li>
-                        <li><i class="fas fa-check-circle"></i> راه‌حل‌های سفارشی</li>
-                        <li><i class="fas fa-check-circle"></i> فناوری‌های روز دنیا</li>
+                        <li><i class="fas fa-check-circle"></i> نصب و راه‌اندازی سیستم‌عامل</li>
+                        <li><i class="fas fa-check-circle"></i> اینترنت پرسرعت و پایدار</li>
+                        <li><i class="fas fa-check-circle"></i> هاست، دامنه و سرورهای ابری</li>
+                        <li><i class="fas fa-check-circle"></i> طراحی و توسعه اپلیکیشن وب</li>
+                        <li><i class="fas fa-check-circle"></i> مشاوره کسب و کار فناوری</li>
+                        <li><i class="fas fa-check-circle"></i> پشتیبانی کامل</li>
                     </ul>
                 </div>
                 <div class="about-image">
@@ -2222,7 +2371,7 @@
                 پشتیبانی <span class="highlight">هوشمند</span>
             </h2>
             <p class="section-subtitle">
-                تیم پشتیبانی ما ۲۴ ساعته، ۷ روز هفته در کنار شماست
+                تیم پشتیبانی ما در کنار شماست
             </p>
 
             <div class="support-grid">
@@ -2230,8 +2379,11 @@
                     <i class="fas fa-phone-alt"></i>
                     <h4>پشتیبانی تلفنی</h4>
                     <p>با شماره‌های زیر تماس بگیرید</p>
-                    <a href="tel:02112345678" class="support-link">
-                        <i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸
+                    <a href="tel:07137824892" class="support-link">
+                        <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲
+                    </a>
+                    <a href="tel:09373622762" class="support-link" style="margin-top: 0.5rem;">
+                        <i class="fas fa-mobile-alt"></i> ۰۹۳۷۳۶۲۲۷۶۲
                     </a>
                 </div>
 
@@ -2248,8 +2400,8 @@
                     <i class="fas fa-envelope"></i>
                     <h4>ایمیل و تیکت</h4>
                     <p>موضوع خود را برای ما ارسال کنید</p>
-                    <a href="mailto:support@persiatech.ir" class="support-link">
-                        <i class="fas fa-envelope"></i> support@persiatech.ir
+                    <a href="mailto:persiantechnet@gmail.com" class="support-link">
+                        <i class="fas fa-envelope"></i> persiantechnet@gmail.com
                     </a>
                 </div>
             </div>
@@ -2280,16 +2432,24 @@
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info">
-                            <strong>آدرس</strong>
-                            <span>تهران، خیابان ولیعصر، برج پارسی، طبقه ۱۲</span>
+                            <strong>آدرس دفتر مرکزی</strong>
+                            <span>استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</span>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div class="info">
-                            <strong>تلفن</strong>
-                            <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                            <strong>تلفن ثابت</strong>
+                            <span>۰۷۱-۳۷۸۲۴۸۹۲</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="info">
+                            <strong>تلفن همراه</strong>
+                            <span>۰۹۳۷۳۶۲۲۷۶۲</span>
                         </div>
                     </div>
 
@@ -2297,7 +2457,15 @@
                         <i class="fas fa-envelope"></i>
                         <div class="info">
                             <strong>ایمیل</strong>
-                            <span>info@persiatech.ir</span>
+                            <span>persiantechnet@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="info">
+                            <strong>وب‌سایت</strong>
+                            <span>www.persiantechnet.ir</span>
                         </div>
                     </div>
 
@@ -2305,7 +2473,8 @@
                         <i class="fas fa-clock"></i>
                         <div class="info">
                             <strong>ساعات کاری</strong>
-                            <span>شنبه تا چهارشنبه: ۸ تا ۲۰</span>
+                            <span>شنبه تا پنج‌شنبه: ۹:۰۰ تا ۱۸:۰۰</span>
+                            <span>جمعه: تعطیل</span>
                         </div>
                     </div>
 
@@ -2322,22 +2491,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone">شماره تماس</label>
-                                <input type="tel" id="phone" placeholder="۰۹۱۲۱۲۳۴۵۶۷" required />
+                                <input type="tel" id="phone" placeholder="۰۹۳۷۳۶۲۲۷۶۲" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">ایمیل</label>
-                            <input type="email" id="email" placeholder="info@example.com" required />
+                            <input type="email" id="email" placeholder="persiantechnet@gmail.com" required />
                         </div>
                         <div class="form-group">
                             <label for="subject">موضوع</label>
                             <select id="subject">
                                 <option value="">انتخاب کنید...</option>
-                                <option value="os">سیستم‌عامل و سرور</option>
+                                <option value="computer">کامپیوتر و تجهیزات</option>
                                 <option value="network">شبکه و اینترنت</option>
-                                <option value="coding">کدنویسی و برنامه‌نویسی</option>
-                                <option value="web">طراحی سایت</option>
-                                <option value="ai">هوش مصنوعی</option>
+                                <option value="business">کسب و کار فناوری</option>
+                                <option value="hosting">هاست و دامنه</option>
+                                <option value="app">طراحی اپلیکیشن</option>
+                                <option value="consulting">مشاوره</option>
                                 <option value="other">سایر موارد</option>
                             </select>
                         </div>
@@ -2361,48 +2531,78 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3><i class="fas fa-satellite-dish"></i> شبکه فناوری پارسی</h3>
+                    <h3><i class="fas fa-satellite-dish"></i> پرشین‌تک‌نت</h3>
+                    <h4>PersianTechNet 🇮🇷</h4>
                     <p>
-                        سازمان پیشرو در ارائه خدمات فناوری اطلاعات و ارتباطات
-                        از رایانه تا هوش مصنوعی با رویکرد ساده‌سازی و هوشمندسازی
+                        یک ایستگاه خدمات فناوری برای کسب و کار یا تجارت شما
                     </p>
+
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>کوار، بلوار امام خمینی، شهید محسن شفیعی</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>۰۷۱-۳۷۸۲۴۸۹۲ | ۰۹۳۷۳۶۲۲۷۶۲</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>persiantechnet@gmail.com</span>
+                        </div>
+                    </div>
+
                     <div class="footer-social">
-                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="گیت‌هاب"><i class="fab fa-github"></i></a>
-                        <a href="#" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/persiantechnet" target="_blank" aria-label="گیت‌هاب" title="گیت‌هاب">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://persiantechnet.github.io" target="_blank" aria-label="وب‌سایت" title="وب‌سایت">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                        <a href="mailto:persiantechnet@gmail.com" aria-label="ایمیل" title="ایمیل">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
 
                 <div class="footer-col">
-                    <h4>خدمات</h4>
-                    <a href="#">سیستم‌عامل و سرور</a>
-                    <a href="#">شبکه و اینترنت</a>
-                    <a href="#">کدنویسی</a>
-                    <a href="#">طراحی سایت</a>
-                    <a href="#">هوش مصنوعی</a>
+                    <h4>خدمات و محصولات</h4>
+                    <a href="#services"><i class="fas fa-chevron-left"></i> کامپیوتر و تجهیزات</a>
+                    <a href="#services"><i class="fas fa-chevron-left"></i> شبکه و اینترنت</a>
+                    <a href="#services"><i class="fas fa-chevron-left"></i> کسب و کار فناوری</a>
+                    <a href="#services"><i class="fas fa-chevron-left"></i> هاست و دامنه</a>
+                    <a href="#services"><i class="fas fa-chevron-left"></i> طراحی اپلیکیشن</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>دسترسی سریع</h4>
-                    <a href="#about">درباره ما</a>
-                    <a href="#support">پشتیبانی</a>
-                    <a href="#contact">تماس</a>
-                    <a href="#">وبلاگ</a>
+                    <a href="#about"><i class="fas fa-chevron-left"></i> درباره ما</a>
+                    <a href="#support"><i class="fas fa-chevron-left"></i> پشتیبانی</a>
+                    <a href="#contact"><i class="fas fa-chevron-left"></i> تماس با ما</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> سوالات متداول</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>اطلاعات</h4>
-                    <a href="#">قوانین و مقررات</a>
-                    <a href="#">حریم خصوصی</a>
-                    <a href="#">پرسش‌های متداول</a>
-                    <a href="#">فرصت‌های شغلی</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> قوانین و مقررات</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> حریم خصوصی</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> فرصت‌های شغلی</a>
+                    <a href="#"><i class="fas fa-chevron-left"></i> نقشه سایت</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                &copy; ۱۴۰۴ سازمان شبکه فناوری پارسی | تمامی حقوق محفوظ است
+                <p>
+                    <i class="fas fa-copyright"></i> ۱۴۰۴ پرشین‌تک‌نت | PersianTechNet
+                    <br>
+                    <small>📡 یک ایستگاه خدمات فناوری برای کسب و کار شما</small>
+                </p>
+                <div class="footer-bottom-links">
+                    <a href="https://persiantechnet.github.io" target="_blank">www.persiantechnet.ir</a>
+                    <span>|</span>
+                    <a href="https://github.com/persiantechnet" target="_blank">GitHub</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -2424,7 +2624,7 @@
         </div>
         <div class="chatbot-messages" id="chatMessages">
             <div class="chat-msg bot">
-                سلام! 👋 من پشتیبان هوشمند پارسی‌تک هستم. از رایانه تا هوش مصنوعی، چطور می‌توانم به شما کمک کنم؟
+                سلام! 👋 من پشتیبان هوشمند پرشین‌تک‌نت هستم. از کامپیوتر تا شبکه و مشاوره کسب و کار، چطور می‌توانم به شما کمک کنم؟
             </div>
         </div>
         <div class="chatbot-input">
@@ -2441,8 +2641,7 @@
     <!-- ============================================================
     SCRIPTS
     ============================================================ -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
         // ============================================================
@@ -2571,18 +2770,35 @@
         })();
 
         // ============================================================
-        // MAP
+        // MAP - با موقعیت واقعی کوار
         // ============================================================
         (function initMap() {
             const container = document.getElementById('map');
             if (!container) return;
-            const map = L.map('map').setView([35.6997, 51.3380], 13);
+
+            // موقعیت واقعی: کوار، استان فارس
+            const lat = 29.2052;
+            const lng = 52.6906;
+
+            const map = L.map('map').setView([lat, lng], 15);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
-            L.marker([35.6997, 51.3380])
+
+            L.marker([lat, lng])
                 .addTo(map)
-                .bindPopup('سازمان شبکه فناوری پارسی<br>تهران، خیابان ولیعصر')
+                .bindPopup(`
+                        <div style="text-align: center; direction: rtl;">
+                            <strong style="color: #00aaff;">پرشین‌تک‌نت</strong><br>
+                            PersianTechNet 🇮🇷<br>
+                            <hr style="margin: 5px 0;">
+                            استان فارس - شهرستان کوار<br>
+                            بلوار امام خمینی - خیابان شهید محسن شفیعی<br>
+                            <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲<br>
+                            <i class="fas fa-mobile-alt"></i> ۰۹۳۷۳۶۲۲۷۶۲
+                        </div>
+                    `)
                 .openPopup();
         })();
 
@@ -2641,7 +2857,7 @@
         }
 
         // ============================================================
-        // CHATBOT - AI WITH TYPING
+        // CHATBOT
         // ============================================================
         (function chatbot() {
             const toggle = document.getElementById('chatbotToggle');
@@ -2652,13 +2868,15 @@
 
             const botResponses = [
                 'سلام! در چه زمینه‌ای می‌توانم به شما کمک کنم؟',
-                'خدمات ما شامل سیستم‌عامل، سرور، شبکه، کدنویسی، طراحی سایت و هوش مصنوعی است.',
+                'خدمات ما شامل کامپیوتر، شبکه، اینترنت، هاست، دامنه و مشاوره کسب و کار است.',
                 'برای مشاوره رایگان، اطلاعات تماس خود را ثبت کنید.',
-                'تیم پشتیبانی ما ۲۴ ساعته آماده پاسخگویی است.',
-                'ما در زمینه هوش مصنوعی و یادگیری ماشین تخصص داریم.',
-                'برای ارتباط سریع با شماره ۰۲۱-۱۲۳۴۵۶۷۸ تماس بگیرید.',
-                'طراحی سایت‌های حرفه‌ای با React و Vue در خدمت شماست.',
-                'سیستم‌عامل‌های سفارشی و بهینه‌سازی شده ارائه می‌دهیم.',
+                'تیم پشتیبانی ما آماده پاسخگویی است.',
+                'ما در زمینه شبکه و اینترنت پرسرعت تخصص داریم.',
+                'برای ارتباط سریع با شماره ۰۷۱-۳۷۸۲۴۸۹۲ تماس بگیرید.',
+                'طراحی اپلیکیشن‌های وب حرفه‌ای در خدمت شماست.',
+                'مشاوره کسب و کار فناوری با بهترین متدها ارائه می‌شود.',
+                'آدرس ما: کوار، بلوار امام خمینی، خیابان شهید محسن شفیعی',
+                'ایمیل ما: persiantechnet@gmail.com',
             ];
 
             toggle.addEventListener('click', () => {
@@ -2731,20 +2949,9 @@
         // ============================================================
         // CONSOLE BRANDING
         // ============================================================
-        console.log('%c ██████  ███████  ██████  ███████ ██  █████  ',
-            'background:#0a0e1a;color:#00aaff;font-size:12px;');
-        console.log('%c ██   ██ ██      ██   ██ ██      ██ ██   ██ ',
-            'background:#0a0e1a;color:#00aaff;font-size:12px;');
-        console.log('%c ██████  █████   ██████  ███████ ██ ███████ ',
-            'background:#0a0e1a;color:#00aaff;font-size:12px;');
-        console.log('%c ██   ██ ██      ██   ██      ██ ██ ██   ██ ',
-            'background:#0a0e1a;color:#00aaff;font-size:12px;');
-        console.log('%c ██████  ███████ ██   ██ ███████ ██ ██   ██ ',
-            'background:#0a0e1a;color:#00aaff;font-size:12px;');
-        console.log('%c سازمان شبکه فناوری پارسی - از رایانه تا هوش مصنوعی ',
-            'background:#00aaff;color:#0a0e1a;font-size:16px;font-weight:bold;padding:8px 16px;border-radius:4px;');
-        console.log('%c 🚀 ساده‌ترین روش ممکن برای ارتباط با فناوری ',
-            'background:#0a0e1a;color:#00aaff;font-size:13px;padding:4px 12px;border-radius:4px;');
+        console.log('%c 📡 پرشین‌تک‌نت | PersianTechNet 🇮🇷 ', 'background:#00aaff;color:#0a0e1a;font-size:20px;font-weight:bold;padding:12px 24px;border-radius:8px;');
+        console.log('%c 🚀 یک ایستگاه خدمات فناوری برای کسب و کار شما ', 'background:#0a0e1a;color:#00aaff;font-size:14px;padding:6px 16px;border-radius:4px;');
+        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#0a0e1a;color:#00aaff;font-size:12px;padding:4px 12px;border-radius:4px;');
     </script>
 </body>
 </html>
