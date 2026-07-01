@@ -3,51 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0e1a">
-    <meta name="description" content="سازمان شبکه فناوری پارسی - مرکز فرماندهی ارتباطات کیهانی، از رایانه تا کهکشان">
-    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, مرکز فرماندهی, ارتباطات کیهانی, ماهواره, گیرنده, فرستنده, هوش مصنوعی, سفینه فضایی">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="description" content="سازمان شبکه فناوری پارسی - ارائه خدمات تخصصی فناوری اطلاعات و ارتباطات">
+    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, فناوری اطلاعات, شبکه, اینترنت, هاست, دامنه, سرور, برنامه نویسی, طراحی سایت, هوش مصنوعی">
     <meta name="author" content="سازمان شبکه فناوری پارسی">
-    <meta property="og:title" content="سازمان شبکه فناوری پارسی | مرکز فرماندهی ارتباطات کیهانی">
-    <meta property="og:description" content="مرکز فرماندهی ارتباطات کیهانی - از رایانه تا کهکشان">
+    <meta property="og:title" content="سازمان شبکه فناوری پارسی | PersianTechNet">
+    <meta property="og:description" content="پیشرو در فناوری اطلاعات و ارتباطات - از رایانه تا هوش مصنوعی">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://persiantechnet.github.io">
     
-    <title>سازمان شبکه فناوری پارسی | مرکز فرماندهی ارتباطات کیهانی</title>
+    <title>سازمان شبکه فناوری پارسی | PersianTechNet</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
     <style>
         /* ============================================================
-                   ROOT VARIABLES - SPACESHIP DASHBOARD
+                   DESIGN SYSTEM - ORGANIZATIONAL
                    ============================================================ */
         :root {
-            --primary: #0a0e1a;
-            --primary-light: #141a2e;
-            --primary-dark: #050810;
-            --gold: #d4af37;
-            --gold-light: #f0d080;
-            --gold-dark: #b8962e;
-            --signal: #00d4ff;
-            --signal-glow: rgba(0, 212, 255, 0.15);
-            --neon-green: #00ff88;
-            --neon-red: #ff0044;
-            --neon-orange: #ff8800;
-            --neon-purple: #8800ff;
-            --hologram: rgba(0, 212, 255, 0.05);
-            --hologram-border: rgba(0, 212, 255, 0.08);
+            --primary: #0a1628;
+            --primary-light: #152040;
+            --primary-dark: #060e1a;
+            --secondary: #c9a84c;
+            --secondary-light: #e8d5a3;
+            --secondary-dark: #a8883a;
+            --accent: #1a3a6a;
             --white: #ffffff;
-            --gray-50: #f0f2f8;
-            --gray-100: #e4e7ed;
-            --gray-200: #d1d5db;
-            --gray-300: #9ca3af;
-            --gray-400: #6b7280;
-            --gray-500: #4b5563;
-            --gray-600: #374151;
-            --gray-700: #1f2937;
-            --gray-800: #111827;
-            --gray-900: #0a0e1a;
+            --gray-50: #f8f9fa;
+            --gray-100: #f0f2f5;
+            --gray-200: #e4e7ed;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 24px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
@@ -55,11 +48,10 @@
             --radius: 8px;
             --radius-lg: 16px;
             --radius-xl: 24px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.3s ease;
             --font: 'Vazirmatn', sans-serif;
-            --font-tech: 'Orbitron', sans-serif;
             --header-height: 80px;
-            --max-width: 1400px;
+            --max-width: 1200px;
         }
 
         /* ============================================================
@@ -69,23 +61,20 @@
         html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
         body {
             font-family: var(--font);
-            background: var(--primary);
-            color: var(--white);
+            background: var(--white);
+            color: var(--gray-800);
             line-height: 1.8;
             direction: rtl;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.02), transparent 50%),
-                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.02), transparent 50%);
         }
 
-        ::selection { background: var(--gold); color: var(--primary); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--primary); }
-        ::-webkit-scrollbar-thumb { background: var(--signal); border-radius: 4px; box-shadow: 0 0 20px var(--signal-glow); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+        ::selection { background: var(--secondary); color: var(--primary); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--gray-100); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary-dark); }
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -93,66 +82,7 @@
         .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
         /* ============================================================
-                   SPACESHIP BACKGROUND - HOLOGRAPHIC
-                   ============================================================ */
-        #spaceship-bg {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            background: var(--primary);
-        }
-
-        /* Grid Lines */
-        .grid-lines {
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image:
-                linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        /* Holographic Rings */
-        .holo-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 212, 255, 0.03);
-            animation: holoRotate 30s linear infinite;
-        }
-
-        .holo-ring:nth-child(1) { width: 800px; height: 800px; top: 10%; left: 50%; transform: translateX(-50%); animation-duration: 40s; }
-        .holo-ring:nth-child(2) { width: 600px; height: 600px; top: 25%; left: 50%; transform: translateX(-50%); animation-duration: 30s; animation-direction: reverse; }
-        .holo-ring:nth-child(3) { width: 400px; height: 400px; top: 40%; left: 50%; transform: translateX(-50%); animation-duration: 20s; }
-
-        @keyframes holoRotate {
-            0% { transform: translateX(-50%) rotate(0deg); opacity: 0.1; }
-            50% { opacity: 0.3; }
-            100% { transform: translateX(-50%) rotate(360deg); opacity: 0.1; }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--signal);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--signal-glow);
-            animation: particleFloat 15s ease-in-out infinite;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translate(0, 0); opacity: 0.1; }
-            25% { transform: translate(50px, -30px); opacity: 0.5; }
-            50% { transform: translate(-20px, -60px); opacity: 0.8; }
-            75% { transform: translate(30px, -20px); opacity: 0.3; }
-        }
-
-        /* ============================================================
-                   HEADER - SPACESHIP COMMAND
+                   HEADER
                    ============================================================ */
         .header {
             position: fixed;
@@ -160,9 +90,9 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10, 14, 26, 0.92);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+            background: rgba(10, 22, 40, 0.97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             height: var(--header-height);
             display: flex;
             align-items: center;
@@ -170,9 +100,9 @@
         }
 
         .header.scrolled {
-            background: rgba(10, 14, 26, 0.98);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
-            border-bottom-color: rgba(0, 212, 255, 0.15);
+            background: rgba(10, 22, 40, 0.99);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+            border-bottom-color: rgba(201, 168, 76, 0.1);
         }
 
         .header .container {
@@ -190,91 +120,48 @@
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: radial-gradient(circle at 30% 30%, var(--gold), var(--gold-dark));
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
-            position: relative;
-        }
-
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            animation: ringPulse 3s ease-in-out infinite;
-        }
-
-        .logo-icon .status-dot {
-            position: absolute;
-            bottom: -2px;
-            right: -2px;
-            width: 12px;
-            height: 12px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            animation: dotPulse 2s infinite;
-        }
-
-        @keyframes ringPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0; }
         }
 
         .logo-text h1 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--white);
             line-height: 1.2;
             letter-spacing: -0.3px;
-            font-family: var(--font-tech);
         }
 
         .logo-text span {
             font-size: 0.65rem;
-            color: var(--signal);
+            color: var(--secondary);
             display: block;
             font-weight: 400;
-            letter-spacing: 1px;
-            font-family: var(--font-tech);
-        }
-
-        .logo-text span i {
-            font-size: 0.5rem;
-            margin: 0 2px;
-            animation: signalPulse 2s infinite;
-        }
-
-        @keyframes signalPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            letter-spacing: 0.5px;
         }
 
         .nav {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
         }
 
         .nav a {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--gray-300);
             font-weight: 500;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: var(--radius);
             transition: var(--transition);
             position: relative;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .nav a::after {
@@ -284,31 +171,28 @@
             right: 50%;
             width: 0;
             height: 2px;
-            background: var(--signal);
+            background: var(--secondary);
             transition: var(--transition);
             transform: translateX(50%);
-            box-shadow: 0 0 20px var(--signal-glow);
         }
 
         .nav a:hover::after,
-        .nav a.active::after { width: 60%; }
-        .nav a:hover { color: var(--white); background: rgba(0, 212, 255, 0.04); }
-        .nav a.active { color: var(--signal); }
+        .nav a.active::after { width: 50%; }
+        .nav a:hover { color: var(--white); background: rgba(255, 255, 255, 0.03); }
+        .nav a.active { color: var(--white); }
 
         .nav-cta {
-            background: linear-gradient(135deg, var(--signal), var(--gold)) !important;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark)) !important;
             color: var(--primary) !important;
-            padding: 8px 24px !important;
+            padding: 8px 28px !important;
             border-radius: var(--radius) !important;
             font-weight: 600 !important;
-            box-shadow: 0 4px 32px rgba(0, 212, 255, 0.15);
-            font-family: var(--font-tech);
         }
 
         .nav-cta::after { display: none !important; }
         .nav-cta:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 48px rgba(0, 212, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 24px rgba(201, 168, 76, 0.2);
         }
         .nav-cta i { margin-left: 6px; }
 
@@ -335,8 +219,8 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(0, 212, 255, 0.04);
-            color: var(--signal);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--white);
         }
 
         .menu-toggle {
@@ -359,10 +243,10 @@
             top: var(--header-height);
             left: 0;
             right: 0;
-            background: rgba(10, 14, 26, 0.98);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 22, 40, 0.98);
+            backdrop-filter: blur(16px);
             padding: 24px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             flex-direction: column;
             gap: 4px;
             z-index: 999;
@@ -381,12 +265,10 @@
             color: var(--gray-300);
             font-weight: 500;
             transition: var(--transition);
-            font-family: var(--font-tech);
-            font-size: 0.85rem;
         }
         .mobile-menu a:hover {
-            background: rgba(0, 212, 255, 0.04);
-            color: var(--signal);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--white);
         }
         .mobile-menu .nav-cta {
             text-align: center;
@@ -395,167 +277,85 @@
         }
 
         /* ============================================================
-                   HERO - COMMAND CENTER
+                   HERO
                    ============================================================ */
         .hero {
-            padding: calc(var(--header-height) + 20px) 0 0;
-            min-height: 100vh;
+            padding: calc(var(--header-height) + 40px) 0 60px;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden;
             background: var(--primary);
-            z-index: 1;
+            overflow: hidden;
         }
 
-        .hero .container {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            padding-top: 20px;
-            padding-bottom: 40px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 70% 30%, rgba(201, 168, 76, 0.06), transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(201, 168, 76, 0.03), transparent 50%);
+            pointer-events: none;
         }
 
+        .hero .container { position: relative; z-index: 1; }
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            min-height: calc(100vh - var(--header-height) - 60px);
         }
-
-        .hero-content { position: relative; }
 
         .hero-content .badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(0, 212, 255, 0.06);
-            padding: 6px 20px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: var(--signal);
+            gap: 8px;
+            background: rgba(201, 168, 76, 0.08);
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--secondary);
             font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.06);
-            backdrop-filter: blur(10px);
-            font-family: var(--font-tech);
-            letter-spacing: 1px;
-        }
-
-        .hero-content .badge .signal-icon {
-            display: inline-block;
-            animation: signalPulse 2s ease-in-out infinite;
+            margin-bottom: 16px;
+            border: 1px solid rgba(201, 168, 76, 0.06);
         }
 
         .hero-content h1 {
-            font-size: 3.6rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: var(--white);
             line-height: 1.1;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             letter-spacing: -1px;
         }
 
         .hero-content h1 .highlight {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--secondary);
         }
 
         .hero-content .subtitle {
-            font-size: 1.3rem;
-            color: var(--signal);
+            font-size: 1.2rem;
+            color: var(--secondary);
             font-weight: 500;
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: var(--font-tech);
-            letter-spacing: 1px;
-        }
-
-        .hero-content .subtitle i {
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-
-        .hero-content .command-message {
-            background: rgba(0, 212, 255, 0.02);
-            border: 1px solid rgba(0, 212, 255, 0.06);
-            border-radius: var(--radius-lg);
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content .command-message::before {
-            content: '🛸';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            font-size: 4rem;
-            opacity: 0.03;
-            transform: rotate(-20deg);
-        }
-
-        .hero-content .command-message .status-line {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-            font-family: var(--font-tech);
-            font-size: 0.7rem;
-            color: var(--neon-green);
-        }
-
-        .hero-content .command-message .status-line .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--neon-green);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            animation: dotPulse 2s infinite;
-        }
-
-        .hero-content .command-message p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            line-height: 2;
-            margin: 0;
-            max-width: 100%;
-        }
-
-        .hero-content .command-message p strong {
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        .hero-content .command-message .signal-text {
-            color: var(--signal);
-            font-weight: 600;
-        }
-
-        .hero-content .command-message .hologram-text {
-            color: var(--neon-purple);
-            font-weight: 600;
         }
 
         .hero-content p {
             color: rgba(255, 255, 255, 0.6);
             font-size: 1.05rem;
             max-width: 90%;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             line-height: 2;
         }
+
+        .hero-content p strong { color: rgba(255, 255, 255, 0.85); }
 
         .hero-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .hero-tags .tag {
@@ -563,24 +363,21 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.5);
             font-weight: 500;
             transition: var(--transition);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .hero-tags .tag:hover {
-            background: rgba(0, 212, 255, 0.06);
-            border-color: rgba(0, 212, 255, 0.1);
-            color: var(--signal);
+            border-color: rgba(201, 168, 76, 0.15);
+            color: var(--secondary);
         }
 
         .hero-tags .tag i {
             margin-left: 4px;
             font-size: 0.7rem;
-            color: var(--signal);
+            color: var(--secondary);
         }
 
         .hero-buttons {
@@ -594,22 +391,19 @@
             align-items: center;
             gap: 10px;
             padding: 14px 36px;
-            background: linear-gradient(135deg, var(--signal), var(--gold));
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             color: var(--primary);
             border-radius: var(--radius);
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 32px rgba(0, 212, 255, 0.15);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 48px rgba(0, 212, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 32px rgba(201, 168, 76, 0.2);
         }
 
         .btn-secondary {
@@ -621,43 +415,36 @@
             color: var(--white);
             border-radius: var(--radius);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.06);
             cursor: pointer;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 212, 255, 0.04);
+            background: rgba(255, 255, 255, 0.06);
             transform: translateY(-3px);
-            border-color: rgba(0, 212, 255, 0.15);
-            color: var(--signal);
+            border-color: rgba(201, 168, 76, 0.15);
         }
 
         .hero-stats {
             display: flex;
             gap: 48px;
-            margin-top: 36px;
-            padding-top: 32px;
+            margin-top: 32px;
+            padding-top: 28px;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .hero-stats .stat .number {
             font-size: 2.2rem;
             font-weight: 900;
-            color: var(--gold);
+            color: var(--secondary);
             display: block;
-            letter-spacing: 1px;
-            font-family: var(--font-tech);
         }
 
         .hero-stats .stat .label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.4);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .hero-image {
@@ -666,239 +453,92 @@
             align-items: center;
         }
 
-        .hero-image .image-container {
+        .hero-image .placeholder {
             width: 100%;
-            max-width: 560px;
+            max-width: 480px;
             aspect-ratio: 1;
-            position: relative;
-        }
-
-        .hero-image .image-container .main-image {
-            width: 100%;
-            height: 100%;
+            background: rgba(255, 255, 255, 0.02);
             border-radius: var(--radius-xl);
-            background:
-                radial-gradient(ellipse at 30% 30%, rgba(212, 175, 55, 0.06), transparent 60%),
-                radial-gradient(ellipse at 70% 70%, rgba(0, 212, 255, 0.03), transparent 50%),
-                var(--primary-light);
-            border: 1px solid rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 8rem;
+            color: rgba(201, 168, 76, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        /* Spaceship Dashboard Display */
-        .hero-image .image-container .main-image .dashboard-display {
-            width: 85%;
-            height: 85%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen {
-            width: 100%;
-            height: 100%;
-            border-radius: var(--radius-lg);
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 212, 255, 0.06);
-            padding: 20px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-tech);
-            font-size: 0.5rem;
-            color: var(--signal);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.04);
-            padding-bottom: 4px;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-header .sys-name {
-            color: var(--neon-green);
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-body .big-icon {
-            font-size: 4rem;
-            color: rgba(212, 175, 55, 0.06);
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-body .data-row {
-            display: flex;
-            gap: 16px;
-            font-family: var(--font-tech);
-            font-size: 0.5rem;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-body .data-row .data-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-body .data-row .data-item .value {
-            color: var(--signal);
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .hero-image .image-container .main-image .dashboard-display .screen .screen-footer {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            font-family: var(--font-tech);
-            font-size: 0.4rem;
-            color: rgba(255, 255, 255, 0.15);
-            border-top: 1px solid rgba(0, 212, 255, 0.04);
-            padding-top: 4px;
-        }
-
-        /* Floating Elements */
-        .hero-image .image-container .main-image .floating-elements {
+        .hero-image .placeholder::after {
+            content: '';
             position: absolute;
             inset: 0;
-            pointer-events: none;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item {
-            position: absolute;
-            background: rgba(10, 14, 26, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 212, 255, 0.03);
-            border-radius: var(--radius);
-            padding: 6px 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.65rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 500;
-            animation: floatItem 6s ease-in-out infinite;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item i {
-            color: var(--signal);
-            font-size: 0.8rem;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item:nth-child(1) {
-            top: 8%;
-            right: 5%;
-            animation-delay: 0s;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item:nth-child(2) {
-            bottom: 12%;
-            left: 0%;
-            animation-delay: 2s;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item:nth-child(3) {
-            top: 40%;
-            left: -8%;
-            animation-delay: 4s;
-        }
-
-        .hero-image .image-container .main-image .floating-elements .float-item:nth-child(4) {
-            bottom: 30%;
-            right: -8%;
-            animation-delay: 1s;
-        }
-
-        @keyframes floatItem {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            background: radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.03), transparent 60%);
         }
 
         /* ============================================================
                    SECTIONS
                    ============================================================ */
         .section {
-            padding: 100px 0;
-            position: relative;
-            z-index: 1;
+            padding: 80px 0;
         }
 
         .section-alt {
-            background: rgba(255, 255, 255, 0.01);
+            background: var(--gray-50);
         }
 
         .section-header {
             text-align: center;
-            max-width: 680px;
-            margin: 0 auto 56px;
+            max-width: 640px;
+            margin: 0 auto 48px;
         }
 
         .section-header .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 212, 255, 0.04);
+            background: rgba(201, 168, 76, 0.06);
             padding: 4px 18px;
             border-radius: 20px;
-            font-size: 0.7rem;
-            color: var(--signal);
+            font-size: 0.75rem;
+            color: var(--secondary);
             font-weight: 600;
-            margin-bottom: 12px;
-            border: 1px solid rgba(0, 212, 255, 0.04);
-            font-family: var(--font-tech);
-            letter-spacing: 1px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(201, 168, 76, 0.04);
         }
 
         .section-header h2 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--white);
+            color: var(--primary);
         }
 
         .section-header h2 span {
-            color: var(--gold);
+            color: var(--secondary);
         }
 
         .section-header p {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray-500);
             font-size: 1.05rem;
             margin-top: 8px;
         }
 
         /* ============================================================
-                   SERVICES - TECH MODULES
+                   SERVICES
                    ============================================================ */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 24px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 36px 28px;
+            background: var(--white);
+            padding: 32px 24px;
             border-radius: var(--radius-lg);
-            border: 1px solid rgba(0, 212, 255, 0.04);
+            border: 1px solid var(--gray-200);
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
 
         .service-card::before {
@@ -908,54 +548,48 @@
             right: 0;
             width: 4px;
             height: 0;
-            background: linear-gradient(180deg, var(--signal), var(--gold));
+            background: linear-gradient(180deg, var(--secondary), var(--secondary-dark));
             transition: var(--transition);
-            box-shadow: 0 0 20px var(--signal-glow);
         }
 
         .service-card:hover::before { height: 100%; }
         .service-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.04);
-            border-color: rgba(0, 212, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
         }
 
         .service-card .icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 212, 255, 0.04);
+            width: 56px;
+            height: 56px;
+            background: rgba(201, 168, 76, 0.06);
             border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--signal);
+            font-size: 1.4rem;
+            color: var(--secondary);
             margin-bottom: 16px;
             transition: var(--transition);
-            border: 1px solid rgba(0, 212, 255, 0.04);
         }
 
         .service-card:hover .icon {
-            background: var(--signal);
+            background: var(--secondary);
             color: var(--primary);
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 0 40px var(--signal-glow);
         }
 
         .service-card h3 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--white);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
+            color: var(--primary);
         }
 
         .service-card p {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray-600);
             font-size: 0.9rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
 
         .service-card .tags {
@@ -965,127 +599,101 @@
         }
 
         .service-card .tags span {
-            padding: 2px 14px;
-            background: rgba(255, 255, 255, 0.03);
+            padding: 2px 12px;
+            background: var(--gray-100);
             border-radius: 12px;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.65rem;
+            color: var(--gray-600);
             font-weight: 500;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         /* ============================================================
-                   MISSION - COSMIC COMMAND
-                   ============================================================ */
-        .mission-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            border-top: 1px solid rgba(0, 212, 255, 0.02);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.02);
-        }
-
-        .mission-section::before {
-            content: '🛸';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            font-size: 15rem;
-            opacity: 0.02;
-        }
-
-        .mission-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .mission-content .mission-icon {
-            font-size: 4rem;
-            margin-bottom: 16px;
-            display: block;
-            animation: signalPulse 3s infinite;
-        }
-
-        .mission-content h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-
-        .mission-content h2 span {
-            color: var(--gold);
-        }
-
-        .mission-content .mission-message {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            line-height: 2.2;
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        .mission-content .mission-message strong {
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        .mission-content .mission-message .signal-highlight {
-            color: var(--signal);
-            font-weight: 600;
-        }
-
-        .mission-content .mission-footer {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--signal);
-            font-size: 0.9rem;
-            font-family: var(--font-tech);
-            letter-spacing: 1px;
-        }
-
-        /* ============================================================
-                   STATS - DASHBOARD METRICS
+                   STATS
                    ============================================================ */
         .stats {
             background: var(--primary);
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
+            padding: 60px 0;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            gap: 32px;
             text-align: center;
         }
 
         .stats-grid .stat .number {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
-            color: var(--signal);
+            color: var(--secondary);
             display: block;
-            letter-spacing: 2px;
-            font-family: var(--font-tech);
-            text-shadow: 0 0 40px var(--signal-glow);
         }
 
         .stats-grid .stat .label {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
-            font-weight: 400;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
         }
 
         /* ============================================================
-                   CONTACT - COMMUNICATION CENTER
+                   ABOUT
+                   ============================================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            font-size: 1rem;
+            line-height: 2;
+            margin-bottom: 16px;
+        }
+
+        .about-content .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .about-content .features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .about-content .features li i {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        .about-image {
+            background: var(--gray-200);
+            border-radius: var(--radius-xl);
+            aspect-ratio: 1.1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--gray-400);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.03), transparent 50%);
+        }
+
+        /* ============================================================
+                   CONTACT
                    ============================================================ */
         .contact-grid {
             display: grid;
@@ -1101,62 +709,57 @@
         }
 
         .contact-info .info-item i {
-            width: 48px;
-            height: 48px;
-            background: rgba(0, 212, 255, 0.04);
+            width: 44px;
+            height: 44px;
+            background: rgba(201, 168, 76, 0.06);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--signal);
+            color: var(--secondary);
             font-size: 1.1rem;
             flex-shrink: 0;
             transition: var(--transition);
-            border: 1px solid rgba(0, 212, 255, 0.04);
         }
 
         .contact-info .info-item:hover i {
-            background: var(--signal);
+            background: var(--secondary);
             color: var(--primary);
-            box-shadow: 0 0 40px var(--signal-glow);
         }
 
         .contact-info .info-item .label {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            color: var(--gray-500);
             display: block;
             font-weight: 400;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .contact-info .info-item .value {
             font-weight: 600;
-            color: var(--white);
+            color: var(--gray-800);
         }
 
         .map-container {
             border-radius: var(--radius-lg);
             overflow: hidden;
             height: 200px;
-            border: 1px solid rgba(0, 212, 255, 0.04);
+            border: 1px solid var(--gray-200);
             margin-top: 20px;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 40px;
+            background: var(--white);
+            padding: 36px;
             border-radius: var(--radius-lg);
-            border: 1px solid rgba(0, 212, 255, 0.04);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
         }
 
         .contact-form h3 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 24px;
-            color: var(--white);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
+            color: var(--primary);
         }
 
         .form-group {
@@ -1165,25 +768,23 @@
 
         .form-group label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 4px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
+            color: var(--gray-700);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 11px 16px;
-            border: 1px solid rgba(0, 212, 255, 0.06);
+            padding: 10px 16px;
+            border: 1px solid var(--gray-300);
             border-radius: var(--radius);
             font-family: inherit;
             font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--white);
+            background: var(--white);
+            color: var(--gray-800);
             transition: var(--transition);
         }
 
@@ -1191,23 +792,13 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--signal);
-            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.04);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.2);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.06);
         }
 
         .form-group textarea {
             min-height: 120px;
             resize: vertical;
-        }
-
-        .form-group select option {
-            background: var(--primary);
-            color: var(--white);
         }
 
         .form-row {
@@ -1217,14 +808,12 @@
         }
 
         /* ============================================================
-                   FOOTER - SPACESHIP
+                   FOOTER
                    ============================================================ */
         .footer {
-            background: var(--primary-dark);
-            padding: 60px 0 24px;
-            border-top: 1px solid rgba(0, 212, 255, 0.02);
-            position: relative;
-            z-index: 1;
+            background: var(--primary);
+            padding: 56px 0 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .footer-grid {
@@ -1239,21 +828,11 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 4px;
-            font-family: var(--font-tech);
         }
 
         .footer-brand h3 i {
-            color: var(--signal);
+            color: var(--secondary);
             margin-left: 8px;
-        }
-
-        .footer-brand .tagline {
-            color: var(--signal);
-            font-size: 0.7rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-            font-family: var(--font-tech);
-            letter-spacing: 1px;
         }
 
         .footer-brand p {
@@ -1271,13 +850,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.4);
             margin-bottom: 4px;
         }
 
         .footer-contact-item i {
-            color: var(--signal);
+            color: var(--secondary);
             width: 20px;
         }
 
@@ -1287,8 +866,8 @@
         }
 
         .footer-social a {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50%;
             display: flex;
@@ -1296,56 +875,45 @@
             justify-content: center;
             color: rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            border: 1px solid rgba(0, 212, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .footer-social a:hover {
-            background: var(--signal);
+            background: var(--secondary);
             color: var(--primary);
-            border-color: var(--signal);
+            border-color: var(--secondary);
             transform: translateY(-3px);
-            box-shadow: 0 0 40px var(--signal-glow);
         }
 
         .footer-col h4 {
             color: var(--white);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 14px;
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
         }
 
         .footer-col a {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.3);
             margin-bottom: 6px;
             transition: var(--transition);
         }
 
         .footer-col a:hover {
-            color: var(--signal);
+            color: var(--secondary);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(0, 212, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
             padding-top: 20px;
             text-align: center;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.2);
-            font-family: var(--font-tech);
-            letter-spacing: 0.5px;
-        }
-
-        .footer-bottom .signal-message {
-            color: var(--signal);
-            font-size: 0.7rem;
-            margin-top: 4px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
         }
 
         /* ============================================================
-                   TOAST - SYSTEM NOTIFICATION
+                   TOAST
                    ============================================================ */
         .toast-container {
             position: fixed;
@@ -1358,37 +926,34 @@
         }
 
         .toast {
-            background: var(--primary-light);
+            background: var(--white);
             padding: 14px 20px;
             border-radius: var(--radius);
-            border-right: 4px solid var(--signal);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.04);
+            border-right: 4px solid var(--secondary);
+            box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
             gap: 12px;
             animation: slideIn 0.4s ease;
             min-width: 280px;
-            border: 1px solid rgba(0, 212, 255, 0.04);
-            color: var(--white);
-            font-family: var(--font-tech);
-            font-size: 0.8rem;
+            border: 1px solid var(--gray-200);
         }
 
-        .toast.success { border-right-color: var(--neon-green); }
-        .toast.error { border-right-color: var(--neon-red); }
-        .toast.warning { border-right-color: var(--neon-orange); }
+        .toast.success { border-right-color: #10b981; }
+        .toast.error { border-right-color: #ef4444; }
+        .toast.warning { border-right-color: #f59e0b; }
 
         .toast i { font-size: 1.2rem; }
-        .toast.success i { color: var(--neon-green); }
-        .toast.error i { color: var(--neon-red); }
-        .toast.warning i { color: var(--neon-orange); }
+        .toast.success i { color: #10b981; }
+        .toast.error i { color: #ef4444; }
+        .toast.warning i { color: #f59e0b; }
 
         .toast .toast-close {
             margin-right: auto;
             background: none;
             border: none;
             cursor: pointer;
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--gray-500);
             font-size: 1rem;
         }
 
@@ -1404,7 +969,6 @@
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .hero-grid { gap: 40px; }
             .hero-content h1 { font-size: 2.8rem; }
-            .hero-image .image-container { max-width: 400px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
 
@@ -1416,37 +980,30 @@
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 32px;
-                min-height: auto;
             }
 
             .hero-content p { max-width: 100%; }
             .hero-buttons { justify-content: center; }
             .hero-stats { justify-content: center; gap: 24px; }
-            .hero-image .image-container { max-width: 320px; margin: 0 auto; }
 
             .services-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
             .contact-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
 
             .section-header h2 { font-size: 1.8rem; }
             .hero-content h1 { font-size: 2.2rem; }
-            .hero-content .subtitle { font-size: 1.1rem; }
-            .hero-tags { justify-content: center; }
             .section { padding: 60px 0; }
-            .stats { padding: 50px 0; }
+            .stats { padding: 40px 0; }
             .stats-grid .stat .number { font-size: 2.2rem; }
-            .hero-stats .stat .number { font-size: 1.6rem; }
-            .mission-content .mission-message { max-width: 100%; }
-            .hero-image .image-container .main-image .dashboard-display .screen .screen-body .data-row { flex-direction: column; gap: 4px; }
+            .hero-stats .stat .number { font-size: 1.8rem; }
+            .about-content .features { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
             .container { padding: 0 16px; }
-            .hero {
-                min-height: auto;
-                padding: calc(var(--header-height) + 20px) 0 20px;
-            }
+            .hero { min-height: auto; padding: calc(var(--header-height) + 20px) 0 40px; }
             .hero-content h1 { font-size: 1.8rem; }
             .hero-buttons .btn-primary,
             .hero-buttons .btn-secondary {
@@ -1456,43 +1013,18 @@
             }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-brand p { max-width: 100%; }
-            .hero-image .image-container { max-width: 240px; }
-            .hero-image .image-container .main-image .floating-elements .float-item { display: none; }
             .contact-form { padding: 24px; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
             .stats-grid .stat .number { font-size: 1.8rem; }
             .hero-stats { flex-wrap: wrap; gap: 12px; }
             .hero-stats .stat .number { font-size: 1.4rem; }
-            .hero-tags .tag { font-size: 0.6rem; padding: 2px 12px; }
-            .mission-content h2 { font-size: 1.6rem; }
-            .hero-image .image-container .main-image .dashboard-display .screen { padding: 12px; }
-            .hero-image .image-container .main-image .dashboard-display .screen .screen-body .big-icon { font-size: 2.5rem; }
+            .hero-tags .tag { font-size: 0.65rem; padding: 2px 12px; }
+            .hero-image .placeholder { max-width: 280px; font-size: 5rem; }
+            .about-image { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ============================================================
-    SPACESHIP BACKGROUND
-    ============================================================ -->
-    <div id="spaceship-bg">
-        <div class="grid-lines"></div>
-        <div class="holo-ring"></div>
-        <div class="holo-ring"></div>
-        <div class="holo-ring"></div>
-        
-        <!-- Particles -->
-        <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="top: 60%; left: 80%; animation-delay: 3s;"></div>
-        <div class="particle" style="top: 40%; left: 50%; animation-delay: 6s;"></div>
-        <div class="particle" style="top: 80%; left: 20%; animation-delay: 9s;"></div>
-        <div class="particle" style="top: 10%; left: 70%; animation-delay: 12s;"></div>
-        
-        <!-- Signal Dots -->
-        <div class="signal-dot" style="top: 15%; left: 5%;"></div>
-        <div class="signal-dot" style="top: 85%; left: 95%; animation-delay: 2s;"></div>
-        <div class="signal-dot" style="top: 50%; left: 50%; animation-delay: 4s;"></div>
-    </div>
 
     <!-- ============================================================
     HEADER
@@ -1502,21 +1034,19 @@
             <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-satellite-dish"></i>
-                    <span class="status-dot"></span>
                 </div>
                 <div class="logo-text">
-                    <h1>PARSI TECH NET</h1>
-                    <span><i class="fas fa-radio"></i> SPACESHIP COMMAND</span>
+                    <h1>شبکه فناوری پارسی</h1>
+                    <span>PersianTechNet</span>
                 </div>
             </a>
 
             <nav class="nav">
-                <a href="#services" class="active">SYSTEMS</a>
-                <a href="#mission">MISSION</a>
-                <a href="#about">ABOUT</a>
-                <a href="#contact">CONTACT</a>
+                <a href="#services" class="active">خدمات</a>
+                <a href="#about">درباره ما</a>
+                <a href="#contact">تماس</a>
                 <a href="#contact" class="nav-cta">
-                    <i class="fas fa-headset"></i> CONNECT
+                    <i class="fas fa-headset"></i> ارتباط با ما
                 </a>
                 <div class="nav-controls">
                     <button class="theme-toggle" id="themeToggle">
@@ -1532,139 +1062,73 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#services">SYSTEMS</a>
-        <a href="#mission">MISSION</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-        <a href="#contact" class="nav-cta">CONNECT</a>
+        <a href="#services">خدمات</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">تماس</a>
+        <a href="#contact" class="nav-cta">ارتباط با ما</a>
     </div>
 
     <!-- ============================================================
-    HERO - COMMAND CENTER
+    HERO
     ============================================================ -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="badge">
-                        <span class="signal-icon">🛸</span>
-                        COMMAND CENTER ACTIVE
+                        <i class="fas fa-rocket"></i> پیشرو در فناوری اطلاعات
                     </div>
                     <h1>
                         از <span class="highlight">رایانه</span> تا
-                        <span class="highlight">کهکشان</span>
+                        <span class="highlight">هوش مصنوعی</span>
                     </h1>
                     <div class="subtitle">
                         <i class="fas fa-quote-right"></i>
-                        مرکز فرماندهی ارتباطات کیهانی
+                        ساده‌ترین روش ممکن برای ارتباط با فناوری
                     </div>
-
-                    <div class="command-message">
-                        <div class="status-line">
-                            <span class="dot"></span>
-                            SYSTEM ONLINE - SIGNAL RECEIVED
-                        </div>
-                        <p>
-                            <strong>مرکز فرماندهی پارسی تک نت</strong>
-                            با بهره‌گیری از <strong>پیشرفته‌ترین فناوری‌های فضایی</strong>،
-                            یک <span class="signal-text">پل ارتباطی</span> بین زمین و کیهان است.
-                            <br><br>
-                            <strong>ما صدای شما را از کهکشان می‌شنویم.</strong>
-                            <span class="hologram-text">سیگنال خود را ارسال کنید.</span>
-                        </p>
-                    </div>
-
                     <p>
-                        <strong>سیستم‌عامل</strong> • <strong>شبکه</strong> • <strong>هاست</strong> •
-                        <strong>دامنه</strong> • <strong>سرور</strong> • <strong>برنامه‌نویسی</strong> •
-                        <strong>طراحی سایت</strong> • <strong>هوش مصنوعی</strong> •
-                        <strong>ارتباطات کیهانی</strong>
+                        سازمان شبکه فناوری پارسی، مرکز تخصصی ارائه خدمات
+                        <strong>فناوری اطلاعات</strong>
+                        از <strong>سیستم‌عامل</strong> و <strong>سرور</strong> تا
+                        <strong>شبکه</strong>، <strong>کدنویسی</strong>،
+                        <strong>طراحی سایت</strong> و <strong>هوش مصنوعی</strong>
+                        با رویکرد ساده‌سازی و هوشمندسازی.
                     </p>
-
                     <div class="hero-tags">
-                        <span class="tag"><i class="fas fa-microchip"></i> OS</span>
-                        <span class="tag"><i class="fas fa-server"></i> SERVER</span>
-                        <span class="tag"><i class="fas fa-wifi"></i> NETWORK</span>
-                        <span class="tag"><i class="fas fa-code"></i> CODE</span>
-                        <span class="tag"><i class="fas fa-paint-brush"></i> DESIGN</span>
-                        <span class="tag"><i class="fas fa-brain"></i> AI</span>
-                        <span class="tag"><i class="fas fa-radio"></i> COSMIC</span>
+                        <span class="tag"><i class="fas fa-microchip"></i> سیستم‌عامل</span>
+                        <span class="tag"><i class="fas fa-server"></i> سرور</span>
+                        <span class="tag"><i class="fas fa-wifi"></i> شبکه</span>
+                        <span class="tag"><i class="fas fa-code"></i> کدنویسی</span>
+                        <span class="tag"><i class="fas fa-paint-brush"></i> طراحی سایت</span>
+                        <span class="tag"><i class="fas fa-brain"></i> هوش مصنوعی</span>
                     </div>
-
                     <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">
-                            <i class="fas fa-paper-plane"></i> CONNECT NOW
+                            <i class="fas fa-paper-plane"></i> شروع همکاری
                         </a>
                         <a href="#services" class="btn-secondary">
-                            <i class="fas fa-chevron-left"></i> VIEW SYSTEMS
+                            <i class="fas fa-chevron-left"></i> خدمات ما
                         </a>
                     </div>
-
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="number" data-count="350">۰</span>
-                            <span class="label">MISSIONS</span>
+                            <span class="label">پروژه موفق</span>
                         </div>
                         <div class="stat">
                             <span class="number" data-count="99">۰</span>
-                            <span class="label">SUCCESS RATE</span>
+                            <span class="label">درصد رضایت</span>
                         </div>
                         <div class="stat">
                             <span class="number" data-count="18">۰</span>
-                            <span class="label">YEARS ACTIVE</span>
+                            <span class="label">سال تجربه</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="hero-image">
-                    <div class="image-container">
-                        <div class="main-image">
-                            <div class="dashboard-display">
-                                <div class="screen">
-                                    <div class="screen-header">
-                                        <span class="sys-name">✦ SYS.ONLINE</span>
-                                        <span>⟡ SIGNAL.ACTIVE</span>
-                                    </div>
-                                    <div class="screen-body">
-                                        <div class="big-icon">
-                                            <i class="fas fa-satellite-dish"></i>
-                                        </div>
-                                        <div class="data-row">
-                                            <div class="data-item">
-                                                <span class="value">SIGNAL</span>
-                                                <span>98.7%</span>
-                                            </div>
-                                            <div class="data-item">
-                                                <span class="value">CONNECTION</span>
-                                                <span>ACTIVE</span>
-                                            </div>
-                                            <div class="data-item">
-                                                <span class="value">COSMIC</span>
-                                                <span>READY</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="screen-footer">
-                                        <span>✦ PARSI TECH NET</span>
-                                        <span>⟡ COMMAND CENTER</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="floating-elements">
-                                <div class="float-item">
-                                    <i class="fas fa-laptop-code"></i> OS ONLINE
-                                </div>
-                                <div class="float-item">
-                                    <i class="fas fa-server"></i> SERVER READY
-                                </div>
-                                <div class="float-item">
-                                    <i class="fas fa-network-wired"></i> NETWORK ACTIVE
-                                </div>
-                                <div class="float-item">
-                                    <i class="fas fa-brain"></i> AI ENGAGED
-                                </div>
-                            </div>
-                        </div>
+                    <div class="placeholder">
+                        <i class="fas fa-satellite-dish"></i>
                     </div>
                 </div>
             </div>
@@ -1677,98 +1141,76 @@
     <section class="section" id="services">
         <div class="container">
             <div class="section-header">
-                <div class="badge"><i class="fas fa-cogs"></i> SYSTEMS</div>
-                <h2>سیستم‌های <span>ما</span></h2>
-                <p>ماژول‌های پیشرفته برای ارتباط با جهان</p>
+                <div class="badge"><i class="fas fa-cogs"></i> خدمات تخصصی</div>
+                <h2>خدمات <span>ما</span></h2>
+                <p>از سخت‌افزار تا هوش مصنوعی، همه‌چیز را با ساده‌ترین روش ممکن ارائه می‌دهیم</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-laptop"></i></div>
-                    <h3>OS & COMPUTER</h3>
-                    <p>سیستم‌عامل، مجازی‌سازی، امنیت و بهینه‌سازی</p>
+                    <h3>رایانه و سیستم‌عامل</h3>
+                    <p>توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی، مجازی‌سازی و راه‌حل‌های امنیتی پیشرفته</p>
                     <div class="tags">
-                        <span>LINUX</span><span>WINDOWS</span><span>VM</span>
+                        <span>لینوکس</span>
+                        <span>ویندوز</span>
+                        <span>مجازی‌سازی</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-server"></i></div>
-                    <h3>SERVER & INFRA</h3>
-                    <p>سرور مجازی، ابری، ویندوز سرور، هاست، دامنه</p>
+                    <h3>سرور و زیرساخت</h3>
+                    <p>طراحی و پیاده‌سازی سرورهای فیزیکی و ابری، Load Balancing و مدیریت کلاس‌های ابری</p>
                     <div class="tags">
-                        <span>CLOUD</span><span>DOCKER</span><span>K8S</span>
+                        <span>Cloud</span>
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>NETWORK & INTERNET</h3>
-                    <p>شبکه‌سازی، امنیت، VPN، اینترنت پرسرعت</p>
+                    <h3>شبکه و اینترنت</h3>
+                    <p>طراحی شبکه‌های پیشرفته، امنیت سایبری، زیرساخت‌های اینترنت و ارتباطات امن</p>
                     <div class="tags">
-                        <span>SDN</span><span>FIREWALL</span><span>VPN</span>
+                        <span>SDN</span>
+                        <span>Firewall</span>
+                        <span>VPN</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-code"></i></div>
-                    <h3>CODING & DEV</h3>
-                    <p>توسعه نرم‌افزار، وب‌اپلیکیشن، موبایل</p>
+                    <h3>کدنویسی و برنامه‌نویسی</h3>
+                    <p>توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن، اپلیکیشن موبایل و API‌های پیشرفته</p>
                     <div class="tags">
-                        <span>PYTHON</span><span>JS</span><span>GO</span>
+                        <span>Python</span>
+                        <span>JavaScript</span>
+                        <span>Go</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>DESIGN & UI/UX</h3>
-                    <p>طراحی سایت، فروشگاه، رابط‌های کاربری</p>
+                    <h3>طراحی سایت و UI/UX</h3>
+                    <p>طراحی وب‌سایت‌های حرفه‌ای، فروشگاه‌های آنلاین و رابط‌های کاربری هوشمند</p>
                     <div class="tags">
-                        <span>REACT</span><span>VUE</span><span>FIGMA</span>
+                        <span>React</span>
+                        <span>Vue</span>
+                        <span>Figma</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI & MACHINE LEARNING</h3>
-                    <p>هوش مصنوعی، یادگیری ماشین، اتوماسیون</p>
+                    <h3>هوش مصنوعی و یادگیری ماشین</h3>
+                    <p>پیاده‌سازی مدل‌های یادگیری عمیق، پردازش زبان طبیعی و سیستم‌های توصیه‌گر</p>
                     <div class="tags">
-                        <span>TF</span><span>PYTORCH</span><span>NLP</span>
+                        <span>TensorFlow</span>
+                        <span>PyTorch</span>
+                        <span>NLP</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    MISSION - COSMIC COMMAND
-    ============================================================ -->
-    <section class="mission-section" id="mission">
-        <div class="container">
-            <div class="mission-content">
-                <span class="mission-icon">🛸</span>
-                <h2>ماموریت <span>کیهانی</span></h2>
-                <div class="mission-message">
-                    <p>
-                        <strong>مرکز فرماندهی پارسی تک نت</strong>
-                        با بهره‌گیری از <strong>پیشرفته‌ترین فناوری‌های فضایی</strong>،
-                        یک <span class="signal-highlight">پل ارتباطی</span> بین زمین و کهکشان است.
-                        <br><br>
-                        ما در <strong>چالش‌های فناوری</strong> به شما کمک می‌کنیم.
-                        از <strong>سیستم‌عامل</strong> تا <strong>هوش مصنوعی</strong>،
-                        از <strong>شبکه</strong> تا <strong>ارتباطات کیهانی</strong> -
-                        ما تمام نیازهای شما را برطرف می‌کنیم.
-                        <br><br>
-                        <span class="signal-highlight">ما صدای شما را از کهکشان می‌شنویم.</span>
-                        <br><br>
-                        <strong>ما تنها امید ارتباط شاید باشیم...</strong>
-                        <br>
-                        <span class="signal-highlight">اگر سیگنال ما را دریافت کردید، پاسخ دهید.</span>
-                    </p>
-                </div>
-                <div class="mission-footer">
-                    <i class="fas fa-radio"></i>
-                    SIGNAL RECEIVED - READY FOR TRANSMISSION
                 </div>
             </div>
         </div>
@@ -1777,24 +1219,24 @@
     <!-- ============================================================
     STATS
     ============================================================ -->
-    <section class="stats" id="stats">
+    <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat">
                     <span class="number" data-count="350">۰</span>
-                    <span class="label">MISSIONS COMPLETED</span>
+                    <span class="label">پروژه انجام شده</span>
                 </div>
                 <div class="stat">
                     <span class="number" data-count="180">۰</span>
-                    <span class="label">ACTIVE SYSTEMS</span>
+                    <span class="label">مشتریان فعال</span>
                 </div>
                 <div class="stat">
                     <span class="number" data-count="99">۰</span>
-                    <span class="label">SUCCESS RATE</span>
+                    <span class="label">درصد رضایت</span>
                 </div>
                 <div class="stat">
                     <span class="number" data-count="18">۰</span>
-                    <span class="label">YEARS ONLINE</span>
+                    <span class="label">سال تجربه</span>
                 </div>
             </div>
         </div>
@@ -1805,39 +1247,31 @@
     ============================================================ -->
     <section class="section section-alt" id="about">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div>
+            <div class="about-grid">
+                <div class="about-content">
                     <div class="section-header" style="text-align:right; margin-bottom: 12px;">
-                        <div class="badge"><i class="fas fa-info-circle"></i> ABOUT</div>
-                        <h2 style="color: var(--white);">درباره <span>ما</span></h2>
+                        <div class="badge"><i class="fas fa-info-circle"></i> درباره ما</div>
+                        <h2>درباره <span>ما</span></h2>
                     </div>
-                    <p style="color: rgba(255,255,255,0.6);">
-                        <strong style="color: var(--signal);">مرکز فرماندهی پارسی تک نت</strong>
-                        با <strong style="color: var(--signal);">بیش از ۱۸ سال</strong> تجربه،
-                        یک سازمان <strong style="color: var(--signal);">فناوری و ارتباطات کیهانی</strong>
-                        است که به افراد در <strong style="color: var(--signal);">چالش‌های فناوری</strong> کمک می‌کند.
+                    <p>
+                        سازمان شبکه فناوری پارسی با <strong>بیش از ۱۸ سال</strong> تجربه
+                        در حوزه فناوری اطلاعات، همواره به دنبال <strong>ساده‌سازی</strong>
+                        ارتباط کاربران با دنیای دیجیتال بوده است.
                     </p>
-                    <p style="color: rgba(255,255,255,0.6);">
-                        ما <strong style="color: var(--signal);">دانش</strong> را آموخته و
-                        <strong style="color: var(--signal);">تجربه</strong> را کسب کرده‌ایم.
-                        هر چیزی که تصور کنید، ما <strong style="color: var(--signal);">راه‌حل</strong> آن را داریم.
+                    <p>
+                        ما از <strong>سیستم‌عامل</strong> تا <strong>هوش مصنوعی</strong>،
+                        از <strong>شبکه</strong> تا <strong>کدنویسی</strong>،
+                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا و با رویکرد
+                        <strong>کاربرمحوری</strong> طراحی و پیاده‌سازی می‌کنیم.
                     </p>
-                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; list-style: none; padding: 0;">
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: var(--signal);"></i> EXPERT TEAM
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: var(--signal);"></i> 24/7 SUPPORT
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: var(--signal);"></i> CUSTOM SOLUTIONS
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: var(--signal);"></i> LATEST TECH
-                        </li>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> تیم متخصص و کارآزموده</li>
+                        <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته</li>
+                        <li><i class="fas fa-check-circle"></i> راه‌حل‌های سفارشی</li>
+                        <li><i class="fas fa-check-circle"></i> فناوری‌های روز دنیا</li>
                     </ul>
                 </div>
-                <div style="background: rgba(0,212,255,0.02); border-radius: var(--radius-xl); aspect-ratio: 1.1; display: flex; align-items: center; justify-content: center; font-size: 8rem; color: rgba(255,255,255,0.05); position: relative; overflow: hidden; border: 1px solid rgba(0,212,255,0.04);">
+                <div class="about-image">
                     <i class="fas fa-satellite-dish"></i>
                 </div>
             </div>
@@ -1845,14 +1279,14 @@
     </section>
 
     <!-- ============================================================
-    CONTACT - COMMUNICATION CENTER
+    CONTACT
     ============================================================ -->
     <section class="section" id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="badge"><i class="fas fa-paper-plane"></i> COMMUNICATION</div>
-                <h2>ارسال <span>سیگنال</span></h2>
-                <p>ما منتظر دریافت سیگنال شما هستیم</p>
+                <div class="badge"><i class="fas fa-paper-plane"></i> ارتباط با ما</div>
+                <h2>ارتباط <span>با ما</span></h2>
+                <p>ما مشتاق شنیدن نظرات و همکاری با شما هستیم</p>
             </div>
 
             <div class="contact-grid">
@@ -1860,7 +1294,7 @@
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <span class="label">LOCATION</span>
+                            <span class="label">آدرس</span>
                             <div class="value">استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</div>
                         </div>
                     </div>
@@ -1868,7 +1302,7 @@
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <span class="label">PRIMARY FREQ</span>
+                            <span class="label">تلفن ثابت</span>
                             <div class="value">۰۷۱-۳۷۸۲۴۸۹۲</div>
                         </div>
                     </div>
@@ -1876,7 +1310,7 @@
                     <div class="info-item">
                         <i class="fas fa-mobile-alt"></i>
                         <div>
-                            <span class="label">SECONDARY FREQ</span>
+                            <span class="label">تلفن همراه</span>
                             <div class="value">۰۹۳۷۳۶۲۲۷۶۲</div>
                         </div>
                     </div>
@@ -1884,7 +1318,7 @@
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <span class="label">SIGNAL ADDRESS</span>
+                            <span class="label">ایمیل</span>
                             <div class="value">persiantechnet@gmail.com</div>
                         </div>
                     </div>
@@ -1892,7 +1326,7 @@
                     <div class="info-item">
                         <i class="fas fa-globe"></i>
                         <div>
-                            <span class="label">GATEWAY</span>
+                            <span class="label">وب‌سایت</span>
                             <div class="value">www.persiantechnet.ir</div>
                         </div>
                     </div>
@@ -1900,7 +1334,7 @@
                     <div class="info-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <span class="label">OPERATIONAL HOURS</span>
+                            <span class="label">ساعات کاری</span>
                             <div class="value">شنبه تا پنج‌شنبه: ۹:۰۰ تا ۱۸:۰۰</div>
                         </div>
                     </div>
@@ -1909,41 +1343,40 @@
                 </div>
 
                 <div class="contact-form">
-                    <h3>🛸 ارسال سیگنال</h3>
+                    <h3>فرم تماس سریع</h3>
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">OPERATOR NAME</label>
+                                <label for="name">نام و نام خانوادگی</label>
                                 <input type="text" id="name" placeholder="احمد رضایی" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">FREQUENCY</label>
+                                <label for="phone">شماره تماس</label>
                                 <input type="tel" id="phone" placeholder="۰۹۳۷۳۶۲۲۷۶۲" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">SIGNAL ADDRESS</label>
+                            <label for="email">ایمیل</label>
                             <input type="email" id="email" placeholder="persiantechnet@gmail.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">SUBJECT</label>
+                            <label for="subject">موضوع</label>
                             <select id="subject">
-                                <option value="">SELECT...</option>
-                                <option value="os">OS & SERVER</option>
-                                <option value="network">NETWORK & INTERNET</option>
-                                <option value="coding">CODING & DEV</option>
-                                <option value="web">WEB DESIGN</option>
-                                <option value="ai">AI & ML</option>
-                                <option value="consulting">TECH CONSULTING</option>
-                                <option value="other">OTHER</option>
+                                <option value="">انتخاب کنید...</option>
+                                <option value="os">سیستم‌عامل و سرور</option>
+                                <option value="network">شبکه و اینترنت</option>
+                                <option value="coding">کدنویسی و برنامه‌نویسی</option>
+                                <option value="web">طراحی سایت</option>
+                                <option value="ai">هوش مصنوعی</option>
+                                <option value="other">سایر موارد</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">MESSAGE</label>
-                            <textarea id="message" placeholder="ما صدای شما را می‌شنویم..." required></textarea>
+                            <label for="message">پیام شما</label>
+                            <textarea id="message" placeholder="پیام خود را وارد کنید..." required></textarea>
                         </div>
                         <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
-                            <i class="fas fa-paper-plane"></i> ارسال سیگنال
+                            <i class="fas fa-paper-plane"></i> ارسال پیام
                         </button>
                     </form>
                 </div>
@@ -1958,11 +1391,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3><i class="fas fa-satellite-dish"></i> PARSI TECH NET</h3>
-                    <div class="tagline">🛸 SPACESHIP COMMAND CENTER</div>
+                    <h3><i class="fas fa-satellite-dish"></i> شبکه فناوری پارسی</h3>
                     <p>
-                        مرکز فرماندهی ارتباطات کیهانی
-                        از رایانه تا کهکشان
+                        سازمان پیشرو در ارائه خدمات فناوری اطلاعات و ارتباطات
+                        از رایانه تا هوش مصنوعی با رویکرد ساده‌سازی و هوشمندسازی
                     </p>
                     <div class="footer-contact">
                         <div class="footer-contact-item">
@@ -1992,28 +1424,28 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>SYSTEMS</h4>
-                    <a href="#services">OS & SERVER</a>
-                    <a href="#services">NETWORK</a>
-                    <a href="#services">CODING</a>
-                    <a href="#services">DESIGN</a>
-                    <a href="#services">AI</a>
+                    <h4>خدمات</h4>
+                    <a href="#services">سیستم‌عامل و سرور</a>
+                    <a href="#services">شبکه و اینترنت</a>
+                    <a href="#services">کدنویسی</a>
+                    <a href="#services">طراحی سایت</a>
+                    <a href="#services">هوش مصنوعی</a>
                 </div>
 
                 <div class="footer-col">
-                    <h4>QUICK ACCESS</h4>
-                    <a href="#about">ABOUT</a>
-                    <a href="#mission">MISSION</a>
-                    <a href="#contact">CONTACT</a>
-                    <a href="#">BLOG</a>
+                    <h4>دسترسی سریع</h4>
+                    <a href="#about">درباره ما</a>
+                    <a href="#contact">تماس</a>
+                    <a href="#">وبلاگ</a>
+                    <a href="#">قوانین و مقررات</a>
                 </div>
 
                 <div class="footer-col">
-                    <h4>INFO</h4>
-                    <a href="#">PRIVACY</a>
-                    <a href="#">TERMS</a>
-                    <a href="#">CAREERS</a>
-                    <a href="#">SITEMAP</a>
+                    <h4>اطلاعات</h4>
+                    <a href="#">حریم خصوصی</a>
+                    <a href="#">پرسش‌های متداول</a>
+                    <a href="#">فرصت‌های شغلی</a>
+                    <a href="#">نقشه سایت</a>
                 </div>
             </div>
 
@@ -2021,9 +1453,6 @@
                 <p>
                     <i class="fas fa-copyright"></i> ۱۴۰۴ سازمان شبکه فناوری پارسی | تمامی حقوق محفوظ است
                 </p>
-                <div class="signal-message">
-                    🛸 SIGNAL RECEIVED - READY FOR TRANSMISSION - WE HEAR YOU
-                </div>
             </div>
         </div>
     </footer>
@@ -2131,10 +1560,10 @@
                 .addTo(map)
                 .bindPopup(`
                             <div style="text-align:center; direction:rtl; padding:4px;">
-                                <strong style="color:#0a1628;">🛸 مرکز فرماندهی پارسی تک نت</strong><br>
+                                <strong style="color:#0a1628;">سازمان شبکه فناوری پارسی</strong><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">کوار - بلوار امام خمینی</span><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">خیابان شهید محسن شفیعی</span><br>
-                                <i class="fas fa-phone" style="color:#00d4ff;"></i>
+                                <i class="fas fa-phone" style="color:#c9a84c;"></i>
                                 <span style="color:#374151;">۰۷۱-۳۷۸۲۴۸۹۲</span>
                             </div>
                         `)
@@ -2154,14 +1583,14 @@
                 const message = document.getElementById('message').value.trim();
 
                 if (!name || !phone || !email || !message) {
-                    showToast('⚠️ همه فیلدها را پر کنید', 'warning');
+                    showToast('لطفاً تمام فیلدها را پر کنید', 'warning');
                     return;
                 }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    showToast('❌ ایمیل معتبر وارد کنید', 'error');
+                    showToast('لطفاً ایمیل معتبر وارد کنید', 'error');
                     return;
                 }
-                showToast('🛸 سیگنال شما با موفقیت ارسال شد!', 'success');
+                showToast('پیام شما با موفقیت ارسال شد! ✅', 'success');
                 form.reset();
             });
         })();
@@ -2178,16 +1607,16 @@
                 info: 'fa-info-circle'
             };
             const colors = {
-                success: '#00ff88',
-                error: '#ff0044',
-                warning: '#ff8800',
-                info: '#00d4ff'
+                success: '#10b981',
+                error: '#ef4444',
+                warning: '#f59e0b',
+                info: '#c9a84c'
             };
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
             toast.innerHTML = `
                         <i class="fas ${icons[type]}" style="color:${colors[type]};"></i>
-                        <span style="font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 0.5px;">${message}</span>
+                        <span>${message}</span>
                         <button class="toast-close"><i class="fas fa-times"></i></button>
                     `;
             toast.querySelector('.toast-close').addEventListener('click', () => toast.remove());
@@ -2200,44 +1629,38 @@
         // ============================================================
         (function theme() {
             const toggle = document.getElementById('themeToggle');
-            let dark = true;
+            let dark = false;
 
             toggle.addEventListener('click', () => {
                 dark = !dark;
                 const root = document.documentElement;
 
                 if (dark) {
-                    root.style.setProperty('--primary', '#0a0e1a');
-                    root.style.setProperty('--primary-light', '#141a2e');
-                    root.style.setProperty('--primary-dark', '#050810');
-                    root.style.setProperty('--white', '#ffffff');
-                    root.style.setProperty('--gray-50', '#f0f2f8');
-                    root.style.setProperty('--gray-100', '#e4e7ed');
-                    root.style.setProperty('--gray-200', '#d1d5db');
-                    root.style.setProperty('--gray-300', '#9ca3af');
-                    root.style.setProperty('--gray-400', '#6b7280');
-                    root.style.setProperty('--gray-500', '#4b5563');
-                    root.style.setProperty('--gray-600', '#374151');
-                    root.style.setProperty('--gray-700', '#1f2937');
-                    root.style.setProperty('--gray-800', '#111827');
-                    root.style.setProperty('--gray-900', '#0a0e1a');
-                    toggle.innerHTML = '<i class="fas fa-moon"></i>';
-                } else {
-                    root.style.setProperty('--primary', '#f0f4fc');
-                    root.style.setProperty('--primary-light', '#ffffff');
-                    root.style.setProperty('--primary-dark', '#e4e7ed');
-                    root.style.setProperty('--white', '#0a1628');
-                    root.style.setProperty('--gray-50', '#0a0e1a');
-                    root.style.setProperty('--gray-100', '#111827');
-                    root.style.setProperty('--gray-200', '#1f2937');
-                    root.style.setProperty('--gray-300', '#374151');
-                    root.style.setProperty('--gray-400', '#4b5563');
-                    root.style.setProperty('--gray-500', '#6b7280');
-                    root.style.setProperty('--gray-600', '#9ca3af');
-                    root.style.setProperty('--gray-700', '#d1d5db');
-                    root.style.setProperty('--gray-800', '#e4e7ed');
-                    root.style.setProperty('--gray-900', '#f0f2f5');
+                    root.style.setProperty('--white', '#0f1a2e');
+                    root.style.setProperty('--gray-50', '#0a1520');
+                    root.style.setProperty('--gray-100', '#15203a');
+                    root.style.setProperty('--gray-200', '#1a2a4a');
+                    root.style.setProperty('--gray-300', '#2a3a5a');
+                    root.style.setProperty('--gray-400', '#4a5a7a');
+                    root.style.setProperty('--gray-500', '#6a7a9a');
+                    root.style.setProperty('--gray-600', '#8a9aba');
+                    root.style.setProperty('--gray-700', '#aabada');
+                    root.style.setProperty('--gray-800', '#cadaea');
+                    root.style.setProperty('--gray-900', '#eaf0fa');
                     toggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    root.style.setProperty('--white', '#ffffff');
+                    root.style.setProperty('--gray-50', '#f8f9fa');
+                    root.style.setProperty('--gray-100', '#f0f2f5');
+                    root.style.setProperty('--gray-200', '#e4e7ed');
+                    root.style.setProperty('--gray-300', '#d1d5db');
+                    root.style.setProperty('--gray-400', '#9ca3af');
+                    root.style.setProperty('--gray-500', '#6b7280');
+                    root.style.setProperty('--gray-600', '#4b5563');
+                    root.style.setProperty('--gray-700', '#374151');
+                    root.style.setProperty('--gray-800', '#1f2937');
+                    root.style.setProperty('--gray-900', '#111827');
+                    toggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
             });
         })();
@@ -2245,11 +1668,10 @@
         // ============================================================
         // CONSOLE BRANDING
         // ============================================================
-        console.log('%c 🛸 مرکز فرماندهی پارسی تک نت ', 'background:#0a0e1a;color:#00d4ff;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;border:1px solid #00d4ff;');
-        console.log('%c 🌌 SPACESHIP COMMAND CENTER ', 'background:#00d4ff;color:#0a0e1a;font-size:14px;padding:8px 20px;border-radius:6px;font-weight:bold;');
-        console.log('%c 📡 www.persiantechnet.ir ', 'background:#0a0e1a;color:#00d4ff;font-size:13px;padding:6px 16px;border-radius:4px;');
-        console.log('%c 🚀 از رایانه تا کهکشان ', 'background:#0a0e1a;color:#d4af37;font-size:12px;padding:4px 14px;border-radius:4px;');
-        console.log('%c 🛸 SIGNAL RECEIVED - READY FOR TRANSMISSION ', 'background:#0a0e1a;color:#00ff88;font-size:11px;padding:4px 14px;border-radius:4px;');
+        console.log('%c 🏢 سازمان شبکه فناوری پارسی ', 'background:#0a1628;color:#c9a84c;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;');
+        console.log('%c 📡 PersianTechNet - پیشرو در فناوری اطلاعات ', 'background:#c9a84c;color:#0a1628;font-size:14px;padding:8px 20px;border-radius:6px;');
+        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#0a1628;color:#c9a84c;font-size:13px;padding:6px 16px;border-radius:4px;');
+        console.log('%c 🚀 از رایانه تا هوش مصنوعی ', 'background:#0a1628;color:#c9a84c;font-size:12px;padding:4px 14px;border-radius:4px;');
     </script>
 </body>
 </html>
