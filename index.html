@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a1628">
-    <meta name="description" content="سازمان شبکه فناوری پارسی - پیشرو در فناوری اطلاعات از رایانه تا هوش مصنوعی">
-    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, فناوری اطلاعات, شبکه, اینترنت, کامپیوتر, هوش مصنوعی">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="description" content="سازمان شبکه فناوری پارسی - ایستگاه دریافت و ارسال سیگنال‌های فراسیاره‌ای از رایانه تا کیهان">
+    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, فناوری اطلاعات, ارتباطات فراسیاره‌ای, گیرنده سیگنال, هوش مصنوعی, کیهان">
     <meta name="author" content="سازمان شبکه فناوری پارسی">
-    <meta property="og:title" content="سازمان شبکه فناوری پارسی | PersianTechNet">
-    <meta property="og:description" content="از رایانه تا هوش مصنوعی - پیشرو در فناوری اطلاعات">
+    <meta property="og:title" content="سازمان شبکه فناوری پارسی | ایستگاه ارتباطات فراسیاره‌ای">
+    <meta property="og:description" content="از رایانه تا هوش مصنوعی و فراتر از آن - دریافت و ارسال سیگنال‌های کیهانی">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://persiantechnet.github.io">
     
-    <title>سازمان شبکه فناوری پارسی | PersianTechNet</title>
+    <title>سازمان شبکه فناوری پارسی | ایستگاه ارتباطات فراسیاره‌ای</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,26 +23,29 @@
 
     <style>
         /* ============================================================
-                   ROOT VARIABLES - ORGANIZATIONAL DESIGN
+                   ROOT VARIABLES - COSMIC DESIGN
                    ============================================================ */
         :root {
-            --primary: #0a1628;
-            --primary-light: #152040;
-            --primary-dark: #060e1a;
-            --gold: #c9a84c;
-            --gold-light: #e8d5a3;
-            --gold-dark: #a8883a;
+            --primary: #060a1a;
+            --primary-light: #0a1628;
+            --primary-dark: #030610;
+            --gold: #d4af37;
+            --gold-light: #f0d080;
+            --gold-dark: #b8962e;
+            --cosmic-blue: #1a3a6a;
+            --cosmic-purple: #2a1a4a;
+            --cosmic-star: #ffffff;
             --white: #ffffff;
-            --gray-50: #fafbfc;
-            --gray-100: #f0f2f5;
-            --gray-200: #e4e7ed;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
+            --gray-50: #f0f2f8;
+            --gray-100: #e4e7ed;
+            --gray-200: #d1d5db;
+            --gray-300: #9ca3af;
+            --gray-400: #6b7280;
+            --gray-500: #4b5563;
+            --gray-600: #374151;
+            --gray-700: #1f2937;
+            --gray-800: #111827;
+            --gray-900: #0a0e1a;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 24px rgba(0,0,0,0.08);
             --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
@@ -72,12 +75,13 @@
 
         body {
             font-family: var(--font);
-            background: var(--white);
-            color: var(--gray-800);
+            background: var(--primary);
+            color: var(--white);
             line-height: 1.8;
             direction: rtl;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         ::selection {
@@ -89,7 +93,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--gray-100);
+            background: var(--primary);
         }
         ::-webkit-scrollbar-thumb {
             background: var(--gold);
@@ -118,6 +122,107 @@
         }
 
         /* ============================================================
+                   COSMIC BACKGROUND - STARS
+                   ============================================================ */
+        #stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background: var(--primary);
+        }
+
+        .star {
+            position: absolute;
+            background: var(--white);
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 50%;
+            animation: shoot linear infinite;
+        }
+
+        .shooting-star::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translate(0, 0) rotate(-45deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-500px, 500px) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Nebula Glow */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.08;
+        }
+
+        .nebula-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+            background: radial-gradient(circle, var(--cosmic-blue), transparent);
+            animation: nebulaFloat 20s ease-in-out infinite;
+        }
+
+        .nebula-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            left: -150px;
+            background: radial-gradient(circle, var(--cosmic-purple), transparent);
+            animation: nebulaFloat 25s ease-in-out infinite reverse;
+        }
+
+        .nebula-3 {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, var(--gold), transparent);
+            animation: nebulaFloat 30s ease-in-out infinite;
+        }
+
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        /* ============================================================
                    HEADER - PREMIUM
                    ============================================================ */
         .header {
@@ -126,10 +231,10 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10, 22, 40, 0.95);
+            background: rgba(6, 10, 26, 0.92);
             backdrop-filter: blur(20px) saturate(1.2);
             -webkit-backdrop-filter: blur(20px) saturate(1.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
             height: var(--header-height);
             display: flex;
             align-items: center;
@@ -137,9 +242,9 @@
         }
 
         .header.scrolled {
-            background: rgba(10, 22, 40, 0.98);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
-            border-bottom-color: rgba(201, 168, 76, 0.1);
+            background: rgba(6, 10, 26, 0.98);
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+            border-bottom-color: rgba(212, 175, 55, 0.1);
         }
 
         .header .container {
@@ -159,7 +264,7 @@
         .logo-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            background: radial-gradient(circle at 30% 30%, var(--gold), var(--gold-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -167,7 +272,22 @@
             color: var(--primary);
             font-size: 1.4rem;
             flex-shrink: 0;
-            box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0; }
         }
 
         .logo-text h1 {
@@ -184,6 +304,11 @@
             display: block;
             font-weight: 400;
             letter-spacing: 0.5px;
+        }
+
+        .logo-text span i {
+            font-size: 0.5rem;
+            margin: 0 2px;
         }
 
         .nav {
@@ -234,7 +359,7 @@
             padding: 8px 28px !important;
             border-radius: var(--radius) !important;
             font-weight: 600 !important;
-            box-shadow: 0 4px 24px rgba(201, 168, 76, 0.2);
+            box-shadow: 0 4px 32px rgba(212, 175, 55, 0.15);
         }
 
         .nav-cta::after {
@@ -243,7 +368,7 @@
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(201, 168, 76, 0.3);
+            box-shadow: 0 8px 48px rgba(212, 175, 55, 0.25);
         }
 
         .nav-cta i {
@@ -297,10 +422,10 @@
             top: var(--header-height);
             left: 0;
             right: 0;
-            background: rgba(10, 22, 40, 0.98);
+            background: rgba(6, 10, 26, 0.98);
             backdrop-filter: blur(20px);
             padding: 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
             flex-direction: column;
             gap: 4px;
             z-index: 999;
@@ -308,14 +433,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .mobile-menu.open {
@@ -342,7 +461,7 @@
         }
 
         /* ============================================================
-                   HERO - FULL SCREEN WITH IMAGE
+                   HERO - COSMIC FULL SCREEN
                    ============================================================ */
         .hero {
             padding: calc(var(--header-height) + 20px) 0 0;
@@ -352,81 +471,12 @@
             position: relative;
             overflow: hidden;
             background: var(--primary);
-        }
-
-        .hero-bg-image {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 70% 30%, rgba(201, 168, 76, 0.12), transparent 60%),
-                radial-gradient(ellipse at 30% 70%, rgba(201, 168, 76, 0.06), transparent 50%),
-                linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            z-index: 0;
-        }
-
-        .hero-bg-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(201, 168, 76, 0.02) 0%, transparent 40%);
-        }
-
-        .hero-bg-image .grid-pattern {
-            position: absolute;
-            inset: 0;
-            opacity: 0.04;
-            background-image:
-                linear-gradient(rgba(201, 168, 76, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(201, 168, 76, 0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        .hero-bg-image .tech-orbs {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .hero-bg-image .tech-orbs .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.1;
-        }
-
-        .hero-bg-image .tech-orbs .orb-1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            background: var(--gold);
-            animation: orbFloat1 12s ease-in-out infinite;
-        }
-
-        .hero-bg-image .tech-orbs .orb-2 {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -100px;
-            background: var(--gold);
-            animation: orbFloat2 16s ease-in-out infinite reverse;
-        }
-
-        @keyframes orbFloat1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -30px) scale(1.1); }
-        }
-
-        @keyframes orbFloat2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, 20px) scale(1.2); }
+            z-index: 1;
         }
 
         .hero .container {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: 100%;
             padding-top: 20px;
             padding-bottom: 40px;
@@ -448,29 +498,25 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(201, 168, 76, 0.12);
+            background: rgba(212, 175, 55, 0.08);
             padding: 6px 20px;
             border-radius: 30px;
             font-size: 0.75rem;
             color: var(--gold);
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.06);
             backdrop-filter: blur(10px);
         }
 
-        .hero-content .badge .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gold);
+        .hero-content .badge .signal {
             display: inline-block;
-            animation: pulse 2s infinite;
+            animation: signalPulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.8); }
+        @keyframes signalPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .hero-content h1 {
@@ -504,6 +550,39 @@
             opacity: 0.6;
         }
 
+        .hero-content .cosmic-message {
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content .cosmic-message::before {
+            content: '📡';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 4rem;
+            opacity: 0.03;
+            transform: rotate(-20deg);
+        }
+
+        .hero-content .cosmic-message p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 2;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .hero-content .cosmic-message p strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
         .hero-content p {
             color: rgba(255, 255, 255, 0.65);
             font-size: 1.05rem;
@@ -526,18 +605,18 @@
 
         .hero-tags .tag {
             padding: 4px 16px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 20px;
             font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             font-weight: 500;
             transition: var(--transition);
         }
 
         .hero-tags .tag:hover {
-            background: rgba(201, 168, 76, 0.08);
-            border-color: rgba(201, 168, 76, 0.15);
+            background: rgba(212, 175, 55, 0.06);
+            border-color: rgba(212, 175, 55, 0.1);
             color: var(--gold);
         }
 
@@ -566,12 +645,12 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 32px rgba(201, 168, 76, 0.2);
+            box-shadow: 0 4px 32px rgba(212, 175, 55, 0.15);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 48px rgba(201, 168, 76, 0.3);
+            box-shadow: 0 8px 48px rgba(212, 175, 55, 0.25);
         }
 
         .btn-secondary {
@@ -579,20 +658,20 @@
             align-items: center;
             gap: 10px;
             padding: 14px 36px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
             color: var(--white);
             border-radius: var(--radius);
             font-weight: 600;
             font-size: 0.95rem;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             cursor: pointer;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             transform: translateY(-3px);
-            border-color: rgba(201, 168, 76, 0.2);
+            border-color: rgba(212, 175, 55, 0.15);
         }
 
         .hero-stats {
@@ -600,7 +679,7 @@
             gap: 48px;
             margin-top: 36px;
             padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .hero-stats .stat .number {
@@ -613,9 +692,10 @@
 
         .hero-stats .stat .label {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
         }
 
+        /* Hero Image - Cosmic Receiver */
         .hero-image {
             display: flex;
             justify-content: center;
@@ -634,10 +714,10 @@
             height: 100%;
             border-radius: var(--radius-xl);
             background:
-                radial-gradient(ellipse at 30% 30%, rgba(201, 168, 76, 0.08), transparent 60%),
-                radial-gradient(ellipse at 70% 70%, rgba(201, 168, 76, 0.04), transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(212, 175, 55, 0.06), transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(212, 175, 55, 0.03), transparent 50%),
                 var(--primary-light);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -645,9 +725,55 @@
             overflow: hidden;
         }
 
-        .hero-image .image-container .main-image .icon-big {
-            font-size: 10rem;
-            color: rgba(201, 168, 76, 0.06);
+        .hero-image .image-container .main-image .receiver-dish {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image .image-container .main-image .receiver-dish .dish {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            animation: dishRotate 30s linear infinite;
+        }
+
+        .hero-image .image-container .main-image .receiver-dish .dish::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+            animation: signalReceive 3s ease-in-out infinite;
+        }
+
+        @keyframes dishRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes signalReceive {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
+        }
+
+        .hero-image .image-container .main-image .receiver-dish .center-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            color: rgba(212, 175, 55, 0.06);
+            z-index: 1;
         }
 
         .hero-image .image-container .main-image .floating-elements {
@@ -657,16 +783,16 @@
 
         .hero-image .image-container .main-image .floating-elements .float-item {
             position: absolute;
-            background: rgba(10, 22, 40, 0.6);
+            background: rgba(6, 10, 26, 0.6);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: var(--radius);
             padding: 8px 16px;
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             font-weight: 500;
             animation: floatItem 6s ease-in-out infinite;
         }
@@ -677,26 +803,26 @@
         }
 
         .hero-image .image-container .main-image .floating-elements .float-item:nth-child(1) {
-            top: 10%;
+            top: 5%;
             right: 5%;
             animation-delay: 0s;
         }
 
         .hero-image .image-container .main-image .floating-elements .float-item:nth-child(2) {
-            bottom: 15%;
+            bottom: 10%;
             left: 0%;
             animation-delay: 2s;
         }
 
         .hero-image .image-container .main-image .floating-elements .float-item:nth-child(3) {
             top: 40%;
-            left: -5%;
+            left: -8%;
             animation-delay: 4s;
         }
 
         .hero-image .image-container .main-image .floating-elements .float-item:nth-child(4) {
-            bottom: 30%;
-            right: -5%;
+            bottom: 25%;
+            right: -8%;
             animation-delay: 1s;
         }
 
@@ -706,14 +832,16 @@
         }
 
         /* ============================================================
-                   SECTIONS - PREMIUM
+                   SECTIONS - COSMIC
                    ============================================================ */
         .section {
             padding: 100px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .section-alt {
-            background: var(--gray-50);
+            background: rgba(255, 255, 255, 0.01);
         }
 
         .section-header {
@@ -726,20 +854,20 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(201, 168, 76, 0.08);
+            background: rgba(212, 175, 55, 0.06);
             padding: 4px 18px;
             border-radius: 20px;
             font-size: 0.75rem;
             color: var(--gold);
             font-weight: 600;
             margin-bottom: 12px;
-            border: 1px solid rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.06);
         }
 
         .section-header h2 {
             font-size: 2.4rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .section-header h2 span {
@@ -747,13 +875,13 @@
         }
 
         .section-header p {
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 1.05rem;
             margin-top: 8px;
         }
 
         /* ============================================================
-                   SERVICES - PREMIUM
+                   SERVICES - COSMIC
                    ============================================================ */
         .services-grid {
             display: grid;
@@ -762,10 +890,10 @@
         }
 
         .service-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.02);
             padding: 36px 28px;
             border-radius: var(--radius-lg);
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -789,13 +917,13 @@
         .service-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--gold);
+            border-color: rgba(212, 175, 55, 0.15);
         }
 
         .service-card .icon {
             width: 60px;
             height: 60px;
-            background: rgba(201, 168, 76, 0.08);
+            background: rgba(212, 175, 55, 0.06);
             border-radius: var(--radius);
             display: flex;
             align-items: center;
@@ -816,11 +944,11 @@
             font-size: 1.15rem;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .service-card p {
-            color: var(--gray-600);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
             line-height: 1.8;
             margin-bottom: 16px;
@@ -834,30 +962,79 @@
 
         .service-card .tags span {
             padding: 2px 14px;
-            background: var(--gray-100);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
             font-size: 0.7rem;
-            color: var(--gray-600);
+            color: rgba(255, 255, 255, 0.4);
             font-weight: 500;
         }
 
         /* ============================================================
-                   STATS - PREMIUM
+                   COSMIC MISSION
+                   ============================================================ */
+        .cosmic-mission {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .cosmic-mission::before {
+            content: '🌌';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            font-size: 15rem;
+            opacity: 0.02;
+        }
+
+        .cosmic-mission .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cosmic-mission .mission-content .mission-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .cosmic-mission .mission-content h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cosmic-mission .mission-content h2 span {
+            color: var(--gold);
+        }
+
+        .cosmic-mission .mission-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .cosmic-mission .mission-content p strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ============================================================
+                   STATS - COSMIC
                    ============================================================ */
         .stats {
             background: var(--primary);
             padding: 80px 0;
             position: relative;
-            overflow: hidden;
-        }
-
-        .stats::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.04), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(201, 168, 76, 0.02), transparent 40%);
+            z-index: 1;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .stats-grid {
@@ -865,8 +1042,6 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .stats-grid .stat .number {
@@ -878,71 +1053,13 @@
         }
 
         .stats-grid .stat .label {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.95rem;
             font-weight: 400;
         }
 
         /* ============================================================
-                   ABOUT - PREMIUM
-                   ============================================================ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-content p {
-            color: var(--gray-600);
-            font-size: 1rem;
-            line-height: 2;
-            margin-bottom: 16px;
-        }
-
-        .about-content .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .about-content .features li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--gray-700);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .about-content .features li i {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        .about-image {
-            background: var(--gray-200);
-            border-radius: var(--radius-xl);
-            aspect-ratio: 1.1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            color: var(--gray-400);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(201, 168, 76, 0.04), transparent 50%);
-        }
-
-        /* ============================================================
-                   CONTACT - PREMIUM
+                   CONTACT - COSMIC
                    ============================================================ */
         .contact-grid {
             display: grid;
@@ -960,7 +1077,7 @@
         .contact-info .info-item i {
             width: 48px;
             height: 48px;
-            background: rgba(201, 168, 76, 0.08);
+            background: rgba(212, 175, 55, 0.06);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -978,37 +1095,36 @@
 
         .contact-info .info-item .label {
             font-size: 0.8rem;
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.4);
             display: block;
             font-weight: 400;
         }
 
         .contact-info .info-item .value {
             font-weight: 600;
-            color: var(--gray-800);
+            color: var(--white);
         }
 
         .map-container {
             border-radius: var(--radius-lg);
             overflow: hidden;
             height: 200px;
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             margin-top: 20px;
         }
 
         .contact-form {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.02);
             padding: 40px;
             border-radius: var(--radius-lg);
-            border: 1px solid var(--gray-200);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .contact-form h3 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 24px;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .form-group {
@@ -1020,7 +1136,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 4px;
-            color: var(--gray-700);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .form-group input,
@@ -1028,12 +1144,12 @@
         .form-group select {
             width: 100%;
             padding: 11px 16px;
-            border: 1px solid var(--gray-300);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: var(--radius);
             font-family: inherit;
             font-size: 0.9rem;
-            background: var(--white);
-            color: var(--gray-800);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--white);
             transition: var(--transition);
         }
 
@@ -1042,12 +1158,22 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.08);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.06);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
         }
 
         .form-group textarea {
             min-height: 120px;
             resize: vertical;
+        }
+
+        .form-group select option {
+            background: var(--primary);
+            color: var(--white);
         }
 
         .form-row {
@@ -1057,12 +1183,14 @@
         }
 
         /* ============================================================
-                   FOOTER - PREMIUM
+                   FOOTER - COSMIC
                    ============================================================ */
         .footer {
-            background: var(--primary);
+            background: var(--primary-dark);
             padding: 60px 0 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-grid {
@@ -1084,8 +1212,15 @@
             margin-left: 8px;
         }
 
+        .footer-brand .cosmic-tagline {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.9rem;
             line-height: 1.8;
             max-width: 80%;
@@ -1100,7 +1235,7 @@
             align-items: center;
             gap: 10px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             margin-bottom: 4px;
         }
 
@@ -1117,14 +1252,14 @@
         .footer-social a {
             width: 42px;
             height: 42px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .footer-social a:hover {
@@ -1144,7 +1279,7 @@
         .footer-col a {
             display: block;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.3);
             margin-bottom: 6px;
             transition: var(--transition);
         }
@@ -1154,11 +1289,11 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
             padding-top: 20px;
             text-align: center;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.2);
         }
 
         /* ============================================================
@@ -1175,7 +1310,7 @@
         }
 
         .toast {
-            background: var(--white);
+            background: var(--primary-light);
             padding: 14px 20px;
             border-radius: var(--radius);
             border-right: 4px solid var(--gold);
@@ -1185,50 +1320,31 @@
             gap: 12px;
             animation: slideIn 0.4s ease;
             min-width: 280px;
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--white);
         }
 
-        .toast.success {
-            border-right-color: #10b981;
-        }
-        .toast.error {
-            border-right-color: #ef4444;
-        }
-        .toast.warning {
-            border-right-color: #f59e0b;
-        }
+        .toast.success { border-right-color: #10b981; }
+        .toast.error { border-right-color: #ef4444; }
+        .toast.warning { border-right-color: #f59e0b; }
 
-        .toast i {
-            font-size: 1.2rem;
-        }
-        .toast.success i {
-            color: #10b981;
-        }
-        .toast.error i {
-            color: #ef4444;
-        }
-        .toast.warning i {
-            color: #f59e0b;
-        }
+        .toast i { font-size: 1.2rem; }
+        .toast.success i { color: #10b981; }
+        .toast.error i { color: #ef4444; }
+        .toast.warning i { color: #f59e0b; }
 
         .toast .toast-close {
             margin-right: auto;
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.3);
             font-size: 1rem;
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         /* ============================================================
@@ -1246,9 +1362,6 @@
             }
             .hero-image .image-container {
                 max-width: 400px;
-            }
-            .hero-image .image-container .main-image .icon-big {
-                font-size: 7rem;
             }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1336,6 +1449,9 @@
             .hero-stats .stat .number {
                 font-size: 1.6rem;
             }
+            .cosmic-mission .mission-content p {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1364,9 +1480,6 @@
             .hero-image .image-container {
                 max-width: 240px;
             }
-            .hero-image .image-container .main-image .icon-big {
-                font-size: 4rem;
-            }
             .hero-image .image-container .main-image .floating-elements .float-item {
                 display: none;
             }
@@ -1391,10 +1504,23 @@
                 font-size: 0.65rem;
                 padding: 2px 12px;
             }
+            .cosmic-mission .mission-content h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- ============================================================
+    STARS BACKGROUND
+    ============================================================ -->
+    <div id="stars"></div>
+
+    <!-- Nebulas -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
 
     <!-- ============================================================
     HEADER
@@ -1407,12 +1533,13 @@
                 </div>
                 <div class="logo-text">
                     <h1>شبکه فناوری پارسی</h1>
-                    <span>PersianTechNet</span>
+                    <span><i class="fas fa-radio"></i> ایستگاه ارتباطات فراسیاره‌ای</span>
                 </div>
             </a>
 
             <nav class="nav">
                 <a href="#services" class="active">خدمات</a>
+                <a href="#mission">ماموریت</a>
                 <a href="#about">درباره ما</a>
                 <a href="#contact">تماس</a>
                 <a href="#contact" class="nav-cta">
@@ -1433,46 +1560,48 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#services">خدمات</a>
+        <a href="#mission">ماموریت</a>
         <a href="#about">درباره ما</a>
         <a href="#contact">تماس</a>
         <a href="#contact" class="nav-cta">ارتباط با ما</a>
     </div>
 
     <!-- ============================================================
-    HERO - FULL SCREEN WITH IMAGE
+    HERO - COSMIC
     ============================================================ -->
     <section class="hero" id="hero">
-        <div class="hero-bg-image">
-            <div class="grid-pattern"></div>
-            <div class="tech-orbs">
-                <div class="orb orb-1"></div>
-                <div class="orb orb-2"></div>
-            </div>
-        </div>
-
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="badge">
-                        <span class="dot"></span>
-                        پیشرو در فناوری اطلاعات
+                        <span class="signal">📡</span>
+                        ایستگاه دریافت سیگنال‌های کیهانی
                     </div>
                     <h1>
                         از <span class="highlight">رایانه</span> تا
-                        <span class="highlight">هوش مصنوعی</span>
+                        <span class="highlight">کیهان</span>
                     </h1>
                     <div class="subtitle">
                         <i class="fas fa-quote-right"></i>
-                        ساده‌ترین روش ممکن برای ارتباط با فناوری
+                        ما پیام‌های فراسیاره‌ای را دریافت می‌کنیم
                     </div>
+
+                    <div class="cosmic-message">
+                        <p>
+                            <strong>📡 سازمان شبکه فناوری پارسی</strong>، یک ایستگاه دریافت و ارسال سیگنال در پهنه کیهان است.
+                            همان‌گونه که یک گیرنده سیگنال، منتظر امواجی از اعماق فضا است،
+                            ما نیز با بهره‌گیری از <strong>پیشرفته‌ترین فناوری‌های روز دنیا</strong>،
+                            گوش‌به‌زنگ دریافت پیام‌هایی از جهان‌های دیگر هستیم.
+                            <strong>از رایانه تا هوش مصنوعی و فراتر از آن...</strong>
+                        </p>
+                    </div>
+
                     <p>
-                        سازمان شبکه فناوری پارسی، مرکز تخصصی ارائه خدمات
-                        <strong>فناوری اطلاعات</strong>
-                        از <strong>سیستم‌عامل</strong> و <strong>سرور</strong> تا
-                        <strong>شبکه</strong>، <strong>کدنویسی</strong>،
-                        <strong>طراحی سایت</strong> و <strong>هوش مصنوعی</strong>
-                        با رویکرد ساده‌سازی و هوشمندسازی.
+                        ما در تلاش برای برقراری ارتباط با <strong>سیارات دیگر</strong> و
+                        <strong>جهان‌های ناشناخته</strong> هستیم. شاید روزی کسی سیگنال کمک ارسال کرد
+                        یا سیگنال ما را دریافت کرد. ما برای برقراری این ارتباط اینجا هستیم.
                     </p>
+
                     <div class="hero-tags">
                         <span class="tag"><i class="fas fa-microchip"></i> سیستم‌عامل</span>
                         <span class="tag"><i class="fas fa-server"></i> سرور</span>
@@ -1480,15 +1609,18 @@
                         <span class="tag"><i class="fas fa-code"></i> کدنویسی</span>
                         <span class="tag"><i class="fas fa-paint-brush"></i> طراحی سایت</span>
                         <span class="tag"><i class="fas fa-brain"></i> هوش مصنوعی</span>
+                        <span class="tag"><i class="fas fa-radio"></i> ارتباطات کیهانی</span>
                     </div>
+
                     <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">
                             <i class="fas fa-paper-plane"></i> شروع همکاری
                         </a>
-                        <a href="#services" class="btn-secondary">
-                            <i class="fas fa-chevron-left"></i> خدمات ما
+                        <a href="#mission" class="btn-secondary">
+                            <i class="fas fa-chevron-left"></i> ماموریت ما
                         </a>
                     </div>
+
                     <div class="hero-stats">
                         <div class="stat">
                             <span class="number" data-count="350">۰</span>
@@ -1508,7 +1640,10 @@
                 <div class="hero-image">
                     <div class="image-container">
                         <div class="main-image">
-                            <i class="fas fa-satellite-dish icon-big"></i>
+                            <div class="receiver-dish">
+                                <div class="dish"></div>
+                                <i class="fas fa-satellite-dish center-icon"></i>
+                            </div>
                             <div class="floating-elements">
                                 <div class="float-item">
                                     <i class="fas fa-laptop-code"></i> سیستم‌عامل
@@ -1538,14 +1673,14 @@
             <div class="section-header">
                 <div class="badge"><i class="fas fa-cogs"></i> خدمات تخصصی</div>
                 <h2>خدمات <span>ما</span></h2>
-                <p>از سخت‌افزار تا هوش مصنوعی، همه‌چیز را با ساده‌ترین روش ممکن ارائه می‌دهیم</p>
+                <p>از فناوری‌های زمینی تا ارتباطات فراسیاره‌ای</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-laptop"></i></div>
                     <h3>رایانه و سیستم‌عامل</h3>
-                    <p>توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی، مجازی‌سازی و راه‌حل‌های امنیتی پیشرفته</p>
+                    <p>توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی و مجازی‌سازی پیشرفته</p>
                     <div class="tags">
                         <span>لینوکس</span>
                         <span>ویندوز</span>
@@ -1556,7 +1691,7 @@
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-server"></i></div>
                     <h3>سرور و زیرساخت</h3>
-                    <p>طراحی و پیاده‌سازی سرورهای فیزیکی و ابری، Load Balancing و مدیریت کلاس‌های ابری</p>
+                    <p>طراحی و پیاده‌سازی سرورهای فیزیکی و ابری با بالاترین سطح امنیت</p>
                     <div class="tags">
                         <span>Cloud</span>
                         <span>Docker</span>
@@ -1567,7 +1702,7 @@
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-network-wired"></i></div>
                     <h3>شبکه و اینترنت</h3>
-                    <p>طراحی شبکه‌های پیشرفته، امنیت سایبری، زیرساخت‌های اینترنت و ارتباطات امن</p>
+                    <p>طراحی شبکه‌های پیشرفته، امنیت سایبری و زیرساخت‌های ارتباطی</p>
                     <div class="tags">
                         <span>SDN</span>
                         <span>Firewall</span>
@@ -1578,7 +1713,7 @@
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-code"></i></div>
                     <h3>کدنویسی و برنامه‌نویسی</h3>
-                    <p>توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن، اپلیکیشن موبایل و API‌های پیشرفته</p>
+                    <p>توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن و سیستم‌های هوشمند</p>
                     <div class="tags">
                         <span>Python</span>
                         <span>JavaScript</span>
@@ -1589,7 +1724,7 @@
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-paint-brush"></i></div>
                     <h3>طراحی سایت و UI/UX</h3>
-                    <p>طراحی وب‌سایت‌های حرفه‌ای، فروشگاه‌های آنلاین و رابط‌های کاربری هوشمند</p>
+                    <p>طراحی وب‌سایت‌های حرفه‌ای و رابط‌های کاربری پیشرفته</p>
                     <div class="tags">
                         <span>React</span>
                         <span>Vue</span>
@@ -1600,7 +1735,7 @@
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-brain"></i></div>
                     <h3>هوش مصنوعی و یادگیری ماشین</h3>
-                    <p>پیاده‌سازی مدل‌های یادگیری عمیق، پردازش زبان طبیعی و سیستم‌های توصیه‌گر</p>
+                    <p>پیاده‌سازی مدل‌های یادگیری عمیق، NLP و سیستم‌های توصیه‌گر</p>
                     <div class="tags">
                         <span>TensorFlow</span>
                         <span>PyTorch</span>
@@ -1612,9 +1747,34 @@
     </section>
 
     <!-- ============================================================
+    COSMIC MISSION
+    ============================================================ -->
+    <section class="cosmic-mission" id="mission">
+        <div class="container">
+            <div class="mission-content">
+                <span class="mission-icon">🌌</span>
+                <h2>ماموریت <span>فراسیاره‌ای</span></h2>
+                <p>
+                    <strong>سازمان شبکه فناوری پارسی</strong>، با بهره‌گیری از
+                    <strong>پیشرفته‌ترین فناوری‌های روز دنیا</strong>،
+                    خود را یک <strong>ایستگاه دریافت و ارسال سیگنال</strong> در پهنه کیهان می‌داند.
+                    <br><br>
+                    ما در تلاش برای برقراری ارتباط با <strong>سیارات دیگر</strong> و
+                    <strong>جهان‌های ناشناخته</strong> هستیم.
+                    شاید روزی کسی <strong>سیگنال کمک</strong> ارسال کرد یا سیگنال ما را دریافت کرد.
+                    <br><br>
+                    <strong>ما برای برقراری این ارتباط اینجا هستیم.</strong>
+                    <br>
+                    <span style="color: var(--gold);">از رایانه تا هوش مصنوعی و فراتر از آن...</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
     STATS
     ============================================================ -->
-    <section class="stats">
+    <section class="stats" id="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat">
@@ -1642,31 +1802,38 @@
     ============================================================ -->
     <section class="section section-alt" id="about">
         <div class="container">
-            <div class="about-grid">
+            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                 <div class="about-content">
                     <div class="section-header" style="text-align:right; margin-bottom: 12px;">
                         <div class="badge"><i class="fas fa-info-circle"></i> درباره ما</div>
-                        <h2>درباره <span>ما</span></h2>
+                        <h2 style="color: var(--white);">درباره <span>ما</span></h2>
                     </div>
-                    <p>
-                        سازمان شبکه فناوری پارسی با <strong>بیش از ۱۸ سال</strong> تجربه
-                        در حوزه فناوری اطلاعات، همواره به دنبال <strong>ساده‌سازی</strong>
-                        ارتباط کاربران با دنیای دیجیتال بوده است.
+                    <p style="color: rgba(255,255,255,0.6);">
+                        سازمان شبکه فناوری پارسی با <strong style="color: var(--gold);">بیش از ۱۸ سال</strong> تجربه
+                        در حوزه فناوری اطلاعات، همواره به دنبال <strong style="color: var(--gold);">ساده‌سازی</strong>
+                        ارتباط کاربران با دنیای دیجیتال و فراتر از آن بوده است.
                     </p>
-                    <p>
-                        ما از <strong>سیستم‌عامل</strong> تا <strong>هوش مصنوعی</strong>،
-                        از <strong>شبکه</strong> تا <strong>کدنویسی</strong>،
-                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا و با رویکرد
-                        <strong>کاربرمحوری</strong> طراحی و پیاده‌سازی می‌کنیم.
+                    <p style="color: rgba(255,255,255,0.6);">
+                        ما از <strong style="color: var(--gold);">سیستم‌عامل</strong> تا <strong style="color: var(--gold);">هوش مصنوعی</strong>،
+                        از <strong style="color: var(--gold);">شبکه</strong> تا <strong style="color: var(--gold);">ارتباطات کیهانی</strong>،
+                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا طراحی می‌کنیم.
                     </p>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> تیم متخصص و کارآزموده</li>
-                        <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته</li>
-                        <li><i class="fas fa-check-circle"></i> راه‌حل‌های سفارشی</li>
-                        <li><i class="fas fa-check-circle"></i> فناوری‌های روز دنیا</li>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> تیم متخصص
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> پشتیبانی ۲۴ ساعته
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> راه‌حل‌های سفارشی
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> فناوری‌های روز دنیا
+                        </li>
                     </ul>
                 </div>
-                <div class="about-image">
+                <div style="background: rgba(255,255,255,0.02); border-radius: var(--radius-xl); aspect-ratio: 1.1; display: flex; align-items: center; justify-content: center; font-size: 8rem; color: rgba(255,255,255,0.05); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
                     <i class="fas fa-satellite-dish"></i>
                 </div>
             </div>
@@ -1681,7 +1848,7 @@
             <div class="section-header">
                 <div class="badge"><i class="fas fa-paper-plane"></i> ارتباط با ما</div>
                 <h2>ارتباط <span>با ما</span></h2>
-                <p>ما مشتاق شنیدن نظرات و همکاری با شما هستیم</p>
+                <p>ما مشتاق شنیدن سیگنال‌های شما هستیم</p>
             </div>
 
             <div class="contact-grid">
@@ -1738,7 +1905,7 @@
                 </div>
 
                 <div class="contact-form">
-                    <h3>فرم تماس سریع</h3>
+                    <h3>ارسال سیگنال</h3>
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -1763,6 +1930,7 @@
                                 <option value="coding">کدنویسی و برنامه‌نویسی</option>
                                 <option value="web">طراحی سایت</option>
                                 <option value="ai">هوش مصنوعی</option>
+                                <option value="cosmic">ارتباطات فراسیاره‌ای</option>
                                 <option value="other">سایر موارد</option>
                             </select>
                         </div>
@@ -1771,7 +1939,7 @@
                             <textarea id="message" placeholder="پیام خود را وارد کنید..." required></textarea>
                         </div>
                         <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
-                            <i class="fas fa-paper-plane"></i> ارسال پیام
+                            <i class="fas fa-paper-plane"></i> ارسال سیگنال
                         </button>
                     </form>
                 </div>
@@ -1787,9 +1955,10 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3><i class="fas fa-satellite-dish"></i> شبکه فناوری پارسی</h3>
+                    <div class="cosmic-tagline">📡 ایستگاه ارتباطات فراسیاره‌ای</div>
                     <p>
                         سازمان پیشرو در ارائه خدمات فناوری اطلاعات و ارتباطات
-                        از رایانه تا هوش مصنوعی با رویکرد ساده‌سازی و هوشمندسازی
+                        از رایانه تا هوش مصنوعی و فراتر از آن
                     </p>
                     <div class="footer-contact">
                         <div class="footer-contact-item">
@@ -1830,15 +1999,15 @@
                 <div class="footer-col">
                     <h4>دسترسی سریع</h4>
                     <a href="#about">درباره ما</a>
+                    <a href="#mission">ماموریت</a>
                     <a href="#contact">تماس</a>
                     <a href="#">وبلاگ</a>
-                    <a href="#">قوانین و مقررات</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>اطلاعات</h4>
                     <a href="#">حریم خصوصی</a>
-                    <a href="#">پرسش‌های متداول</a>
+                    <a href="#">قوانین</a>
                     <a href="#">فرصت‌های شغلی</a>
                     <a href="#">نقشه سایت</a>
                 </div>
@@ -1847,6 +2016,8 @@
             <div class="footer-bottom">
                 <p>
                     <i class="fas fa-copyright"></i> ۱۴۰۴ سازمان شبکه فناوری پارسی | تمامی حقوق محفوظ است
+                    <br>
+                    <span style="color: var(--gold); font-size: 0.7rem;">📡 در انتظار دریافت سیگنال از اعماق کیهان...</span>
                 </p>
             </div>
         </div>
@@ -1864,16 +2035,44 @@
 
     <script>
         // ============================================================
+        // CREATE STARS
+        // ============================================================
+        (function createStars() {
+            const container = document.getElementById('stars');
+            const count = 200;
+
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+
+            // Shooting stars
+            for (let i = 0; i < 3; i++) {
+                const shooting = document.createElement('div');
+                shooting.className = 'shooting-star';
+                shooting.style.top = Math.random() * 40 + '%';
+                shooting.style.left = Math.random() * 60 + '%';
+                shooting.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                shooting.style.animationDelay = (Math.random() * 10 + 5) + 's';
+                container.appendChild(shooting);
+            }
+        })();
+
+        // ============================================================
         // HEADER SCROLL
         // ============================================================
         (function headerScroll() {
             const header = document.getElementById('header');
-            let lastScroll = 0;
-
             window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                header.classList.toggle('scrolled', currentScroll > 50);
-                lastScroll = currentScroll;
+                header.classList.toggle('scrolled', window.pageYOffset > 50);
             });
         })();
 
@@ -1959,7 +2158,7 @@
                 .addTo(map)
                 .bindPopup(`
                             <div style="text-align:center; direction:rtl; padding:4px;">
-                                <strong style="color:#0a1628;">سازمان شبکه فناوری پارسی</strong><br>
+                                <strong style="color:#0a1628;">📡 سازمان شبکه فناوری پارسی</strong><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">کوار - بلوار امام خمینی</span><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">خیابان شهید محسن شفیعی</span><br>
                                 <i class="fas fa-phone" style="color:#c9a84c;"></i>
@@ -1989,7 +2188,7 @@
                     showToast('لطفاً ایمیل معتبر وارد کنید', 'error');
                     return;
                 }
-                showToast('پیام شما با موفقیت ارسال شد! ✅', 'success');
+                showToast('📡 سیگنال شما با موفقیت ارسال شد!', 'success');
                 form.reset();
             });
         })();
@@ -2028,38 +2227,44 @@
         // ============================================================
         (function theme() {
             const toggle = document.getElementById('themeToggle');
-            let dark = false;
+            let dark = true;
 
             toggle.addEventListener('click', () => {
                 dark = !dark;
                 const root = document.documentElement;
 
                 if (dark) {
-                    root.style.setProperty('--white', '#0f1a2e');
-                    root.style.setProperty('--gray-50', '#0a1520');
-                    root.style.setProperty('--gray-100', '#15203a');
-                    root.style.setProperty('--gray-200', '#1a2a4a');
-                    root.style.setProperty('--gray-300', '#2a3a5a');
-                    root.style.setProperty('--gray-400', '#4a5a7a');
-                    root.style.setProperty('--gray-500', '#6a7a9a');
-                    root.style.setProperty('--gray-600', '#8a9aba');
-                    root.style.setProperty('--gray-700', '#aabada');
-                    root.style.setProperty('--gray-800', '#cadaea');
-                    root.style.setProperty('--gray-900', '#eaf0fa');
-                    toggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {
+                    root.style.setProperty('--primary', '#060a1a');
+                    root.style.setProperty('--primary-light', '#0a1628');
+                    root.style.setProperty('--primary-dark', '#030610');
                     root.style.setProperty('--white', '#ffffff');
-                    root.style.setProperty('--gray-50', '#fafbfc');
-                    root.style.setProperty('--gray-100', '#f0f2f5');
-                    root.style.setProperty('--gray-200', '#e4e7ed');
-                    root.style.setProperty('--gray-300', '#d1d5db');
-                    root.style.setProperty('--gray-400', '#9ca3af');
-                    root.style.setProperty('--gray-500', '#6b7280');
-                    root.style.setProperty('--gray-600', '#4b5563');
-                    root.style.setProperty('--gray-700', '#374151');
-                    root.style.setProperty('--gray-800', '#1f2937');
-                    root.style.setProperty('--gray-900', '#111827');
+                    root.style.setProperty('--gray-50', '#f0f2f8');
+                    root.style.setProperty('--gray-100', '#e4e7ed');
+                    root.style.setProperty('--gray-200', '#d1d5db');
+                    root.style.setProperty('--gray-300', '#9ca3af');
+                    root.style.setProperty('--gray-400', '#6b7280');
+                    root.style.setProperty('--gray-500', '#4b5563');
+                    root.style.setProperty('--gray-600', '#374151');
+                    root.style.setProperty('--gray-700', '#1f2937');
+                    root.style.setProperty('--gray-800', '#111827');
+                    root.style.setProperty('--gray-900', '#0a0e1a');
                     toggle.innerHTML = '<i class="fas fa-moon"></i>';
+                } else {
+                    root.style.setProperty('--primary', '#f0f4fc');
+                    root.style.setProperty('--primary-light', '#ffffff');
+                    root.style.setProperty('--primary-dark', '#e4e7ed');
+                    root.style.setProperty('--white', '#0a1628');
+                    root.style.setProperty('--gray-50', '#0a0e1a');
+                    root.style.setProperty('--gray-100', '#111827');
+                    root.style.setProperty('--gray-200', '#1f2937');
+                    root.style.setProperty('--gray-300', '#374151');
+                    root.style.setProperty('--gray-400', '#4b5563');
+                    root.style.setProperty('--gray-500', '#6b7280');
+                    root.style.setProperty('--gray-600', '#9ca3af');
+                    root.style.setProperty('--gray-700', '#d1d5db');
+                    root.style.setProperty('--gray-800', '#e4e7ed');
+                    root.style.setProperty('--gray-900', '#f0f2f5');
+                    toggle.innerHTML = '<i class="fas fa-sun"></i>';
                 }
             });
         })();
@@ -2067,10 +2272,11 @@
         // ============================================================
         // CONSOLE BRANDING
         // ============================================================
-        console.log('%c 🏢 سازمان شبکه فناوری پارسی ', 'background:#0a1628;color:#c9a84c;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;');
-        console.log('%c 📡 PersianTechNet - پیشرو در فناوری اطلاعات ', 'background:#c9a84c;color:#0a1628;font-size:14px;padding:8px 20px;border-radius:6px;');
-        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#0a1628;color:#c9a84c;font-size:13px;padding:6px 16px;border-radius:4px;');
-        console.log('%c 🚀 از رایانه تا هوش مصنوعی ', 'background:#0a1628;color:#c9a84c;font-size:12px;padding:4px 14px;border-radius:4px;');
+        console.log('%c 🌌 سازمان شبکه فناوری پارسی ', 'background:#060a1a;color:#d4af37;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;');
+        console.log('%c 📡 ایستگاه ارتباطات فراسیاره‌ای ', 'background:#d4af37;color:#060a1a;font-size:14px;padding:8px 20px;border-radius:6px;');
+        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#060a1a;color:#d4af37;font-size:13px;padding:6px 16px;border-radius:4px;');
+        console.log('%c 🚀 از رایانه تا کیهان ', 'background:#060a1a;color:#d4af37;font-size:12px;padding:4px 14px;border-radius:4px;');
+        console.log('%c 📡 در انتظار دریافت سیگنال از اعماق فضا... ', 'background:#060a1a;color:#d4af37;font-size:11px;padding:4px 14px;border-radius:4px;');
     </script>
 </body>
 </html>
