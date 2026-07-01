@@ -1,89 +1,51 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="theme-color" content="#0a0e1a" />
-    <meta name="description" content="پرشین‌تک‌نت | PersianTechNet - ایستگاه کامل خدمات فناوری اطلاعات با هوش مصنوعی پیشرفته" />
-    <meta name="keywords" content="پرشین‌تک‌نت, PersianTechNet, فناوری اطلاعات, هوش مصنوعی, کامپیوتر, شبکه, اینترنت, هاست, دامنه, طراحی اپلیکیشن, مشاوره کسب و کار, کوار, فارس" />
-    <meta name="author" content="PersianTechNet" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="پرشین‌تک‌نت | PersianTechNet - پیشرو در فناوری با هوش مصنوعی" />
-    <meta property="og:description" content="یک ایستگاه کامل خدمات فناوری با جدیدترین متدهای روز دنیا" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://persiantechnet.github.io" />
-    <meta property="og:locale" content="fa_IR" />
-    <meta property="og:image" content="https://persiantechnet.github.io/og-image.jpg" />
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="پرشین‌تک‌نت | PersianTechNet" />
-    <meta name="twitter:description" content="پیشرو در فناوری با هوش مصنوعی" />
-    
-    <title>پرشین‌تک‌نت | PersianTechNet - پیشرو در فناوری با هوش مصنوعی</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="description" content="سازمان شبکه فناوری پارسی - ارائه خدمات تخصصی فناوری اطلاعات">
+    <meta name="keywords" content="سازمان شبکه فناوری پارسی, فناوری اطلاعات, شبکه, اینترنت, کامپیوتر">
+    <meta name="author" content="سازمان شبکه فناوری پارسی">
+    <title>سازمان شبکه فناوری پارسی | PersianTechNet</title>
 
-    <!-- ====== FONTS & ICONS ====== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    
-    <!-- ====== LEAFETL.JS ====== -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-    <!-- ====== ANIMATE.CSS ====== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <!-- ====== SWIPER.JS ====== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         /* ============================================================
-                   ROOT VARIABLES
+                   DESIGN SYSTEM - PERSIAN TECH NETWORK
                    ============================================================ */
         :root {
-            --primary: #00aaff;
-            --primary-dark: #0077cc;
-            --primary-light: #66ccff;
-            --primary-gradient: linear-gradient(135deg, #00aaff 0%, #0066cc 100%);
-            --secondary: #7c3aed;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --bg-deep: #0a0e1a;
-            --bg-primary: #0f172a;
-            --bg-secondary: #1a2236;
-            --bg-card: #1e293b;
-            --bg-glass: rgba(255, 255, 255, 0.03);
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --text-dark: #475569;
-            --border-color: rgba(0, 170, 255, 0.08);
-            --border-glow: rgba(0, 170, 255, 0.15);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 60px rgba(0, 170, 255, 0.05);
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --radius-full: 9999px;
-            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            --font-primary: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
-            --max-width: 1360px;
-            --header-height: 72px;
+            --primary: #0a1628;
+            --primary-light: #1a2a4a;
+            --secondary: #c9a84c;
+            --secondary-light: #e8d5a3;
+            --accent: #2a4a7a;
+            --gold: #c9a84c;
+            --gold-light: #f0e6c8;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.12);
+            --radius: 8px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+            --font: 'Vazirmatn', sans-serif;
+            --header-height: 80px;
+            --max-width: 1200px;
         }
 
-        /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
+        /* Reset */
         *,
         *::before,
         *::after {
@@ -98,35 +60,28 @@
         }
 
         body {
-            font-family: var(--font-primary);
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            direction: rtl;
+            font-family: var(--font);
+            background: var(--white);
+            color: var(--gray-800);
             line-height: 1.8;
-            overflow-x: hidden;
+            direction: rtl;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            min-height: 100vh;
         }
 
         ::selection {
-            background: var(--primary);
-            color: var(--bg-deep);
+            background: var(--secondary);
+            color: var(--primary);
         }
 
         ::-webkit-scrollbar {
             width: 6px;
-            height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-deep);
+            background: var(--gray-100);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: var(--radius-full);
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--secondary);
+            border-radius: 3px;
         }
 
         a {
@@ -144,133 +99,11 @@
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 24px;
         }
 
         /* ============================================================
-                   ANIMATED BACKGROUND - PARTICLES
-                   ============================================================ */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ============================================================
-                   GLOW ORBS
-                   ============================================================ */
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.15;
-        }
-
-        .glow-orb.orb-1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.2), transparent 70%);
-            animation: orbPulse 8s ease-in-out infinite;
-        }
-
-        .glow-orb.orb-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -150px;
-            left: -150px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
-            animation: orbPulse 10s ease-in-out infinite reverse;
-        }
-
-        .glow-orb.orb-3 {
-            width: 400px;
-            height: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.05), transparent 70%);
-            animation: orbPulse 12s ease-in-out infinite;
-        }
-
-        @keyframes orbPulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.15;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.25;
-            }
-        }
-
-        /* ============================================================
-                   UTILITY CLASSES
-                   ============================================================ */
-        .section-padding {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-            position: relative;
-        }
-
-        .section-title .highlight {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title .title-icon {
-            color: var(--primary);
-            margin-left: 12px;
-            -webkit-text-fill-color: var(--primary);
-            font-size: 2.2rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 640px;
-            margin: 0 auto 3rem;
-        }
-
-        .badge-glow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 170, 255, 0.06);
-            padding: 0.3rem 1.2rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-weight: 600;
-            border: 1px solid rgba(0, 170, 255, 0.08);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .badge-glow i {
-            font-size: 0.6rem;
-        }
-
-        /* ============================================================
-                   HEADER - ADVANCED
+                   HEADER
                    ============================================================ */
         .header {
             position: fixed;
@@ -278,20 +111,18 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(10, 14, 26, 0.7);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             height: var(--header-height);
             display: flex;
             align-items: center;
-            transition: all var(--transition-base);
+            transition: var(--transition);
         }
 
         .header.scrolled {
-            background: rgba(10, 14, 26, 0.9);
-            box-shadow: var(--shadow-md);
-            border-bottom-color: var(--border-glow);
+            background: rgba(10, 22, 40, 0.98);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
         }
 
         .header .container {
@@ -308,141 +139,105 @@
         }
 
         .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--primary-gradient);
-            border-radius: var(--radius-sm);
+            width: 48px;
+            height: 48px;
+            background: var(--secondary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: var(--primary);
             font-size: 1.4rem;
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.15);
-            position: relative;
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 30px rgba(0, 170, 255, 0.15);
-            }
-            50% {
-                box-shadow: 0 0 60px rgba(0, 170, 255, 0.3);
-            }
-        }
-
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: var(--radius-sm);
-            background: var(--primary-gradient);
-            opacity: 0.2;
-            filter: blur(8px);
-            z-index: -1;
+            flex-shrink: 0;
         }
 
         .logo-text h1 {
             font-size: 1.1rem;
-            font-weight: 900;
-            color: var(--text-primary);
+            font-weight: 700;
+            color: var(--white);
             line-height: 1.2;
-            letter-spacing: -0.3px;
         }
 
         .logo-text span {
-            font-size: 0.6rem;
-            color: var(--text-muted);
+            font-size: 0.7rem;
+            color: var(--gray-400);
             display: block;
             font-weight: 400;
-            letter-spacing: 0.3px;
-        }
-
-        .logo-text span i {
-            color: var(--primary);
-            margin: 0 2px;
         }
 
         .nav {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 2px;
         }
 
         .nav a {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--gray-300);
             font-weight: 500;
-            padding: 0.4rem 1rem;
-            border-radius: var(--radius-full);
-            transition: all var(--transition-fast);
-            position: relative;
+            padding: 8px 18px;
+            border-radius: var(--radius);
+            transition: var(--transition);
         }
 
         .nav a:hover {
-            color: var(--primary);
-            background: rgba(0, 170, 255, 0.04);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .nav a.active {
-            color: var(--primary);
-            background: rgba(0, 170, 255, 0.06);
+            color: var(--white);
+            background: var(--secondary);
         }
 
         .nav-cta {
-            background: var(--primary-gradient) !important;
-            color: #fff !important;
-            padding: 0.4rem 1.6rem !important;
-            border-radius: var(--radius-full) !important;
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.15);
-            transition: all var(--transition-base);
+            background: var(--secondary) !important;
+            color: var(--primary) !important;
+            padding: 8px 24px !important;
+            border-radius: var(--radius) !important;
+            font-weight: 600 !important;
         }
 
         .nav-cta:hover {
+            background: var(--gold-light) !important;
             transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(0, 170, 255, 0.25) !important;
-        }
-
-        .nav-cta i {
-            margin-left: 6px;
         }
 
         .nav-controls {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 4px;
         }
 
         .theme-toggle {
             background: none;
             border: none;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+            color: var(--gray-400);
+            font-size: 1.1rem;
             cursor: pointer;
-            padding: 0.4rem;
+            padding: 8px;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition-fast);
+            transition: var(--transition);
         }
 
         .theme-toggle:hover {
-            background: rgba(0, 170, 255, 0.04);
-            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
         }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
+            color: var(--white);
             font-size: 1.4rem;
-            color: var(--text-primary);
             cursor: pointer;
-            padding: 0.4rem;
+            padding: 8px;
             width: 40px;
             height: 40px;
             align-items: center;
@@ -456,14 +251,13 @@
             top: var(--header-height);
             left: 0;
             right: 0;
-            background: rgba(10, 14, 26, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 22, 40, 0.98);
+            backdrop-filter: blur(16px);
+            padding: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             flex-direction: column;
-            gap: 0.3rem;
+            gap: 4px;
             z-index: 999;
-            animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .mobile-menu.open {
@@ -471,314 +265,268 @@
         }
 
         .mobile-menu a {
-            padding: 0.8rem 1rem;
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            color: var(--gray-300);
             font-weight: 500;
-            transition: all var(--transition-fast);
+            transition: var(--transition);
         }
 
         .mobile-menu a:hover {
-            background: rgba(0, 170, 255, 0.04);
-            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
         }
 
         .mobile-menu .nav-cta {
             text-align: center;
-            color: #fff !important;
-            margin-top: 0.5rem;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: var(--primary) !important;
+            margin-top: 8px;
         }
 
         /* ============================================================
-                   HERO - AI EDITION
+                   HERO
                    ============================================================ */
         .hero {
-            padding: calc(var(--header-height) + 40px) 0 60px;
+            padding: calc(var(--header-height) + 60px) 0 80px;
+            background: var(--primary);
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 70% 30%, rgba(201, 168, 76, 0.08), transparent 60%),
+                radial-gradient(circle at 30% 70%, rgba(201, 168, 76, 0.04), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(45deg, var(--gold) 1px, transparent 1px),
+                linear-gradient(-45deg, var(--gold) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 60px;
             align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        .hero-content .hero-badge {
+        .hero-content .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 170, 255, 0.04);
-            padding: 0.3rem 1.2rem;
-            border-radius: var(--radius-full);
+            background: rgba(201, 168, 76, 0.12);
+            padding: 4px 16px;
+            border-radius: 20px;
             font-size: 0.75rem;
-            color: var(--primary);
+            color: var(--gold);
             font-weight: 600;
-            border: 1px solid rgba(0, 170, 255, 0.06);
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
         }
 
-        .hero-content .hero-badge i {
-            font-size: 0.6rem;
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 8px;
         }
 
-        .hero-content .typing-text {
-            font-size: 3.8rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 0.3rem;
-            letter-spacing: -1px;
+        .hero-content h1 span {
+            color: var(--gold);
         }
 
-        .hero-content .typing-text .highlight {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content .hero-slogan {
-            font-size: 1.4rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 40px rgba(0, 170, 255, 0.05);
-        }
-
-        .hero-content .hero-slogan i {
+        .hero-content .subtitle {
             font-size: 1.2rem;
+            color: var(--gray-300);
+            margin-bottom: 16px;
+            font-weight: 400;
         }
 
         .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+            color: var(--gray-400);
+            font-size: 1rem;
             max-width: 90%;
-            margin-bottom: 2rem;
-            line-height: 2;
-        }
-
-        .hero-content p strong {
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-tags .tag {
-            padding: 0.2rem 1rem;
-            background: rgba(0, 170, 255, 0.03);
-            border: 1px solid rgba(0, 170, 255, 0.04);
-            border-radius: var(--radius-full);
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: all var(--transition-fast);
-        }
-
-        .hero-tags .tag:hover {
-            border-color: rgba(0, 170, 255, 0.15);
-            color: var(--text-secondary);
-        }
-
-        .hero-tags .tag i {
-            color: var(--primary);
-            margin-left: 4px;
-            font-size: 0.6rem;
+            margin-bottom: 24px;
+            line-height: 1.9;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 0.9rem 2.6rem;
-            background: var(--primary-gradient);
-            color: #fff;
-            border-radius: var(--radius-full);
-            font-weight: 700;
+            gap: 8px;
+            padding: 12px 32px;
+            background: var(--secondary);
+            color: var(--primary);
+            border-radius: var(--radius);
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: all var(--transition-base);
-            box-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+            transition: var(--transition);
             border: none;
             cursor: pointer;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 60px rgba(0, 170, 255, 0.2);
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
         }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 0.9rem 2.6rem;
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-primary);
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            transition: all var(--transition-base);
+            gap: 8px;
+            padding: 12px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
         }
 
         .btn-secondary:hover {
-            border-color: var(--primary);
-            background: rgba(0, 170, 255, 0.02);
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.02);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
 
         .hero-stats {
             display: flex;
-            gap: 3rem;
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
+            gap: 48px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .hero-stats .stat .number {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
             display: block;
-            letter-spacing: 1px;
         }
 
         .hero-stats .stat .label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--gray-400);
         }
 
-        .hero-visual {
-            position: relative;
+        .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .hero-3d {
-            width: 480px;
-            height: 480px;
-            position: relative;
-        }
-
-        .hero-3d .orb {
-            position: absolute;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .hero-3d .orb-1 {
+        .hero-image .placeholder {
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 170, 255, 0.1), transparent 70%);
-            animation: orbFloat 6s ease-in-out infinite;
-        }
-
-        .hero-3d .orb-2 {
-            width: 80%;
-            height: 80%;
-            border: 1px solid rgba(0, 170, 255, 0.1);
-            animation: orbFloat 8s ease-in-out infinite reverse;
-        }
-
-        .hero-3d .orb-3 {
-            width: 60%;
-            height: 60%;
-            border: 1px solid rgba(0, 170, 255, 0.05);
-            animation: orbFloat 10s ease-in-out infinite;
-        }
-
-        .hero-3d .center-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            max-width: 480px;
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 8rem;
-            color: var(--primary);
-            opacity: 0.08;
-            animation: iconPulse 4s ease-in-out infinite;
+            color: rgba(201, 168, 76, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes orbFloat {
-            0%,
-            100% {
-                transform: translate(-50%, -50%) scale(1) rotate(0deg);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
-            }
-        }
-
-        @keyframes iconPulse {
-            0%,
-            100% {
-                opacity: 0.08;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                opacity: 0.15;
-                transform: translate(-50%, -50%) scale(1.05);
-            }
+        .hero-image .placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.05), transparent 60%);
         }
 
         /* ============================================================
-                   SERVICES - MODERN
+                   SECTION COMMON
                    ============================================================ */
-        .services {
-            background: var(--bg-primary);
-            position: relative;
-            z-index: 1;
+        .section {
+            padding: 80px 0;
         }
 
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 48px;
+        }
+
+        .section-header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 168, 76, 0.08);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-header h2 span {
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            margin-top: 8px;
+        }
+
+        .section-alt {
+            background: var(--gray-100);
+        }
+
+        /* ============================================================
+                   SERVICES
+                   ============================================================ */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 24px;
         }
 
         .service-card {
-            background: var(--bg-card);
+            background: var(--white);
+            padding: 32px 24px;
             border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--border-color);
-            transition: all var(--transition-base);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .service-card::before {
@@ -786,787 +534,239 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity var(--transition-base);
+            width: 4px;
+            height: 0;
+            background: var(--secondary);
+            transition: var(--transition);
         }
 
         .service-card:hover::before {
-            opacity: 1;
+            height: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg), var(--shadow-glow);
-            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
         }
 
-        .service-card .icon-box {
-            width: 64px;
-            height: 64px;
-            background: rgba(0, 170, 255, 0.04);
-            border-radius: var(--radius-md);
+        .service-card .icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(201, 168, 76, 0.08);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            transition: all var(--transition-base);
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 16px;
+            transition: var(--transition);
         }
 
-        .service-card:hover .icon-box {
-            background: var(--primary-gradient);
-            color: #fff;
-            transform: scale(1.05) rotate(10deg);
-            box-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+        .service-card:hover .icon {
+            background: var(--secondary);
+            color: var(--primary);
         }
 
         .service-card h3 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 8px;
+            color: var(--primary);
         }
 
         .service-card p {
-            color: var(--text-muted);
+            color: var(--gray-600);
             font-size: 0.9rem;
-            margin-bottom: 0.8rem;
             line-height: 1.7;
+            margin-bottom: 16px;
         }
 
-        .service-card .service-tags {
+        .service-card .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.3rem;
-        }
-
-        .service-card .service-tags span {
-            padding: 0.1rem 0.8rem;
-            background: rgba(0, 170, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-full);
-            font-size: 0.6rem;
-            color: var(--text-muted);
-        }
-
-        .service-card .service-link {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
             gap: 6px;
-            margin-top: 0.8rem;
-            transition: all var(--transition-fast);
         }
 
-        .service-card .service-link i {
-            transition: transform var(--transition-fast);
-        }
-
-        .service-card .service-link:hover i {
-            transform: translateX(-4px);
-        }
-
-        /* ============================================================
-                   GALLERY - SWIPER
-                   ============================================================ */
-        .gallery {
-            background: var(--bg-primary);
-            position: relative;
-            z-index: 1;
-        }
-
-        .gallery-slider {
-            padding: 2rem 0;
-        }
-
-        .gallery-slide {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all var(--transition-base);
-        }
-
-        .gallery-slide:hover {
-            transform: scale(1.02);
-            border-color: var(--border-glow);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .gallery-slide-image {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: rgba(255, 255, 255, 0.5);
-            position: relative;
-        }
-
-        .gallery-slide-image .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all var(--transition-base);
-        }
-
-        .gallery-slide:hover .overlay {
-            opacity: 1;
-        }
-
-        .gallery-slide-image .overlay i {
-            font-size: 3rem;
-            color: #fff;
-        }
-
-        .gallery-slide-info {
-            padding: 1.5rem;
-        }
-
-        .gallery-slide-info h4 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .gallery-slide-info p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .gallery-slide-info .tag {
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            background: rgba(0, 170, 255, 0.04);
-            border-radius: var(--radius-full);
-            font-size: 0.6rem;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--primary) !important;
-        }
-
-        .swiper-pagination-bullet {
-            background: var(--primary) !important;
-        }
-
-        /* ============================================================
-                   FEATURES
-                   ============================================================ */
-        .features {
-            background: var(--bg-deep);
-            position: relative;
-            z-index: 1;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform var(--transition-base);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--border-glow);
-        }
-
-        .feature-icon {
-            width: 72px;
-            height: 72px;
-            background: rgba(0, 170, 255, 0.04);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2rem;
-            color: var(--primary);
-            transition: all var(--transition-base);
-        }
-
-        .feature-card:hover .feature-icon {
-            background: var(--primary-gradient);
-            color: #fff;
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .feature-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .feature-badge {
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            background: rgba(0, 170, 255, 0.04);
-            border: 1px solid rgba(0, 170, 255, 0.06);
-            border-radius: var(--radius-full);
+        .service-card .tags span {
+            padding: 2px 12px;
+            background: var(--gray-100);
+            border-radius: 12px;
             font-size: 0.7rem;
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--gray-600);
         }
 
         /* ============================================================
                    ABOUT
                    ============================================================ */
-        .about {
-            background: var(--bg-primary);
-            position: relative;
-            z-index: 1;
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 48px;
             align-items: center;
         }
 
-        .about-text p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
+        .about-content p {
+            color: var(--gray-600);
+            font-size: 1rem;
             line-height: 1.9;
+            margin-bottom: 16px;
         }
 
-        .about-text .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .about-stat .number {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--primary);
-            display: block;
-        }
-
-        .about-stat span:last-child {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .about-features {
+        .about-content .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
+            gap: 8px;
+            margin-top: 16px;
         }
 
-        .about-features li {
+        .about-content .features li {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--text-secondary);
+            color: var(--gray-700);
             font-size: 0.9rem;
         }
 
-        .about-features li i {
-            color: var(--primary);
+        .about-content .features li i {
+            color: var(--secondary);
             font-size: 1rem;
         }
 
         .about-image {
-            position: relative;
-        }
-
-        .about-image .img-placeholder {
-            width: 100%;
-            height: 380px;
-            background: var(--bg-card);
+            background: var(--gray-200);
             border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
+            aspect-ratio: 1.2;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 6rem;
-            color: var(--text-muted);
-            opacity: 0.2;
+            color: var(--gray-400);
             position: relative;
             overflow: hidden;
         }
 
-        .about-image .img-placeholder::after {
+        .about-image::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(0, 170, 255, 0.02), transparent 60%);
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), transparent 50%);
         }
 
         /* ============================================================
-                   TESTIMONIALS
+                   STATS
                    ============================================================ */
-        .testimonials {
-            background: var(--bg-deep);
-            position: relative;
-            z-index: 1;
+        .stats {
+            background: var(--primary);
+            padding: 60px 0;
         }
 
-        .testimonials-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            transition: all var(--transition-base);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
             text-align: center;
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-glow);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .testimonial-card .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2.5rem;
-            color: #fff;
-        }
-
-        .testimonial-card .stars {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .testimonial-card blockquote {
-            color: var(--text-secondary);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card .name {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .testimonial-card .role {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================================================
-                   AI CHATBOT - ADVANCED
-                   ============================================================ */
-        .ai-chatbot {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            z-index: 999;
-        }
-
-        .ai-chatbot-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            color: #fff;
-            border: none;
-            font-size: 1.6rem;
-            cursor: pointer;
-            box-shadow: 0 0 50px rgba(0, 170, 255, 0.15);
-            transition: all var(--transition-base);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .ai-chatbot-toggle .badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
-            background: var(--success);
-            border-radius: 50%;
-            font-size: 0.6rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
-        .ai-chatbot-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 70px rgba(0, 170, 255, 0.2);
-        }
-
-        .ai-chatbot-toggle .fa-times {
-            display: none;
-        }
-
-        .ai-chatbot-toggle.active .fa-comment {
-            display: none;
-        }
-        .ai-chatbot-toggle.active .fa-times {
+        .stats-grid .stat .number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--gold);
             display: block;
         }
 
-        .ai-chatbot-window {
-            position: fixed;
-            bottom: 90px;
-            left: 2rem;
-            z-index: 998;
-            width: 400px;
-            max-width: calc(100vw - 2rem);
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transform: scale(0.8) translateY(20px);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-origin: bottom left;
-        }
-
-        .ai-chatbot-window.open {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .ai-chatbot-header {
-            background: var(--primary-gradient);
-            color: #fff;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ai-chatbot-header h4 {
-            font-weight: 700;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ai-chatbot-header .status {
-            font-size: 0.7rem;
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .ai-chatbot-header .status i {
-            font-size: 0.5rem;
-            color: #10b981;
-        }
-
-        .ai-chatbot-messages {
-            padding: 1.5rem;
-            max-height: 320px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .ai-chatbot-messages .msg {
-            padding: 0.7rem 1.2rem;
-            border-radius: var(--radius-md);
-            max-width: 85%;
-            font-size: 0.9rem;
-            animation: msgIn 0.3s ease;
-        }
-
-        @keyframes msgIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .ai-chatbot-messages .msg.bot {
-            background: rgba(0, 170, 255, 0.04);
-            align-self: flex-start;
-            border-bottom-right-radius: 4px;
-            color: var(--text-secondary);
-        }
-
-        .ai-chatbot-messages .msg.user {
-            background: var(--primary-gradient);
-            color: #fff;
-            align-self: flex-end;
-            border-bottom-left-radius: 4px;
-        }
-
-        .ai-chatbot-messages .msg.typing {
-            background: rgba(0, 170, 255, 0.02);
-            align-self: flex-start;
-            padding: 0.7rem 1.2rem;
-            border-radius: var(--radius-md);
-            display: flex;
-            gap: 4px;
-        }
-
-        .ai-chatbot-messages .msg.typing span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            animation: typingDot 1.2s ease-in-out infinite;
-        }
-
-        .ai-chatbot-messages .msg.typing span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .ai-chatbot-messages .msg.typing span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typingDot {
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-                opacity: 0.3;
-            }
-            30% {
-                transform: translateY(-8px);
-                opacity: 1;
-            }
-        }
-
-        .ai-chatbot-input {
-            display: flex;
-            padding: 1rem 1.5rem;
-            gap: 0.5rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .ai-chatbot-input input {
-            flex: 1;
-            padding: 0.6rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-            font-size: 0.9rem;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-
-        .ai-chatbot-input input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .ai-chatbot-input button {
-            padding: 0.6rem 1.2rem;
-            background: var(--primary-gradient);
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all var(--transition-fast);
-        }
-
-        .ai-chatbot-input button:hover {
-            opacity: 0.85;
+        .stats-grid .stat .label {
+            color: var(--gray-400);
+            font-size: 0.95rem;
         }
 
         /* ============================================================
                    CONTACT
                    ============================================================ */
-        .contact {
-            background: var(--bg-deep);
-            position: relative;
-            z-index: 1;
-        }
-
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 48px;
         }
 
-        .contact-info h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
+        .contact-info .info-item {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 1.2rem;
+            gap: 16px;
+            margin-bottom: 16px;
         }
 
-        .contact-item i {
+        .contact-info .info-item i {
             width: 44px;
             height: 44px;
-            background: rgba(0, 170, 255, 0.04);
+            background: rgba(201, 168, 76, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-size: 1.1rem;
+            color: var(--secondary);
+            font-size: 1rem;
             flex-shrink: 0;
-            border: 1px solid var(--border-color);
         }
 
-        .contact-item .info strong {
-            display: block;
+        .contact-info .info-item .label {
             font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 400;
+            color: var(--gray-500);
+            display: block;
         }
 
-        .contact-item .info span {
+        .contact-info .info-item .value {
             font-weight: 600;
-        }
-
-        .map-container {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            height: 220px;
-            border: 1px solid var(--border-color);
-            margin-top: 1rem;
+            color: var(--gray-800);
         }
 
         .contact-form {
-            background: var(--bg-card);
-            padding: 2.5rem;
+            background: var(--white);
+            padding: 32px;
             border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--gray-200);
         }
 
         .contact-form h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--primary);
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 16px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 4px;
-            color: var(--text-secondary);
+            color: var(--gray-700);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
             font-family: inherit;
             font-size: 0.9rem;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            transition: all var(--transition-fast);
+            background: var(--white);
+            color: var(--gray-800);
+            transition: var(--transition);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.04);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
         }
 
         .form-group textarea {
@@ -1577,169 +777,120 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 16px;
         }
 
-        .btn-submit {
-            width: 100%;
-            padding: 0.9rem;
-            background: var(--primary-gradient);
-            color: #fff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all var(--transition-base);
-            font-family: inherit;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 200px;
+            border: 1px solid var(--gray-200);
+            margin-top: 16px;
         }
 
         /* ============================================================
                    FOOTER
                    ============================================================ */
         .footer {
-            background: var(--bg-deep);
-            border-top: 1px solid var(--border-color);
-            padding: 4rem 0 1.5rem;
-            position: relative;
-            z-index: 1;
+            background: var(--primary);
+            padding: 48px 0 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 40px;
+            margin-bottom: 32px;
         }
 
         .footer-brand h3 {
-            color: var(--text-primary);
-            font-size: 1.3rem;
+            color: var(--white);
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 4px;
         }
 
         .footer-brand h3 i {
-            color: var(--primary);
+            color: var(--gold);
             margin-left: 8px;
         }
 
-        .footer-brand h4 {
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
         .footer-brand p {
+            color: var(--gray-400);
             font-size: 0.9rem;
-            color: var(--text-muted);
-            max-width: 80%;
             line-height: 1.7;
+            max-width: 80%;
         }
 
         .footer-contact {
-            margin: 1rem 0;
+            margin: 16px 0;
         }
 
         .footer-contact-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            margin-bottom: 4px;
         }
 
         .footer-contact-item i {
-            color: var(--primary);
+            color: var(--gold);
             width: 20px;
-            font-size: 0.8rem;
         }
 
         .footer-social {
             display: flex;
-            gap: 0.8rem;
-            margin-top: 0.5rem;
-            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .footer-social a {
-            width: 42px;
-            height: 42px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition-base);
-            font-size: 1rem;
-            color: var(--text-muted);
+            color: var(--gray-400);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-social a:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-            transform: translateY(-3px);
+            background: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         .footer-col h4 {
-            color: var(--text-primary);
+            color: var(--white);
             font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: 12px;
         }
 
         .footer-col a {
             display: block;
             font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.3rem;
-            transition: all var(--transition-fast);
-        }
-
-        .footer-col a i {
-            font-size: 0.5rem;
-            margin-left: 4px;
-            opacity: 0.5;
+            color: var(--gray-400);
+            margin-bottom: 4px;
+            transition: var(--transition);
         }
 
         .footer-col a:hover {
-            color: var(--primary);
+            color: var(--gold);
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
             text-align: center;
             font-size: 0.8rem;
-            color: var(--text-muted);
-            opacity: 0.7;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .footer-bottom .footer-bottom-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            font-size: 0.8rem;
-        }
-
-        .footer-bottom .footer-bottom-links a {
-            color: var(--primary);
-            transition: all var(--transition-fast);
-        }
-
-        .footer-bottom .footer-bottom-links a:hover {
-            text-decoration: underline;
+            color: var(--gray-500);
         }
 
         /* ============================================================
@@ -1747,49 +898,49 @@
                    ============================================================ */
         .toast-container {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 24px;
+            right: 24px;
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 8px;
         }
 
         .toast {
-            background: var(--bg-card);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-sm);
-            border-right: 3px solid var(--primary);
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            border-right: 3px solid var(--secondary);
             box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
             gap: 12px;
-            animation: toastIn 0.4s ease;
-            min-width: 260px;
-            border: 1px solid var(--border-color);
+            animation: slideIn 0.4s ease;
+            min-width: 280px;
+            border: 1px solid var(--gray-200);
         }
 
         .toast.success {
-            border-right-color: var(--success);
+            border-right-color: #10b981;
         }
         .toast.error {
-            border-right-color: var(--danger);
+            border-right-color: #ef4444;
         }
         .toast.warning {
-            border-right-color: var(--accent);
+            border-right-color: #f59e0b;
         }
 
         .toast i {
             font-size: 1.2rem;
         }
         .toast.success i {
-            color: var(--success);
+            color: #10b981;
         }
         .toast.error i {
-            color: var(--danger);
+            color: #ef4444;
         }
         .toast.warning i {
-            color: var(--accent);
+            color: #f59e0b;
         }
 
         .toast .toast-close {
@@ -1797,11 +948,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--text-muted);
+            color: var(--gray-500);
             font-size: 1rem;
         }
 
-        @keyframes toastIn {
+        @keyframes slideIn {
             from {
                 opacity: 0;
                 transform: translateX(40px);
@@ -1816,23 +967,14 @@
                    RESPONSIVE
                    ============================================================ */
         @media (max-width: 1024px) {
-            .services-grid,
-            .features-grid,
-            .testimonials-grid {
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .hero-grid {
-                gap: 2rem;
+                gap: 40px;
             }
-            .hero-content .typing-text {
-                font-size: 2.8rem;
-            }
-            .hero-3d {
-                width: 350px;
-                height: 350px;
-            }
-            .hero-3d .center-icon {
-                font-size: 5rem;
+            .hero-content h1 {
+                font-size: 2.6rem;
             }
         }
 
@@ -1848,7 +990,7 @@
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 32px;
             }
 
             .hero-content p {
@@ -1861,30 +1003,15 @@
 
             .hero-stats {
                 justify-content: center;
-                gap: 1.5rem;
+                gap: 24px;
             }
 
-            .hero-tags {
-                justify-content: center;
-            }
-
-            .hero-3d {
-                width: 280px;
-                height: 280px;
-            }
-
-            .hero-3d .center-icon {
-                font-size: 4rem;
-            }
-
-            .services-grid,
-            .features-grid,
-            .testimonials-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 32px;
             }
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1892,41 +1019,34 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem;
+                gap: 24px;
             }
-            .section-title {
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            .hero-content h1 {
                 font-size: 2rem;
             }
-            .hero-content .typing-text {
-                font-size: 2rem;
-            }
-
-            .ai-chatbot-window {
-                width: calc(100vw - 2rem);
-                left: 1rem;
-                bottom: 85px;
-            }
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-            .about-stats {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .hero-image .placeholder {
+                max-width: 300px;
+                font-size: 5rem;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 1rem;
+                padding: 0 16px;
             }
             .hero {
-                padding: calc(var(--header-height) + 20px) 0 40px;
+                padding: calc(var(--header-height) + 32px) 0 48px;
                 min-height: auto;
             }
-            .hero-content .typing-text {
+            .hero-content h1 {
                 font-size: 1.6rem;
             }
             .hero-buttons .btn-primary,
@@ -1940,60 +1060,48 @@
             .footer-brand p {
                 max-width: 100%;
             }
-            .hero-3d {
-                width: 200px;
-                height: 200px;
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
             }
-            .hero-3d .center-icon {
-                font-size: 3rem;
+            .stats-grid .stat .number {
+                font-size: 2rem;
+            }
+            .about-content .features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- ============================================================
-    PARTICLES BACKGROUND
-    ============================================================ -->
-    <div id="particles-js"></div>
-
-    <!-- ============================================================
-    GLOW ORBS
-    ============================================================ -->
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
 
     <!-- ============================================================
     HEADER
     ============================================================ -->
-    <header class="header" id="header" role="banner">
+    <header class="header" id="header">
         <div class="container">
-            <a href="#" class="logo" aria-label="صفحه اصلی پرشین‌تک‌نت">
+            <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-satellite-dish"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>پرشین‌تک‌نت</h1>
-                    <span><i class="fas fa-code"></i> PersianTechNet 🇮🇷</span>
+                    <h1>شبکه فناوری پارسی</h1>
+                    <span>PersianTechNet</span>
                 </div>
             </a>
 
-            <nav class="nav" role="navigation" aria-label="منوی اصلی">
+            <nav class="nav">
                 <a href="#services" class="active">خدمات</a>
-                <a href="#gallery">گالری</a>
-                <a href="#features">ویژگی‌ها</a>
                 <a href="#about">درباره ما</a>
-                <a href="#testimonials">نظرات</a>
                 <a href="#contact">تماس</a>
-                <a href="#" class="nav-cta" id="authNavBtn">
-                    <i class="fas fa-user"></i> ورود / ثبت‌نام
+                <a href="#contact" class="nav-cta">
+                    <i class="fas fa-headset"></i> ارتباط با ما
                 </a>
                 <div class="nav-controls">
-                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+                    <button class="theme-toggle" id="themeToggle">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <button class="menu-toggle" id="menuToggle" aria-label="منو">
+                    <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -2004,45 +1112,35 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#services">خدمات</a>
-        <a href="#gallery">گالری</a>
-        <a href="#features">ویژگی‌ها</a>
         <a href="#about">درباره ما</a>
-        <a href="#testimonials">نظرات</a>
         <a href="#contact">تماس</a>
-        <a href="#" class="nav-cta">ورود / ثبت‌نام</a>
+        <a href="#contact" class="nav-cta">ارتباط با ما</a>
     </div>
 
     <!-- ============================================================
-    HERO SECTION
+    HERO
     ============================================================ -->
     <section class="hero" id="hero">
+        <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <div class="hero-badge animate__animated animate__fadeInDown">
-                        <i class="fas fa-rocket"></i> پیشرو در فناوری با هوش مصنوعی
+                    <div class="badge">
+                        <i class="fas fa-rocket"></i> پیشرو در فناوری اطلاعات
                     </div>
-                    <div class="typing-text animate__animated animate__fadeIn">
-                        <span class="highlight" id="typingText"></span>
+                    <h1>
+                        از <span>رایانه</span> تا <span>هوش مصنوعی</span>
+                    </h1>
+                    <div class="subtitle">
+                        <i class="fas fa-quote-right"></i> ساده‌ترین روش ممکن برای ارتباط با فناوری
                     </div>
-                    <div class="hero-slogan animate__animated animate__fadeIn">
-                        <i class="fas fa-quote-right"></i>
-                        یک ایستگاه خدمات فناوری برای کسب و کار شما
-                    </div>
-                    <p class="animate__animated animate__fadeIn">
-                        <strong>پرشین‌تک‌نت (PersianTechNet)</strong> با بهره‌گیری از <strong>هوش مصنوعی</strong> و جدیدترین فناوری‌های روز دنیا،
-                        یک ایستگاه کامل خدمات فناوری اطلاعات از <strong>کامپیوتر و سیستم‌عامل</strong> تا <strong>شبکه و اینترنت</strong>
-                        و <strong>مشاوره کسب و کار فناوری</strong> ارائه می‌دهد.
+                    <p>
+                        سازمان شبکه فناوری پارسی، مرکز تخصصی ارائه خدمات <strong>فناوری اطلاعات</strong>
+                        از <strong>سیستم‌عامل</strong> و <strong>سرور</strong> تا <strong>شبکه</strong>،
+                        <strong>کدنویسی</strong>، <strong>طراحی سایت</strong> و <strong>هوش مصنوعی</strong>
+                        با رویکرد ساده‌سازی و هوشمندسازی.
                     </p>
-                    <div class="hero-tags animate__animated animate__fadeIn">
-                        <span class="tag"><i class="fas fa-laptop"></i> کامپیوتر</span>
-                        <span class="tag"><i class="fas fa-network-wired"></i> شبکه</span>
-                        <span class="tag"><i class="fas fa-cloud"></i> هاست و دامنه</span>
-                        <span class="tag"><i class="fas fa-code"></i> طراحی اپلیکیشن</span>
-                        <span class="tag"><i class="fas fa-chart-line"></i> مشاوره</span>
-                        <span class="tag"><i class="fas fa-brain"></i> هوش مصنوعی</span>
-                    </div>
-                    <div class="hero-buttons animate__animated animate__fadeIn">
+                    <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">
                             <i class="fas fa-paper-plane"></i> شروع همکاری
                         </a>
@@ -2050,28 +1148,24 @@
                             <i class="fas fa-chevron-left"></i> خدمات ما
                         </a>
                     </div>
-                    <div class="hero-stats animate__animated animate__fadeIn">
+                    <div class="hero-stats">
                         <div class="stat">
-                            <span class="number" data-count="10">۰</span>
-                            <span class="label">سال تجربه</span>
-                        </div>
-                        <div class="stat">
-                            <span class="number" data-count="50">۰</span>
+                            <span class="number" data-count="350">۰</span>
                             <span class="label">پروژه موفق</span>
                         </div>
                         <div class="stat">
-                            <span class="number" data-count="98">۰</span>
-                            <span class="label">رضایت مشتری</span>
+                            <span class="number" data-count="99">۰</span>
+                            <span class="label">درصد رضایت</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number" data-count="18">۰</span>
+                            <span class="label">سال تجربه</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="hero-visual animate__animated animate__fadeInLeft">
-                    <div class="hero-3d">
-                        <div class="orb orb-1"></div>
-                        <div class="orb orb-2"></div>
-                        <div class="orb orb-3"></div>
-                        <i class="fas fa-satellite-dish center-icon"></i>
+                <div class="hero-image">
+                    <div class="placeholder">
+                        <i class="fas fa-satellite-dish"></i>
                     </div>
                 </div>
             </div>
@@ -2081,271 +1175,107 @@
     <!-- ============================================================
     SERVICES
     ============================================================ -->
-    <section class="section-padding services" id="services">
+    <section class="section" id="services">
         <div class="container">
-            <div class="services-header">
-                <span class="badge-glow">
-                    <i class="fas fa-robot"></i> خدمات و محصولات
-                </span>
-                <h2 class="section-title">
-                    <i class="fas fa-cogs title-icon"></i>
-                    خدمات <span class="highlight">تخصصی</span> ما
-                </h2>
-                <p class="section-subtitle">
-                    یک ایستگاه کامل خدمات فناوری برای کسب و کار شما
-                </p>
+            <div class="section-header">
+                <div class="badge">
+                    <i class="fas fa-cogs"></i> خدمات تخصصی
+                </div>
+                <h2>خدمات <span>ما</span></h2>
+                <p>از سخت‌افزار تا هوش مصنوعی، همه‌چیز را با ساده‌ترین روش ممکن ارائه می‌دهیم</p>
             </div>
 
             <div class="services-grid">
-                <div class="service-card animate__animated animate__fadeInUp">
-                    <div class="icon-box"><i class="fas fa-laptop"></i></div>
-                    <h3>🖥 کامپیوتر و تجهیزات</h3>
-                    <p>
-                        نصب و راه‌اندازی سیستم‌عامل، نرم‌افزار و اپلیکیشن،
-                        ارتقاء سخت‌افزار، مشاوره خرید و امنیت اطلاعات
-                    </p>
-                    <div class="service-tags">
-                        <span><i class="fas fa-check-circle"></i> سیستم‌عامل</span>
-                        <span><i class="fas fa-check-circle"></i> نرم‌افزار</span>
-                        <span><i class="fas fa-check-circle"></i> سخت‌افزار</span>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-laptop"></i></div>
+                    <h3>رایانه و سیستم‌عامل</h3>
+                    <p>توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی، مجازی‌سازی و راه‌حل‌های امنیتی پیشرفته</p>
+                    <div class="tags">
+                        <span>لینوکس</span>
+                        <span>ویندوز</span>
+                        <span>مجازی‌سازی</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
-                    </a>
                 </div>
 
-                <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-                    <div class="icon-box"><i class="fas fa-network-wired"></i></div>
-                    <h3>📶 شبکه و اینترنت</h3>
-                    <p>
-                        اینترنت پرسرعت و پایدار، هاست، دامنه و سرورهای ابری،
-                        طراحی و توسعه اپلیکیشن وب، راه‌اندازی شبکه خانگی و تجاری
-                    </p>
-                    <div class="service-tags">
-                        <span><i class="fas fa-check-circle"></i> اینترنت</span>
-                        <span><i class="fas fa-check-circle"></i> هاست و دامنه</span>
-                        <span><i class="fas fa-check-circle"></i> اپلیکیشن وب</span>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <h3>سرور و زیرساخت</h3>
+                    <p>طراحی و پیاده‌سازی سرورهای فیزیکی و ابری، Load Balancing و مدیریت کلاس‌های ابری</p>
+                    <div class="tags">
+                        <span>Cloud</span>
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
-                    </a>
                 </div>
 
-                <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
-                    <h3>📈 کسب و کار فناوری</h3>
-                    <p>
-                        مشاوره و ایده‌پردازی کسب و کار، سرمایه‌گذاری و تجارت فناوری،
-                        همکاری در توسعه پروژه‌های نوآورانه با هوش مصنوعی
-                    </p>
-                    <div class="service-tags">
-                        <span><i class="fas fa-check-circle"></i> مشاوره</span>
-                        <span><i class="fas fa-check-circle"></i> سرمایه‌گذاری</span>
-                        <span><i class="fas fa-check-circle"></i> همکاری</span>
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>شبکه و اینترنت</h3>
+                    <p>طراحی شبکه‌های پیشرفته، امنیت سایبری، زیرساخت‌های اینترنت و ارتباطات امن</p>
+                    <div class="tags">
+                        <span>SDN</span>
+                        <span>Firewall</span>
+                        <span>VPN</span>
                     </div>
-                    <a href="#contact" class="service-link">
-                        اطلاعات بیشتر <i class="fas fa-arrow-left"></i>
-                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h3>کدنویسی و برنامه‌نویسی</h3>
+                    <p>توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن، اپلیکیشن موبایل و API‌های پیشرفته</p>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>JavaScript</span>
+                        <span>Go</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>طراحی سایت و UI/UX</h3>
+                    <p>طراحی وب‌سایت‌های حرفه‌ای، فروشگاه‌های آنلاین و رابط‌های کاربری هوشمند</p>
+                    <div class="tags">
+                        <span>React</span>
+                        <span>Vue</span>
+                        <span>Figma</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h3>هوش مصنوعی و یادگیری ماشین</h3>
+                    <p>پیاده‌سازی مدل‌های یادگیری عمیق، پردازش زبان طبیعی و سیستم‌های توصیه‌گر</p>
+                    <div class="tags">
+                        <span>TensorFlow</span>
+                        <span>PyTorch</span>
+                        <span>NLP</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-    TECH STACK
+    STATS
     ============================================================ -->
-    <section class="section-padding tech-stack" id="tech">
+    <section class="stats">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-microchip title-icon"></i>
-                فناوری‌های <span class="highlight">پیشرو</span>
-            </h2>
-            <p class="section-subtitle">
-                جدیدترین و قدرتمندترین فناوری‌های روز دنیا در اختیار شما
-            </p>
-
-            <div class="tech-grid">
-                <div class="tech-item animate__animated animate__fadeInUp">
-                    <i class="fab fa-linux"></i>
-                    <span>سیستم‌عامل</span>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="number" data-count="350">۰</span>
+                    <span class="label">پروژه انجام شده</span>
                 </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.05s">
-                    <i class="fas fa-cloud"></i>
-                    <span>ابر و سرور</span>
+                <div class="stat">
+                    <span class="number" data-count="180">۰</span>
+                    <span class="label">مشتریان فعال</span>
                 </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>امنیت شبکه</span>
+                <div class="stat">
+                    <span class="number" data-count="99">۰</span>
+                    <span class="label">درصد رضایت</span>
                 </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.15s">
-                    <i class="fab fa-python"></i>
-                    <span>برنامه‌نویسی</span>
-                </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <i class="fab fa-react"></i>
-                    <span>طراحی سایت</span>
-                </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.25s">
-                    <i class="fas fa-robot"></i>
-                    <span>هوش مصنوعی</span>
-                </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
-                    <i class="fas fa-database"></i>
-                    <span>پایگاه داده</span>
-                </div>
-                <div class="tech-item animate__animated animate__fadeInUp" style="animation-delay: 0.35s">
-                    <i class="fas fa-code-branch"></i>
-                    <span>DevOps</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    GALLERY - SWIPER
-    ============================================================ -->
-    <section class="section-padding gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-images title-icon"></i>
-                گالری <span class="highlight">نمونه‌کارها</span>
-            </h2>
-            <p class="section-subtitle">
-                برخی از پروژه‌های موفق پرشین‌تک‌نت
-            </p>
-
-            <div class="swiper gallery-slider">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide gallery-slide">
-                        <div class="gallery-slide-image" style="background: linear-gradient(135deg, #00aaff, #0066cc);">
-                            <i class="fas fa-laptop-code"></i>
-                            <div class="overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-slide-info">
-                            <h4>سیستم مدیریت محتوا</h4>
-                            <p>طراحی و پیاده‌سازی CMS اختصاصی با هوش مصنوعی</p>
-                            <span class="tag">کامپیوتر</span>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide gallery-slide">
-                        <div class="gallery-slide-image" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">
-                            <i class="fas fa-network-wired"></i>
-                            <div class="overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-slide-info">
-                            <h4>شبکه سازمانی هوشمند</h4>
-                            <p>راه‌اندازی شبکه ۵۰ دستگاه با امنیت پیشرفته</p>
-                            <span class="tag">شبکه</span>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide gallery-slide">
-                        <div class="gallery-slide-image" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                            <i class="fas fa-chart-line"></i>
-                            <div class="overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-slide-info">
-                            <h4>مشاوره استارتاپ</h4>
-                            <p>مشاوره و راه‌اندازی کسب و کار با تحلیل داده</p>
-                            <span class="tag">مشاوره</span>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide gallery-slide">
-                        <div class="gallery-slide-image" style="background: linear-gradient(135deg, #10b981, #059669);">
-                            <i class="fas fa-mobile-alt"></i>
-                            <div class="overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-slide-info">
-                            <h4>اپلیکیشن موبایل</h4>
-                            <p>طراحی و توسعه اپلیکیشن فروشگاهی پیشرفته</p>
-                            <span class="tag">طراحی اپلیکیشن</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    FEATURES
-    ============================================================ -->
-    <section class="section-padding features" id="features">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-star title-icon"></i>
-                چرا <span class="highlight">ما</span> را انتخاب کنید؟
-            </h2>
-            <p class="section-subtitle">
-                مزایا و قابلیت‌های منحصربه‌فرد پرشین‌تک‌نت
-            </p>
-
-            <div class="features-grid">
-                <div class="feature-card animate__animated animate__fadeInUp">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>هوش مصنوعی پیشرفته</h3>
-                    <p>استفاده از جدیدترین الگوریتم‌های هوش مصنوعی در تمام خدمات</p>
-                    <span class="feature-badge">AI Powered</span>
-                </div>
-
-                <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>امنیت سایبری</h3>
-                    <p>پیشرفته‌ترین روش‌های امنیت سایبری و حفاظت از داده</p>
-                    <span class="feature-badge">SSL &amp; Encryption</span>
-                </div>
-
-                <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>پشتیبانی هوشمند</h3>
-                    <p>پشتیبانی ۲۴/۷ با استفاده از چت‌بات‌های هوشمند</p>
-                    <span class="feature-badge">ضمانت پاسخگویی</span>
-                </div>
-
-                <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
-                    <div class="feature-icon">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3>تیم متخصص</h3>
-                    <p>کارشناسان مجرب با دانش روز در حوزه‌های مختلف فناوری</p>
-                    <span class="feature-badge">تیم حرفه‌ای</span>
-                </div>
-
-                <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>فناوری‌های روز</h3>
-                    <p>استفاده از جدیدترین ابزارها و پلتفرم‌های جهانی</p>
-                    <span class="feature-badge">به‌روزرسانی مداوم</span>
-                </div>
-
-                <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>رضایت مشتری</h3>
-                    <p>پروژه‌های موفق و نرخ رضایت بالای مشتریان</p>
-                    <span class="feature-badge">رضایت بالا</span>
+                <div class="stat">
+                    <span class="number" data-count="18">۰</span>
+                    <span class="label">سال تجربه</span>
                 </div>
             </div>
         </div>
@@ -2354,124 +1284,36 @@
     <!-- ============================================================
     ABOUT
     ============================================================ -->
-    <section class="section-padding about" id="about">
+    <section class="section section-alt" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text">
-                    <span class="badge-glow">
-                        <i class="fas fa-info-circle"></i> درباره ما
-                    </span>
-                    <h2 class="section-title" style="text-align:right; font-size:2.2rem; margin-top: 0.5rem;">
-                        <span class="highlight">پرشین‌تک‌نت</span>
-                    </h2>
-                    <h3 style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem;">
-                        📡 یک ایستگاه خدمات فناوری با هوش مصنوعی
-                    </h3>
-                    <p>
-                        سازمان <span class="highlight">شبکه فناوری پارسی</span> با نام تجاری
-                        <span class="highlight">پرشین‌تک‌نت</span> (PersianTechNet)
-                        با بهره‌گیری از <span class="highlight">هوش مصنوعی</span> و جدیدترین فناوری‌ها،
-                        یک ایستگاه کامل خدمات فناوری اطلاعات برای کسب و کارهاست.
-                    </p>
-                    <p>
-                        ما با تکیه بر <span class="highlight">تخصص و تجربه</span> در حوزه‌های
-                        کامپیوتر، شبکه، اینترنت و فناوری اطلاعات،
-                        همراه شما در مسیر <span class="highlight">پیشرفت دیجیتال</span> هستیم.
-                    </p>
-
-                    <div class="about-stats">
-                        <div class="about-stat">
-                            <span class="number">۱۰+</span>
-                            <span>سال تجربه</span>
+                <div class="about-content">
+                    <div class="section-header" style="text-align:right; margin-bottom: 16px;">
+                        <div class="badge">
+                            <i class="fas fa-info-circle"></i> درباره ما
                         </div>
-                        <div class="about-stat">
-                            <span class="number">۵۰+</span>
-                            <span>پروژه موفق</span>
-                        </div>
-                        <div class="about-stat">
-                            <span class="number">۹۸%</span>
-                            <span>رضایت مشتری</span>
-                        </div>
+                        <h2>درباره <span>ما</span></h2>
                     </div>
-
-                    <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> نصب و راه‌اندازی سیستم‌عامل</li>
-                        <li><i class="fas fa-check-circle"></i> اینترنت پرسرعت و پایدار</li>
-                        <li><i class="fas fa-check-circle"></i> هاست، دامنه و سرورهای ابری</li>
-                        <li><i class="fas fa-check-circle"></i> طراحی و توسعه اپلیکیشن وب</li>
-                        <li><i class="fas fa-check-circle"></i> مشاوره کسب و کار با هوش مصنوعی</li>
-                        <li><i class="fas fa-check-circle"></i> پشتیبانی هوشمند ۲۴/۷</li>
+                    <p>
+                        سازمان شبکه فناوری پارسی با <strong>بیش از ۱۸ سال</strong> تجربه
+                        در حوزه فناوری اطلاعات، همواره به دنبال <strong>ساده‌سازی</strong>
+                        ارتباط کاربران با دنیای دیجیتال بوده است.
+                    </p>
+                    <p>
+                        ما از <strong>سیستم‌عامل</strong> تا <strong>هوش مصنوعی</strong>،
+                        از <strong>شبکه</strong> تا <strong>کدنویسی</strong>،
+                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا و با رویکرد <strong>کاربرمحوری</strong>
+                        طراحی و پیاده‌سازی می‌کنیم.
+                    </p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> تیم متخصص و کارآزموده</li>
+                        <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴ ساعته</li>
+                        <li><i class="fas fa-check-circle"></i> راه‌حل‌های سفارشی</li>
+                        <li><i class="fas fa-check-circle"></i> فناوری‌های روز دنیا</li>
                     </ul>
                 </div>
                 <div class="about-image">
-                    <div class="img-placeholder">
-                        <i class="fas fa-satellite-dish"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    TESTIMONIALS
-    ============================================================ -->
-    <section class="section-padding testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-quote-right title-icon"></i>
-                نظرات <span class="highlight">مشتریان</span>
-            </h2>
-            <p class="section-subtitle">
-                آنچه مشتریان ما درباره خدمات پرشین‌تک‌نت می‌گویند
-            </p>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card animate__animated animate__fadeInUp">
-                    <div class="avatar"><i class="fas fa-user"></i></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <blockquote>
-                        "پرشین‌تک‌نت بهترین خدمات فناوری را با بالاترین کیفیت ارائه می‌دهد."
-                    </blockquote>
-                    <div class="name">احمد رضایی</div>
-                    <div class="role">مدیر عامل شرکت فناوران</div>
-                </div>
-
-                <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-                    <div class="avatar"><i class="fas fa-user"></i></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <blockquote>
-                        "تیم متخصص و حرفه‌ای پرشین‌تک‌نت پروژه شبکه ما را با موفقیت اجرا کردند."
-                    </blockquote>
-                    <div class="name">سارا محمدی</div>
-                    <div class="role">مدیر IT سازمان بزرگ</div>
-                </div>
-
-                <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                    <div class="avatar"><i class="fas fa-user"></i></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <blockquote>
-                        "مشاوره هوشمند پرشین‌تک‌نت باعث تحول دیجیتال کسب و کار ما شد."
-                    </blockquote>
-                    <div class="name">علی کریمی</div>
-                    <div class="role">کارآفرین حوزه فناوری</div>
+                    <i class="fas fa-satellite-dish"></i>
                 </div>
             </div>
         </div>
@@ -2480,70 +1322,63 @@
     <!-- ============================================================
     CONTACT
     ============================================================ -->
-    <section class="section-padding contact" id="contact">
+    <section class="section" id="contact">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-paper-plane title-icon"></i>
-                ارتباط <span class="highlight">با ما</span>
-            </h2>
-            <p class="section-subtitle">
-                ما مشتاق شنیدن نظرات و همکاری با شما هستیم
-            </p>
+            <div class="section-header">
+                <div class="badge">
+                    <i class="fas fa-paper-plane"></i> ارتباط با ما
+                </div>
+                <h2>ارتباط <span>با ما</span></h2>
+                <p>ما مشتاق شنیدن نظرات و همکاری با شما هستیم</p>
+            </div>
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>اطلاعات تماس</h3>
-                    <p>
-                        شما می‌توانید از طریق راه‌های زیر با ما در ارتباط باشید.
-                        تیم ما آماده پاسخگویی به سوالات شماست.
-                    </p>
-
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div class="info">
-                            <strong>آدرس دفتر مرکزی</strong>
-                            <span>استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</span>
+                        <div>
+                            <span class="label">آدرس</span>
+                            <div class="value">استان فارس - شهرستان کوار - بلوار امام خمینی - خیابان شهید محسن شفیعی</div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <div class="info">
-                            <strong>تلفن ثابت</strong>
-                            <span>۰۷۱-۳۷۸۲۴۸۹۲</span>
+                        <div>
+                            <span class="label">تلفن ثابت</span>
+                            <div class="value">۰۷۱-۳۷۸۲۴۸۹۲</div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-mobile-alt"></i>
-                        <div class="info">
-                            <strong>تلفن همراه</strong>
-                            <span>۰۹۳۷۳۶۲۲۷۶۲</span>
+                        <div>
+                            <span class="label">تلفن همراه</span>
+                            <div class="value">۰۹۳۷۳۶۲۲۷۶۲</div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <div class="info">
-                            <strong>ایمیل</strong>
-                            <span>persiantechnet@gmail.com</span>
+                        <div>
+                            <span class="label">ایمیل</span>
+                            <div class="value">persiantechnet@gmail.com</div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-globe"></i>
-                        <div class="info">
-                            <strong>وب‌سایت</strong>
-                            <span>www.persiantechnet.ir</span>
+                        <div>
+                            <span class="label">وب‌سایت</span>
+                            <div class="value">www.persiantechnet.ir</div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
+                    <div class="info-item">
                         <i class="fas fa-clock"></i>
-                        <div class="info">
-                            <strong>ساعات کاری</strong>
-                            <span>شنبه تا پنج‌شنبه: ۹:۰۰ تا ۱۸:۰۰</span>
-                            <span>جمعه: تعطیل</span>
+                        <div>
+                            <span class="label">ساعات کاری</span>
+                            <div class="value">شنبه تا پنج‌شنبه: ۹:۰۰ تا ۱۸:۰۰</div>
                         </div>
                     </div>
 
@@ -2556,27 +1391,26 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">نام و نام خانوادگی</label>
-                                <input type="text" id="name" placeholder="مثال: احمد رضایی" required />
+                                <input type="text" id="name" placeholder="احمد رضایی" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone">شماره تماس</label>
-                                <input type="tel" id="phone" placeholder="۰۹۳۷۳۶۲۲۷۶۲" required />
+                                <input type="tel" id="phone" placeholder="۰۹۳۷۳۶۲۲۷۶۲" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">ایمیل</label>
-                            <input type="email" id="email" placeholder="persiantechnet@gmail.com" required />
+                            <input type="email" id="email" placeholder="persiantechnet@gmail.com" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">موضوع</label>
                             <select id="subject">
                                 <option value="">انتخاب کنید...</option>
-                                <option value="computer">کامپیوتر و تجهیزات</option>
+                                <option value="os">سیستم‌عامل و سرور</option>
                                 <option value="network">شبکه و اینترنت</option>
-                                <option value="business">کسب و کار فناوری</option>
-                                <option value="hosting">هاست و دامنه</option>
-                                <option value="app">طراحی اپلیکیشن</option>
-                                <option value="consulting">مشاوره با AI</option>
+                                <option value="coding">کدنویسی و برنامه‌نویسی</option>
+                                <option value="web">طراحی سایت</option>
+                                <option value="ai">هوش مصنوعی</option>
                                 <option value="other">سایر موارد</option>
                             </select>
                         </div>
@@ -2584,7 +1418,7 @@
                             <label for="message">پیام شما</label>
                             <textarea id="message" placeholder="پیام خود را وارد کنید..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">
+                        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
                             <i class="fas fa-paper-plane"></i> ارسال پیام
                         </button>
                     </form>
@@ -2596,16 +1430,15 @@
     <!-- ============================================================
     FOOTER
     ============================================================ -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3><i class="fas fa-satellite-dish"></i> پرشین‌تک‌نت</h3>
-                    <h4>PersianTechNet 🇮🇷</h4>
+                    <h3><i class="fas fa-satellite-dish"></i> شبکه فناوری پارسی</h3>
                     <p>
-                        یک ایستگاه خدمات فناوری با هوش مصنوعی برای کسب و کار شما
+                        سازمان پیشرو در ارائه خدمات فناوری اطلاعات و ارتباطات
+                        از رایانه تا هوش مصنوعی با رویکرد ساده‌سازی و هوشمندسازی
                     </p>
-
                     <div class="footer-contact">
                         <div class="footer-contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -2620,89 +1453,52 @@
                             <span>persiantechnet@gmail.com</span>
                         </div>
                     </div>
-
                     <div class="footer-social">
-                        <a href="https://github.com/persiantechnet" target="_blank" aria-label="گیت‌هاب" title="گیت‌هاب">
+                        <a href="https://github.com/persiantechnet" target="_blank" aria-label="گیت‌هاب">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://persiantechnet.github.io" target="_blank" aria-label="وب‌سایت" title="وب‌سایت">
+                        <a href="https://persiantechnet.github.io" target="_blank" aria-label="وب‌سایت">
                             <i class="fas fa-globe"></i>
                         </a>
-                        <a href="mailto:persiantechnet@gmail.com" aria-label="ایمیل" title="ایمیل">
+                        <a href="mailto:persiantechnet@gmail.com" aria-label="ایمیل">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="footer-col">
-                    <h4>خدمات و محصولات</h4>
-                    <a href="#services"><i class="fas fa-chevron-left"></i> کامپیوتر و تجهیزات</a>
-                    <a href="#services"><i class="fas fa-chevron-left"></i> شبکه و اینترنت</a>
-                    <a href="#services"><i class="fas fa-chevron-left"></i> کسب و کار فناوری</a>
-                    <a href="#services"><i class="fas fa-chevron-left"></i> هوش مصنوعی</a>
+                    <h4>خدمات</h4>
+                    <a href="#services">سیستم‌عامل و سرور</a>
+                    <a href="#services">شبکه و اینترنت</a>
+                    <a href="#services">کدنویسی</a>
+                    <a href="#services">طراحی سایت</a>
+                    <a href="#services">هوش مصنوعی</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>دسترسی سریع</h4>
-                    <a href="#about"><i class="fas fa-chevron-left"></i> درباره ما</a>
-                    <a href="#gallery"><i class="fas fa-chevron-left"></i> گالری</a>
-                    <a href="#testimonials"><i class="fas fa-chevron-left"></i> نظرات</a>
-                    <a href="#contact"><i class="fas fa-chevron-left"></i> تماس با ما</a>
+                    <a href="#about">درباره ما</a>
+                    <a href="#contact">تماس</a>
+                    <a href="#">وبلاگ</a>
+                    <a href="#">قوانین و مقررات</a>
                 </div>
 
                 <div class="footer-col">
                     <h4>اطلاعات</h4>
-                    <a href="#"><i class="fas fa-chevron-left"></i> قوانین و مقررات</a>
-                    <a href="#"><i class="fas fa-chevron-left"></i> حریم خصوصی</a>
-                    <a href="#"><i class="fas fa-chevron-left"></i> فرصت‌های شغلی</a>
+                    <a href="#">حریم خصوصی</a>
+                    <a href="#">پرسش‌های متداول</a>
+                    <a href="#">فرصت‌های شغلی</a>
+                    <a href="#">نقشه سایت</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>
-                    <i class="fas fa-copyright"></i> ۱۴۰۴ پرشین‌تک‌نت | PersianTechNet
-                    <br>
-                    <small>🚀 پیشرو در فناوری با هوش مصنوعی</small>
+                    <i class="fas fa-copyright"></i> ۱۴۰۴ سازمان شبکه فناوری پارسی | تمامی حقوق محفوظ است
                 </p>
-                <div class="footer-bottom-links">
-                    <a href="https://persiantechnet.github.io" target="_blank">www.persiantechnet.ir</a>
-                    <span>|</span>
-                    <a href="https://github.com/persiantechnet" target="_blank">GitHub</a>
-                </div>
             </div>
         </div>
     </footer>
-
-    <!-- ============================================================
-    AI CHATBOT
-    ============================================================ -->
-    <div class="ai-chatbot">
-        <button class="ai-chatbot-toggle" id="chatbotToggle" aria-label="چت‌بات هوشمند">
-            <i class="fas fa-comment"></i>
-            <i class="fas fa-times"></i>
-            <span class="badge">AI</span>
-        </button>
-
-        <div class="ai-chatbot-window" id="chatbotWindow">
-            <div class="ai-chatbot-header">
-                <h4><i class="fas fa-brain"></i> پشتیبان هوشمند</h4>
-                <div class="status">
-                    <i class="fas fa-circle"></i> آنلاین
-                </div>
-            </div>
-            <div class="ai-chatbot-messages" id="chatMessages">
-                <div class="msg bot">
-                    سلام! 👋 من پشتیبان هوشمند پرشین‌تک‌نت هستم. 
-                    با استفاده از <strong>هوش مصنوعی</strong> به سوالات شما پاسخ می‌دهم.
-                    چطور می‌توانم به شما کمک کنم؟
-                </div>
-            </div>
-            <div class="ai-chatbot-input">
-                <input type="text" id="chatInput" placeholder="پیام خود را بنویسید..." />
-                <button id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
 
     <!-- ============================================================
     TOAST
@@ -2713,109 +1509,8 @@
     SCRIPTS
     ============================================================ -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
-        // ============================================================
-        // PARTICLES.JS
-        // ============================================================
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 50, density: { enable: true, value_area: 800 } },
-                color: { value: '#00aaff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.2, random: true },
-                size: { value: 3, random: true },
-                move: {
-                    enable: true,
-                    speed: 1,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'repulse' },
-                    onclick: { enable: true, mode: 'push' }
-                }
-            },
-            retina_detect: true
-        });
-
-        // ============================================================
-        // TYPING EFFECT
-        // ============================================================
-        (function typingEffect() {
-            const texts = [
-                'پرشین‌تک‌نت',
-                'PersianTechNet',
-                'پیشرو در فناوری',
-                'با هوش مصنوعی'
-            ];
-            let index = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const element = document.getElementById('typingText');
-
-            function type() {
-                const current = texts[index];
-                if (isDeleting) {
-                    element.textContent = current.substring(0, charIndex--);
-                    if (charIndex < 0) {
-                        isDeleting = false;
-                        index = (index + 1) % texts.length;
-                        setTimeout(type, 500);
-                        return;
-                    }
-                    setTimeout(type, 50);
-                } else {
-                    element.textContent = current.substring(0, charIndex++);
-                    if (charIndex > current.length) {
-                        isDeleting = true;
-                        setTimeout(type, 1500);
-                        return;
-                    }
-                    setTimeout(type, 80);
-                }
-            }
-            type();
-        })();
-
-        // ============================================================
-        // THEME
-        // ============================================================
-        (function theme() {
-            const toggle = document.getElementById('themeToggle');
-            let dark = true;
-
-            toggle.addEventListener('click', () => {
-                dark = !dark;
-                const root = document.documentElement;
-                if (dark) {
-                    root.style.setProperty('--bg-deep', '#0a0e1a');
-                    root.style.setProperty('--bg-primary', '#0f172a');
-                    root.style.setProperty('--bg-card', '#1e293b');
-                    root.style.setProperty('--text-primary', '#f1f5f9');
-                    root.style.setProperty('--text-secondary', '#cbd5e1');
-                    root.style.setProperty('--text-muted', '#94a3b8');
-                    toggle.innerHTML = '<i class="fas fa-moon"></i>';
-                } else {
-                    root.style.setProperty('--bg-deep', '#f0f4fc');
-                    root.style.setProperty('--bg-primary', '#ffffff');
-                    root.style.setProperty('--bg-card', '#ffffff');
-                    root.style.setProperty('--text-primary', '#0a1a2e');
-                    root.style.setProperty('--text-secondary', '#2a3a4e');
-                    root.style.setProperty('--text-muted', '#6a7a8e');
-                    toggle.innerHTML = '<i class="fas fa-sun"></i>';
-                }
-            });
-        })();
-
         // ============================================================
         // HEADER SCROLL
         // ============================================================
@@ -2898,132 +1593,23 @@
             const container = document.getElementById('map');
             if (!container) return;
 
-            const lat = 29.2052;
-            const lng = 52.6906;
-
-            const map = L.map('map').setView([lat, lng], 15);
+            const map = L.map('map').setView([29.2052, 52.6906], 14);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
 
-            L.marker([lat, lng])
+            L.marker([29.2052, 52.6906])
                 .addTo(map)
                 .bindPopup(`
-                            <div style="text-align: center; direction: rtl;">
-                                <strong style="color: #00aaff;">پرشین‌تک‌نت</strong><br>
-                                PersianTechNet 🇮🇷<br>
-                                <hr style="margin: 5px 0;">
-                                استان فارس - شهرستان کوار<br>
-                                بلوار امام خمینی - خیابان شهید محسن شفیعی<br>
-                                <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲<br>
-                                <i class="fas fa-mobile-alt"></i> ۰۹۳۷۳۶۲۲۷۶۲
+                            <div style="text-align:center; direction:rtl;">
+                                <strong>سازمان شبکه فناوری پارسی</strong><br>
+                                کوار - بلوار امام خمینی<br>
+                                خیابان شهید محسن شفیعی<br>
+                                <i class="fas fa-phone"></i> ۰۷۱-۳۷۸۲۴۸۹۲
                             </div>
                         `)
                 .openPopup();
-        })();
-
-        // ============================================================
-        // SWIPER GALLERY
-        // ============================================================
-        (function initSwiper() {
-            new Swiper('.gallery-slider', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                }
-            });
-        })();
-
-        // ============================================================
-        // AI CHATBOT
-        // ============================================================
-        (function aiChatbot() {
-            const toggle = document.getElementById('chatbotToggle');
-            const window = document.getElementById('chatbotWindow');
-            const input = document.getElementById('chatInput');
-            const sendBtn = document.getElementById('chatSendBtn');
-            const messages = document.getElementById('chatMessages');
-
-            const aiResponses = [
-                'سلام! 🤖 من پشتیبان هوشمند پرشین‌تک‌نت هستم. در چه زمینه‌ای می‌توانم کمک کنم؟',
-                'خدمات ما شامل کامپیوتر، شبکه، اینترنت، هاست، دامنه، طراحی اپلیکیشن و مشاوره با هوش مصنوعی است.',
-                'با استفاده از هوش مصنوعی، می‌توانیم بهترین راه‌حل را برای کسب و کار شما پیدا کنیم.',
-                'برای مشاوره رایگان، اطلاعات تماس خود را ثبت کنید تا کارشناسان ما با شما تماس بگیرند.',
-                'تیم پشتیبانی هوشمند ما ۲۴/۷ آماده پاسخگویی به سوالات شماست.',
-                'ما در زمینه شبکه و اینترنت پرسرعت با استفاده از الگوریتم‌های AI تخصص داریم.',
-                'طراحی اپلیکیشن‌های وب با رابط‌های هوشمند در خدمت شماست.',
-                'مشاوره کسب و کار با تحلیل داده و هوش مصنوعی به شما کمک می‌کند بهترین تصمیم را بگیرید.',
-                'آدرس ما: کوار، بلوار امام خمینی، خیابان شهید محسن شفیعی',
-                'ایمیل ما: persiantechnet@gmail.com - منتظر پیام شما هستیم!'
-            ];
-
-            toggle.addEventListener('click', () => {
-                toggle.classList.toggle('active');
-                window.classList.toggle('open');
-            });
-
-            function addMessage(text, isUser = false) {
-                const div = document.createElement('div');
-                div.className = `msg ${isUser ? 'user' : 'bot'}`;
-                div.innerHTML = text;
-                messages.appendChild(div);
-                messages.scrollTop = messages.scrollHeight;
-            }
-
-            function showTyping() {
-                const div = document.createElement('div');
-                div.className = 'msg typing';
-                div.innerHTML = '<span></span><span></span><span></span>';
-                div.id = 'typingIndicator';
-                messages.appendChild(div);
-                messages.scrollTop = messages.scrollHeight;
-            }
-
-            function removeTyping() {
-                const typing = document.getElementById('typingIndicator');
-                if (typing) typing.remove();
-            }
-
-            function getAIResponse() {
-                return aiResponses[Math.floor(Math.random() * aiResponses.length)];
-            }
-
-            function handleSend() {
-                const text = input.value.trim();
-                if (!text) return;
-                addMessage(text, true);
-                input.value = '';
-                showTyping();
-                setTimeout(() => {
-                    removeTyping();
-                    addMessage(getAIResponse());
-                }, 1000 + Math.random() * 1000);
-            }
-
-            sendBtn.addEventListener('click', handleSend);
-            input.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSend(); });
         })();
 
         // ============================================================
@@ -3063,10 +1649,10 @@
                 info: 'fa-info-circle'
             };
             const colors = {
-                success: 'var(--success)',
-                error: 'var(--danger)',
-                warning: 'var(--accent)',
-                info: 'var(--primary)'
+                success: '#10b981',
+                error: '#ef4444',
+                warning: '#f59e0b',
+                info: '#c9a84c'
             };
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
@@ -3081,26 +1667,53 @@
         }
 
         // ============================================================
-        // SERVICE CARDS
+        // THEME
         // ============================================================
-        (function serviceCards() {
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.querySelector('.icon-box')?.style.transform = 'scale(1.1) rotate(10deg)';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.querySelector('.icon-box')?.style.transform = 'scale(1) rotate(0deg)';
-                });
+        (function theme() {
+            const toggle = document.getElementById('themeToggle');
+            let dark = false;
+
+            toggle.addEventListener('click', () => {
+                dark = !dark;
+                const root = document.documentElement;
+                if (dark) {
+                    root.style.setProperty('--primary', '#0a1628');
+                    root.style.setProperty('--white', '#0f1a2e');
+                    root.style.setProperty('--gray-100', '#1a2a4a');
+                    root.style.setProperty('--gray-200', '#2a3a5a');
+                    root.style.setProperty('--gray-300', '#3a4a6a');
+                    root.style.setProperty('--gray-400', '#5a6a8a');
+                    root.style.setProperty('--gray-500', '#7a8aaa');
+                    root.style.setProperty('--gray-600', '#9aaaba');
+                    root.style.setProperty('--gray-700', '#bacada');
+                    root.style.setProperty('--gray-800', '#daeafa');
+                    root.style.setProperty('--gray-900', '#f0f4fc');
+                    root.style.setProperty('--section-alt', '#0f1a2e');
+                    toggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    root.style.setProperty('--primary', '#0a1628');
+                    root.style.setProperty('--white', '#ffffff');
+                    root.style.setProperty('--gray-100', '#f8f9fa');
+                    root.style.setProperty('--gray-200', '#e9ecef');
+                    root.style.setProperty('--gray-300', '#dee2e6');
+                    root.style.setProperty('--gray-400', '#ced4da');
+                    root.style.setProperty('--gray-500', '#adb5bd');
+                    root.style.setProperty('--gray-600', '#6c757d');
+                    root.style.setProperty('--gray-700', '#495057');
+                    root.style.setProperty('--gray-800', '#343a40');
+                    root.style.setProperty('--gray-900', '#212529');
+                    root.style.setProperty('--section-alt', '#f8f9fa');
+                    toggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
             });
         })();
 
         // ============================================================
         // CONSOLE BRANDING
         // ============================================================
-        console.log('%c 🤖 پرشین‌تک‌نت | PersianTechNet AI Edition 🇮🇷 ', 'background:#00aaff;color:#0a0e1a;font-size:20px;font-weight:bold;padding:12px 24px;border-radius:8px;');
-        console.log('%c 🚀 پیشرو در فناوری با هوش مصنوعی ', 'background:#0a0e1a;color:#00aaff;font-size:14px;padding:6px 16px;border-radius:4px;');
-        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#0a0e1a;color:#00aaff;font-size:12px;padding:4px 12px;border-radius:4px;');
-        console.log('%c 🧠 AI Powered Technology ', 'background:#0a0e1a;color:#00aaff;font-size:12px;padding:4px 12px;border-radius:4px;');
+        console.log('%c 🏢 سازمان شبکه فناوری پارسی ', 'background:#0a1628;color:#c9a84c;font-size:20px;font-weight:bold;padding:12px 24px;border-radius:8px;');
+        console.log('%c 📡 PersianTechNet - پیشرو در فناوری اطلاعات ', 'background:#c9a84c;color:#0a1628;font-size:14px;padding:6px 16px;border-radius:4px;');
+        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#0a1628;color:#c9a84c;font-size:12px;padding:4px 12px;border-radius:4px;');
     </script>
 </body>
 </html>
