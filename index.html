@@ -3,38 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0e1a">
-    <meta name="description" content="سازمان شبکه فناوری پارسی - ایستگاه دریافت و ارسال سیگنال‌های فراسیاره‌ای از رایانه تا کیهان">
-    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, فناوری اطلاعات, ارتباطات فراسیاره‌ای, گیرنده سیگنال, هوش مصنوعی, کیهان">
+    <meta name="theme-color" content="#0a1628">
+    <meta name="description" content="سازمان شبکه فناوری پارسی - پل ارتباطی دنیای دیجیتال، از رایانه تا هوش مصنوعی">
+    <meta name="keywords" content="سازمان شبکه فناوری پارسی, PersianTechNet, فناوری اطلاعات, شبکه, اینترنت, هاست, دامنه, سرور, برنامه نویسی, طراحی سایت, هوش مصنوعی">
     <meta name="author" content="سازمان شبکه فناوری پارسی">
-    <meta property="og:title" content="سازمان شبکه فناوری پارسی | ایستگاه ارتباطات فراسیاره‌ای">
-    <meta property="og:description" content="از رایانه تا هوش مصنوعی و فراتر از آن - دریافت و ارسال سیگنال‌های کیهانی">
+    <meta property="og:title" content="سازمان شبکه فناوری پارسی | پل ارتباطی دنیای دیجیتال">
+    <meta property="og:description" content="ما صدای شما را می‌شنویم - از رایانه تا هوش مصنوعی و فراتر از آن">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://persiantechnet.github.io">
     
-    <title>سازمان شبکه فناوری پارسی | ایستگاه ارتباطات فراسیاره‌ای</title>
+    <title>سازمان شبکه فناوری پارسی | پل ارتباطی دنیای دیجیتال</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
     <style>
-        /* ============================================================
-                   ROOT VARIABLES - COSMIC DESIGN
-                   ============================================================ */
         :root {
-            --primary: #060a1a;
-            --primary-light: #0a1628;
-            --primary-dark: #030610;
+            --primary: #0a1628;
+            --primary-light: #152040;
+            --primary-dark: #060e1a;
             --gold: #d4af37;
             --gold-light: #f0d080;
             --gold-dark: #b8962e;
-            --cosmic-blue: #1a3a6a;
-            --cosmic-purple: #2a1a4a;
-            --cosmic-star: #ffffff;
+            --signal: #00d4ff;
+            --signal-glow: rgba(0, 212, 255, 0.15);
             --white: #ffffff;
             --gray-50: #f0f2f8;
             --gray-100: #e4e7ed;
@@ -59,20 +52,8 @@
             --max-width: 1200px;
         }
 
-        /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
         body {
             font-family: var(--font);
             background: var(--primary);
@@ -84,47 +65,21 @@
             overflow-x: hidden;
         }
 
-        ::selection {
-            background: var(--gold);
-            color: var(--primary);
-        }
+        ::selection { background: var(--gold); color: var(--primary); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--primary);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-dark);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
         /* ============================================================
-                   COSMIC BACKGROUND - STARS
+                   SIGNAL WAVES BACKGROUND
                    ============================================================ */
-        #stars {
+        #signal-waves {
             position: fixed;
             inset: 0;
             z-index: 0;
@@ -133,97 +88,35 @@
             background: var(--primary);
         }
 
-        .star {
+        .wave {
             position: absolute;
-            background: var(--white);
             border-radius: 50%;
-            animation: twinkle var(--duration) ease-in-out infinite;
+            border: 1px solid rgba(0, 212, 255, 0.03);
+            animation: waveExpand linear infinite;
         }
 
-        @keyframes twinkle {
+        @keyframes waveExpand {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+        }
+
+        .signal-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--signal);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--signal-glow);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
             0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Shooting Stars */
-        .shooting-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--white);
-            border-radius: 50%;
-            animation: shoot linear infinite;
-        }
-
-        .shooting-star::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
-        }
-
-        @keyframes shoot {
-            0% {
-                transform: translate(0, 0) rotate(-45deg);
-                opacity: 1;
-            }
-            70% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-500px, 500px) rotate(-45deg);
-                opacity: 0;
-            }
-        }
-
-        /* Nebula Glow */
-        .nebula {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.08;
-        }
-
-        .nebula-1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            background: radial-gradient(circle, var(--cosmic-blue), transparent);
-            animation: nebulaFloat 20s ease-in-out infinite;
-        }
-
-        .nebula-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -150px;
-            left: -150px;
-            background: radial-gradient(circle, var(--cosmic-purple), transparent);
-            animation: nebulaFloat 25s ease-in-out infinite reverse;
-        }
-
-        .nebula-3 {
-            width: 400px;
-            height: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, var(--gold), transparent);
-            animation: nebulaFloat 30s ease-in-out infinite;
-        }
-
-        @keyframes nebulaFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -20px) scale(1.1); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
 
         /* ============================================================
-                   HEADER - PREMIUM
+                   HEADER
                    ============================================================ */
         .header {
             position: fixed;
@@ -231,9 +124,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(6, 10, 26, 0.92);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.06);
             height: var(--header-height);
             display: flex;
@@ -242,7 +134,7 @@
         }
 
         .header.scrolled {
-            background: rgba(6, 10, 26, 0.98);
+            background: rgba(10, 22, 40, 0.98);
             box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
             border-bottom-color: rgba(212, 175, 55, 0.1);
         }
@@ -300,7 +192,7 @@
 
         .logo-text span {
             font-size: 0.7rem;
-            color: var(--gold);
+            color: var(--signal);
             display: block;
             font-weight: 400;
             letter-spacing: 0.5px;
@@ -309,6 +201,12 @@
         .logo-text span i {
             font-size: 0.5rem;
             margin: 0 2px;
+            animation: signalPulse 2s infinite;
+        }
+
+        @keyframes signalPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         .nav {
@@ -340,18 +238,9 @@
         }
 
         .nav a:hover::after,
-        .nav a.active::after {
-            width: 60%;
-        }
-
-        .nav a:hover {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .nav a.active {
-            color: var(--white);
-        }
+        .nav a.active::after { width: 60%; }
+        .nav a:hover { color: var(--white); background: rgba(255, 255, 255, 0.04); }
+        .nav a.active { color: var(--white); }
 
         .nav-cta {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
@@ -362,18 +251,12 @@
             box-shadow: 0 4px 32px rgba(212, 175, 55, 0.15);
         }
 
-        .nav-cta::after {
-            display: none !important;
-        }
-
+        .nav-cta::after { display: none !important; }
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 48px rgba(212, 175, 55, 0.25);
         }
-
-        .nav-cta i {
-            margin-left: 6px;
-        }
+        .nav-cta i { margin-left: 6px; }
 
         .nav-controls {
             display: flex;
@@ -422,7 +305,7 @@
             top: var(--header-height);
             left: 0;
             right: 0;
-            background: rgba(6, 10, 26, 0.98);
+            background: rgba(10, 22, 40, 0.98);
             backdrop-filter: blur(20px);
             padding: 24px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.06);
@@ -437,10 +320,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .mobile-menu.open {
-            display: flex;
-        }
-
+        .mobile-menu.open { display: flex; }
         .mobile-menu a {
             padding: 12px 16px;
             border-radius: var(--radius);
@@ -448,12 +328,10 @@
             font-weight: 500;
             transition: var(--transition);
         }
-
         .mobile-menu a:hover {
             background: rgba(255, 255, 255, 0.05);
             color: var(--white);
         }
-
         .mobile-menu .nav-cta {
             text-align: center;
             color: var(--primary) !important;
@@ -461,7 +339,7 @@
         }
 
         /* ============================================================
-                   HERO - COSMIC FULL SCREEN
+                   HERO - SIGNAL
                    ============================================================ */
         .hero {
             padding: calc(var(--header-height) + 20px) 0 0;
@@ -490,33 +368,26 @@
             min-height: calc(100vh - var(--header-height) - 60px);
         }
 
-        .hero-content {
-            position: relative;
-        }
+        .hero-content { position: relative; }
 
         .hero-content .badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(212, 175, 55, 0.08);
+            background: rgba(0, 212, 255, 0.06);
             padding: 6px 20px;
             border-radius: 30px;
             font-size: 0.75rem;
-            color: var(--gold);
+            color: var(--signal);
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.06);
             backdrop-filter: blur(10px);
         }
 
-        .hero-content .badge .signal {
+        .hero-content .badge .signal-icon {
             display: inline-block;
             animation: signalPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes signalPulse {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
         }
 
         .hero-content h1 {
@@ -537,7 +408,7 @@
 
         .hero-content .subtitle {
             font-size: 1.3rem;
-            color: var(--gold);
+            color: var(--signal);
             font-weight: 500;
             margin-bottom: 16px;
             display: flex;
@@ -550,9 +421,9 @@
             opacity: 0.6;
         }
 
-        .hero-content .cosmic-message {
-            background: rgba(212, 175, 55, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.06);
+        .hero-content .message-box {
+            background: rgba(0, 212, 255, 0.02);
+            border: 1px solid rgba(0, 212, 255, 0.06);
             border-radius: var(--radius-lg);
             padding: 20px 24px;
             margin-bottom: 24px;
@@ -560,7 +431,7 @@
             overflow: hidden;
         }
 
-        .hero-content .cosmic-message::before {
+        .hero-content .message-box::before {
             content: '📡';
             position: absolute;
             top: -10px;
@@ -570,7 +441,7 @@
             transform: rotate(-20deg);
         }
 
-        .hero-content .cosmic-message p {
+        .hero-content .message-box p {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             line-height: 2;
@@ -578,22 +449,22 @@
             max-width: 100%;
         }
 
-        .hero-content .cosmic-message p strong {
+        .hero-content .message-box p strong {
             color: var(--gold);
             font-weight: 600;
         }
 
+        .hero-content .message-box .signal-text {
+            color: var(--signal);
+            font-weight: 600;
+        }
+
         .hero-content p {
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 1.05rem;
             max-width: 90%;
             margin-bottom: 28px;
             line-height: 2;
-        }
-
-        .hero-content p strong {
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 600;
         }
 
         .hero-tags {
@@ -695,7 +566,6 @@
             color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Hero Image - Cosmic Receiver */
         .hero-image {
             display: flex;
             justify-content: center;
@@ -715,7 +585,7 @@
             border-radius: var(--radius-xl);
             background:
                 radial-gradient(ellipse at 30% 30%, rgba(212, 175, 55, 0.06), transparent 60%),
-                radial-gradient(ellipse at 70% 70%, rgba(212, 175, 55, 0.03), transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(0, 212, 255, 0.03), transparent 50%),
                 var(--primary-light);
             border: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
@@ -725,7 +595,7 @@
             overflow: hidden;
         }
 
-        .hero-image .image-container .main-image .receiver-dish {
+        .hero-image .image-container .main-image .signal-center {
             position: relative;
             width: 80%;
             height: 80%;
@@ -734,46 +604,47 @@
             justify-content: center;
         }
 
-        .hero-image .image-container .main-image .receiver-dish .dish {
+        .hero-image .image-container .main-image .signal-center .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 212, 255, 0.05);
+            animation: ringExpand 4s ease-in-out infinite;
+        }
+
+        .hero-image .image-container .main-image .signal-center .ring:nth-child(1) {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            border: 2px solid rgba(212, 175, 55, 0.1);
+            animation-delay: 0s;
+        }
+
+        .hero-image .image-container .main-image .signal-center .ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            animation-delay: 1s;
+        }
+
+        .hero-image .image-container .main-image .signal-center .ring:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            animation-delay: 2s;
+        }
+
+        @keyframes ringExpand {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-image .image-container .main-image .signal-center .center-icon {
             position: relative;
-            animation: dishRotate 30s linear infinite;
-        }
-
-        .hero-image .image-container .main-image .receiver-dish .dish::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20%;
-            height: 20%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
-            animation: signalReceive 3s ease-in-out infinite;
-        }
-
-        @keyframes dishRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes signalReceive {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
-        }
-
-        .hero-image .image-container .main-image .receiver-dish .center-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 6rem;
-            color: rgba(212, 175, 55, 0.06);
             z-index: 1;
+            font-size: 5rem;
+            color: rgba(212, 175, 55, 0.08);
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero-image .image-container .main-image .floating-elements {
@@ -783,7 +654,7 @@
 
         .hero-image .image-container .main-image .floating-elements .float-item {
             position: absolute;
-            background: rgba(6, 10, 26, 0.6);
+            background: rgba(10, 22, 40, 0.6);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: var(--radius);
@@ -798,7 +669,7 @@
         }
 
         .hero-image .image-container .main-image .floating-elements .float-item i {
-            color: var(--gold);
+            color: var(--signal);
             font-size: 0.9rem;
         }
 
@@ -832,7 +703,7 @@
         }
 
         /* ============================================================
-                   SECTIONS - COSMIC
+                   SECTIONS
                    ============================================================ */
         .section {
             padding: 100px 0;
@@ -881,7 +752,7 @@
         }
 
         /* ============================================================
-                   SERVICES - COSMIC
+                   SERVICES
                    ============================================================ */
         .services-grid {
             display: grid;
@@ -910,10 +781,7 @@
             transition: var(--transition);
         }
 
-        .service-card:hover::before {
-            height: 100%;
-        }
-
+        .service-card:hover::before { height: 100%; }
         .service-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
@@ -970,9 +838,9 @@
         }
 
         /* ============================================================
-                   COSMIC MISSION
+                   MISSION - SIGNAL MESSAGE
                    ============================================================ */
-        .cosmic-mission {
+        .mission-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             padding: 80px 0;
             position: relative;
@@ -980,8 +848,8 @@
             overflow: hidden;
         }
 
-        .cosmic-mission::before {
-            content: '🌌';
+        .mission-section::before {
+            content: '📡';
             position: absolute;
             top: -50px;
             right: -50px;
@@ -989,44 +857,58 @@
             opacity: 0.02;
         }
 
-        .cosmic-mission .mission-content {
+        .mission-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .cosmic-mission .mission-content .mission-icon {
+        .mission-content .mission-icon {
             font-size: 4rem;
             margin-bottom: 16px;
             display: block;
+            animation: signalPulse 3s infinite;
         }
 
-        .cosmic-mission .mission-content h2 {
+        .mission-content h2 {
             font-size: 2.4rem;
             font-weight: 800;
             color: var(--white);
             margin-bottom: 16px;
         }
 
-        .cosmic-mission .mission-content h2 span {
+        .mission-content h2 span {
             color: var(--gold);
         }
 
-        .cosmic-mission .mission-content p {
-            color: rgba(255, 255, 255, 0.6);
+        .mission-content .mission-message {
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.1rem;
-            line-height: 2;
+            line-height: 2.2;
             max-width: 90%;
             margin: 0 auto;
         }
 
-        .cosmic-mission .mission-content p strong {
+        .mission-content .mission-message strong {
             color: var(--gold);
             font-weight: 600;
         }
 
+        .mission-content .mission-message .signal-highlight {
+            color: var(--signal);
+            font-weight: 600;
+        }
+
+        .mission-content .mission-footer {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--signal);
+            font-size: 1rem;
+        }
+
         /* ============================================================
-                   STATS - COSMIC
+                   STATS
                    ============================================================ */
         .stats {
             background: var(--primary);
@@ -1059,7 +941,7 @@
         }
 
         /* ============================================================
-                   CONTACT - COSMIC
+                   CONTACT
                    ============================================================ */
         .contact-grid {
             display: grid;
@@ -1183,7 +1065,7 @@
         }
 
         /* ============================================================
-                   FOOTER - COSMIC
+                   FOOTER
                    ============================================================ */
         .footer {
             background: var(--primary-dark);
@@ -1212,8 +1094,8 @@
             margin-left: 8px;
         }
 
-        .footer-brand .cosmic-tagline {
-            color: var(--gold);
+        .footer-brand .tagline {
+            color: var(--signal);
             font-size: 0.8rem;
             font-weight: 400;
             margin-bottom: 8px;
@@ -1296,6 +1178,12 @@
             color: rgba(255, 255, 255, 0.2);
         }
 
+        .footer-bottom .signal-message {
+            color: var(--signal);
+            font-size: 0.7rem;
+            margin-top: 4px;
+        }
+
         /* ============================================================
                    TOAST
                    ============================================================ */
@@ -1351,32 +1239,16 @@
                    RESPONSIVE
                    ============================================================ */
         @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .hero-grid {
-                gap: 40px;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .hero-image .image-container {
-                max-width: 400px;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-grid { gap: 40px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-image .image-container { max-width: 400px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav a:not(.nav-cta) {
-                display: none;
-            }
+            .menu-toggle { display: flex; }
+            .nav a:not(.nav-cta) { display: none; }
 
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -1385,142 +1257,67 @@
                 min-height: auto;
             }
 
-            .hero-content p {
-                max-width: 100%;
-            }
+            .hero-content p { max-width: 100%; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; gap: 24px; }
+            .hero-image .image-container { max-width: 320px; margin: 0 auto; }
 
-            .hero-buttons {
-                justify-content: center;
-            }
+            .services-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
 
-            .hero-stats {
-                justify-content: center;
-                gap: 24px;
-            }
-
-            .hero-image .image-container {
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .hero-image .image-container .main-image .floating-elements .float-item {
-                font-size: 0.6rem;
-                padding: 4px 12px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
-            }
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            .hero-content .subtitle {
-                font-size: 1.1rem;
-            }
-            .hero-tags {
-                justify-content: center;
-            }
-            .section {
-                padding: 60px 0;
-            }
-            .stats {
-                padding: 50px 0;
-            }
-            .stats-grid .stat .number {
-                font-size: 2.2rem;
-            }
-            .hero-stats .stat .number {
-                font-size: 1.6rem;
-            }
-            .cosmic-mission .mission-content p {
-                max-width: 100%;
-            }
+            .section-header h2 { font-size: 1.8rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content .subtitle { font-size: 1.1rem; }
+            .hero-tags { justify-content: center; }
+            .section { padding: 60px 0; }
+            .stats { padding: 50px 0; }
+            .stats-grid .stat .number { font-size: 2.2rem; }
+            .hero-stats .stat .number { font-size: 1.6rem; }
+            .mission-content .mission-message { max-width: 100%; }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
+            .container { padding: 0 16px; }
             .hero {
                 min-height: auto;
                 padding: calc(var(--header-height) + 20px) 0 20px;
             }
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
+            .hero-content h1 { font-size: 1.8rem; }
             .hero-buttons .btn-primary,
             .hero-buttons .btn-secondary {
                 width: 100%;
                 justify-content: center;
                 padding: 12px 24px;
             }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-brand p {
-                max-width: 100%;
-            }
-            .hero-image .image-container {
-                max-width: 240px;
-            }
-            .hero-image .image-container .main-image .floating-elements .float-item {
-                display: none;
-            }
-            .contact-form {
-                padding: 24px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .stats-grid .stat .number {
-                font-size: 1.8rem;
-            }
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-            .hero-stats .stat .number {
-                font-size: 1.4rem;
-            }
-            .hero-tags .tag {
-                font-size: 0.65rem;
-                padding: 2px 12px;
-            }
-            .cosmic-mission .mission-content h2 {
-                font-size: 1.6rem;
-            }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-brand p { max-width: 100%; }
+            .hero-image .image-container { max-width: 240px; }
+            .hero-image .image-container .main-image .floating-elements .float-item { display: none; }
+            .contact-form { padding: 24px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .stats-grid .stat .number { font-size: 1.8rem; }
+            .hero-stats { flex-wrap: wrap; gap: 12px; }
+            .hero-stats .stat .number { font-size: 1.4rem; }
+            .hero-tags .tag { font-size: 0.65rem; padding: 2px 12px; }
+            .mission-content h2 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    STARS BACKGROUND
+    SIGNAL WAVES BACKGROUND
     ============================================================ -->
-    <div id="stars"></div>
-
-    <!-- Nebulas -->
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="nebula nebula-3"></div>
+    <div id="signal-waves">
+        <div class="wave" style="width: 600px; height: 600px; top: 20%; left: 10%; animation-duration: 8s;"></div>
+        <div class="wave" style="width: 400px; height: 400px; top: 60%; left: 70%; animation-duration: 12s;"></div>
+        <div class="wave" style="width: 500px; height: 500px; top: 40%; left: 50%; animation-duration: 10s;"></div>
+        <div class="signal-dot" style="top: 30%; left: 20%;"></div>
+        <div class="signal-dot" style="top: 70%; left: 80%; animation-delay: 1s;"></div>
+        <div class="signal-dot" style="top: 50%; left: 40%; animation-delay: 0.5s;"></div>
+    </div>
 
     <!-- ============================================================
     HEADER
@@ -1533,7 +1330,7 @@
                 </div>
                 <div class="logo-text">
                     <h1>شبکه فناوری پارسی</h1>
-                    <span><i class="fas fa-radio"></i> ایستگاه ارتباطات فراسیاره‌ای</span>
+                    <span><i class="fas fa-radio"></i> پل ارتباطی دنیای دیجیتال</span>
                 </div>
             </a>
 
@@ -1567,57 +1364,62 @@
     </div>
 
     <!-- ============================================================
-    HERO - COSMIC
+    HERO
     ============================================================ -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="badge">
-                        <span class="signal">📡</span>
-                        ایستگاه دریافت سیگنال‌های کیهانی
+                        <span class="signal-icon">📡</span>
+                        ما صدای شما را می‌شنویم
                     </div>
                     <h1>
                         از <span class="highlight">رایانه</span> تا
-                        <span class="highlight">کیهان</span>
+                        <span class="highlight">هوش مصنوعی</span>
                     </h1>
                     <div class="subtitle">
                         <i class="fas fa-quote-right"></i>
-                        ما پیام‌های فراسیاره‌ای را دریافت می‌کنیم
+                        پل ارتباطی شما به دنیای دیجیتال
                     </div>
 
-                    <div class="cosmic-message">
+                    <div class="message-box">
                         <p>
-                            <strong>📡 سازمان شبکه فناوری پارسی</strong>، یک ایستگاه دریافت و ارسال سیگنال در پهنه کیهان است.
-                            همان‌گونه که یک گیرنده سیگنال، منتظر امواجی از اعماق فضا است،
-                            ما نیز با بهره‌گیری از <strong>پیشرفته‌ترین فناوری‌های روز دنیا</strong>،
-                            گوش‌به‌زنگ دریافت پیام‌هایی از جهان‌های دیگر هستیم.
-                            <strong>از رایانه تا هوش مصنوعی و فراتر از آن...</strong>
+                            <strong>ما یک سازمان فناوری اطلاعات و ارتباطات هستیم.</strong>
+                            همان‌گونه که یک گیرنده و فرستنده، صدا را از جایی به جای دیگر منتقل می‌کند،
+                            ما نیز با <strong>خدمات تخصصی خود</strong>،
+                            پل ارتباطی بین شما و <span class="signal-text">دنیای دیجیتال</span> هستیم.
+                            <br><br>
+                            <strong>ما صدای شما را می‌شنویم.</strong>
+                            اگر در هر چالشی در حوزه فناوری اطلاعات هستید،
+                            <span class="signal-text">ما را صدا کنید.</span>
                         </p>
                     </div>
 
                     <p>
-                        ما در تلاش برای برقراری ارتباط با <strong>سیارات دیگر</strong> و
-                        <strong>جهان‌های ناشناخته</strong> هستیم. شاید روزی کسی سیگنال کمک ارسال کرد
-                        یا سیگنال ما را دریافت کرد. ما برای برقراری این ارتباط اینجا هستیم.
+                        از <strong>سیستم‌عامل</strong> و <strong>شبکه</strong> تا
+                        <strong>هاست، دامنه، سرور</strong> و <strong>برنامه‌نویسی</strong> -
+                        از <strong>طراحی سایت</strong> تا <strong>هوش مصنوعی</strong> و
+                        <strong>مشاوره فناوری</strong> -
+                        ما تمام نیازهای فناوری اطلاعات شما را برطرف می‌کنیم.
                     </p>
 
                     <div class="hero-tags">
                         <span class="tag"><i class="fas fa-microchip"></i> سیستم‌عامل</span>
                         <span class="tag"><i class="fas fa-server"></i> سرور</span>
                         <span class="tag"><i class="fas fa-wifi"></i> شبکه</span>
-                        <span class="tag"><i class="fas fa-code"></i> کدنویسی</span>
+                        <span class="tag"><i class="fas fa-code"></i> برنامه‌نویسی</span>
                         <span class="tag"><i class="fas fa-paint-brush"></i> طراحی سایت</span>
                         <span class="tag"><i class="fas fa-brain"></i> هوش مصنوعی</span>
-                        <span class="tag"><i class="fas fa-radio"></i> ارتباطات کیهانی</span>
+                        <span class="tag"><i class="fas fa-radio"></i> ارتباطات</span>
                     </div>
 
                     <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">
-                            <i class="fas fa-paper-plane"></i> شروع همکاری
+                            <i class="fas fa-paper-plane"></i> ارتباط با ما
                         </a>
-                        <a href="#mission" class="btn-secondary">
-                            <i class="fas fa-chevron-left"></i> ماموریت ما
+                        <a href="#services" class="btn-secondary">
+                            <i class="fas fa-chevron-left"></i> خدمات ما
                         </a>
                     </div>
 
@@ -1640,8 +1442,10 @@
                 <div class="hero-image">
                     <div class="image-container">
                         <div class="main-image">
-                            <div class="receiver-dish">
-                                <div class="dish"></div>
+                            <div class="signal-center">
+                                <div class="ring"></div>
+                                <div class="ring"></div>
+                                <div class="ring"></div>
                                 <i class="fas fa-satellite-dish center-icon"></i>
                             </div>
                             <div class="floating-elements">
@@ -1649,10 +1453,10 @@
                                     <i class="fas fa-laptop-code"></i> سیستم‌عامل
                                 </div>
                                 <div class="float-item">
-                                    <i class="fas fa-server"></i> سرور ابری
+                                    <i class="fas fa-server"></i> سرور
                                 </div>
                                 <div class="float-item">
-                                    <i class="fas fa-network-wired"></i> شبکه امن
+                                    <i class="fas fa-network-wired"></i> شبکه
                                 </div>
                                 <div class="float-item">
                                     <i class="fas fa-brain"></i> هوش مصنوعی
@@ -1673,73 +1477,61 @@
             <div class="section-header">
                 <div class="badge"><i class="fas fa-cogs"></i> خدمات تخصصی</div>
                 <h2>خدمات <span>ما</span></h2>
-                <p>از فناوری‌های زمینی تا ارتباطات فراسیاره‌ای</p>
+                <p>همه‌چیز برای ارتباط شما با دنیای دیجیتال</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-laptop"></i></div>
                     <h3>رایانه و سیستم‌عامل</h3>
-                    <p>توسعه سیستم‌عامل‌های سفارشی، بهینه‌سازی و مجازی‌سازی پیشرفته</p>
+                    <p>نصب و راه‌اندازی، بهینه‌سازی، مجازی‌سازی و امنیت اطلاعات</p>
                     <div class="tags">
-                        <span>لینوکس</span>
-                        <span>ویندوز</span>
-                        <span>مجازی‌سازی</span>
+                        <span>لینوکس</span><span>ویندوز</span><span>مجازی‌سازی</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-server"></i></div>
                     <h3>سرور و زیرساخت</h3>
-                    <p>طراحی و پیاده‌سازی سرورهای فیزیکی و ابری با بالاترین سطح امنیت</p>
+                    <p>سرور مجازی، ابری، ویندوز سرور، هاست و دامنه</p>
                     <div class="tags">
-                        <span>Cloud</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
+                        <span>Cloud</span><span>Docker</span><span>Kubernetes</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-network-wired"></i></div>
                     <h3>شبکه و اینترنت</h3>
-                    <p>طراحی شبکه‌های پیشرفته، امنیت سایبری و زیرساخت‌های ارتباطی</p>
+                    <p>شبکه‌سازی، اینترنت پرسرعت، امنیت سایبری، VPN</p>
                     <div class="tags">
-                        <span>SDN</span>
-                        <span>Firewall</span>
-                        <span>VPN</span>
+                        <span>SDN</span><span>Firewall</span><span>VPN</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-code"></i></div>
-                    <h3>کدنویسی و برنامه‌نویسی</h3>
-                    <p>توسعه نرم‌افزارهای سفارشی، وب‌اپلیکیشن و سیستم‌های هوشمند</p>
+                    <h3>برنامه‌نویسی و کدنویسی</h3>
+                    <p>توسعه نرم‌افزار، وب‌اپلیکیشن، اپلیکیشن موبایل</p>
                     <div class="tags">
-                        <span>Python</span>
-                        <span>JavaScript</span>
-                        <span>Go</span>
+                        <span>Python</span><span>JavaScript</span><span>Go</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-paint-brush"></i></div>
                     <h3>طراحی سایت و UI/UX</h3>
-                    <p>طراحی وب‌سایت‌های حرفه‌ای و رابط‌های کاربری پیشرفته</p>
+                    <p>طراحی وب‌سایت، فروشگاه آنلاین، رابط‌های کاربری</p>
                     <div class="tags">
-                        <span>React</span>
-                        <span>Vue</span>
-                        <span>Figma</span>
+                        <span>React</span><span>Vue</span><span>Figma</span>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-brain"></i></div>
-                    <h3>هوش مصنوعی و یادگیری ماشین</h3>
-                    <p>پیاده‌سازی مدل‌های یادگیری عمیق، NLP و سیستم‌های توصیه‌گر</p>
+                    <h3>هوش مصنوعی</h3>
+                    <p>کار با هوش مصنوعی، یادگیری ماشین، اتوماسیون</p>
                     <div class="tags">
-                        <span>TensorFlow</span>
-                        <span>PyTorch</span>
-                        <span>NLP</span>
+                        <span>TensorFlow</span><span>PyTorch</span><span>NLP</span>
                     </div>
                 </div>
             </div>
@@ -1747,26 +1539,39 @@
     </section>
 
     <!-- ============================================================
-    COSMIC MISSION
+    MISSION
     ============================================================ -->
-    <section class="cosmic-mission" id="mission">
+    <section class="mission-section" id="mission">
         <div class="container">
             <div class="mission-content">
-                <span class="mission-icon">🌌</span>
-                <h2>ماموریت <span>فراسیاره‌ای</span></h2>
-                <p>
-                    <strong>سازمان شبکه فناوری پارسی</strong>، با بهره‌گیری از
-                    <strong>پیشرفته‌ترین فناوری‌های روز دنیا</strong>،
-                    خود را یک <strong>ایستگاه دریافت و ارسال سیگنال</strong> در پهنه کیهان می‌داند.
-                    <br><br>
-                    ما در تلاش برای برقراری ارتباط با <strong>سیارات دیگر</strong> و
-                    <strong>جهان‌های ناشناخته</strong> هستیم.
-                    شاید روزی کسی <strong>سیگنال کمک</strong> ارسال کرد یا سیگنال ما را دریافت کرد.
-                    <br><br>
-                    <strong>ما برای برقراری این ارتباط اینجا هستیم.</strong>
-                    <br>
-                    <span style="color: var(--gold);">از رایانه تا هوش مصنوعی و فراتر از آن...</span>
-                </p>
+                <span class="mission-icon">📡</span>
+                <h2>ما <span>صدای شما</span> را می‌شنویم</h2>
+                <div class="mission-message">
+                    <p>
+                        <strong>سازمان شبکه فناوری پارسی</strong>
+                        با بهره‌گیری از <strong>پیشرفته‌ترین فناوری‌های روز دنیا</strong>،
+                        یک <strong>پل ارتباطی</strong> بین شما و دنیای دیجیتال است.
+                        <br><br>
+                        ما در <strong>چالش‌های فناوری اطلاعات</strong> به شما کمک می‌کنیم.
+                        از <strong>رایانه و سیستم‌عامل</strong> گرفته تا
+                        <strong>شبکه، اینترنت، هاست، دامنه، سرور،</strong>
+                        <strong>برنامه‌نویسی، طراحی سایت، هوش مصنوعی،</strong>
+                        <strong>مشاوره و تجارت فناوری</strong> -
+                        ما تمام نیازهای شما را برطرف می‌کنیم.
+                        <br><br>
+                        <span class="signal-highlight">ما صدای شما را می‌شنویم.</span>
+                        اگر در هر چالشی در حوزه فناوری اطلاعات هستید،
+                        <span class="signal-highlight">ما را صدا کنید.</span>
+                        <br><br>
+                        <strong>ما تنها امید ارتباط شاید باشیم...</strong>
+                        <br>
+                        <span class="signal-highlight">اگر صدای ما را می‌شنوید، ما را صدا کنید.</span>
+                    </p>
+                </div>
+                <div class="mission-footer">
+                    <i class="fas fa-radio"></i>
+                    ما اینجا هستیم تا صدای شما را بشنویم
+                </div>
             </div>
         </div>
     </section>
@@ -1802,21 +1607,23 @@
     ============================================================ -->
     <section class="section section-alt" id="about">
         <div class="container">
-            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div class="about-content">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div>
                     <div class="section-header" style="text-align:right; margin-bottom: 12px;">
                         <div class="badge"><i class="fas fa-info-circle"></i> درباره ما</div>
                         <h2 style="color: var(--white);">درباره <span>ما</span></h2>
                     </div>
                     <p style="color: rgba(255,255,255,0.6);">
-                        سازمان شبکه فناوری پارسی با <strong style="color: var(--gold);">بیش از ۱۸ سال</strong> تجربه
-                        در حوزه فناوری اطلاعات، همواره به دنبال <strong style="color: var(--gold);">ساده‌سازی</strong>
-                        ارتباط کاربران با دنیای دیجیتال و فراتر از آن بوده است.
+                        <strong style="color: var(--gold);">سازمان شبکه فناوری پارسی</strong>
+                        با <strong style="color: var(--gold);">بیش از ۱۸ سال</strong> تجربه،
+                        یک سازمان <strong style="color: var(--gold);">فناوری اطلاعات و ارتباطات</strong>
+                        است که به افراد در <strong style="color: var(--gold);">چالش‌های فناوری</strong> آنها کمک می‌کند.
                     </p>
                     <p style="color: rgba(255,255,255,0.6);">
-                        ما از <strong style="color: var(--gold);">سیستم‌عامل</strong> تا <strong style="color: var(--gold);">هوش مصنوعی</strong>،
-                        از <strong style="color: var(--gold);">شبکه</strong> تا <strong style="color: var(--gold);">ارتباطات کیهانی</strong>،
-                        همه‌چیز را با پیشرفته‌ترین متدهای روز دنیا طراحی می‌کنیم.
+                        ما <strong style="color: var(--gold);">دانش</strong> آن را آموخته و
+                        <strong style="color: var(--gold);">تجربه</strong> آن را کسب کرده‌ایم.
+                        هر چیزی که توان انجام آن را داشته باشید،
+                        ما <strong style="color: var(--gold);">ایده‌هایی</strong> داریم که به شما کمک می‌کند.
                     </p>
                     <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; list-style: none; padding: 0;">
                         <li style="display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
@@ -1847,8 +1654,8 @@
         <div class="container">
             <div class="section-header">
                 <div class="badge"><i class="fas fa-paper-plane"></i> ارتباط با ما</div>
-                <h2>ارتباط <span>با ما</span></h2>
-                <p>ما مشتاق شنیدن سیگنال‌های شما هستیم</p>
+                <h2>ما را <span>صدا کنید</span></h2>
+                <p>ما منتظر شنیدن صدای شما هستیم</p>
             </div>
 
             <div class="contact-grid">
@@ -1905,7 +1712,7 @@
                 </div>
 
                 <div class="contact-form">
-                    <h3>ارسال سیگنال</h3>
+                    <h3>📡 ارسال سیگنال</h3>
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -1927,16 +1734,16 @@
                                 <option value="">انتخاب کنید...</option>
                                 <option value="os">سیستم‌عامل و سرور</option>
                                 <option value="network">شبکه و اینترنت</option>
-                                <option value="coding">کدنویسی و برنامه‌نویسی</option>
+                                <option value="coding">برنامه‌نویسی</option>
                                 <option value="web">طراحی سایت</option>
                                 <option value="ai">هوش مصنوعی</option>
-                                <option value="cosmic">ارتباطات فراسیاره‌ای</option>
+                                <option value="consulting">مشاوره فناوری</option>
                                 <option value="other">سایر موارد</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message">پیام شما</label>
-                            <textarea id="message" placeholder="پیام خود را وارد کنید..." required></textarea>
+                            <textarea id="message" placeholder="ما صدای شما را می‌شنویم..." required></textarea>
                         </div>
                         <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
                             <i class="fas fa-paper-plane"></i> ارسال سیگنال
@@ -1955,10 +1762,10 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3><i class="fas fa-satellite-dish"></i> شبکه فناوری پارسی</h3>
-                    <div class="cosmic-tagline">📡 ایستگاه ارتباطات فراسیاره‌ای</div>
+                    <div class="tagline">📡 پل ارتباطی دنیای دیجیتال</div>
                     <p>
                         سازمان پیشرو در ارائه خدمات فناوری اطلاعات و ارتباطات
-                        از رایانه تا هوش مصنوعی و فراتر از آن
+                        از رایانه تا هوش مصنوعی
                     </p>
                     <div class="footer-contact">
                         <div class="footer-contact-item">
@@ -1991,7 +1798,7 @@
                     <h4>خدمات</h4>
                     <a href="#services">سیستم‌عامل و سرور</a>
                     <a href="#services">شبکه و اینترنت</a>
-                    <a href="#services">کدنویسی</a>
+                    <a href="#services">برنامه‌نویسی</a>
                     <a href="#services">طراحی سایت</a>
                     <a href="#services">هوش مصنوعی</a>
                 </div>
@@ -2016,9 +1823,10 @@
             <div class="footer-bottom">
                 <p>
                     <i class="fas fa-copyright"></i> ۱۴۰۴ سازمان شبکه فناوری پارسی | تمامی حقوق محفوظ است
-                    <br>
-                    <span style="color: var(--gold); font-size: 0.7rem;">📡 در انتظار دریافت سیگنال از اعماق کیهان...</span>
                 </p>
+                <div class="signal-message">
+                    📡 ما صدای شما را می‌شنویم - اگر صدای ما را می‌شنوید، ما را صدا کنید
+                </div>
             </div>
         </div>
     </footer>
@@ -2034,38 +1842,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        // ============================================================
-        // CREATE STARS
-        // ============================================================
-        (function createStars() {
-            const container = document.getElementById('stars');
-            const count = 200;
-
-            for (let i = 0; i < count; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 3 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-                star.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(star);
-            }
-
-            // Shooting stars
-            for (let i = 0; i < 3; i++) {
-                const shooting = document.createElement('div');
-                shooting.className = 'shooting-star';
-                shooting.style.top = Math.random() * 40 + '%';
-                shooting.style.left = Math.random() * 60 + '%';
-                shooting.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                shooting.style.animationDelay = (Math.random() * 10 + 5) + 's';
-                container.appendChild(shooting);
-            }
-        })();
-
         // ============================================================
         // HEADER SCROLL
         // ============================================================
@@ -2161,7 +1937,7 @@
                                 <strong style="color:#0a1628;">📡 سازمان شبکه فناوری پارسی</strong><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">کوار - بلوار امام خمینی</span><br>
                                 <span style="color:#6b7280;font-size:0.85rem;">خیابان شهید محسن شفیعی</span><br>
-                                <i class="fas fa-phone" style="color:#c9a84c;"></i>
+                                <i class="fas fa-phone" style="color:#d4af37;"></i>
                                 <span style="color:#374151;">۰۷۱-۳۷۸۲۴۸۹۲</span>
                             </div>
                         `)
@@ -2208,7 +1984,7 @@
                 success: '#10b981',
                 error: '#ef4444',
                 warning: '#f59e0b',
-                info: '#c9a84c'
+                info: '#d4af37'
             };
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
@@ -2234,9 +2010,9 @@
                 const root = document.documentElement;
 
                 if (dark) {
-                    root.style.setProperty('--primary', '#060a1a');
-                    root.style.setProperty('--primary-light', '#0a1628');
-                    root.style.setProperty('--primary-dark', '#030610');
+                    root.style.setProperty('--primary', '#0a1628');
+                    root.style.setProperty('--primary-light', '#152040');
+                    root.style.setProperty('--primary-dark', '#060e1a');
                     root.style.setProperty('--white', '#ffffff');
                     root.style.setProperty('--gray-50', '#f0f2f8');
                     root.style.setProperty('--gray-100', '#e4e7ed');
@@ -2272,11 +2048,11 @@
         // ============================================================
         // CONSOLE BRANDING
         // ============================================================
-        console.log('%c 🌌 سازمان شبکه فناوری پارسی ', 'background:#060a1a;color:#d4af37;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;');
-        console.log('%c 📡 ایستگاه ارتباطات فراسیاره‌ای ', 'background:#d4af37;color:#060a1a;font-size:14px;padding:8px 20px;border-radius:6px;');
-        console.log('%c 🌐 www.persiantechnet.ir ', 'background:#060a1a;color:#d4af37;font-size:13px;padding:6px 16px;border-radius:4px;');
-        console.log('%c 🚀 از رایانه تا کیهان ', 'background:#060a1a;color:#d4af37;font-size:12px;padding:4px 14px;border-radius:4px;');
-        console.log('%c 📡 در انتظار دریافت سیگنال از اعماق فضا... ', 'background:#060a1a;color:#d4af37;font-size:11px;padding:4px 14px;border-radius:4px;');
+        console.log('%c 📡 سازمان شبکه فناوری پارسی ', 'background:#0a1628;color:#d4af37;font-size:22px;font-weight:bold;padding:14px 28px;border-radius:10px;');
+        console.log('%c 🌐 پل ارتباطی دنیای دیجیتال ', 'background:#d4af37;color:#0a1628;font-size:14px;padding:8px 20px;border-radius:6px;');
+        console.log('%c 📞 www.persiantechnet.ir ', 'background:#0a1628;color:#d4af37;font-size:13px;padding:6px 16px;border-radius:4px;');
+        console.log('%c 🚀 از رایانه تا هوش مصنوعی ', 'background:#0a1628;color:#d4af37;font-size:12px;padding:4px 14px;border-radius:4px;');
+        console.log('%c 📡 ما صدای شما را می‌شنویم - ما را صدا کنید ', 'background:#0a1628;color:#00d4ff;font-size:12px;padding:4px 14px;border-radius:4px;');
     </script>
 </body>
 </html>
